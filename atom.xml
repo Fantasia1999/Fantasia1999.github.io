@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>卓木&#39;s Blog</title>
+  
+  <subtitle>请享受无法回避的痛苦</subtitle>
+  <link href="https://blog.zhuomu.xyz/atom.xml" rel="self"/>
+  
+  <link href="https://blog.zhuomu.xyz/"/>
+  <updated>2021-01-19T19:23:41.420Z</updated>
+  <id>https://blog.zhuomu.xyz/</id>
+  
+  <author>
+    <name>卓木</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Sublime Text 3 C++ ClangFormat格式化</title>
+    <link href="https://blog.zhuomu.xyz/2021/01/20/Sublime-Text3-build-run-cpp-file-and-format-cpp-codes/"/>
+    <id>https://blog.zhuomu.xyz/2021/01/20/Sublime-Text3-build-run-cpp-file-and-format-cpp-codes/</id>
+    <published>2021-01-19T19:23:41.420Z</published>
+    <updated>2021-01-19T19:23:41.420Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Sublime-Text-3-ClangFormat格式化&quot;&gt;&lt;a href=&quot;#Sublime-Text-3-ClangFormat格式化&quot; class=&quot;headerlink&quot; title=&quot;Sublime Text 3</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>C语言运算符优先级</title>
+    <link href="https://blog.zhuomu.xyz/2019/10/06/C-Operator-Precedence/"/>
+    <id>https://blog.zhuomu.xyz/2019/10/06/C-Operator-Precedence/</id>
+    <published>2019-10-06T06:13:05.000Z</published>
+    <updated>2019-10-06T06:13:05.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;C语言运算符优先级&quot;&gt;&lt;a href=&quot;#C语言运算符优先级&quot; class=&quot;headerlink&quot; title=&quot;C语言运算符优先级&quot;&gt;&lt;/a&gt;C语言运算符优先级&lt;/h1&gt;&lt;p&gt;参考&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Nowcoder_contest_992F</title>
+    <link href="https://blog.zhuomu.xyz/2019/07/21/Nowcoder-contest-992F/"/>
+    <id>https://blog.zhuomu.xyz/2019/07/21/Nowcoder-contest-992F/</id>
+    <published>2019-07-21T13:12:05.000Z</published>
+    <updated>2019-07-21T13:12:05.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;吉首大学2019年程序设计竞赛&quot;&gt;&lt;a href=&quot;#吉首大学2019年程序设计竞赛&quot; class=&quot;headerlink&quot; title=&quot;吉首大学2019年程序设计竞赛&quot;&gt;&lt;/a&gt;吉首大学2019年程序设计竞赛&lt;/h1&gt;&lt;h2 id=&quot;F-天花乱坠&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>hihoCoder 1103 Colorful Lecture Note</title>
+    <link href="https://blog.zhuomu.xyz/2019/03/15/hihoCoder-1103/"/>
+    <id>https://blog.zhuomu.xyz/2019/03/15/hihoCoder-1103/</id>
+    <published>2019-03-14T16:26:24.000Z</published>
+    <updated>2019-03-14T16:26:24.000Z</updated>
+    
+    
+    <summary type="html">栈 map string</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>FPGA Quartus Prime 17.0 安装破解</title>
+    <link href="https://blog.zhuomu.xyz/2019/03/09/FPGA-install-pojie/"/>
+    <id>https://blog.zhuomu.xyz/2019/03/09/FPGA-install-pojie/</id>
+    <published>2019-03-09T06:42:52.000Z</published>
+    <updated>2019-03-09T06:42:52.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;请先通读一遍全文后再开始安装，熟悉步骤，防止误操作。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="FPGA" scheme="https://blog.zhuomu.xyz/tags/fpga/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux VPS Speedtest</title>
+    <link href="https://blog.zhuomu.xyz/2019/02/20/Linux-Speedtest/"/>
+    <id>https://blog.zhuomu.xyz/2019/02/20/Linux-Speedtest/</id>
+    <published>2019-02-20T05:30:43.000Z</published>
+    <updated>2019-02-20T05:30:43.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;VPS一键检测IO、配置信息等问题检测脚本改良，丰富配置信息的展现、IO速度、以及下载速度检测点也是国内节点。同时可以生成&lt;code&gt;speedtest.net&lt;/code&gt;的测速报告和&lt;code&gt;ubuntu paste&lt;/code&gt;结果。&lt;/p&gt;
+&lt;h1</summary>
+        
+      
+    
+    
+    
+    <category term="VPS" scheme="https://blog.zhuomu.xyz/categories/vps/"/>
+    
+    <category term="Linux" scheme="https://blog.zhuomu.xyz/categories/vps/linux/"/>
+    
+    
+    <category term="speedtest" scheme="https://blog.zhuomu.xyz/tags/speedtest/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo+Github搭建博客和美化</title>
+    <link href="https://blog.zhuomu.xyz/2019/02/17/Hexo-Github-Blog-Help/"/>
+    <id>https://blog.zhuomu.xyz/2019/02/17/Hexo-Github-Blog-Help/</id>
+    <published>2019-02-17T11:13:21.000Z</published>
+    <updated>2019-02-17T11:13:21.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本站配置：//Date: 2019-02-17&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt; v3.8.0&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Theme – &lt;a href=&quot;https://theme-next.org/&quot;&gt;NexT.Pisces&lt;/a&gt; v6.7.0&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Scheme - Pisces&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;hexo+Github搭建博客的教程网上有很多了，初次搭建，可参考知乎上的一篇教程&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/26625249&quot;&gt;GitHub+Hexo 搭建个人网站详细教程&lt;/a&gt; //&lt;strong&gt;强烈推荐！！！&lt;/strong&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Linux 解决CentOS改DNS，重启失效问题</title>
+    <link href="https://blog.zhuomu.xyz/2019/01/25/Linux-CentOS-DNS/"/>
+    <id>https://blog.zhuomu.xyz/2019/01/25/Linux-CentOS-DNS/</id>
+    <published>2019-01-25T04:47:37.000Z</published>
+    <updated>2019-01-25T04:47:37.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;解决在CentOS上改DNS，重启网络配置后又恢复原样的问题&lt;/p&gt;
+&lt;p&gt;直接修改&lt;code&gt;/etc/resolv.conf&lt;/code&gt;不行，因为一重启network就会恢复原来状态。&lt;/p&gt;
+&lt;p&gt;必须要在&lt;code&gt;/etc/sysconfig/network-s</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>HDU Magic Maze ZZULI09F</title>
+    <link href="https://blog.zhuomu.xyz/2019/01/23/HDU-Magic-Maze-ZZULI09F/"/>
+    <id>https://blog.zhuomu.xyz/2019/01/23/HDU-Magic-Maze-ZZULI09F/</id>
+    <published>2019-01-23T12:32:27.000Z</published>
+    <updated>2019-01-23T12:32:27.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;郑州轻工业学院首届“瑞琪杯”大学生程序设计大赛 F 1006&lt;/p&gt;
+&lt;p&gt;HDU Virtual Contest 可以找到原题&lt;br&gt;迷宫bfs，求步数最少，多了一个跳跃的判断，题意有点模糊。&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>科学上网 CentOS下Shadowsocks一键安装脚本（四合一，秋水逸冰版）、GoogleBBR加速</title>
+    <link href="https://blog.zhuomu.xyz/2018/10/27/Shadowsocks-easy-to-go-and-BBR-speed-up/"/>
+    <id>https://blog.zhuomu.xyz/2018/10/27/Shadowsocks-easy-to-go-and-BBR-speed-up/</id>
+    <published>2018-10-27T12:01:36.000Z</published>
+    <updated>2018-10-27T12:01:36.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文使用秋水逸冰一键安装脚本，包含Python、Go等版本，一键安装，简单设置端口，密码即可。&lt;/p&gt;
+&lt;p&gt;同时，提供YouTube加速解决方案，采用Google官方BBR加速方案，具体原理可自行百度。&lt;/p&gt;
+&lt;p&gt;本文保证可以快速安装，部署使用。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="科学上网" scheme="https://blog.zhuomu.xyz/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    
+    
+    <category term="Shadowsocks" scheme="https://blog.zhuomu.xyz/tags/shadowsocks/"/>
+    
+  </entry>
+  
+</feed>
