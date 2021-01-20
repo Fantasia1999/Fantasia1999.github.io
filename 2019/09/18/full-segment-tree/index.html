@@ -1,0 +1,2079 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="【完全版】线段树, 卓木&#39;s Blog">
+    <meta name="description" content="学习 分享 开源">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>【完全版】线段树 | 卓木&#39;s Blog</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="卓木's Blog" type="application/atom+xml">
+</head>
+
+
+
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/avatar.jpg" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">卓木&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/avatar.jpg" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">卓木&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            学习 分享 开源
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/Fantasia1999" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Follow Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/Fantasia1999" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Follow Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">【完全版】线段树</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">
+                                <span class="chip bg-color">算法竞赛</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/">
+                                <span class="chip bg-color">线段树</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                笔记
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-09-18
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-07-25
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    6.4k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    34 分
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><strong>转载自：NotOnlySuccess的博客</strong><br>很早前写的那篇线段树专辑至今一直是本博客阅读点击量最大的一片文章,当时觉得挺自豪的,还去pku打广告,但是现在我自己都不太好意思去看那篇文章了,觉得当时的代码风格实在是太丑了,很多线段树的初学者可能就是看着这篇文章来练习的,如果不小心被我培养出了这么糟糕的风格,实在是过意不去,正好过几天又要给集训队讲解线段树,所以决定把这些题目重新写一遍,顺便把近年我接触到的一些新题更新上去~;并且学习了splay等更高级的数据结构后对线段树的体会有更深了一层,线段树的写法也就比以前飘逸,简洁且方便多了.</p>
+<a id="more"></a>
+
+<p>在代码前先介绍一些我的线段树风格:</p>
+<p>maxn是题目给的最大区间,而节点数要开4倍,确切的来说节点数要开大于maxn的最小2x的两倍</p>
+<p>lson和rson分辨表示结点的左儿子和右儿子,由于每次传参数的时候都固定是这几个变量,所以可以用预定于比较方便的表示</p>
+<p>以前的写法是另外开两个个数组记录每个结点所表示的区间,其实这个区间不必保存,一边算一边传下去就行,只需要写函数的时候多两个参数,结合lson和rson的预定义可以很方便</p>
+<p>PushUP(int rt)是把当前结点的信息更新到父结点</p>
+<p>PushDown(int rt)是把当前结点的信息更新给儿子结点</p>
+<p>rt表示当前子树的根(root),也就是当前所在的结点</p>
+<p>整理这些题目后我觉得线段树的题目整体上可以分成以下四个部分:</p>
+<p>单点更新:最最基础的线段树,只更新叶子节点,然后把信息用PushUP(int r)这个函数更新上来</p>
+<h1 id="区间查询"><a href="#区间查询" class="headerlink" title="区间查询"></a>区间查询</h1><h2 id="hdu1166-敌兵布阵"><a href="#hdu1166-敌兵布阵" class="headerlink" title="hdu1166 敌兵布阵"></a>hdu1166 敌兵布阵</h2><p>题意:O(-1)</p>
+<p>思路:O(-1)</p>
+<p>线段树功能:update:单点增减 query:区间求和</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;cstdio&gt;
+
+#define lson l , m , rt &lt;&lt; 1
+#define rson m + 1 , r , rt &lt;&lt; 1 | 1
+const int maxn &#x3D; 55555;
+int sum[maxn &lt;&lt; 2];
+void PushUP(int rt) &#123;
+    sum[rt] &#x3D; sum[rt &lt;&lt; 1] + sum[rt &lt;&lt; 1 | 1];
+&#125;
+void build(int l, int r, int rt) &#123;
+    if (l &#x3D;&#x3D; r) &#123;
+        scanf(&quot;%d&quot;, &amp;sum[rt]);
+        return ;
+    &#125;
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    build(lson);
+    build(rson);
+    PushUP(rt);
+&#125;
+void update(int p, int add, int l, int r, int rt) &#123;
+    if (l &#x3D;&#x3D; r) &#123;
+        sum[rt] +&#x3D; add;
+        return ;
+    &#125;
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    if (p &lt;&#x3D; m) update(p , add , lson);
+    else update(p , add , rson);
+    PushUP(rt);
+&#125;
+int query(int L, int R, int l, int r, int rt) &#123;
+    if (L &lt;&#x3D; l &amp;&amp; r &lt;&#x3D; R) &#123;
+        return sum[rt];
+    &#125;
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    int ret &#x3D; 0;
+    if (L &lt;&#x3D; m) ret +&#x3D; query(L , R , lson);
+    if (R &gt; m) ret +&#x3D; query(L , R , rson);
+    return ret;
+&#125;
+int main() &#123;
+    int T , n;
+    scanf(&quot;%d&quot;, &amp;T);
+    for (int cas &#x3D; 1 ; cas &lt;&#x3D; T ; cas ++) &#123;
+        printf(&quot;Case %d:\n&quot;, cas);
+        scanf(&quot;%d&quot;, &amp;n);
+        build(1 , n , 1);
+        char op[10];
+        while (scanf(&quot;%s&quot;, op)) &#123;
+            if (op[0] &#x3D;&#x3D; &#39;E&#39;) break;
+            int a , b;
+            scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+            if (op[0] &#x3D;&#x3D; &#39;Q&#39;) printf(&quot;%d\n&quot;, query(a , b , 1 , n , 1));
+            else if (op[0] &#x3D;&#x3D; &#39;S&#39;) update(a , -b , 1 , n , 1);
+            else update(a , b , 1 , n , 1);
+        &#125;
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="hdu1754-I-Hate-It"><a href="#hdu1754-I-Hate-It" class="headerlink" title="hdu1754 I Hate It"></a>hdu1754 I Hate It</h2><p>题意:O(-1)</p>
+<p>思路:O(-1)</p>
+<p>线段树功能:update:单点替换 query:区间最值</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+#define lson l , m , rt &lt;&lt; 1
+#define rson m + 1 , r , rt &lt;&lt; 1 | 1
+const int maxn &#x3D; 222222;
+int MAX[maxn &lt;&lt; 2];
+void PushUP(int rt) &#123;
+    MAX[rt] &#x3D; max(MAX[rt &lt;&lt; 1] , MAX[rt &lt;&lt; 1 | 1]);
+&#125;
+void build(int l, int r, int rt) &#123;
+    if (l &#x3D;&#x3D; r) &#123;
+        scanf(&quot;%d&quot;, &amp;MAX[rt]);
+        return ;
+    &#125;
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    build(lson);
+    build(rson);
+    PushUP(rt);
+&#125;
+void update(int p, int sc, int l, int r, int rt) &#123;
+    if (l &#x3D;&#x3D; r) &#123;
+        MAX[rt] &#x3D; sc;
+        return ;
+    &#125;
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    if (p &lt;&#x3D; m) update(p , sc , lson);
+    else update(p , sc , rson);
+    PushUP(rt);
+&#125;
+int query(int L, int R, int l, int r, int rt) &#123;
+    if (L &lt;&#x3D; l &amp;&amp; r &lt;&#x3D; R) &#123;
+        return MAX[rt];
+    &#125;
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    int ret &#x3D; 0;
+    if (L &lt;&#x3D; m) ret &#x3D; max(ret , query(L , R , lson));
+    if (R &gt; m) ret &#x3D; max(ret , query(L , R , rson));
+    return ret;
+&#125;
+int main() &#123;
+    int n , m;
+    while (~scanf(&quot;%d%d&quot;, &amp;n, &amp;m)) &#123;
+        build(1 , n , 1);
+        while (m --) &#123;
+            char op[2];
+            int a , b;
+            scanf(&quot;%s%d%d&quot;, op, &amp;a, &amp;b);
+            if (op[0] &#x3D;&#x3D; &#39;Q&#39;) printf(&quot;%d\n&quot;, query(a , b , 1 , n , 1));
+            else update(a , b , 1 , n , 1);
+        &#125;
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="hdu1394-Minimum-Inversion-Number"><a href="#hdu1394-Minimum-Inversion-Number" class="headerlink" title="hdu1394 Minimum Inversion Number"></a>hdu1394 Minimum Inversion Number</h2><p>题意:求Inversion后的最小逆序数</p>
+<p>思路:用O(nlogn)复杂度求出最初逆序数后,就可以用O(1)的复杂度分别递推出其他解</p>
+<p>线段树功能:update:单点增减 query:区间求和</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+#define lson l , m , rt &lt;&lt; 1
+#define rson m + 1 , r , rt &lt;&lt; 1 | 1
+const int maxn &#x3D; 5555;
+int sum[maxn &lt;&lt; 2];
+void PushUP(int rt) &#123;
+    sum[rt] &#x3D; sum[rt &lt;&lt; 1] + sum[rt &lt;&lt; 1 | 1];
+&#125;
+void build(int l, int r, int rt) &#123;
+    sum[rt] &#x3D; 0;
+    if (l &#x3D;&#x3D; r) return ;
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    build(lson);
+    build(rson);
+&#125;
+void update(int p, int l, int r, int rt) &#123;
+    if (l &#x3D;&#x3D; r) &#123;
+        sum[rt] ++;
+        return ;
+    &#125;
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    if (p &lt;&#x3D; m) update(p , lson);
+    else update(p , rson);
+    PushUP(rt);
+&#125;
+int query(int L, int R, int l, int r, int rt) &#123;
+    if (L &lt;&#x3D; l &amp;&amp; r &lt;&#x3D; R) &#123;
+        return sum[rt];
+    &#125;
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    int ret &#x3D; 0;
+    if (L &lt;&#x3D; m) ret +&#x3D; query(L , R , lson);
+    if (R &gt; m) ret +&#x3D; query(L , R , rson);
+    return ret;
+&#125;
+int x[maxn];
+int main() &#123;
+    int n;
+    while (~scanf(&quot;%d&quot;, &amp;n)) &#123;
+        build(0 , n - 1 , 1);
+        int sum &#x3D; 0;
+        for (int i &#x3D; 0 ; i &lt; n ; i ++) &#123;
+            scanf(&quot;%d&quot;, &amp;x[i]);
+            sum +&#x3D; query(x[i] , n - 1 , 0 , n - 1 , 1);
+            update(x[i] , 0 , n - 1 , 1);
+        &#125;
+        int ret &#x3D; sum;
+        for (int i &#x3D; 0 ; i &lt; n ; i ++) &#123;
+            sum +&#x3D; n - x[i] - x[i] - 1;
+            ret &#x3D; min(ret , sum);
+        &#125;
+        printf(&quot;%d\n&quot;, ret);
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="hdu2795-Billboard"><a href="#hdu2795-Billboard" class="headerlink" title="hdu2795 Billboard"></a>hdu2795 Billboard</h2><p>题意:h<em>w的木板,放进一些1</em>L的物品,求每次放空间能容纳且最上边的位子</p>
+<p>思路:每次找到最大值的位子,然后减去L</p>
+<p>线段树功能:query:区间求最大值的位子(直接把update的操作在query里做了)</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+#define lson l , m , rt &lt;&lt; 1
+#define rson m + 1 , r , rt &lt;&lt; 1 | 1
+const int maxn &#x3D; 222222;
+int h , w , n;
+int MAX[maxn &lt;&lt; 2];
+void PushUP(int rt) &#123;
+    MAX[rt] &#x3D; max(MAX[rt &lt;&lt; 1] , MAX[rt &lt;&lt; 1 | 1]);
+&#125;
+void build(int l, int r, int rt) &#123;
+    MAX[rt] &#x3D; w;
+    if (l &#x3D;&#x3D; r) return ;
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    build(lson);
+    build(rson);
+&#125;
+int query(int x, int l, int r, int rt) &#123;
+    if (l &#x3D;&#x3D; r) &#123;
+        MAX[rt] -&#x3D; x;
+        return l;
+    &#125;
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    int ret &#x3D; (MAX[rt &lt;&lt; 1] &gt;&#x3D; x) ? query(x , lson) : query(x , rson);
+    PushUP(rt);
+    return ret;
+&#125;
+int main() &#123;
+    while (~scanf(&quot;%d%d%d&quot;, &amp;h, &amp;w, &amp;n)) &#123;
+        if (h &gt; n) h &#x3D; n;
+        build(1 , h , 1);
+        while (n --) &#123;
+            int x;
+            scanf(&quot;%d&quot;, &amp;x);
+            if (MAX[1] &lt; x) puts(&quot;-1&quot;);
+            else printf(&quot;%d\n&quot;, query(x , 1 , h , 1));
+        &#125;
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习:"></a>练习:</h2><p>poj2828 Buy Tickets</p>
+<p>poj2886 Who Gets the Most Candies?</p>
+<p>/*<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
+<h1 id="成段更新"><a href="#成段更新" class="headerlink" title="成段更新"></a>成段更新</h1><p>(通常这对初学者来说是一道坎),需要用到延迟标记(或者说懒惰标记),简单来说就是每次更新的时候不要更新到底,用延迟标记使得更新延迟到下次需要更新or询问到的时候</p>
+<h2 id="hdu1698-Just-a-Hook"><a href="#hdu1698-Just-a-Hook" class="headerlink" title="hdu1698 Just a Hook"></a>hdu1698 Just a Hook</h2><p>题意:O(-1)</p>
+<p>思路:O(-1)</p>
+<p>线段树功能:update:成段替换 (由于只query一次总区间,所以可以直接输出1结点的信息)</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+#define lson l , m , rt &lt;&lt; 1
+#define rson m + 1 , r , rt &lt;&lt; 1 | 1
+const int maxn &#x3D; 111111;
+int h , w , n;
+int col[maxn &lt;&lt; 2];
+int sum[maxn &lt;&lt; 2];
+void PushUp(int rt) &#123;
+    sum[rt] &#x3D; sum[rt &lt;&lt; 1] + sum[rt &lt;&lt; 1 | 1];
+&#125;
+void PushDown(int rt, int m) &#123;
+    if (col[rt]) &#123;
+        col[rt &lt;&lt; 1] &#x3D; col[rt &lt;&lt; 1 | 1] &#x3D; col[rt];
+        sum[rt &lt;&lt; 1] &#x3D; (m - (m &gt;&gt; 1)) * col[rt];
+        sum[rt &lt;&lt; 1 | 1] &#x3D; (m &gt;&gt; 1) * col[rt];
+        col[rt] &#x3D; 0;
+    &#125;
+&#125;
+void build(int l, int r, int rt) &#123;
+    col[rt] &#x3D; 0;
+    sum[rt] &#x3D; 1;
+    if (l &#x3D;&#x3D; r) return ;
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    build(lson);
+    build(rson);
+    PushUp(rt);
+&#125;
+void update(int L, int R, int c, int l, int r, int rt) &#123;
+    if (L &lt;&#x3D; l &amp;&amp; r &lt;&#x3D; R) &#123;
+        col[rt] &#x3D; c;
+        sum[rt] &#x3D; c * (r - l + 1);
+        return ;
+    &#125;
+    PushDown(rt , r - l + 1);
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    if (L &lt;&#x3D; m) update(L , R , c , lson);
+    if (R &gt; m) update(L , R , c , rson);
+    PushUp(rt);
+&#125;
+int main() &#123;
+    int T , n , m;
+    scanf(&quot;%d&quot;, &amp;T);
+    for (int cas &#x3D; 1 ; cas &lt;&#x3D; T ; cas ++) &#123;
+        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+        build(1 , n , 1);
+        while (m --) &#123;
+            int a , b , c;
+            scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;c);
+            update(a , b , c , 1 , n , 1);
+        &#125;
+        printf(&quot;Case %d: The total value of the hook is %d.\n&quot;, cas , sum[1]);
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="poj3468-A-Simple-Problem-with-Integers"><a href="#poj3468-A-Simple-Problem-with-Integers" class="headerlink" title="poj3468 A Simple Problem with Integers"></a>poj3468 A Simple Problem with Integers</h2><p>题意:O(-1)</p>
+<p>思路:O(-1)</p>
+<p>线段树功能:update:成段增减 query:区间求和</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+#define lson l , m , rt &lt;&lt; 1
+#define rson m + 1 , r , rt &lt;&lt; 1 | 1
+#define LL long long
+const int maxn &#x3D; 111111;
+LL add[maxn &lt;&lt; 2];
+LL sum[maxn &lt;&lt; 2];
+void PushUp(int rt) &#123;
+    sum[rt] &#x3D; sum[rt &lt;&lt; 1] + sum[rt &lt;&lt; 1 | 1];
+&#125;
+void PushDown(int rt, int m) &#123;
+    if (add[rt]) &#123;
+        add[rt &lt;&lt; 1] +&#x3D; add[rt];
+        add[rt &lt;&lt; 1 | 1] +&#x3D; add[rt];
+        sum[rt &lt;&lt; 1] +&#x3D; add[rt] * (m - (m &gt;&gt; 1));
+        sum[rt &lt;&lt; 1 | 1] +&#x3D; add[rt] * (m &gt;&gt; 1);
+        add[rt] &#x3D; 0;
+    &#125;
+&#125;
+void build(int l, int r, int rt) &#123;
+    add[rt] &#x3D; 0;
+    if (l &#x3D;&#x3D; r) &#123;
+        scanf(&quot;%lld&quot;, &amp;sum[rt]);
+        return ;
+    &#125;
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    build(lson);
+    build(rson);
+    PushUp(rt);
+&#125;
+void update(int L, int R, int c, int l, int r, int rt) &#123;
+    if (L &lt;&#x3D; l &amp;&amp; r &lt;&#x3D; R) &#123;
+        add[rt] +&#x3D; c;
+        sum[rt] +&#x3D; (LL)c * (r - l + 1);
+        return ;
+    &#125;
+    PushDown(rt , r - l + 1);
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    if (L &lt;&#x3D; m) update(L , R , c , lson);
+    if (m &lt; R) update(L , R , c , rson);
+    PushUp(rt);
+&#125;
+LL query(int L, int R, int l, int r, int rt) &#123;
+    if (L &lt;&#x3D; l &amp;&amp; r &lt;&#x3D; R) &#123;
+        return sum[rt];
+    &#125;
+    PushDown(rt , r - l + 1);
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    LL ret &#x3D; 0;
+    if (L &lt;&#x3D; m) ret +&#x3D; query(L , R , lson);
+    if (m &lt; R) ret +&#x3D; query(L , R , rson);
+    return ret;
+&#125;
+int main() &#123;
+    int N , Q;
+    scanf(&quot;%d%d&quot;, &amp;N, &amp;Q);
+    build(1 , N , 1);
+    while (Q --) &#123;
+        char op[2];
+        int a , b , c;
+        scanf(&quot;%s&quot;, op);
+        if (op[0] &#x3D;&#x3D; &#39;Q&#39;) &#123;
+            scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+            printf(&quot;%lld\n&quot;, query(a , b , 1 , N , 1));
+        &#125; else &#123;
+            scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;c);
+            update(a , b , c , 1 , N , 1);
+        &#125;
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="poj2528-Mayor’s-posters"><a href="#poj2528-Mayor’s-posters" class="headerlink" title="poj2528 Mayor’s posters"></a>poj2528 Mayor’s posters</h2><p>题意:在墙上贴海报,海报可以互相覆盖,问最后可以看见几张海报</p>
+<p>思路:这题数据范围很大,直接搞超时+超内存,需要离散化:</p>
+<p>离散化简单的来说就是只取我们需要的值来用,比如说区间[1000,2000],[1990,2012] 我们用不到[-∞,999][1001,1989][1991,1999][2001,2011][2013,+∞]这些值,所以我只需要1000,1990,2000,2012就够了,将其分别映射到0,1,2,3,在于复杂度就大大的降下来了</p>
+<p>所以离散化要保存所有需要用到的值,排序后,分别映射到1~n,这样复杂度就会小很多很多</p>
+<p>而这题的难点在于每个数字其实表示的是一个单位长度(并且一个点),这样普通的离散化会造成许多错误(包括我以前的代码,poj这题数据奇弱)</p>
+<p>给出下面两个简单的例子应该能体现普通离散化的缺陷:</p>
+<p>1-10 1-4 5-10</p>
+<p>1-10 1-4 6-10</p>
+<p>为了解决这种缺陷,我们可以在排序后的数组上加些处理,比如说[1,2,6,10]</p>
+<p>如果相邻数字间距大于1的话,在其中加上任意一个数字,比如加成[1,2,3,6,7,10],然后再做线段树就好了.</p>
+<p>线段树功能:update:成段替换 query:简单hash</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+#define lson l , m , rt &lt;&lt; 1
+#define rson m + 1 , r , rt &lt;&lt; 1 | 1
+
+const int maxn &#x3D; 11111;
+bool hash[maxn];
+int li[maxn] , ri[maxn];
+int X[maxn * 3];
+int col[maxn &lt;&lt; 4];
+int cnt;
+
+void PushDown(int rt) &#123;
+    if (col[rt] !&#x3D; -1) &#123;
+        col[rt &lt;&lt; 1] &#x3D; col[rt &lt;&lt; 1 | 1] &#x3D; col[rt];
+        col[rt] &#x3D; -1;
+    &#125;
+&#125;
+void update(int L, int R, int c, int l, int r, int rt) &#123;
+    if (L &lt;&#x3D; l &amp;&amp; r &lt;&#x3D; R) &#123;
+        col[rt] &#x3D; c;
+        return ;
+    &#125;
+    PushDown(rt);
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    if (L &lt;&#x3D; m) update(L , R , c , lson);
+    if (m &lt; R) update(L , R , c , rson);
+&#125;
+void query(int l, int r, int rt) &#123;
+    if (col[rt] !&#x3D; -1) &#123;
+        if (!hash[col[rt]]) cnt ++;
+        hash[ col[rt] ] &#x3D; true;
+        return ;
+    &#125;
+    if (l &#x3D;&#x3D; r) return ;
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    query(lson);
+    query(rson);
+&#125;
+int Bin(int key, int n, int X[]) &#123;
+    int l &#x3D; 0 , r &#x3D; n - 1;
+    while (l &lt;&#x3D; r) &#123;
+        int m &#x3D; (l + r) &gt;&gt; 1;
+        if (X[m] &#x3D;&#x3D; key) return m;
+        if (X[m] &lt; key) l &#x3D; m + 1;
+        else r &#x3D; m - 1;
+    &#125;
+    return -1;
+&#125;
+int main() &#123;
+    int T , n;
+    scanf(&quot;%d&quot;, &amp;T);
+    while (T --) &#123;
+        scanf(&quot;%d&quot;, &amp;n);
+        int nn &#x3D; 0;
+        for (int i &#x3D; 0 ; i &lt; n ; i ++) &#123;
+            scanf(&quot;%d%d&quot;, &amp;li[i] , &amp;ri[i]);
+            X[nn++] &#x3D; li[i];
+            X[nn++] &#x3D; ri[i];
+        &#125;
+        sort(X , X + nn);
+        int m &#x3D; 1;
+        for (int i &#x3D; 1 ; i &lt; nn; i ++) &#123;
+            if (X[i] !&#x3D; X[i - 1]) X[m ++] &#x3D; X[i];
+        &#125;
+        for (int i &#x3D; m - 1 ; i &gt; 0 ; i --) &#123;
+            if (X[i] !&#x3D; X[i - 1] + 1) X[m ++] &#x3D; X[i] + 1;
+        &#125;
+        sort(X , X + m);
+        memset(col , -1 , sizeof(col));
+        for (int i &#x3D; 0 ; i &lt; n ; i ++) &#123;
+            int l &#x3D; Bin(li[i] , m , X);
+            int r &#x3D; Bin(ri[i] , m , X);
+            update(l , r , i , 0 , m , 1);
+        &#125;
+        cnt &#x3D; 0;
+        memset(hash , false , sizeof(hash));
+        query(0 , m , 1);
+        printf(&quot;%d\n&quot;, cnt);
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>poj3225 Help with Intervals</p>
+<p>题意:区间操作,交,并,补等</p>
+<p>思路:</p>
+<p>我们一个一个操作来分析:(用0和1表示是否包含区间,-1表示该区间内既有包含又有不包含)</p>
+<p>U:把区间[l,r]覆盖成1</p>
+<p>I:把[-∞,l)(r,∞]覆盖成0</p>
+<p>D:把区间[l,r]覆盖成0</p>
+<p>C:把[-∞,l)(r,∞]覆盖成0 , 且[l,r]区间0/1互换</p>
+<p>S:[l,r]区间0/1互换</p>
+<p>成段覆盖的操作很简单,比较特殊的就是区间0/1互换这个操作,我们可以称之为异或操作</p>
+<p>很明显我们可以知道这个性质:当一个区间被覆盖后,不管之前有没有异或标记都没有意义了</p>
+<p>所以当一个节点得到覆盖标记时把异或标记清空</p>
+<p>而当一个节点得到异或标记的时候,先判断覆盖标记,如果是0或1,直接改变一下覆盖标记,不然的话改变异或标记</p>
+<p>开区间闭区间只要数字乘以2就可以处理(偶数表示端点,奇数表示两端点间的区间)</p>
+<p>线段树功能:update:成段替换,区间异或 query:简单hash</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+#define lson l , m , rt &lt;&lt; 1
+#define rson m + 1 , r , rt &lt;&lt; 1 | 1
+
+const int maxn &#x3D; 131072;
+bool hash[maxn];
+int cover[maxn &lt;&lt; 2];
+int XOR[maxn &lt;&lt; 2];
+void FXOR(int rt) &#123;
+    if (cover[rt] !&#x3D; -1) cover[rt] ^&#x3D; 1;
+    else XOR[rt] ^&#x3D; 1;
+&#125;
+void PushDown(int rt) &#123;
+    if (cover[rt] !&#x3D; -1) &#123;
+        cover[rt &lt;&lt; 1] &#x3D; cover[rt &lt;&lt; 1 | 1] &#x3D; cover[rt];
+        XOR[rt &lt;&lt; 1] &#x3D; XOR[rt &lt;&lt; 1 | 1] &#x3D; 0;
+        cover[rt] &#x3D; -1;
+    &#125;
+    if (XOR[rt]) &#123;
+        FXOR(rt &lt;&lt; 1);
+        FXOR(rt &lt;&lt; 1 | 1);
+        XOR[rt] &#x3D; 0;
+    &#125;
+&#125;
+void update(char op, int L, int R, int l, int r, int rt) &#123;
+    if (L &lt;&#x3D; l &amp;&amp; r &lt;&#x3D; R) &#123;
+        if (op &#x3D;&#x3D; &#39;U&#39;) &#123;
+            cover[rt] &#x3D; 1;
+            XOR[rt] &#x3D; 0;
+        &#125; else if (op &#x3D;&#x3D; &#39;D&#39;) &#123;
+            cover[rt] &#x3D; 0;
+            XOR[rt] &#x3D; 0;
+        &#125; else if (op &#x3D;&#x3D; &#39;C&#39; || op &#x3D;&#x3D; &#39;S&#39;) &#123;
+            FXOR(rt);
+        &#125;
+        return ;
+    &#125;
+    PushDown(rt);
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    if (L &lt;&#x3D; m) update(op , L , R , lson);
+    else if (op &#x3D;&#x3D; &#39;I&#39; || op &#x3D;&#x3D; &#39;C&#39;) &#123;
+        XOR[rt &lt;&lt; 1] &#x3D; cover[rt &lt;&lt; 1] &#x3D; 0;
+    &#125;
+    if (m &lt; R) update(op , L , R , rson);
+    else if (op &#x3D;&#x3D; &#39;I&#39; || op &#x3D;&#x3D; &#39;C&#39;) &#123;
+        XOR[rt &lt;&lt; 1 | 1] &#x3D; cover[rt &lt;&lt; 1 | 1] &#x3D; 0;
+    &#125;
+&#125;
+void query(int l, int r, int rt) &#123;
+    if (cover[rt] &#x3D;&#x3D; 1) &#123;
+        for (int it &#x3D; l ; it &lt;&#x3D; r ; it ++) &#123;
+            hash[it] &#x3D; true;
+        &#125;
+        return ;
+    &#125; else if (cover[rt] &#x3D;&#x3D; 0) return ;
+    if (l &#x3D;&#x3D; r) return ;
+    PushDown(rt);
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    query(lson);
+    query(rson);
+&#125;
+int main() &#123;
+    cover[1] &#x3D; XOR[1] &#x3D; 0;
+    char op , l , r;
+    int a , b;
+    while ( ~scanf(&quot;%c %c%d,%d%c\n&quot;, &amp;op , &amp;l , &amp;a , &amp;b , &amp;r) ) &#123;
+        a &lt;&lt;&#x3D; 1 , b &lt;&lt;&#x3D; 1;
+        if (l &#x3D;&#x3D; &#39;(&#39;) a ++;
+        if (r &#x3D;&#x3D; &#39;)&#39;) b --;
+        if (a &gt; b) &#123;
+            if (op &#x3D;&#x3D; &#39;C&#39; || op &#x3D;&#x3D; &#39;I&#39;) &#123;
+                cover[1] &#x3D; XOR[1] &#x3D; 0;
+            &#125;
+        &#125; else update(op , a , b , 0 , maxn , 1);
+    &#125;
+    query(0 , maxn , 1);
+    bool flag &#x3D; false;
+    int s &#x3D; -1 , e;
+    for (int i &#x3D; 0 ; i &lt;&#x3D; maxn ; i ++) &#123;
+        if (hash[i]) &#123;
+            if (s &#x3D;&#x3D; -1) s &#x3D; i;
+            e &#x3D; i;
+        &#125; else &#123;
+            if (s !&#x3D; -1) &#123;
+                if (flag) printf(&quot; &quot;);
+                flag &#x3D; true;
+                printf(&quot;%c%d,%d%c&quot;, s &amp; 1 ? &#39;(&#39; : &#39;[&#39; , s &gt;&gt; 1 , (e + 1) &gt;&gt; 1 , e &amp; 1 ? &#39;)&#39; : &#39;]&#39;);
+                s &#x3D; -1;
+            &#125;
+        &#125;
+    &#125;
+    if (!flag) printf(&quot;empty set&quot;);
+    puts(&quot;&quot;);
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="练习-1"><a href="#练习-1" class="headerlink" title="练习:"></a>练习:</h2><p>poj1436 Horizontally Visible Segments</p>
+<p>poj2991 Crane</p>
+<p>Another LCIS</p>
+<p>Bracket Sequence</p>
+<h1 id="区间合并"><a href="#区间合并" class="headerlink" title="区间合并"></a>区间合并</h1><p>这类题目会询问区间中满足条件的连续最长区间,所以PushUp的时候需要对左右儿子的区间进行合并</p>
+<h2 id="poj3667-Hotel"><a href="#poj3667-Hotel" class="headerlink" title="poj3667 Hotel"></a>poj3667 Hotel</h2><p>题意:1 a:询问是不是有连续长度为a的空房间,有的话住进最左边</p>
+<p>2 a b:将[a,a+b-1]的房间清空</p>
+<p>思路:记录区间中最长的空房间</p>
+<p>线段树操作:update:区间替换 query:询问满足条件的最左断点</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+#define lson l , m , rt &lt;&lt; 1
+#define rson m + 1 , r , rt &lt;&lt; 1 | 1
+
+const int maxn &#x3D; 55555;
+int lsum[maxn &lt;&lt; 2] , rsum[maxn &lt;&lt; 2] , msum[maxn &lt;&lt; 2];
+int cover[maxn &lt;&lt; 2];
+
+void PushDown(int rt, int m) &#123;
+    if (cover[rt] !&#x3D; -1) &#123;
+        cover[rt &lt;&lt; 1] &#x3D; cover[rt &lt;&lt; 1 | 1] &#x3D; cover[rt];
+        msum[rt &lt;&lt; 1] &#x3D; lsum[rt &lt;&lt; 1] &#x3D; rsum[rt &lt;&lt; 1] &#x3D; cover[rt] ? 0 : m - (m &gt;&gt; 1);
+        msum[rt &lt;&lt; 1 | 1] &#x3D; lsum[rt &lt;&lt; 1 | 1] &#x3D; rsum[rt &lt;&lt; 1 | 1] &#x3D; cover[rt] ? 0 : (m &gt;&gt; 1);
+        cover[rt] &#x3D; -1;
+    &#125;
+&#125;
+void PushUp(int rt, int m) &#123;
+    lsum[rt] &#x3D; lsum[rt &lt;&lt; 1];
+    rsum[rt] &#x3D; rsum[rt &lt;&lt; 1 | 1];
+    if (lsum[rt] &#x3D;&#x3D; m - (m &gt;&gt; 1)) lsum[rt] +&#x3D; lsum[rt &lt;&lt; 1 | 1];
+    if (rsum[rt] &#x3D;&#x3D; (m &gt;&gt; 1)) rsum[rt] +&#x3D; rsum[rt &lt;&lt; 1];
+    msum[rt] &#x3D; max(lsum[rt &lt;&lt; 1 | 1] + rsum[rt &lt;&lt; 1] , max(msum[rt &lt;&lt; 1] , msum[rt &lt;&lt; 1 | 1]));
+&#125;
+void build(int l, int r, int rt) &#123;
+    msum[rt] &#x3D; lsum[rt] &#x3D; rsum[rt] &#x3D; r - l + 1;
+    cover[rt] &#x3D; -1;
+    if (l &#x3D;&#x3D; r) return ;
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    build(lson);
+    build(rson);
+&#125;
+void update(int L, int R, int c, int l, int r, int rt) &#123;
+    if (L &lt;&#x3D; l &amp;&amp; r &lt;&#x3D; R) &#123;
+        msum[rt] &#x3D; lsum[rt] &#x3D; rsum[rt] &#x3D; c ? 0 : r - l + 1;
+        cover[rt] &#x3D; c;
+        return ;
+    &#125;
+    PushDown(rt , r - l + 1);
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    if (L &lt;&#x3D; m) update(L , R , c , lson);
+    if (m &lt; R) update(L , R , c , rson);
+    PushUp(rt , r - l + 1);
+&#125;
+int query(int w, int l, int r, int rt) &#123;
+    if (l &#x3D;&#x3D; r) return l;
+    PushDown(rt , r - l + 1);
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    if (msum[rt &lt;&lt; 1] &gt;&#x3D; w) return query(w , lson);
+    else if (rsum[rt &lt;&lt; 1] + lsum[rt &lt;&lt; 1 | 1] &gt;&#x3D; w) return m - rsum[rt &lt;&lt; 1] + 1;
+    return query(w , rson);
+&#125;
+int main() &#123;
+    int n , m;
+    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+    build(1 , n , 1);
+    while (m --) &#123;
+        int op , a , b;
+        scanf(&quot;%d&quot;, &amp;op);
+        if (op &#x3D;&#x3D; 1) &#123;
+            scanf(&quot;%d&quot;, &amp;a);
+            if (msum[1] &lt; a) puts(&quot;0&quot;);
+            else &#123;
+                int p &#x3D; query(a , 1 , n , 1);
+                printf(&quot;%d\n&quot;, p);
+                update(p , p + a - 1 , 1 , 1 , n , 1);
+            &#125;
+        &#125; else &#123;
+            scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+            update(a , a + b - 1 , 0 , 1 , n , 1);
+        &#125;
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="练习-2"><a href="#练习-2" class="headerlink" title="练习:"></a>练习:</h2><p>hdu3308 LCIS</p>
+<p>hdu3397 Sequence operation</p>
+<p>hdu2871 Memory Control</p>
+<p>hdu1540 Tunnel Warfare</p>
+<p>CF46-D Parking Lot</p>
+<h1 id="扫描线"><a href="#扫描线" class="headerlink" title="扫描线"></a>扫描线</h1><p>这类题目需要将一些操作排序,然后从左到右用一根扫描线(当然是在我们脑子里)扫过去</p>
+<p>最典型的就是矩形面积并,周长并等题</p>
+<h2 id="hdu1542-Atlantis"><a href="#hdu1542-Atlantis" class="headerlink" title="hdu1542 Atlantis"></a>hdu1542 Atlantis</h2><p>题意:矩形面积并</p>
+<p>思路:浮点数先要离散化;然后把矩形分成两条边,上边和下边,对横轴建树,然后从下到上扫描上去,用cnt表示该区间下边比上边多几个</p>
+<p>线段树操作:update:区间增减 query:直接取根节点的值</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+#define lson l , m , rt &lt;&lt; 1
+#define rson m + 1 , r , rt &lt;&lt; 1 | 1
+
+const int maxn &#x3D; 2222;
+int cnt[maxn &lt;&lt; 2];
+double sum[maxn &lt;&lt; 2];
+double X[maxn];
+struct Seg &#123;
+    double h , l , r;
+    int s;
+    Seg() &#123;&#125;
+    Seg(double a, double b, double c, int d) : l(a) , r(b) , h(c) , s(d) &#123;&#125;
+    bool operator &lt; (const Seg &amp;cmp) const &#123;
+        return h &lt; cmp.h;
+    &#125;
+&#125; ss[maxn];
+void PushUp(int rt, int l, int r) &#123;
+    if (cnt[rt]) sum[rt] &#x3D; X[r + 1] - X[l];
+    else if (l &#x3D;&#x3D; r) sum[rt] &#x3D; 0;
+    else sum[rt] &#x3D; sum[rt &lt;&lt; 1] + sum[rt &lt;&lt; 1 | 1];
+&#125;
+void update(int L, int R, int c, int l, int r, int rt) &#123;
+    if (L &lt;&#x3D; l &amp;&amp; r &lt;&#x3D; R) &#123;
+        cnt[rt] +&#x3D; c;
+        PushUp(rt , l , r);
+        return ;
+    &#125;
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    if (L &lt;&#x3D; m) update(L , R , c , lson);
+    if (m &lt; R) update(L , R , c , rson);
+    PushUp(rt , l , r);
+&#125;
+int Bin(double key, int n, double X[]) &#123;
+    int l &#x3D; 0 , r &#x3D; n - 1;
+    while (l &lt;&#x3D; r) &#123;
+        int m &#x3D; (l + r) &gt;&gt; 1;
+        if (X[m] &#x3D;&#x3D; key) return m;
+        if (X[m] &lt; key) l &#x3D; m + 1;
+        else r &#x3D; m - 1;
+    &#125;
+    return -1;
+&#125;
+int main() &#123;
+    int n , cas &#x3D; 1;
+    while (~scanf(&quot;%d&quot;, &amp;n) &amp;&amp; n) &#123;
+        int m &#x3D; 0;
+        while (n --) &#123;
+            double a , b , c , d;
+            scanf(&quot;%lf%lf%lf%lf&quot;, &amp;a, &amp;b, &amp;c, &amp;d);
+            X[m] &#x3D; a;
+            ss[m++] &#x3D; Seg(a , c , b , 1);
+            X[m] &#x3D; c;
+            ss[m++] &#x3D; Seg(a , c , d , -1);
+        &#125;
+        sort(X , X + m);
+        sort(ss , ss + m);
+        int k &#x3D; 1;
+        for (int i &#x3D; 1 ; i &lt; m ; i ++) &#123;
+            if (X[i] !&#x3D; X[i - 1]) X[k++] &#x3D; X[i];
+        &#125;
+        memset(cnt , 0 , sizeof(cnt));
+        memset(sum , 0 , sizeof(sum));
+        double ret &#x3D; 0;
+        for (int i &#x3D; 0 ; i &lt; m - 1 ; i ++) &#123;
+            int l &#x3D; Bin(ss[i].l , k , X);
+            int r &#x3D; Bin(ss[i].r , k , X) - 1;
+            if (l &lt;&#x3D; r) update(l , r , ss[i].s , 0 , k - 1, 1);
+            ret +&#x3D; sum[1] * (ss[i + 1].h - ss[i].h);
+        &#125;
+        printf(&quot;Test case #%d\nTotal explored area: %.2lf\n\n&quot;, cas++ , ret);
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="hdu1828-Picture"><a href="#hdu1828-Picture" class="headerlink" title="hdu1828 Picture"></a>hdu1828 Picture</h2><p>题意:矩形周长并</p>
+<p>思路:与面积不同的地方是还要记录竖的边有几个(numseg记录),并且当边界重合的时候需要合并(用lbd和rbd表示边界来辅助)</p>
+<p>线段树操作:update:区间增减 query:直接取根节点的值</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+#define lson l , m , rt &lt;&lt; 1
+#define rson m + 1 , r , rt &lt;&lt; 1 | 1
+
+const int maxn &#x3D; 22222;
+struct Seg &#123;
+    int l , r , h , s;
+    Seg() &#123;&#125;
+    Seg(int a, int b, int c, int d): l(a) , r(b) , h(c) , s(d) &#123;&#125;
+    bool operator &lt; (const Seg &amp;cmp) const &#123;
+        return h &lt; cmp.h;
+    &#125;
+&#125; ss[maxn];
+bool lbd[maxn &lt;&lt; 2] , rbd[maxn &lt;&lt; 2];
+int numseg[maxn &lt;&lt; 2];
+int cnt[maxn &lt;&lt; 2];
+int len[maxn &lt;&lt; 2];
+void PushUP(int rt, int l, int r) &#123;
+    if (cnt[rt]) &#123;
+        lbd[rt] &#x3D; rbd[rt] &#x3D; 1;
+        len[rt] &#x3D; r - l + 1;
+        numseg[rt] &#x3D; 2;
+    &#125; else if (l &#x3D;&#x3D; r) &#123;
+        len[rt] &#x3D; numseg[rt] &#x3D; lbd[rt] &#x3D; rbd[rt] &#x3D; 0;
+    &#125; else &#123;
+        lbd[rt] &#x3D; lbd[rt &lt;&lt; 1];
+        rbd[rt] &#x3D; rbd[rt &lt;&lt; 1 | 1];
+        len[rt] &#x3D; len[rt &lt;&lt; 1] + len[rt &lt;&lt; 1 | 1];
+        numseg[rt] &#x3D; numseg[rt &lt;&lt; 1] + numseg[rt &lt;&lt; 1 | 1];
+        if (lbd[rt &lt;&lt; 1 | 1] &amp;&amp; rbd[rt &lt;&lt; 1]) numseg[rt] -&#x3D; 2; &#x2F;&#x2F;两条线重合
+    &#125;
+&#125;
+void update(int L, int R, int c, int l, int r, int rt) &#123;
+    if (L &lt;&#x3D; l &amp;&amp; r &lt;&#x3D; R) &#123;
+        cnt[rt] +&#x3D; c;
+        PushUP(rt , l , r);
+        return ;
+    &#125;
+    int m &#x3D; (l + r) &gt;&gt; 1;
+    if (L &lt;&#x3D; m) update(L , R , c , lson);
+    if (m &lt; R) update(L , R , c , rson);
+    PushUP(rt , l , r);
+&#125;
+int main() &#123;
+    int n;
+    while (~scanf(&quot;%d&quot;, &amp;n)) &#123;
+        int m &#x3D; 0;
+        int lbd &#x3D; 10000, rbd &#x3D; -10000;
+        for (int i &#x3D; 0 ; i &lt; n ; i ++) &#123;
+            int a , b , c , d;
+            scanf(&quot;%d%d%d%d&quot;, &amp;a, &amp;b, &amp;c, &amp;d);
+            lbd &#x3D; min(lbd , a);
+            rbd &#x3D; max(rbd , c);
+            ss[m++] &#x3D; Seg(a , c , b , 1);
+            ss[m++] &#x3D; Seg(a , c , d , -1);
+        &#125;
+        sort(ss , ss + m);
+        int ret &#x3D; 0 , last &#x3D; 0;
+        for (int i &#x3D; 0 ; i &lt; m ; i ++) &#123;
+            if (ss[i].l &lt; ss[i].r) update(ss[i].l , ss[i].r - 1 , ss[i].s , lbd , rbd - 1 , 1);
+            ret +&#x3D; numseg[1] * (ss[i + 1].h - ss[i].h);
+            ret +&#x3D; abs(len[1] - last);
+            last &#x3D; len[1];
+        &#125;
+        printf(&quot;%d\n&quot;, ret);
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="练习-3"><a href="#练习-3" class="headerlink" title="练习"></a>练习</h2><p>hdu3265 Posters</p>
+<p>hdu3642 Get The Treasury</p>
+<p>poj2482 Stars in Your Window</p>
+<p>poj2464 Brownie Points II</p>
+<p>hdu3255 Farming</p>
+<p>ural1707 Hypnotoad’s Secret</p>
+<p>uva11983 Weird Advertisement</p>
+<h1 id="线段树与其他结合练习-欢迎大家补充"><a href="#线段树与其他结合练习-欢迎大家补充" class="headerlink" title="线段树与其他结合练习(欢迎大家补充):"></a>线段树与其他结合练习(欢迎大家补充):</h1><p>hdu3333 Turing Tree</p>
+<p>hdu3874 Necklace</p>
+<p>hdu3016 Man Down</p>
+<p>hdu3340 Rain in ACStar</p>
+<p>zju3511 Cake Robbery</p>
+<p>UESTC1558 Charitable Exchange</p>
+<p>CF85-D Sum of Medians</p>
+<p>spojGSS2 Can you answer these queries II</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.zhuomu.xyz" rel="external nofollow noreferrer">卓木</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.zhuomu.xyz/2019/09/18/full-segment-tree/">https://blog.zhuomu.xyz/2019/09/18/full-segment-tree/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY-NC 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://blog.zhuomu.xyz" target="_blank">卓木</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">
+                                    <span class="chip bg-color">算法竞赛</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/">
+                                    <span class="chip bg-color">线段树</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/10/06/C-Operator-Precedence/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="C语言运算符优先级">
+                        
+                        <span class="card-title">C语言运算符优先级</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            卓木
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/07/21/Nowcoder-contest-992F/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Nowcoder_contest_992F">
+                        
+                        <span class="card-title">Nowcoder_contest_992F</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-07-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            卓木
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 卓木&#39;s Blog<br />'
+            + '文章作者: 卓木<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">卓木</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Fantisia1999" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:i@zhuomu.xyz" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

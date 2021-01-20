@@ -1,0 +1,1608 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="程序员面试宝典-基础知识总结, 卓木&#39;s Blog">
+    <meta name="description" content="学习 分享 开源">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>程序员面试宝典-基础知识总结 | 卓木&#39;s Blog</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="卓木's Blog" type="application/atom+xml">
+</head>
+
+
+
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/avatar.jpg" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">卓木&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/avatar.jpg" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">卓木&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            学习 分享 开源
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/Fantasia1999" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Follow Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/Fantasia1999" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Follow Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">程序员面试宝典-基础知识总结</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/c/">
+                                <span class="chip bg-color">c++</span>
+                            </a>
+                        
+                            <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                <span class="chip bg-color">面试</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                笔记
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-02-12
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-02-23
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5.4k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    20 分
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h3 id="程序员面试宝典"><a href="#程序员面试宝典" class="headerlink" title="程序员面试宝典"></a>程序员面试宝典</h3><h5 id="const-位置"><a href="#const-位置" class="headerlink" title="const 位置"></a>const 位置</h5><p>  const位于星号左侧，则const就是被用来修饰指针指向的变量， 如果位于右侧，则就是修饰指针本身。</p>
+<h5 id="mutable"><a href="#mutable" class="headerlink" title="mutable"></a>mutable</h5><p>  在const成员函数中，用mutable修饰成员变量</p>
+<h5 id="sizeof"><a href="#sizeof" class="headerlink" title="sizeof"></a>sizeof</h5><pre class="line-numbers language-none"><code class="language-none">  class A｛
+
+  ​    int a；
+
+  ​    static int b；
+
+  ｝<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  静态变量是存放在全局数据区的，sizeof只计算栈中分配的大小，所以sizeof（A）不包括b</p>
+<h5 id="const与-define区别"><a href="#const与-define区别" class="headerlink" title="const与#define区别"></a>const与#define区别</h5><p>  const常量有数据类型，宏没有数据类型；编译器可以对const进行类型安全检查，对后者只进行字符替换</p>
+<h5 id="内存中的数据对齐"><a href="#内存中的数据对齐" class="headerlink" title="内存中的数据对齐"></a>内存中的数据对齐</h5><p>  一般按照4字节进行对齐</p>
+<h5 id="sizeof和strlen的区别"><a href="#sizeof和strlen的区别" class="headerlink" title="sizeof和strlen的区别"></a>sizeof和strlen的区别</h5><ul>
+<li><p>sizeof是运算符，strlen是函数</p>
+</li>
+<li><p>sizeof可以用类型做参数，strlen只能用char*做参数，且必须以”\0”结尾</p>
+</li>
+</ul>
+<p>    * sizeof在编译的时候就已经计算了，strlen在运行的时候才计算</p>
+<p>    * 返回结果不一样</p>
+<h5 id="类空间"><a href="#类空间" class="headerlink" title="类空间"></a>类空间</h5><p>  空类所占空间为1，单一和多重继承还是1，虚继承和只含有虚函数的类为4</p>
+<h5 id="内联函数和宏的区别"><a href="#内联函数和宏的区别" class="headerlink" title="内联函数和宏的区别"></a>内联函数和宏的区别</h5><ul>
+<li><p>内联函数要做参数类型检查</p>
+</li>
+<li><p>宏不能调试</p>
+</li>
+<li><p>宏容易出错，（边际效应）</p>
+</li>
+<li><p>内联函数不能有循环</p>
+</li>
+<li><p>inline关键字必须和函数体定义放在一起才可以实现内联</p>
+</li>
+</ul>
+<h5 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h5><ul>
+<li>指针与引用</li>
+</ul>
+<p>  * 非空区别：引用必须指向某些对象</p>
+<p>  * 合法性区别：在使用引用之前不需要测试其合法性，相反，指针则应该总是被测试</p>
+<p>  * 可修改性区：指针可以重新赋值以指向另一个不同的对象，但是引用则总是指向在初始化时被指定的对象，以后不能改变</p>
+<ul>
+<li>指针的声明</li>
+</ul>
+<p>  * float(**def)[10]  def是一个二级指针，它指向的是一个一维数组的指针，数组元素是float</p>
+<p>  * double* (* gh)[10]  gh是一个指针，它指向一个一维数组，数组元素都是double*</p>
+<p>  * double(* f[10])()  f是一个数组，f有10个元素，元素都是函数指针，指向的函数都是没有参数且返回double</p>
+<p>  * int* ((* b)[10])  与（2）相同</p>
+<p>  * Int (*( *F)(int ,int))(int)  F是一个函数的指针，指向的类型是一个有两个int参数，并且返回一个函数指针的函数，返回的函数指针指向一个有一个int参数且返回int的函数</p>
+<ul>
+<li>指针和句柄</li>
+</ul>
+<p>  句柄和指针其实是两个截然不同的概念，Windows系统用句柄标记系统资源，隐藏系统的信息，你只要知道有这个东西，然后去调用就行，指针则是标记某个物理内存地址。</p>
+<ul>
+<li>this在成员函数的开始执行前构造的，在成员的执行结束后清除。</li>
+</ul>
+<h5 id="malloc-free-new-delete"><a href="#malloc-free-new-delete" class="headerlink" title="malloc/free new/delete"></a>malloc/free new/delete</h5><ul>
+<li><p>malloc与free是C++/C语言的标准库函数，new/delete是C++的运算符。对于非内部数据类型的对象而言，光用malloc/free无法满足动态对象的要求。对象在创建的同时要自动执行构造函数，对象消亡之前要自动执行析构函数。由于malloc/free是库函数而不是运算符，不在编译器控制权限之内，不能把执行构造函数和析构函数的任务强加于malloc/free。</p>
+</li>
+<li><p><strong>运算符</strong>是语言自身的特性，它有固定的语义，而且编译器也知道意味着什么。就像 +-*/ 一样，由编译器解释语义，生成相应的代码。 <strong>库函数</strong>是依赖于库的，没有库就没有它，也就是一定程度上独立于语言的。理论上，编译器不知道也不关心函数的作用，编译器只保证编译函数，以及调用该函数时参数和返回值符合语法，并生成相应 call 函数的代码。但实际中一些高级点的编译器，都会对标准库自带的一些函数进行特别处理。</p>
+</li>
+</ul>
+<h5 id="Struct和class"><a href="#Struct和class" class="headerlink" title="Struct和class"></a>Struct和class</h5><ul>
+<li><h5 id="默认成员权限区别"><a href="#默认成员权限区别" class="headerlink" title="默认成员权限区别"></a>默认成员权限区别</h5></li>
+</ul>
+<p>  struct的成员默认权限是public，而class的成员默认权限是private。</p>
+<ul>
+<li><h5 id="默认继承方式"><a href="#默认继承方式" class="headerlink" title="默认继承方式"></a>默认继承方式</h5></li>
+</ul>
+<p>  ， struct的默认继承方式为public，而class的默认继承为private</p>
+<ul>
+<li><h5 id="用于定义模板参数"><a href="#用于定义模板参数" class="headerlink" title="用于定义模板参数"></a>用于定义模板参数</h5></li>
+</ul>
+<p>  模板为C++语言新增特性，C语言没有，只有class可用于定义参数，而struct不可以</p>
+<h5 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h5><ul>
+<li><p>容器（Container），是一种数据结构，如list，vector，和deques ，以模板类的方法提供。为了访问容器中的数据，可以使用由容器类输出的迭代器；</p>
+</li>
+<li><p>迭代器（Iterator），提供了访问容器中对象的方法。例如，可以使用一对迭代器指定list或vector中的一定范围的对象。迭代器就如同一个指针。事实上，C++的指针也是一种迭代器。但是，迭代器也可以是那些定义了operator*()以及其他类似于指针的操作符地方法的类对象；</p>
+</li>
+<li><p>算法（Algorithm），是用来操作容器中的数据的模板函数。例如，STL用sort()来对一个vector中的数据进行排序，用find()来搜索一个list中的对象，函数本身与他们操作的数据的结构和类型无关，因此他们可以在从简单数组到高度复杂容器的任何数据结构上使用；</p>
+</li>
+<li><p>仿函数（Function object，仿函数(functor)又称之为函数对象（function object），其实就是重载了()操作符的struct，没有什么特别的地方</p>
+</li>
+<li><p>迭代适配器（Adaptor）</p>
+</li>
+<li><p>空间配制器（allocator）其中主要工作包括两部分1.对象的创建与销毁    2.内存的获取与释放</p>
+</li>
+</ul>
+<h5 id="类"><a href="#类" class="headerlink" title="类"></a>类</h5><ul>
+<li><p>对于一个空类，编译器会默认产生4个成员函数，默认构造，析构，复制构造，赋值函数</p>
+</li>
+<li><p>静态成员变量一定要初始化，常量必须在构造函数里初始化。</p>
+</li>
+<li><p>虚析构函数</p>
+</li>
+</ul>
+<p>  如果将基类的析构函数声明为虚函数时，由该基类所派生的所有派生类的析构函数也都自动成为虚函数</p>
+<p>  析构函数可以是纯虚函数，但是此时析构函数必须要有实现</p>
+<ul>
+<li><p>虚函数表在构造函数调用后才建立，因而构造函数不可能成为虚函数，虚函数主要用于在信息不全的情况下，能使重载的函数得到对应的调用。构造函数本身就是要初始化实例，那使用虚函数也没有实际意义呀。所以构造函数没有必要是虚函数。</p>
+</li>
+<li><p>友元函数是可以直接访问类的私有成员的非成员函数。它是定义在类外的普通函数，它不属于任何类，但需要在类的定义中加以声明，声明时只需在友元的名称前加上关键字friend。调用方式与普通函数一样。</p>
+</li>
+<li><p>has a关系可以由组合实现</p>
+</li>
+<li><p>拥有纯虚函数的类是抽象类，不能实例化</p>
+</li>
+</ul>
+<h5 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h5><ul>
+<li>多态可以简单的理解为”一个接口，多种方法”，在程序运行的时候才决定调用的函数。</li>
+</ul>
+<p>  a、编译时多态性：通过重载函数实现   b、运行时多态性：通过虚函数实现。 </p>
+<h5 id="虚函数"><a href="#虚函数" class="headerlink" title="虚函数"></a>虚函数</h5><p>C++ 中的虚函数的作用主要是实现了多态机制，即父类类别的指针（或者引用）指向其子类的实例，然后通过父类的指针（或者引用）调用实际子类的成员函数。多态机制可以简单地概括为”一个接口，多种方法”。</p>
+<p>虚函数 是通过一张虚函数表（ Virtual Table ）来实现的，简称为 V-Table 。在这个表中，主要是一个类的虚函数的地址表，这张表解决了继承、覆盖的问题，保证其真实反应实际的函数。这样，在有虚函数的类的实例中这个表被分配在了这个实例的内存中，所以，当我们用父类的指针来操作一个子类的时候，这张虚函数表就显得极为重要了，它就像一个地图一样，指明了实际所应该调用的函数。</p>
+<h5 id="assert"><a href="#assert" class="headerlink" title="assert"></a>assert</h5><p>通过<code>#define NDEBUG #include &lt;assert.h&gt;</code>可以开启关闭assert</p>
+<h5 id="进程线程"><a href="#进程线程" class="headerlink" title="进程线程"></a>进程线程</h5><ul>
+<li>进程的三种基本状态</li>
+</ul>
+<p>  * 就绪状态：进程以分配道处CPU之外的其他资源</p>
+<p>  * 执行状态：获得CPU，正在执行</p>
+<p>  * 阻塞状态：正在执行的进程，由于等待某个事件发生而无法执行时，放弃CPU而处于阻塞状态</p>
+<p>    （I/O, 申请缓冲区不能满足，等待信号）</p>
+<h5 id="strcpy"><a href="#strcpy" class="headerlink" title="strcpy"></a>strcpy</h5><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
+char * strcpy( char *strDest, const char *strSrc ) 
+
+&#123;
+
+ assert( (strDest !&#x3D; NULL) &amp;&amp; (strSrc !&#x3D; NULL) );
+
+ char *address &#x3D; strDest; 
+
+ while( (*strDest++ &#x3D; * strSrc++) !&#x3D; &#39;\0&#39; ); 
+
+ return address;
+
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="static"><a href="#static" class="headerlink" title="static"></a>static</h5><p>static关键字至少有下列n个作用：   </p>
+<p>（1）函数体内static变量的作用范围为该函数体，不同于auto变量，该变量的内存只被分配一次，因此其值在下次调用时仍维持上次的值；  </p>
+<p>（2）在模块内的static全局变量可以被模块内所用函数访问，但不能被模块外其它函数访问；   </p>
+<p>（3）在模块内的static函数只可被这一模块内的其它函数调用，这个函数的使用范围被限制在声明它的模块内；   </p>
+<p>（4）在类中的static成员变量属于整个类所拥有，对类的所有对象只有一份拷贝；   </p>
+<p>（5）在类中的static成员函数属于整个类所拥有，这个函数不接收this指针，因而只能访问类的static成员变量。  </p>
+<h5 id="const"><a href="#const" class="headerlink" title="const"></a>const</h5><p>const关键字至少有下列n个作用：   </p>
+<p>（1）欲阻止一个变量被改变，可以使用const关键字。在定义该const变量时，通常需要对它进行初始化，因为以后就没有机会再去改变它了；   </p>
+<p>（2）对指针来说，可以指定指针本身为const，也可以指定指针所指的数据为const，或二者同时指定为const；   </p>
+<p>（3）在一个函数声明中，const可以修饰形参，表明它是一个输入参数，在函数内部不能改变其值；   </p>
+<p>（4）对于类的成员函数，若指定其为const类型，则表明其是一个常函数，不能修改类的 成员变量；   </p>
+<p>（5）对于类的成员函数，有时候必须指定其返回值为const类型，以使得其返回值不为”左值”</p>
+<h5 id="不可以同时用const和static修饰成员函数。"><a href="#不可以同时用const和static修饰成员函数。" class="headerlink" title="不可以同时用const和static修饰成员函数。"></a>不可以同时用const和static修饰成员函数。</h5><p>C++编译器在实现const的成员函数的时候为了确保该函数不能修改类的实例的状态，会在函数中添加一个隐式的参数const this*。但当一个成员为static的时候，该函数是没有this指针的。也就是说此时const的用法和static是冲突</p>
+<h5 id="explicit"><a href="#explicit" class="headerlink" title="explicit"></a>explicit</h5><ul>
+<li>可以阻止不应该允许的经过转换构造函数进行的隐式转换的发生,声明为explicit的构造函数不能在隐式转换中使用</li>
+</ul>
+<h5 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h5><p>线性表分为顺序表和链表</p>
+<ul>
+<li>链表</li>
+</ul>
+<p>  链表的curr指针一般指向当前元素的前一个元素，这样可以方便插入新元素</p>
+<p>  增加表头节点可以解决当链表为空时的特殊情况，表头节点不被当做实际元素</p>
+<h5 id="二叉树遍历"><a href="#二叉树遍历" class="headerlink" title="二叉树遍历"></a>二叉树遍历</h5><ul>
+<li>递归版本</li>
+</ul>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">template &lt;typename E&gt;
+    void preorder(BinNode&lt;E&gt;* root) &#123;
+          if (root &#x3D;&#x3D; NULL)
+        visit(root);
+        preorder(roor-&gt;left());
+        preorder(roor-&gt;right());
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>非递归版本</li>
+</ul>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void preorderTraversalNew(TreeNode *root, vector&lt;int&gt; &amp;path) &#123;
+    stack&lt;pair&lt;TreeNode *, bool&gt;&gt; s;
+    s.push(root, false);
+    bool visited;
+    while (!s.empty()) &#123;
+        root    &#x3D; s.top().first;
+        visited &#x3D; s.top().second;
+        s.pop()
+ if (root &#x3D;&#x3D; NULL) continue;
+        if (visited) &#123;
+            path.push_back(root-&gt;val);
+        &#125; else &#123;
+            s.push(make_pair(root-&gt;right(), false));
+            s.push(make_pair(root-&gt;left(), false));
+            s.push(make_pair(root, true));
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h5><ul>
+<li>插入排序</li>
+</ul>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">void insSort(E A[], int n) &#123;
+    for (int i &#x3D; 1; i &lt; n; ++i) &#123;
+        for (int j &#x3D; i; j &gt; 0 &amp;&amp; (A[j] &lt; A[j - 1]); --j) swap(A, j, j - 1);
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>冒泡排序<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void bubSort(E A[], int n) &#123;
+    for (int i &#x3D; 0; i &lt; n - 1; ++i) &#123;
+        for (int j &#x3D; n - 1; j &gt; i &amp;&amp; A[j] &lt; A[j - 1]; --j) &#123;
+            swap(A, j, j - 1);
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>选择排序<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void selectSort(E A[], int n) &#123;
+    int lowIndex;
+    for (int i &#x3D; 0; i &lt; n; ++i) &#123;
+        lowIndex &#x3D; i;
+        for (int j &#x3D; n - 1; j &gt; i; --j) &#123;
+            if (Comp::prior(A[j], A[lowIndex])) lowIndex &#x3D; j;
+            swap(A, i, lowIndex);
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>Shell排序<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void insSort2(E A[], int n, in incr) &#123;
+    for (int i &#x3D; incr; i &lt; n; i +&#x3D; incr) &#123;
+        for (int j &#x3D; i; (j &gt;&#x3D; incr) &amp;&amp; (A[j] &gt; A[j - incr]); j -&#x3D; incr) &#123;
+            swap(A, j, j - incr);
+        &#125;
+    &#125;
+&#125;
+
+void shellSort(E A[], int n) &#123;
+    for (int i &#x3D; n &#x2F; 2; i &gt; 2; i &#x2F;&#x3D; 2) &#123;
+        for (int j &#x3D; 0; j &lt; i; j++) insSort2(&amp;A[j], n - j, i);
+    &#125;
+
+    insSort2(A, n, 1);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>归并排序</li>
+</ul>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void mergeSort(E A[], E temp[], int left, int right) &#123;
+    if (left &#x3D;&#x3D; right) return;
+    int mid &#x3D; (left + right) &#x2F; 2;
+    mergeSort&lt;E, Comp&gt;(A, temp, left, mid);
+    mergeSort&lt;E, Comp&gt;(A, temp, mid + 1, right);
+    for (int i &#x3D; left; i &lt;&#x3D; right; ++i) &#123; temp[i] &#x3D; A[i]; &#125;
+    int i1 &#x3D; left;
+    int i2 &#x3D; mid + 1;
+    for (int curr &#x3D; left; curr &lt;&#x3D; right; curr++) &#123;
+        if (i1 &#x3D;&#x3D; mid + 1)
+            A[curr] &#x3D; temp[i2++];
+        else if (i2 &gt; right)
+            A[curr] &#x3D; temp[i1++];
+        else if (Comp::prior(temp[i1], temp[i2]))
+            A[curr] &#x3D; temp[i1++];
+        else
+            A[curr] &#x3D; temp[i2++];
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><p>快速排序</p>
+</li>
+<li><p>归并排序</p>
+</li>
+</ul>
+<h5 id="图遍历"><a href="#图遍历" class="headerlink" title="图遍历"></a>图遍历</h5><ul>
+<li>DFS（栈）</li>
+</ul>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void DFS(Graph* G, int v) &#123;
+    PreVisit(G, v);
+    G-&gt;setMark(v, VISITED);
+    for (int w &#x3D; G-&gt;first(v); w &lt; G-&gt;n; w &#x3D; G-&gt;next(v, w)) &#123;
+        if (G-&gt;getMark(w) &#x3D;&#x3D; UNVISITED) &#123; DFS(G, w); &#125;
+    &#125;
+    PostVisit(G, v);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>BFS</li>
+</ul>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void BFS(Graph* G, int start, Queue&lt;int&gt;* Q) &#123;
+    int v, w;
+    Q-&gt;enqueue(start);
+    G-&gt;setMark(start, VISITED);
+    while (Q-&gt;length() !&#x3D; 0) &#123;
+        v &#x3D; Q-&gt;dequeue();
+        PreVisit(G, v);
+        for (w &#x3D; G-&gt;first(v); w &lt; G - n(); w &#x3D; G-&gt;next(v, w))
+            if (G-&gt;getMark(w) &#x3D;&#x3D; VISITED) &#123;
+                G-&gt;setMark(w, VISIED);
+                Q-&gt;enqueue(w);
+            &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h5><ul>
+<li><strong>在浏览器中输入<a target="_blank" rel="noopener" href="http://www.baidu.com后执行的全部过程/">www.baidu.com后执行的全部过程</a></strong></li>
+</ul>
+<p>  现在假设如果我们在客户端（客户端）浏览器中输入<a href="http://www.baidu.com,而baidu.com为要访问的服务器（服务器），下面详细分析客户端为了访问服务器而执行的一系列关于协议的操作：">http://www.baidu.com,而baidu.com为要访问的服务器（服务器），下面详细分析客户端为了访问服务器而执行的一系列关于协议的操作：</a></p>
+<p>    1、客户端浏览器通过DNS解析到<a target="_blank" rel="noopener" href="http://www.baidu.com的ip地址220.181.27.48,通过这个ip地址找到客户端到服务器的路径.客户端浏览器发起一个http会话到220.161.27.48,然后通过tcp进行封装数据包,输入到网络层./">www.baidu.com的IP地址220.181.27.48，通过这个IP地址找到客户端到服务器的路径。客户端浏览器发起一个HTTP会话到220.161.27.48，然后通过TCP进行封装数据包，输入到网络层。</a></p>
+<p>    2、在客户端的传输层，把HTTP会话请求分成报文段，添加源和目的端口，如服务器使用80端口监听客户端的请求，客户端由系统随机选择一个端口如5000，与服务器进行交换，服务器把相应的请求返回给客户端的5000端口。然后使用IP层的IP地址查找目的端。</p>
+<p>    3、客户端的网络层不用关系应用层或者传输层的东西，主要做的是通过查找路由表确定如何到达服务器，期间可能经过多个路由器，这些都是由路由器来完成的工作，我不作过多的描述，无非就是通过查找路由表决定通过那个路径到达服务器。</p>
+<p>    4、客户端的链路层，包通过链路层发送到路由器，通过邻居协议查找给定IP地址的MAC地址，然后发送ARP请求查找目的地址，如果得到回应后就可以使用ARP的请求应答交换的IP数据包现在就可以传输了，然后发送IP数据包到达服务器的地址。</p>
+<ul>
+<li><strong>TCP三次握手和四次挥手的全过程</strong></li>
+</ul>
+<p>    <strong>三次握手：</strong></p>
+<p>    第一次握手：客户端发送syn包(syn=x)到服务器，并进入SYN_SEND状态，等待服务器确认； </p>
+<p>    第二次握手：服务器收到syn包，必须确认客户的SYN（ack=x+1），同时自己也发送一个SYN包（syn=y），即SYN+ACK包，此时服务器进入SYN_RECV状态； </p>
+<p>    第三次握手：客户端收到服务器的SYN＋ACK包，向服务器发送确认包ACK(ack=y+1)，此包发送完毕，客户端和服务器进入ESTABLISHED状态，完成三次握手。 </p>
+<p>    握手过程中传送的包里不包含数据，三次握手完毕后，客户端与服务器才正式开始传送数据。理想状态下，TCP连接一旦建立，在通信双方中的任何一方主动关闭连接之前，TCP 连接都将被一直保持下去。 </p>
+<p>    <strong>四次挥手</strong></p>
+<p>    与建立连接的”三次握手”类似，断开一个TCP连接则需要”四次握手”。 </p>
+<p>    第一次挥手：主动关闭方发送一个FIN，用来关闭主动方到被动关闭方的数据传送，也就是主动关闭方告诉被动关闭方：我已经不</p>
+<p>    会再给你发数据了(当然，在fin包之前发送出去的数据，如果没有收到对应的ack确认报文，主动关闭方依然会重发这些数据)，但是，此时主动关闭方还可</p>
+<p>    以接受数据。 </p>
+<p>    第二次挥手：被动关闭方收到FIN包后，发送一个ACK给对方，确认序号为收到序号+1（与SYN相同，一个FIN占用一个序号）。</p>
+<p>    第三次挥手：被动关闭方发送一个FIN，用来关闭被动关闭方到主动关闭方的数据传送，也就是告诉主动关闭方，我的数据也发送完了，不会再给你发数据了。</p>
+<p>    第四次挥手：主动关闭方收到FIN后，发送一个ACK给被动关闭方，确认序号为收到序号+1，至此，完成四次挥手。</p>
+<h5 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h5><ul>
+<li>进程线程区别</li>
+</ul>
+<p>    进程是具有一定独立功能的程序关于某个数据集合上的一次运行活动,进程是系统进行资源分配和调度的一个独立单位. </p>
+<p>    线程是进程的一个实体,是CPU调度和分派的基本单位,它是比进程更小的能独立运行的基本单位.线程自己基本上不拥有系统资源,只拥有一点在运行中必不可少的资源(如程序计数器,一组寄存器和栈),但是它可与同属一个进程的其他的线程共享进程所拥有的全部资源. </p>
+<p>    一个线程可以创建和撤销另一个线程;同一个进程中的多个线程之间可以并发执行 </p>
+<p>        进程是死的，只是一些资源的集合，真正的程序执行都是线程来完成的，程序启动的时候操作系统就帮你创建了一个主线程。每个线程有自己的堆栈。 </p>
+<ul>
+<li>进程通信的方式</li>
+</ul>
+<p>  **管道( pipe )**：管道是一种半双工的通信方式，数据只能单向流动，而且只能在具有亲缘关系的进程间使用。进程的亲缘关系通常是指父子进程关系。</p>
+<p>  有名管道 (named pipe) ： 有名管道也是半双工的通信方式，但是它允许无亲缘关系进程间的通信。</p>
+<p>  <strong>信号量( semophore )</strong> ： 信号量是一个计数器，可以用来控制多个进程对共享资源的访问。它常作为一种锁机制，防止某进程正在访问共享资源时，其他进程也访问该资源。因此，主要作为进程间以及同一进程内不同线程之间的同步手段。</p>
+<p>  <strong>消息队列( message queue )</strong> ： 消息队列是由消息的链表，存放在内核中并由消息队列标识符标识。消息队列克服了信号传递信息少、管道只能承载无格式字节流以及缓冲区大小受限等缺点。</p>
+<p>  <strong>信号 ( signal ) ：</strong> 信号是一种比较复杂的通信方式，用于通知接收进程某个事件已经发生。</p>
+<p>  <strong>共享内存( shared memory )</strong> ：共享内存就是映射一段能被其他进程所访问的内存，这段共享内存由一个进程创建，但多个进程都可以访问。共享内存是最快的 IPC 方式，它是针对其他进程间通信方式运行效率低而专门设计的。它往往与其他通信机制，如信号量，配合使用，来实现进程间的同步和通信。</p>
+<p>  <strong>套接字( socket ) ：</strong> 套解字也是一种进程间通信机制，与其他通信机制不同的是，它可用于不同及其间的进程通信</p>
+<ul>
+<li>线程同步几种方式</li>
+</ul>
+<p>  临界区（CCriticalSection）：通过对多线程的串行化来访问公共资源或一段代码，速度快，适合控制数据访问。</p>
+<p>  事件（CEvent）：为协调共同对一个共享资源的单独访问而设计的。</p>
+<p>  互斥量（CMutex）：为控制一个具有有限数量用户资源而设计。</p>
+<p>  信号量（CSemaphore）：用来通知线程有一些事件已发生，从而启动后继任务的开始。</p>
+<h5 id="海量不重复数据的查找和排序"><a href="#海量不重复数据的查找和排序" class="headerlink" title="海量不重复数据的查找和排序"></a>海量不重复数据的查找和排序</h5><p>采用bitmap <a target="_blank" rel="noopener" href="http://blog.csdn.net/lingess/article/details/8128133">http://blog.csdn.net/lingess/article/details/8128133</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.zhuomu.xyz" rel="external nofollow noreferrer">卓木</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.zhuomu.xyz/2020/02/12/offer/">https://blog.zhuomu.xyz/2020/02/12/offer/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY-NC 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://blog.zhuomu.xyz" target="_blank">卓木</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/c/">
+                                    <span class="chip bg-color">c++</span>
+                                </a>
+                            
+                                <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                    <span class="chip bg-color">面试</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/02/15/Sublime-Text-3-ClangFormat/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Sublime Text 3 ClangFormat格式化">
+                        
+                        <span class="card-title">Sublime Text 3 ClangFormat格式化</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-15
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/" class="post-category">
+                                    技术博文
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/c/">
+                        <span class="chip bg-color">c++</span>
+                    </a>
+                    
+                    <a href="/tags/sublime-text-3/">
+                        <span class="chip bg-color">Sublime Text 3</span>
+                    </a>
+                    
+                    <a href="/tags/clangformat/">
+                        <span class="chip bg-color">ClangFormat</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96/">
+                        <span class="chip bg-color">格式化</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/02/09/v2ray-WS-TLS-Cloudflare/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="v2ray WS TLS Cloudflare节点“加”速">
+                        
+                        <span class="card-title">v2ray WS TLS Cloudflare节点“加”速</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/" class="post-category">
+                                    技术博文
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/cloudflare/">
+                        <span class="chip bg-color">CloudFlare</span>
+                    </a>
+                    
+                    <a href="/tags/cdn/">
+                        <span class="chip bg-color">CDN</span>
+                    </a>
+                    
+                    <a href="/tags/ws/">
+                        <span class="chip bg-color">ws</span>
+                    </a>
+                    
+                    <a href="/tags/tls/">
+                        <span class="chip bg-color">tls</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 卓木&#39;s Blog<br />'
+            + '文章作者: 卓木<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">卓木</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Fantisia1999" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:i@zhuomu.xyz" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
