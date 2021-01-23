@@ -6,7 +6,7 @@
   <link href="https://blog.zhuomu.xyz/atom.xml" rel="self"/>
   
   <link href="https://blog.zhuomu.xyz/"/>
-  <updated>2020-11-13T20:22:15.000Z</updated>
+  <updated>2021-01-23T15:34:44.000Z</updated>
   <id>https://blog.zhuomu.xyz/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>更改Ubuntu的时间为北京时间（东八区）</title>
+    <link href="https://blog.zhuomu.xyz/2021/01/23/ubuntu-cst-utc-8/"/>
+    <id>https://blog.zhuomu.xyz/2021/01/23/ubuntu-cst-utc-8/</id>
+    <published>2021-01-23T15:29:25.000Z</published>
+    <updated>2021-01-23T15:34:44.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;一条命令即可。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre class=&quot;line-numbers language-shell&quot; data-language=&quot;shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;sudo</summary>
+        
+      
+    
+    
+    
+    
+    <category term="ubuntu" scheme="https://blog.zhuomu.xyz/tags/ubuntu/"/>
+    
+    <category term="linux" scheme="https://blog.zhuomu.xyz/tags/linux/"/>
+    
+    <category term="date" scheme="https://blog.zhuomu.xyz/tags/date/"/>
+    
+    <category term="cst" scheme="https://blog.zhuomu.xyz/tags/cst/"/>
+    
+  </entry>
   
   <entry>
     <title>数据结构代码题汇总</title>
@@ -529,27 +561,6 @@ yum install cpan&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-r
     <category term="PDF" scheme="https://blog.zhuomu.xyz/tags/pdf/"/>
     
     <category term="书签" scheme="https://blog.zhuomu.xyz/tags/%E4%B9%A6%E7%AD%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Chrome浏览器net::ERR_BLOCKED_BY_CLIENT 解决</title>
-    <link href="https://blog.zhuomu.xyz/2020/03/18/Chrome-net--ERR_BLOCKED_BY_CLIENT-solve/"/>
-    <id>https://blog.zhuomu.xyz/2020/03/18/Chrome-net--ERR_BLOCKED_BY_CLIENT-solve/</id>
-    <published>2020-03-18T01:38:00.000Z</published>
-    <updated>2020-04-02T00:25:22.000Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;0x00-问题复现&quot;&gt;&lt;a href=&quot;#0x00-问题复现&quot; class=&quot;headerlink&quot; title=&quot;0x00 问题复现&quot;&gt;&lt;/a&gt;0x00 问题复现&lt;/h2&gt;&lt;p&gt;在测试了一下网站迁移，在另一台服务器上搭建和网站一样的，迁移完成后，发现我的图片都显示不出来了</summary>
-    
-    
-    
-    <category term="笔记" scheme="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="Chrome" scheme="https://blog.zhuomu.xyz/tags/chrome/"/>
-    
-    <category term="AdBlock" scheme="https://blog.zhuomu.xyz/tags/adblock/"/>
     
   </entry>
   
