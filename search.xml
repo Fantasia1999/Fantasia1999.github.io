@@ -8,7 +8,7 @@
       <link href="2021/01/23/ubuntu-cst-utc-8/"/>
       <url>2021/01/23/ubuntu-cst-utc-8/</url>
       
-        <content type="html"><![CDATA[<blockquote><p>一条命令即可。</p></blockquote><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo cp &#x2F;usr&#x2F;share&#x2F;zoneinfo&#x2F;Asia&#x2F;Shanghai  &#x2F;etc&#x2F;localtime<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><code>reboot</code>之后，用<code>date</code>命令查看当前时间。</p><pre class="line-numbers language-none"><code class="language-none">root@ubuntu20:~$ dateSat Jan 23 11:33:58 PM CST 2021<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>]]></content>
+        <content type="html"><![CDATA[<blockquote><p>一条命令即可。</p></blockquote><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo cp &#x2F;usr&#x2F;share&#x2F;zoneinfo&#x2F;Asia&#x2F;Shanghai  &#x2F;etc&#x2F;localtime<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><code>reboot</code>之后，用<code>date</code>命令查看当前时间。</p><pre class="line-numbers language-none"><code class="language-none">root@ubuntu20:~$ dateSat Jan 23 11:33:58 PM CST 2021<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接:"></a>参考链接:</h2><blockquote><p><a href="https://developer.aliyun.com/article/359597">https://developer.aliyun.com/article/359597</a></p></blockquote>]]></content>
       
       
       
