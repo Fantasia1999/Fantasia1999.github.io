@@ -6,7 +6,7 @@
   <link href="https://blog.zhuomu.xyz/atom.xml" rel="self"/>
   
   <link href="https://blog.zhuomu.xyz/"/>
-  <updated>2021-01-23T15:34:44.000Z</updated>
+  <updated>2021-03-05T09:50:19.000Z</updated>
   <id>https://blog.zhuomu.xyz/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记一次博客图床迁移</title>
+    <link href="https://blog.zhuomu.xyz/2021/03/05/move-OLAINDEX-to-PicGo/"/>
+    <id>https://blog.zhuomu.xyz/2021/03/05/move-OLAINDEX-to-PicGo/</id>
+    <published>2021-03-05T09:50:19.000Z</published>
+    <updated>2021-03-05T09:50:19.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="笔记" scheme="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="jsDelivr" scheme="https://blog.zhuomu.xyz/tags/jsdelivr/"/>
+    
+    <category term="图床" scheme="https://blog.zhuomu.xyz/tags/%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="Nginx" scheme="https://blog.zhuomu.xyz/tags/nginx/"/>
+    
+    <category term="CDN" scheme="https://blog.zhuomu.xyz/tags/cdn/"/>
+    
+    <category term="PicGo" scheme="https://blog.zhuomu.xyz/tags/picgo/"/>
+    
+  </entry>
   
   <entry>
     <title>更改Ubuntu的时间为北京时间（东八区）</title>
@@ -534,33 +567,6 @@ yum install cpan&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-r
     <category term="TexLive" scheme="https://blog.zhuomu.xyz/tags/texlive/"/>
     
     <category term="CentOS" scheme="https://blog.zhuomu.xyz/tags/centos/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PDF自动化添加书签目录</title>
-    <link href="https://blog.zhuomu.xyz/2020/03/23/PDF-auto-add-/"/>
-    <id>https://blog.zhuomu.xyz/2020/03/23/PDF-auto-add-/</id>
-    <published>2020-03-23T05:33:00.000Z</published>
-    <updated>2020-03-31T18:54:35.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;0x00-背景&quot;&gt;&lt;a href=&quot;#0x00-背景&quot; class=&quot;headerlink&quot; title=&quot;0x00 背景&quot;&gt;&lt;/a&gt;0x00</summary>
-        
-      
-    
-    
-    
-    <category term="笔记" scheme="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="PDF" scheme="https://blog.zhuomu.xyz/tags/pdf/"/>
-    
-    <category term="书签" scheme="https://blog.zhuomu.xyz/tags/%E4%B9%A6%E7%AD%BE/"/>
     
   </entry>
   
