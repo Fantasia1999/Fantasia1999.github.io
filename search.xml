@@ -1075,19 +1075,6 @@
     
     
     <entry>
-      <title>C语言运算符优先级</title>
-      <link href="2019/10/06/C-Operator-Precedence/"/>
-      <url>2019/10/06/C-Operator-Precedence/</url>
-      
-        <content type="html"><![CDATA[<h1 id="C语言运算符优先级"><a href="#C语言运算符优先级" class="headerlink" title="C语言运算符优先级"></a>C语言运算符优先级</h1><p>参考<a href="https://zh.cppreference.com/w/c/language/operator_precedence">链接</a><br>conver方式：网页复制到word，word复制到excel，excel复制到<a href="http://pressbin.com/tools/excel_to_html_table/index.html">这里</a><br>方法来自<a href="https://www.zhihu.com/question/50267650">知乎</a></p><table>   <tr>      <td>优先级</td>      <td>运算符</td>      <td>描述</td>      <td>结合性</td>   </tr>   <tr>      <td>1</td>      <td>++, --</td>      <td>后缀自增与自减</td>      <td>从左到右</td>   </tr>   <tr>      <td></td>      <td>()</td>      <td>函数调用</td>      <td></td>   </tr>   <tr>      <td></td>      <td>[]</td>      <td>数组下标</td>      <td></td>   </tr>   <tr>      <td></td>      <td>.</td>      <td>结构体与联合体成员访问</td>      <td></td>   </tr>   <tr>      <td></td>      <td>-></td>      <td>结构体与联合体成员通过指针访问</td>      <td></td>   </tr>   <tr>      <td></td>      <td>(type){list}</td>      <td>复合字面量(C99)</td>      <td></td>   </tr>   <tr>      <td>2</td>      <td>++, --</td>      <td>前缀自增与自减[注 1]</td>      <td>从右到左</td>   </tr>   <tr>      <td></td>      <td>+, -</td>      <td>一元加与减</td>      <td></td>   </tr>   <tr>      <td></td>      <td>!, ~</td>      <td>逻辑非与逐位非</td>      <td></td>   </tr>   <tr>      <td></td>      <td>(type)</td>      <td>类型转型</td>      <td></td>   </tr>   <tr>      <td></td>      <td>*</td>      <td>间接（解引用）</td>      <td></td>   </tr>   <tr>      <td></td>      <td>&</td>      <td>取址</td>      <td></td>   </tr>   <tr>      <td></td>      <td>sizeof</td>      <td>取大小[注 2]</td>      <td></td>   </tr>   <tr>      <td></td>      <td>_Alignof</td>      <td>对齐要求(C11)</td>      <td></td>   </tr>   <tr>      <td>3</td>      <td>*, /, %</td>      <td>乘法、除法及余数</td>      <td>从左到右</td>   </tr>   <tr>      <td>4</td>      <td>+, -</td>      <td>加法及减法</td>      <td></td>   </tr>   <tr>      <td>5</td>      <td><<, >></td>      <td>逐位左移及右移</td>      <td></td>   </tr>   <tr>      <td>6</td>      <td>< <=</td>      <td>分别为 < 与 ≤ 的关系运算符</td>      <td></td>   </tr>   <tr>      <td></td>      <td>>, >=</td>      <td>分别为 > 与 ≥ 的关系运算符</td>      <td></td>   </tr>   <tr>      <td>7</td>      <td>==, !=</td>      <td>分别为 = 与 ≠ 关系</td>      <td></td>   </tr>   <tr>      <td>8</td>      <td>&</td>      <td>逐位与</td>      <td></td>   </tr>   <tr>      <td>9</td>      <td>^</td>      <td>逐位异或（排除或）</td>      <td></td>   </tr>   <tr>      <td>10</td>      <td>|</td>      <td>逐位或（包含或）</td>      <td></td>   </tr>   <tr>      <td>11</td>      <td>&&</td>      <td>逻辑与</td>      <td></td>   </tr>   <tr>      <td>12</td>      <td>||</td>      <td>逻辑或</td>      <td></td>   </tr>   <tr>      <td>13</td>      <td>?:</td>      <td>三元条件[注 3]</td>      <td>从右到左</td>   </tr>   <tr>      <td>14</td>      <td>=</td>      <td>简单赋值</td>      <td></td>   </tr>   <tr>      <td></td>      <td>+=, -=</td>      <td>以和及差赋值</td>      <td></td>   </tr>   <tr>      <td></td>      <td>*=, /=, %=</td>      <td>以积、商及余数赋值</td>      <td></td>   </tr>   <tr>      <td></td>      <td><<= >>=</td>      <td>以逐位左移及右移赋值</td>      <td></td>   </tr>   <tr>      <td></td>      <td>&=, ^=, |=</td>      <td>以逐位与、异或及或赋值</td>      <td></td>   </tr>   <tr>      <td>15</td>      <td>,</td>      <td>逗号</td>      <td>从左到右</td>   </tr></table>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>【完全版】线段树</title>
       <link href="2019/09/18/full-segment-tree/"/>
       <url>2019/09/18/full-segment-tree/</url>
