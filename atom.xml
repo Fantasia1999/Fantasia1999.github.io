@@ -6,7 +6,7 @@
   <link href="https://blog.zhuomu.xyz/atom.xml" rel="self"/>
   
   <link href="https://blog.zhuomu.xyz/"/>
-  <updated>2021-03-05T09:50:19.000Z</updated>
+  <updated>2021-04-28T08:56:24.000Z</updated>
   <id>https://blog.zhuomu.xyz/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>配置PicGo上传图片到Github图床</title>
+    <link href="https://blog.zhuomu.xyz/2021/04/28/upload-image-by-picgo/"/>
+    <id>https://blog.zhuomu.xyz/2021/04/28/upload-image-by-picgo/</id>
+    <published>2021-04-28T08:56:24.000Z</published>
+    <updated>2021-04-28T08:56:24.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;配置PicGo上传图片到Github图床&quot;&gt;&lt;a href=&quot;#配置PicGo上传图片到Github图床&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Github" scheme="https://blog.zhuomu.xyz/tags/github/"/>
+    
+    <category term="图床" scheme="https://blog.zhuomu.xyz/tags/%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="PicGO" scheme="https://blog.zhuomu.xyz/tags/picgo/"/>
+    
+  </entry>
   
   <entry>
     <title>记一次博客图床迁移</title>
@@ -541,32 +568,6 @@
     <category term="TexLive" scheme="https://blog.zhuomu.xyz/tags/texlive/"/>
     
     <category term="VS Code" scheme="https://blog.zhuomu.xyz/tags/vs-code/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CenOS安装Texlive2019</title>
-    <link href="https://blog.zhuomu.xyz/2020/03/25/CenOS-install-Texlive2019/"/>
-    <id>https://blog.zhuomu.xyz/2020/03/25/CenOS-install-Texlive2019/</id>
-    <published>2020-03-24T20:51:00.000Z</published>
-    <updated>2020-04-02T00:21:41.000Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;安装Perl模块&quot;&gt;&lt;a href=&quot;#安装Perl模块&quot; class=&quot;headerlink&quot; title=&quot;安装Perl模块&quot;&gt;&lt;/a&gt;安装&lt;code&gt;Perl&lt;/code&gt;模块&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;yum install perl*
-yum install cpan&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;</summary>
-    
-    
-    
-    <category term="笔记" scheme="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="Linux" scheme="https://blog.zhuomu.xyz/tags/linux/"/>
-    
-    <category term="LaTex" scheme="https://blog.zhuomu.xyz/tags/latex/"/>
-    
-    <category term="TexLive" scheme="https://blog.zhuomu.xyz/tags/texlive/"/>
-    
-    <category term="CentOS" scheme="https://blog.zhuomu.xyz/tags/centos/"/>
     
   </entry>
   
