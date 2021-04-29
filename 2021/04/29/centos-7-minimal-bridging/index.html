@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="记一次博客图床迁移, 卓木&#39;s Blog">
+    <meta name="keywords" content="CenOS 7 桥接网络配置, 卓木&#39;s Blog">
     <meta name="description" content="学习 分享 开源">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>记一次博客图床迁移 | 卓木&#39;s Blog</title>
+    <title>CenOS 7 桥接网络配置 | 卓木&#39;s Blog</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/awesome/css/all.css">
@@ -311,12 +311,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">记一次博客图床迁移</h1>
+                    <h1 class="description center-align post-title">CenOS 7 桥接网络配置</h1>
                 </div>
             </div>
         </div>
@@ -432,24 +432,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/jsdelivr/">
-                                <span class="chip bg-color">jsDelivr</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%9B%BE%E5%BA%8A/">
-                                <span class="chip bg-color">图床</span>
-                            </a>
-                        
-                            <a href="/tags/nginx/">
-                                <span class="chip bg-color">Nginx</span>
-                            </a>
-                        
-                            <a href="/tags/cdn/">
-                                <span class="chip bg-color">CDN</span>
-                            </a>
-                        
-                            <a href="/tags/picgo/">
-                                <span class="chip bg-color">PicGo</span>
+                            <a href="/tags/centos/">
+                                <span class="chip bg-color">centos</span>
                             </a>
                         
                     </div>
@@ -460,8 +444,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
-                                笔记
+                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/" class="post-category">
+                                技术博文
                             </a>
                         
                     </div>
@@ -473,28 +457,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-05
+                    2021-04-29
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-05
+                    2021-04-29
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    436
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    1 分
                 </div>
                 
 
@@ -512,81 +496,52 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>之前博客的图片是使用的又拍云作为主图床，但是经常性看到有人CDN被刷，损失惨重，所以转念想使用GitHub托管图床+jsDelivr作为免费CDN加速访问。</p>
-<h2 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h2><p>最开始的图床是在服务器上部署了OLAINDEX索引OneDrive，使用非常方便，所有图片均在本地有备份，<del>数据在自己手里的感觉还是很安全的</del>，当时的版本号是4.0，上传图片后，链接格式为<code>https://img.example.com/view/xxxx/head.jpg</code>，这种格式也非常整齐，所有博客图片也采用这种格式书写，同时使用OLAINDEX的话，图床的速度很不理想，所以将OLAINDEX作为备份图床，采用又拍云作为图床首选方案，所以在又拍云上传时，为了避免大批量的修改博客中的图床链接，沿用了这种格式。</p>
-<p>当时采取的方案是先上传到OLAINDEX，然后使用又拍云的CLI工具<code>upx.exe</code>，使用如下脚本批量上传到又拍云。</p>
-<pre class="line-numbers language-bat" data-language="bat"><code class="language-bat">.\upx.exe img-zhuomu user password
-.\upx.exe sync E:&#x2F;OneDrive&#x2F;OLAINDEX&#x2F;img &#x2F;view&#x2F;img&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>后来升级5.0后，OLAINDEX开始支持多账号登录，于是图片链接格式变为了<code>https://img.example.com/hashid/view/xxxx/head.jpg</code>，多加了一级用以区别账号，给我造成了很大的困扰，每次写插入图片链接时都需要删除一级目录。遂逐渐弃用。</p>
-<p>首先需要明白jsDelivr是如何给GitHub做CDN的。</p>
-<p>比如一个repository:<code>https://github.com/test/img</code>，只需要按照如下规则修改前缀即可。</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; load any GitHub release, commit, or branch
-&#x2F;&#x2F; note: we recommend using npm for projects that support it
-https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;user&#x2F;repo@version&#x2F;file
-
-&#x2F;&#x2F; load jQuery v3.2.1
-https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;jquery&#x2F;jquery@3.2.1&#x2F;dist&#x2F;jquery.min.js
-
-&#x2F;&#x2F; use a version range instead of a specific version
-https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;jquery&#x2F;jquery@3.2&#x2F;dist&#x2F;jquery.min.js
-https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;jquery&#x2F;jquery@3&#x2F;dist&#x2F;jquery.min.js
-
-&#x2F;&#x2F; omit the version completely to get the latest one
-&#x2F;&#x2F; you should NOT use this in production
-https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;jquery&#x2F;jquery&#x2F;dist&#x2F;jquery.min.js
-
-&#x2F;&#x2F; add &quot;.min&quot; to any JS&#x2F;CSS file to get a minified version
-&#x2F;&#x2F; if one doesn&#39;t exist, we&#39;ll generate it for you
-https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;jquery&#x2F;jquery@3.2.1&#x2F;src&#x2F;core.min.js
-
-&#x2F;&#x2F; add &#x2F; at the end to get a directory listing
-https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;jquery&#x2F;jquery&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>访问这个<code>https://cdn.jsdelivr.net/gh/test/img/</code>路径，可以直接获得目录的列表。</p>
-<p>所以我的url中，<code>/view</code>部分是多余的，我最终要实现的效果是<code>https://img.example.com/hashid/view/xxxx/head.jpg</code>-&gt;<code>https://cdn.jsdelivr.net/gh/test/img/xxxx/head.jpg</code>，通过查阅资料，发现使用显性URL跳转就可以实现这样的操作。</p>
-<h3 id="何为显性转发，何为隐性转发"><a href="#何为显性转发，何为隐性转发" class="headerlink" title="何为显性转发，何为隐性转发"></a>何为显性转发，何为隐性转发</h3><p><strong>隐性转发：</strong>用的是 iframe 框架技术、非重定向技术，效果为浏览器地址栏输入 <code>http://a.com</code> 回车，打开网站内容是目标地址 <code>http://cloud.tencent.com/</code> 的网站内容，但地址栏显示当前地址 <code>http://a.com</code> 。</p>
-<p><strong>显性转发：</strong>用的是301重定向技术，效果为浏览器地址栏输入 <code>http://a.com</code> 回车，打开网站内容是目标地址 <code>http://cloud.tencent.com/</code> 的网站内容，且地址栏显示目标地址 <code>http://cloud.tencent.com/</code>。</p>
-<p>转发可以使用DNS进行解析，但是需要域名备案，也可以使用nginx做重定向，本文使用nginx作重定向。</p>
-<h2 id="迁移"><a href="#迁移" class="headerlink" title="迁移"></a>迁移</h2><p>由于需要对nginx操作，使用宝塔面板较为简单方便。</p>
-<h3 id="宝塔准备"><a href="#宝塔准备" class="headerlink" title="宝塔准备"></a>宝塔准备</h3><p><code>网站</code>-&gt;<code>添加站点</code>-&gt;<code>输入域名img.example.com:8899</code></p>
-<p>由于我在服务器上部署了多个web页面，就不使用80端口，采用非80端口 Nginx URL重定向。</p>
-<p>下边保持默认，PHP版本选择<code>纯静态</code></p>
-<p>站点添加成功后，选择<code>配置文件</code></p>
-<p>写入下列配置文件</p>
-<pre class="line-numbers language-ini" data-language="ini"><code class="language-ini"> server &#123;
-        listen       80;
-        server_name  img.example.com;
-        location &#x2F; &#123;
-            fastcgi_pass 127.0.0.1:8899; #此处为端口转发
-            # 下边两行为两种正则匹配策略
-            rewrite &#x2F;view&#x2F;(.*)$ https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;test&#x2F;$1 break;
-            rewrite &#x2F;(.*)$ https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;test&#x2F;$1 permanent;
-        &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>这里的正则匹配我写了两个，因为历史原因，需要规避<code>/view</code>这样的目录链接，所以写了两种。</p>
-<p>rewrite有三个参数：</p>
+                <p>最近在部署一个远程开发环境，为了稳定，就不再安装GUI界面了，直接ssh远程过去开发，所以选择了Minimal安装，Linux发行版选择的是CentOS 7 2009。</p>
+<p>系统安装过程很简单，去tuna下载镜像，用VMware安装即可。</p>
+<p>centos的镜像在<code>centos/7.9.2009/isos/x86_64/</code>路径下，选择<code>CentOS-7-x86_64-Minimal-2009.iso</code></p>
+<p>为了能够让虚拟机能从校园网直接连接，在网络的配置上，选择了桥接模式，可以让主机获取一个独立的ip，而非192这种NAT后的内网ip。</p>
+<p>也正是因为选择了桥接，导致服务器出现了一些配置的小问题。</p>
+<p>如图，在进行yum安装软件的时候，出现了这样的错误<code>Could not resolve host: mirrorlist.centos.org; Unknowm error&quot; </code></p>
+<p><img src="http://img.zhuomu.xyz/view/img/2021/04/29/image-20210429-bab035b.png"></p>
+<p>当我想看一下ip的时候，发现没有安装net-tools，陷入了死循环。</p>
+<p>其实根据上边的错误提示，大概是没有网络，由于我选的是桥接，可能需要自己手动配置。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>以下是配置方法：</p>
 <ul>
-<li>&lt;regex&gt;，用于匹配URI的正则表达式</li>
-<li>&lt;replacement&gt;，将regex正则匹配到的内容替换成 replacement</li>
-<li>[flag]，flag标记</li>
-</ul>
-<p>flag标记说明：</p>
+<li><p>输入以下命令，找到网卡名称</p>
 <ul>
-<li>last  //本条规则匹配完成后，继续向下匹配新的location URI规则</li>
-<li>break  //本条规则匹配完成即终止，不再匹配后面的任何规则</li>
-<li>redirect  //返回302临时重定向，浏览器地址会显示跳转后的URL地址</li>
-<li>permanent  //返回301永久重定向，浏览器地址栏会显示跳转后的URL地址</li>
+<li><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nmcli d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>我这里是<code>ens33</code></p>
+</li>
 </ul>
-<p>其中redirect和permanent的区别好像是会影响SEO，具体可以自行查阅相关资料。</p>
-<p>另外，SSL可以不配置，这里仅仅做跳转，真正访问数据还是要请求到jsDelivr的CDN上去。</p>
-<h3 id="DNS解析"><a href="#DNS解析" class="headerlink" title="DNS解析"></a>DNS解析</h3><p>DNS解析到服务器，届时，访问自己的域名即可。</p>
-<h2 id="未来"><a href="#未来" class="headerlink" title="未来"></a>未来</h2><p>以后可以直接使用PicGo来进行上传，更加方便。关于PicGo的配置，可以参考PicGo的<a target="_blank" rel="noopener" href="https://molunerfinn.com/PicGo/">官方文档</a></p>
-<h3 id="我为什么要使用自己的域名？"><a href="#我为什么要使用自己的域名？" class="headerlink" title="我为什么要使用自己的域名？"></a>我为什么要使用自己的域名？</h3><p>当然是害怕某天jsDelivr不让白嫖啦，到时候自己直接搭一个图床就可以马上图片访问。</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/302/12649?from=information.detail.%E5%9F%9F%E5%90%8Durl%E8%B7%B3%E8%BD%AC%20%E6%98%BE%E6%80%A7">隐、显性 URL 记录</a></p>
-<p><a target="_blank" rel="noopener" href="http://blog.kwin.wang/website/nginx-rewrite-realize-domain-forward.html">利用Nginx rewrite规则实现域名显性转发</a></p>
-<p>正则部分参考链接：</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/leshami/article/details/78429250">Nginx rewrite正则匹配重写</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3b2345f7347d">第七章：nginx的rewrite规则详解</a></p>
+</li>
+<li><p>编辑该网卡的配置</p>
+<ul>
+<li><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo vi &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-ens33<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="http://img.zhuomu.xyz/view/img/2021/04/29/image-20210429-b8a4fe9.png" alt="ifcfg-ens33"></p>
+<p>这里我们将<code>BOTPROTO</code>设为<code>dhcp</code>，<code>ONBOOT</code>设为<code>yes</code></p>
+<p>按<code>Esc</code>，输入<code>:wq</code>进行保存</p>
+</li>
+</ul>
+</li>
+<li><p>重启网卡</p>
+<ul>
+<li><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl restart network.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+再次执行命令，发现可以正常安装了</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo yum install update<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如果是要配置静态IP的话，还需要在后边附上配置，追加以下即可。</p>
+<pre class="line-numbers language-none"><code class="language-none">IPADDR&#x3D;192.168.123.100
+NETMASK&#x3D;255.255.255.0
+GATEWAY&#x3D;192.168.123.1
+DNS1&#x3D;192.168.123.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>修改<code>BOOTPROTO</code>参数：<br><code>BOOTPROTO=static</code></p>
+<blockquote>
+<p>参考链接</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Goldsea_/article/details/100628457">Centos7-Minimal版本使用yum报错–Could not resolve host</a></p>
 </blockquote>
 
                 
@@ -614,7 +569,7 @@ https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;jquery&#x2F;jquery&#x2F;<span ar
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.zhuomu.xyz/2021/03/05/move-OLAINDEX-to-PicGo/">https://blog.zhuomu.xyz/2021/03/05/move-OLAINDEX-to-PicGo/</a>
+                    <a href="https://blog.zhuomu.xyz/2021/04/29/centos-7-minimal-bridging/">https://blog.zhuomu.xyz/2021/04/29/centos-7-minimal-bridging/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -652,24 +607,8 @@ https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;jquery&#x2F;jquery&#x2F;<span ar
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/jsdelivr/">
-                                    <span class="chip bg-color">jsDelivr</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%9B%BE%E5%BA%8A/">
-                                    <span class="chip bg-color">图床</span>
-                                </a>
-                            
-                                <a href="/tags/nginx/">
-                                    <span class="chip bg-color">Nginx</span>
-                                </a>
-                            
-                                <a href="/tags/cdn/">
-                                    <span class="chip bg-color">CDN</span>
-                                </a>
-                            
-                                <a href="/tags/picgo/">
-                                    <span class="chip bg-color">PicGo</span>
+                                <a href="/tags/centos/">
+                                    <span class="chip bg-color">centos</span>
                                 </a>
                             
                         </div>
@@ -835,9 +774,9 @@ https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;jquery&#x2F;jquery&#x2F;<span ar
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'https://blog.zhuomu.xyz/2021/03/05/move-OLAINDEX-to-PicGo/';
-        this.page.identifier = '/2021/03/05/move-OLAINDEX-to-PicGo/';
-        this.page.title = '记一次博客图床迁移';
+        this.page.url = 'https://blog.zhuomu.xyz/2021/04/29/centos-7-minimal-bridging/';
+        this.page.identifier = '/2021/04/29/centos-7-minimal-bridging/';
+        this.page.title = 'CenOS 7 桥接网络配置';
     };
     let disqus_shortname = 'blog-zhuomu';
 
@@ -867,9 +806,60 @@ https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;jquery&#x2F;jquery&#x2F;<span ar
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/04/29/centos-7-minimal-bridging/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/featureimages/11.jpg" class="responsive-img" alt="CenOS 7 桥接网络配置">
+                        
+                        <span class="card-title">CenOS 7 桥接网络配置</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/" class="post-category">
+                                    技术博文
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/centos/">
+                        <span class="chip bg-color">centos</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2021/04/28/upload-image-by-picgo/">
                     <div class="card-image">
@@ -887,9 +877,9 @@ https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;jquery&#x2F;jquery&#x2F;<span ar
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -915,63 +905,6 @@ https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;jquery&#x2F;jquery&#x2F;<span ar
                     
                     <a href="/tags/picgo/">
                         <span class="chip bg-color">PicGO</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/01/23/ubuntu-cst-utc-8/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/featureimages/17.jpg" class="responsive-img" alt="更改Ubuntu的时间为北京时间（东八区）">
-                        
-                        <span class="card-title">更改Ubuntu的时间为北京时间（东八区）</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-23
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            卓木
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/ubuntu/">
-                        <span class="chip bg-color">ubuntu</span>
-                    </a>
-                    
-                    <a href="/tags/linux/">
-                        <span class="chip bg-color">linux</span>
-                    </a>
-                    
-                    <a href="/tags/date/">
-                        <span class="chip bg-color">date</span>
-                    </a>
-                    
-                    <a href="/tags/cst/">
-                        <span class="chip bg-color">cst</span>
                     </a>
                     
                 </div>

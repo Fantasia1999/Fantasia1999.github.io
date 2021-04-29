@@ -6,7 +6,7 @@
   <link href="https://blog.zhuomu.xyz/atom.xml" rel="self"/>
   
   <link href="https://blog.zhuomu.xyz/"/>
-  <updated>2021-04-28T08:56:24.000Z</updated>
+  <updated>2021-04-29T08:06:59.000Z</updated>
   <id>https://blog.zhuomu.xyz/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CenOS 7 桥接网络配置</title>
+    <link href="https://blog.zhuomu.xyz/2021/04/29/centos-7-minimal-bridging/"/>
+    <id>https://blog.zhuomu.xyz/2021/04/29/centos-7-minimal-bridging/</id>
+    <published>2021-04-29T08:06:59.000Z</published>
+    <updated>2021-04-29T08:06:59.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近在部署一个远程开发环境，为了稳定，就不再安装GUI界面了，直接ssh远程过去开发，所以选择了Minimal安装，Linux发行版选择的是CentOS 7</summary>
+        
+      
+    
+    
+    
+    <category term="技术博文" scheme="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/"/>
+    
+    
+    <category term="centos" scheme="https://blog.zhuomu.xyz/tags/centos/"/>
+    
+  </entry>
   
   <entry>
     <title>配置PicGo上传图片到Github图床</title>
@@ -33,6 +58,8 @@
       
     
     
+    
+    <category term="技术博文" scheme="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/"/>
     
     
     <category term="Github" scheme="https://blog.zhuomu.xyz/tags/github/"/>
@@ -543,31 +570,6 @@
     
     <category term="随笔" scheme="https://blog.zhuomu.xyz/categories/%E9%9A%8F%E7%AC%94/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>用VS Code编写LaTex</title>
-    <link href="https://blog.zhuomu.xyz/2020/03/25/VS-Code-with-LaTex/"/>
-    <id>https://blog.zhuomu.xyz/2020/03/25/VS-Code-with-LaTex/</id>
-    <published>2020-03-24T21:02:00.000Z</published>
-    <updated>2020-04-02T00:23:27.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;对于如何安装TexLive，可以参考这篇文档&lt;br&gt;[post cid=”96” /]&lt;/p&gt;
-&lt;h2 id=&quot;安装VS-Code&quot;&gt;&lt;a href=&quot;#安装VS-Code&quot; class=&quot;headerlink&quot; title=&quot;安装VS Code&quot;&gt;&lt;/a&gt;安装VS Code&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;官方地址&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;下载插件&quot;&gt;&lt;a href=&quot;#下载插件&quot; class=&quot;headerlink&quot; title=&quot;下载插件&quot;&gt;&lt;/a&gt;下载插件&lt;/h2&gt;&lt;p&gt;market搜索&lt;code&gt;LaTeX Workshop&lt;/code&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="技术博文" scheme="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/"/>
-    
-    
-    <category term="LaTex" scheme="https://blog.zhuomu.xyz/tags/latex/"/>
-    
-    <category term="TexLive" scheme="https://blog.zhuomu.xyz/tags/texlive/"/>
-    
-    <category term="VS Code" scheme="https://blog.zhuomu.xyz/tags/vs-code/"/>
     
   </entry>
   

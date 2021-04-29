@@ -4,12 +4,43 @@
   
     
     <entry>
+      <title>CenOS 7 桥接网络配置</title>
+      <link href="2021/04/29/centos-7-minimal-bridging/"/>
+      <url>2021/04/29/centos-7-minimal-bridging/</url>
+      
+        <content type="html"><![CDATA[<p>最近在部署一个远程开发环境，为了稳定，就不再安装GUI界面了，直接ssh远程过去开发，所以选择了Minimal安装，Linux发行版选择的是CentOS 7 2009。</p><p>系统安装过程很简单，去tuna下载镜像，用VMware安装即可。</p><p>centos的镜像在<code>centos/7.9.2009/isos/x86_64/</code>路径下，选择<code>CentOS-7-x86_64-Minimal-2009.iso</code></p><p>为了能够让虚拟机能从校园网直接连接，在网络的配置上，选择了桥接模式，可以让主机获取一个独立的ip，而非192这种NAT后的内网ip。</p><p>也正是因为选择了桥接，导致服务器出现了一些配置的小问题。</p><p>如图，在进行yum安装软件的时候，出现了这样的错误<code>Could not resolve host: mirrorlist.centos.org; Unknowm error&quot; </code></p><p><img src="http://img.zhuomu.xyz/view/img/2021/04/29/image-20210429-bab035b.png"></p><p>当我想看一下ip的时候，发现没有安装net-tools，陷入了死循环。</p><p>其实根据上边的错误提示，大概是没有网络，由于我选的是桥接，可能需要自己手动配置。</p><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>以下是配置方法：</p><ul><li><p>输入以下命令，找到网卡名称</p><ul><li><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nmcli d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>我这里是<code>ens33</code></p></li></ul></li><li><p>编辑该网卡的配置</p><ul><li><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo vi &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-ens33<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="http://img.zhuomu.xyz/view/img/2021/04/29/image-20210429-b8a4fe9.png" alt="ifcfg-ens33"></p><p>这里我们将<code>BOTPROTO</code>设为<code>dhcp</code>，<code>ONBOOT</code>设为<code>yes</code></p><p>按<code>Esc</code>，输入<code>:wq</code>进行保存</p></li></ul></li><li><p>重启网卡</p><ul><li><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl restart network.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>再次执行命令，发现可以正常安装了</li></ul></li></ul><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo yum install update<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>如果是要配置静态IP的话，还需要在后边附上配置，追加以下即可。</p><pre class="line-numbers language-none"><code class="language-none">IPADDR&#x3D;192.168.123.100NETMASK&#x3D;255.255.255.0GATEWAY&#x3D;192.168.123.1DNS1&#x3D;192.168.123.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>修改<code>BOOTPROTO</code>参数：<br><code>BOOTPROTO=static</code></p><blockquote><p>参考链接</p><p><a href="https://blog.csdn.net/Goldsea_/article/details/100628457">Centos7-Minimal版本使用yum报错–Could not resolve host</a></p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术博文 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> centos </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>配置PicGo上传图片到Github图床</title>
       <link href="2021/04/28/upload-image-by-picgo/"/>
       <url>2021/04/28/upload-image-by-picgo/</url>
       
         <content type="html"><![CDATA[<h1 id="配置PicGo上传图片到Github图床"><a href="#配置PicGo上传图片到Github图床" class="headerlink" title="配置PicGo上传图片到Github图床"></a>配置PicGo上传图片到Github图床</h1><h2 id="什么是PicGo"><a href="#什么是PicGo" class="headerlink" title="什么是PicGo"></a>什么是PicGo</h2><p>Github开源项目：<a href="https://github.com/Molunerfinn/PicGo">https://github.com/Molunerfinn/PicGo</a></p><blockquote><p>2021年4月28日</p></blockquote><p><strong>PicGo: 一个用于快速上传图片并获取图片 URL 链接的工具</strong></p><p>PicGo 本体支持如下图床：</p><ul><li><code>七牛图床</code> v1.0</li><li><code>腾讯云 COS v4\v5 版本</code> v1.1 &amp; v1.5.0</li><li><code>又拍云</code> v1.2.0</li><li><code>GitHub</code> v1.5.0</li><li><code>SM.MS V2</code> v2.3.0-beta.0</li><li><code>阿里云 OSS</code> v1.6.0</li><li><code>Imgur</code> v1.6.0</li></ul><h2 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h2><h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>前往Release页面下载最新版</p><p><a href="https://github.com/Molunerfinn/PicGo/releases/">https://github.com/Molunerfinn/PicGo/releases/</a></p><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="PicGo设置"><a href="#PicGo设置" class="headerlink" title="PicGo设置"></a>PicGo设置</h3><ul><li>开机自启</li><li>上传后自动复制URL</li><li>GitHub图床</li></ul><h3 id="图床设置"><a href="#图床设置" class="headerlink" title="图床设置"></a>图床设置</h3><ul><li>仓库名：<code>username/img</code>，格式为用户名+你的仓库名</li><li>分支：<code>main</code>，一般为main</li><li>Token：<code>xxxxxxxxxx</code></li><li>域名：<code>http://example.com/img</code></li></ul><h4 id="Token"><a href="#Token" class="headerlink" title="Token"></a>Token</h4><p>需要在github进行生成。</p><p><a href="https://github.com/settings/tokens">Personal Access Tokens (github.com)</a></p><p><img src="http://img.zhuomu.xyz/view/img/2021/04/28/image-20210428-4821e56.png" alt="Generate new token"></p><p>只给<code>repo, write:packages</code>权限即可。</p><h4 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h4><p>这里强烈建议使用固定的域名，这样方便以后迁移图床，因为我们的链接都是写在博客里边，如果以后换图床的话，更改图片链接是一件很麻烦的事<del>（也可以写个脚本批量更改）</del>，这里定义后，以后如果换图床，只需要在服务器端更改一个301跳转就可以了，非常方便。</p><p>关于服务端如何配置，可以参考我<a href="https://blog.zhuomu.xyz/2021/03/05/move-OLAINDEX-to-PicGo/">上一篇博客</a>。</p><p>如果没有域名，就输入jsDeliver的默认链接<code>https://cdn.jsdelivr.net/gh/username/img</code>，img是你的仓库名，结尾不用加斜杠。</p><p>这就配置完成了。</p><blockquote><ul><li><p>建议新建一个Github小号来进行操作，因为如果频繁上传图片，github的绿点会比较密集。<del>造成非常努力的假象</del></p></li><li><p>在测试仓库的时候，也可以新建一个test仓库来进行上传测试，等到符合预期要求的时候，再新建一个仓库来作为正式图床。</p></li></ul></blockquote><h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><p><strong>rename-file</strong></p><p>这个插件是开源的，在<a href="https://github.com/liuwave/picgo-plugin-rename-file">这里</a>可以找到。</p><p>安装插件的方式很简答，直接在<code>插件设置</code>里搜索插件名就可以了。</p><p>命名规则：</p><ul><li>{y} 年，4位</li><li>{m} 月，2位</li><li>{d} 日期，2位</li><li>{h} 小时，2位</li><li>{i} 分钟，2位</li><li>{s} 秒，2位</li><li>{ms} 毫秒，3位(<strong>v1.0.4</strong>)</li><li>{timestamp} 时间戳(秒)，10位(<strong>v1.0.4</strong>)</li><li>{hash}，文件的md5值，32位</li><li>{origin}，文件原名（会去掉后缀）</li><li>{rand:<count>}, 随机数，<count>表示个数，默认为6个，示例：{rand：32}、{rand}</li><li>{localFolder:<count>}, <count>表示层级 ，默认为1，示例：{localFolder:6}、{localFolder}</li></ul><p>我的规则是</p><p><code>&#123;y&#125;/&#123;m&#125;/&#123;d&#125;/image-&#123;y&#125;&#123;m&#125;&#123;d&#125;-&#123;rand:7&#125;</code></p><p>解释一下：</p><p>比如上边我自定义的域名是<code>http://example.com/img</code>，那么我通过插件重命名后的链接就变成了</p><p><code>http://example.com/img/2021/04/28/image-20210428-c290202.png</code></p><p>斜杠之前可以看做<code>路径</code>，后边部分是<code>文件名</code></p><p>总体体验还是很流畅的，截图后，直接打开软件，粘贴一下，就自动得到了一个markdown链接，粘贴进Typora就可以了。</p>]]></content>
       
+      
+      <categories>
+          
+          <category> 技术博文 </category>
+          
+      </categories>
       
       
         <tags>
