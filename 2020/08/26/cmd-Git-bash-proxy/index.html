@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -502,7 +512,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    518
+                    474
                 </div>
                 
 
@@ -535,44 +545,48 @@
 </blockquote>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/08/26/DPTRzWWg/image-20200826185355205.png" alt="image-20200826185355205"></p>
 <h2 id="各类终端具体设置方法"><a href="#各类终端具体设置方法" class="headerlink" title="各类终端具体设置方法"></a>各类终端具体设置方法</h2><p>具体是<code>socks</code>还是<code>http</code>要看你的代理客户端</p>
-<h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># http
-git config --global http.proxy &#39;http:&#x2F;&#x2F;127.0.0.1:10808&#39;
-git config --global https.proxy &#39;http:&#x2F;&#x2F;127.0.0.1:10808&#39;
+<h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># http</span>
+<span class="token function">git</span> config --global http.proxy <span class="token string">'http://127.0.0.1:10808'</span>
+<span class="token function">git</span> config --global https.proxy <span class="token string">'http://127.0.0.1:10808'</span>
 
-#socks
-git config --global http.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:10808&#39;
-git config --global https.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:10808&#39;
+<span class="token comment">#socks</span>
+<span class="token function">git</span> config --global http.proxy <span class="token string">'socks5://127.0.0.1:10808'</span>
+<span class="token function">git</span> config --global https.proxy <span class="token string">'socks5://127.0.0.1:10808'</span>
 
-#取消设置
-git config --global --unset http.proxy
-git config --global --unset https.proxy<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="cmd"><a href="#cmd" class="headerlink" title="cmd"></a>cmd</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># http
-set http_proxy&#x3D;http:&#x2F;&#x2F;127.0.0.1:10808
-set https_proxy&#x3D;http:&#x2F;&#x2F;127.0.0.1:10808
+<span class="token comment">#取消设置</span>
+<span class="token function">git</span> config --global --unset http.proxy
+<span class="token function">git</span> config --global --unset https.proxy<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-#socks
-set http_proxy&#x3D;socks5:&#x2F;&#x2F;127.0.0.1:10808
-set https_proxy&#x3D;socks5:&#x2F;&#x2F;127.0.0.1:10808
+<h3 id="cmd"><a href="#cmd" class="headerlink" title="cmd"></a>cmd</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># http</span>
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">http_proxy</span><span class="token operator">=</span>http://127.0.0.1:10808
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">https_proxy</span><span class="token operator">=</span>http://127.0.0.1:10808
 
-# 恢复
-set http_proxy&#x3D;
-set https_proxy&#x3D;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="Linux-Terminal或Git-bash"><a href="#Linux-Terminal或Git-bash" class="headerlink" title="Linux Terminal或Git bash"></a>Linux Terminal或Git bash</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">#Linux下命令为export
-# http
-export http_proxy&#x3D;http:&#x2F;&#x2F;127.0.0.1:10808
-export https_proxy&#x3D;http:&#x2F;&#x2F;127.0.0.1:10808
+<span class="token comment">#socks</span>
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">http_proxy</span><span class="token operator">=</span>socks5://127.0.0.1:10808
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">https_proxy</span><span class="token operator">=</span>socks5://127.0.0.1:10808
 
-#socks
-export http_proxy&#x3D;socks5:&#x2F;&#x2F;127.0.0.1:10808
-export https_proxy&#x3D;socks5:&#x2F;&#x2F;127.0.0.1:10808
+<span class="token comment"># 恢复</span>
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">http_proxy</span><span class="token operator">=</span>
+<span class="token builtin class-name">set</span> <span class="token assign-left variable">https_proxy</span><span class="token operator">=</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-# 恢复
-export http_proxy&#x3D;
-export https_proxy&#x3D;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="Linux-Terminal或Git-bash"><a href="#Linux-Terminal或Git-bash" class="headerlink" title="Linux Terminal或Git bash"></a>Linux Terminal或Git bash</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment">#Linux下命令为export</span>
+<span class="token comment"># http</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">http_proxy</span><span class="token operator">=</span>http://127.0.0.1:10808
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">https_proxy</span><span class="token operator">=</span>http://127.0.0.1:10808
+
+<span class="token comment">#socks</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">http_proxy</span><span class="token operator">=</span>socks5://127.0.0.1:10808
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">https_proxy</span><span class="token operator">=</span>socks5://127.0.0.1:10808
+
+<span class="token comment"># 恢复</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">http_proxy</span><span class="token operator">=</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">https_proxy</span><span class="token operator">=</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="PowerShell"><a href="#PowerShell" class="headerlink" title="PowerShell"></a>PowerShell</h3><p>我在Windows上使用的一个客户端，这个好像不需要设置。</p>
-<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"># 验证
-curl google.com
-# 显示200的话，基本上是可的<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment"># 验证</span>
+curl google<span class="token punctuation">.</span>com
+<span class="token comment"># 显示200的话，基本上是可的</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <blockquote>
 <p>并不推荐这个时候使用powershell，其他情况下powershell表现还是很不错的。</p>
 </blockquote>
@@ -585,6 +599,7 @@ Host github.com
    # ProxyCommand socat - PROXY:127.0.0.1:%h:%p,proxyport&#x3D;8080
    # 走 socks5 代理（如 Shadowsocks）
    # ProxyCommand nc -v -x 127.0.0.1:1080 %h %p<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>对于Windows用户，要使用socks5代理却没有 nc 的，可以将<br><code>ProxyCommand nc -v -x 127.0.0.1:1080 %h %p</code><br>换成<br><code>ProxyCommand connect -S 127.0.0.1:1080 %h %p</code></p>
 <p>参考链接：</p>
 <blockquote>
@@ -1380,10 +1395,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

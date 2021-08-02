@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -524,6 +534,7 @@
 <h2 id="备份脚本编写及授权"><a href="#备份脚本编写及授权" class="headerlink" title="备份脚本编写及授权"></a>备份脚本编写及授权</h2><h3 id="创建脚本文件："><a href="#创建脚本文件：" class="headerlink" title="创建脚本文件："></a>创建脚本文件：</h3><pre class="line-numbers language-none"><code class="language-none">mkdir &#x2F;home&#x2F;typechoBackup
 touch &#x2F;home&#x2F;typechoBackup&#x2F;backup.sh
 vi &#x2F;home&#x2F;typechoBackup&#x2F;backup.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>脚本文件内容示例如下，不需要的功能自行在前方加上#号注释掉，删除几天前的备份，数字自行修改即可。其他内容自行按需修改成自己的即可：</p>
 <p>[collapse status=”false” title=”备份脚本文档实例”]</p>
 <pre class="line-numbers language-none"><code class="language-none">#!&#x2F;bin&#x2F;bash
@@ -568,25 +579,32 @@ rclone delete $WebDAV_PATH&#x2F; --include &quot;$OLD*&quot;<span aria-hidden="t
 <p>[/collapse]</p>
 <h3 id="使用chmod指令赋予执行权限："><a href="#使用chmod指令赋予执行权限：" class="headerlink" title="使用chmod指令赋予执行权限："></a>使用chmod指令赋予执行权限：</h3><pre class="line-numbers language-none"><code class="language-none">chmod +x &#x2F;home&#x2F;typechoBackup&#x2F;backup.sh
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h3 id="创建自动备份任务并测试"><a href="#创建自动备份任务并测试" class="headerlink" title="创建自动备份任务并测试"></a>创建自动备份任务并测试</h3><p><strong>使用 crontab 每天4点定时执行自动备份脚本：</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">crontab -e
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><strong>复制以下内容粘贴并输入<code>:wq</code>保存：</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">0 4 * * * &#x2F;bin&#x2F;bash &#x2F;home&#x2F;backup&#x2F;backup.sh &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><strong>手动测试看看脚本是否正确运行：</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">bash &#x2F;home&#x2F;typechoBackup&#x2F;backup.sh
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><strong>时区设置为东八区：</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">timedatectl set-timezone Asia&#x2F;Shanghai<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><strong>重启定时任务：</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">service crond restart
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><strong>重启系统日志：</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">service rsyslog restart
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><strong>最后观察下系统日志尾巴状态，是否时区已经调整成功：</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">tail -f &#x2F;var&#x2F;log&#x2F;cron<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h2 id="关于crontab格式详细说明，感兴趣的可以查阅："><a href="#关于crontab格式详细说明，感兴趣的可以查阅：" class="headerlink" title="关于crontab格式详细说明，感兴趣的可以查阅："></a>关于crontab格式详细说明，感兴趣的可以查阅：</h2><p>crontab 格式详解</p>
 <p>或者使用在线生成工具生成需要的定时任务：<a target="_blank" rel="noopener" href="https://crontab-generator.org/">online crontab</a></p>
 <p>最后查看你的坚果云确认下运转是否正常。</p>
@@ -1366,10 +1384,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

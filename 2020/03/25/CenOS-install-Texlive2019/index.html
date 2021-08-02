@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -494,7 +504,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    312
+                    280
                 </div>
                 
 
@@ -519,35 +529,41 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="安装Perl模块"><a href="#安装Perl模块" class="headerlink" title="安装Perl模块"></a>安装<code>Perl</code>模块</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum install perl*
-yum install cpan<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<a id="more"></a>
+                <h2 id="安装Perl模块"><a href="#安装Perl模块" class="headerlink" title="安装Perl模块"></a>安装<code>Perl</code>模块</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> perl*
+yum <span class="token function">install</span> cpan<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span id="more"></span>
 <h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><ul>
 <li>安装过程中需要调用Perl的模块 <code>Digest::MD5</code> 来检测 ISO 文件的完整性</li>
 <li>升级过程中界面需要调用 Perl 的模块 <code>Tk</code></li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum install perl-Digest-MD5 perl-Tk<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> perl-Digest-MD5 perl-Tk<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>到<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/">清华镜像源</a>下载安装包，并解压</p>
 <ul>
 <li>如果报错，可能需要安装<code>wget</code>和<code>unzip</code></li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum install wget #如果已有可以忽略
-yum install unzip #如果已有可以忽略
-wget https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;CTAN&#x2F;systems&#x2F;texlive&#x2F;tlnet&#x2F;install-tl.zip
-unzip install-tl<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> <span class="token function">wget</span> <span class="token comment">#如果已有可以忽略</span>
+yum <span class="token function">install</span> <span class="token function">unzip</span> <span class="token comment">#如果已有可以忽略</span>
+<span class="token function">wget</span> https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/install-tl.zip
+<span class="token function">unzip</span> install-tl<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><strong>自动安装</strong></p>
 <p>打开解压好的目录，运行安装脚本</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">.&#x2F;install-tl<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./install-tl<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>出现选项后，输入 <code>I</code> 直接安装。</p>
 <h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p>在<code>~/.bashrc</code>中添加类似如下部分，让系统识别tex的编译器、info手册以及manual手册的位置。</p>
 <p>参考<a target="_blank" rel="noopener" href="https://www.tug.org/texlive/doc/texlive-en/texlive-en.html#x1-310003.4.1">官方文档</a></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># TeXLive 2019
-PATH&#x3D;&#x2F;usr&#x2F;local&#x2F;texlive&#x2F;2019&#x2F;bin&#x2F;x86_64-linux:$PATH; export PATH
-MANPATH&#x3D;&#x2F;usr&#x2F;local&#x2F;texlive&#x2F;2019&#x2F;texmf-dist&#x2F;doc&#x2F;man:$MANPATH; export MANPATH
-INFOPATH&#x3D;&#x2F;usr&#x2F;local&#x2F;texlive&#x2F;2019&#x2F;texmf-dist&#x2F;doc&#x2F;info:$INFOPATH; export INFOPATH<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># TeXLive 2019</span>
+<span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span>/usr/local/texlive/2019/bin/x86_64-linux:<span class="token environment constant">$PATH</span><span class="token punctuation">;</span> <span class="token builtin class-name">export</span> <span class="token environment constant">PATH</span>
+<span class="token assign-left variable">MANPATH</span><span class="token operator">=</span>/usr/local/texlive/2019/texmf-dist/doc/man:<span class="token variable">$MANPATH</span><span class="token punctuation">;</span> <span class="token builtin class-name">export</span> MANPATH
+<span class="token assign-left variable">INFOPATH</span><span class="token operator">=</span>/usr/local/texlive/2019/texmf-dist/doc/info:<span class="token variable">$INFOPATH</span><span class="token punctuation">;</span> <span class="token builtin class-name">export</span> INFOPATH<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>然后用source加载该文件内容到执行环境中</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">source .&#x2F;bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">source</span> ./bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h2 id="测试安装是否成功"><a href="#测试安装是否成功" class="headerlink" title="测试安装是否成功"></a>测试安装是否成功</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">tex --version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>@&gt; 其他请参考：<a target="_blank" rel="noopener" href="https://www.tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf">官方2019的中文文档</a></p>
 
                 
@@ -1335,10 +1351,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

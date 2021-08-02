@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -498,7 +508,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    800
+                    795
                 </div>
                 
 
@@ -552,16 +562,18 @@
 <p>到了这里，已经完成了90%了。</p>
 <h2 id="0x03-安装Python环境"><a href="#0x03-安装Python环境" class="headerlink" title="0x03 安装Python环境"></a>0x03 安装Python环境</h2><p>打开终端，可以使用快捷键<code>Ctrl + `</code> 。</p>
 <p>分别执行下列命令</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt-get update
-sudo apt-get install python3-pip
-sudo python3 -m pip install --upgrade pip
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">apt-get</span> update
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> python3-pip
+<span class="token function">sudo</span> python3 -m pip <span class="token function">install</span> --upgrade pip
 pip3 --version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>环境部署完成以后，然后新建一个<code>test.py</code>文件进行测试。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">from __future__ import division
-from sympy import *
-x &#x3D; Symbol(&#39;x&#39;)
-f &#x3D; (x+sqrt(1+x**2))**(1&#x2F;x)
-print(limit(f, x, oo))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> __future__ <span class="token keyword">import</span> division
+<span class="token keyword">from</span> sympy <span class="token keyword">import</span> <span class="token operator">*</span>
+x <span class="token operator">=</span> Symbol<span class="token punctuation">(</span><span class="token string">'x'</span><span class="token punctuation">)</span>
+f <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token operator">+</span>sqrt<span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">+</span>x<span class="token operator">**</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">**</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span>x<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>limit<span class="token punctuation">(</span>f<span class="token punctuation">,</span> x<span class="token punctuation">,</span> oo<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>这个是求</p>
 <p>$$\lim\limits_{x \to \infty }{(x+\sqrt{1+x^2})^\frac{1}{x}}\ =\ 1$$</p>
 <p>运行后结果也是<code>1</code>。</p>
@@ -1365,10 +1377,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

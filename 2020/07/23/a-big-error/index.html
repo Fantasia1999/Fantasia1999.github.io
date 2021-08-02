@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -478,7 +488,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    653
+                    628
                 </div>
                 
 
@@ -515,8 +525,10 @@
 <p>!&gt; 不要忘记，sql命令要加分号！</p>
 <h2 id="具体过程如下："><a href="#具体过程如下：" class="headerlink" title="具体过程如下："></a>具体过程如下：</h2><h3 id="找到出错位置"><a href="#找到出错位置" class="headerlink" title="找到出错位置"></a>找到出错位置</h3><p>登入数据库</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ mysql -u root -p databaseA<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>看一下bin log是否打开</p>
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">mysql &gt; SHOW VARIABLES LIKE &#39;log_bin&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>显示如下结果，就可以开始操作了。</p>
 <pre class="line-numbers language-none"><code class="language-none">+---------------+-------+
 | Variable_name | Value |
@@ -524,8 +536,10 @@
 | log_bin       | ON    |
 +---------------+-------+
 1 row in set (0.00 sec)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>查看日志列表</p>
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">mysql &gt; show master logs;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>显示如下信息，不同的人可能显示的结果不一样，我们找最大的那个<code>mysql-bin.000008</code>。</p>
 <pre class="line-numbers language-none"><code class="language-none">+------------------+-----------+
 | Log_name         | File_size |
@@ -534,26 +548,34 @@
 | mysql-bin.000008 |  11156528 |
 +------------------+-----------+
 2 rows in set (0.00 sec)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>接下来使用mysqlbinlog</p>
 <p>如果可以正常使用mysqlbinlog命令请忽略这部分。</p>
 <p>需要确定mysqlbinlog的位置，使用find命令查找</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ find &#x2F; -name mysqlbinlog -print<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ <span class="token function">find</span> / -name mysqlbinlog -print<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>找到如下路径</p>
 <pre class="line-numbers language-none"><code class="language-none">&#x2F;usr&#x2F;bin&#x2F;mysqlbinlog
 &#x2F;yoursql&#x2F;mysql&#x2F;bin&#x2F;mysqlbinlog<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>根据自己的情况确定你的位置。然后软链接</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ ln -fs &#x2F;www&#x2F;server&#x2F;mysql&#x2F;bin&#x2F;mysqlbinlog &#x2F;usr&#x2F;bin<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ <span class="token function">ln</span> -fs /www/server/mysql/bin/mysqlbinlog /usr/bin<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>接下来就可以使用mysqlbinlog命令了。</p>
 <p>由于我们并不清楚出错的时间范围，只能输入一个大致的起始时间，如果确定的话，可以在<code>start-datetime</code>后边跟上相同参数的<code>stop-datetime</code>。跟上<code>result-file</code>导出文件便于我们分析错误位置。</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ mysqlbinlog --start-datetime&#x3D;&#39;2020-07-09 19:00:00&#39; &#x2F;www&#x2F;server&#x2F;data&#x2F;mysql-bin.000008 --result-file&#x3D;extra.sql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ mysqlbinlog --start-datetime<span class="token operator">=</span><span class="token string">'2020-07-09 19:00:00'</span> /www/server/data/mysql-bin.000008 --result-file<span class="token operator">=</span>extra.sql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>在一波分析后，发现最后一次（这个根据自身情况，不一定是最后一次）配置正确的position 39876作为stop，然后再向前找比较早的的一个position 2000作为start。</p>
 <p>比如我找到我的position分别是start 2000 stop39876</p>
 <p>执行下列命令，重新执行这部分sql操作，使数据库恢复。</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ mysqlbinlog --start-position&#x3D;&quot;2000&quot; --stop-position&#x3D;&quot;39876&quot; mysql-bin.000008 &gt; &#x2F;yourpath&#x2F;backup.sql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ mysqlbinlog --start-position<span class="token operator">=</span><span class="token string">"2000"</span> --stop-position<span class="token operator">=</span><span class="token string">"39876"</span> mysql-bin.000008 <span class="token operator">></span> /yourpath/backup.sql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h2 id="开始恢复"><a href="#开始恢复" class="headerlink" title="开始恢复"></a>开始恢复</h2><p>进入数据库databaseA，将这部分sql导入进去</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ mysql -u root -p databaseA<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>使用source命令（也有其他命令，可以自行搜索）</p>
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">mysql &gt; source &#x2F;yourpath&#x2F;backup.sql;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>之后等待执行就可以了。</p>
 <h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="https://learnku.com/articles/20702">https://learnku.com/articles/20702</a></p>
@@ -1347,10 +1369,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

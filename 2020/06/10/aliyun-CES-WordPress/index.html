@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -528,12 +538,14 @@
 <li>执行如下命令，安装Apache服务及其扩展包。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">yum -y install httpd httpd-manual mod_ssl mod_perl mod_auth_mysql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>返回类似如下图结果则表示安装成功。</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/VpZrCxXw/TB1l7DUHpY7gK0jSZKzXXaikpXa-1050-137.png" alt="img"></p>
 <ol start="2">
 <li>执行如下命令，启动Apache服务。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">systemctl start httpd.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ol start="3">
 <li>测试Apache服务是否安装并启动成功。</li>
 </ol>
@@ -548,15 +560,18 @@ yum -y install mysql57-community-release-el7-10.noarch.rpm
 yum -y install mysql-community-server<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 
+
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/VpZrCxXw/TB1BRnVHxz1gK0jSZSgXXavwpXa-958-431.png" alt="img"></p>
 <ol start="2">
 <li>执行如下命令，启动 MySQL 数据库。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">systemctl start mysqld.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ol start="3">
 <li>执行如下命令，查看MySQL运行状态。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">systemctl status mysqld.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
 
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/VpZrCxXw/TB1gszWHuT2gK0jSZFvXXXnFXXa-945-229.png" alt="img"></p>
@@ -566,11 +581,13 @@ yum -y install mysql-community-server<span aria-hidden="true" class="line-number
 <pre class="line-numbers language-none"><code class="language-none">grep &quot;password&quot; &#x2F;var&#x2F;log&#x2F;mysqld.log<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
+
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/VpZrCxXw/TB1FmNpaepyVu4jSZFhXXbBpVXa-834-36.png" alt="img"></p>
 <ol start="5">
 <li>执行如下命令，登录数据库。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">mysql -uroot -p<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
 
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/VpZrCxXw/TB1Wz6UHvb2gK0jSZK9XXaEgFXa-675-226.png" alt="img"></p>
@@ -581,14 +598,17 @@ yum -y install mysql-community-server<span aria-hidden="true" class="line-number
 <p><strong>说明</strong> 新密码设置的时候如果设置的过于简单会报错，必须同时包含大小写英文字母、数字和特殊符号中的三类字符。</p>
 </blockquote>
 <pre class="line-numbers language-none"><code class="language-none">ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;NewPassWord1.&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ol start="7">
 <li>执行如下命令，创建wordpress库。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">create database wordpress; <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ol start="8">
 <li>执行如下命令，创建wordpress库。 执行如下命令，查看是否创建成功。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">show databases;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ol start="9">
 <li>输入<code>exit</code>退出数据库。</li>
 </ol>
@@ -598,14 +618,17 @@ yum -y install mysql-community-server<span aria-hidden="true" class="line-number
 <li>执行如下命令，安装PHP环境。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">yum -y install php php-mysql gd php-gd gd-devel php-xml php-common php-mbstring php-ldap php-pear php-xmlrpc php-imap<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ol start="2">
 <li>执行如下命令创建PHP测试页面。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">echo &quot;&lt;?php phpinfo(); ?&gt;&quot; &gt; &#x2F;var&#x2F;www&#x2F;html&#x2F;phpinfo.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ol start="3">
 <li>执行如下命令，重启Apache服务。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">systemctl restart httpd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ol start="4">
 <li>打开浏览器，访问<code>http://&lt;ECS公网地址&gt;/phpinfo.php</code>，显示如下页面表示PHP语言环境安装成功。</li>
 </ol>
@@ -615,6 +638,7 @@ yum -y install mysql-community-server<span aria-hidden="true" class="line-number
 <li>执行如下命令，安装wordpress。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">yum -y install wordpress<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>显示如下信息表示安装成功。</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/VpZrCxXw/TB1b02VHEz1gK0jSZLeXXb9kVXa-1042-156.png" alt="img"></p>
 <ol start="2">
@@ -628,10 +652,12 @@ cd &#x2F;usr&#x2F;share&#x2F;wordpress
 ln -snf &#x2F;etc&#x2F;wordpress&#x2F;wp-config.php wp-config.php
 # 查看修改后的目录结构。
 ll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>​        2）执行如下命令，移动wordpress到Apache根目录。</p>
 <pre class="line-numbers language-none"><code class="language-none"># 在Apache的根目录&#x2F;var&#x2F;www&#x2F;html下，创建一个wp-blog文件夹。
 mkdir &#x2F;var&#x2F;www&#x2F;html&#x2F;wp-blog
 mv * &#x2F;var&#x2F;www&#x2F;html&#x2F;wp-blog&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>​        3）执行以下命令修改wp-config.php配置文件。</p>
 <p>在执行命令前，请先替换以下三个参数值。</p>
 <ul>
@@ -642,8 +668,10 @@ mv * &#x2F;var&#x2F;www&#x2F;html&#x2F;wp-blog&#x2F;<span aria-hidden="true" cla
 <pre class="line-numbers language-none"><code class="language-none">sed -i &#39;s&#x2F;database_name_here&#x2F;wordpress&#x2F;&#39; &#x2F;var&#x2F;www&#x2F;html&#x2F;wp-blog&#x2F;wp-config.php
 sed -i &#39;s&#x2F;username_here&#x2F;root&#x2F;&#39; &#x2F;var&#x2F;www&#x2F;html&#x2F;wp-blog&#x2F;wp-config.php
 sed -i &#39;s&#x2F;password_here&#x2F;NewPassWord1.&#x2F;&#39; &#x2F;var&#x2F;www&#x2F;html&#x2F;wp-blog&#x2F;wp-config.php<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>​        4）执行以下命令，查看配置文件信息是否修改成功。</p>
 <pre class="line-numbers language-none"><code class="language-none">cat -n &#x2F;var&#x2F;www&#x2F;html&#x2F;wp-blog&#x2F;wp-config.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
 
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/VpZrCxXw/TB1j02VHEz1gK0jSZLeXXb9kVXa-913-631.png" alt="img"></p>
@@ -651,6 +679,7 @@ sed -i &#39;s&#x2F;password_here&#x2F;NewPassWord1.&#x2F;&#39; &#x2F;var&#x2F;ww
 <li>执行如下命令，重启Apache服务。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">systemctl restart httpd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p> 测试Wordpress</p>
 <p>完成以上所有步骤后，就可以测试我们基于ECS所搭建的云上博客了。</p>
 <ol>
@@ -661,7 +690,7 @@ sed -i &#39;s&#x2F;password_here&#x2F;NewPassWord1.&#x2F;&#39; &#x2F;var&#x2F;ww
 <li>Site Title：站点名称，例如：阿里云CES WordPress测试。</li>
 <li>Username：管理员用户名，例如：admin。</li>
 <li>Password：访问密码，例如：HzEcgtOB)ZmiqkYaVT。</li>
-<li>Your Email：email地址，建议为真实有效的地址。若没有，可以填写虚拟email地址，但将无法接收信息，例如：<a href="mailto:&#x61;&#100;&#109;&#105;&#110;&#64;&#x61;&#x64;&#x6d;&#105;&#x6e;&#x2e;&#99;&#x6f;&#109;">&#x61;&#100;&#109;&#105;&#110;&#64;&#x61;&#x64;&#x6d;&#105;&#x6e;&#x2e;&#99;&#x6f;&#109;</a>。</li>
+<li>Your Email：email地址，建议为真实有效的地址。若没有，可以填写虚拟email地址，但将无法接收信息，例如：<a href="mailto:&#97;&#x64;&#x6d;&#105;&#x6e;&#64;&#97;&#100;&#109;&#x69;&#110;&#x2e;&#99;&#111;&#x6d;">&#97;&#x64;&#x6d;&#105;&#x6e;&#64;&#97;&#100;&#109;&#x69;&#110;&#x2e;&#99;&#111;&#x6d;</a>。</li>
 </ul>
 </li>
 </ol>
@@ -678,11 +707,10 @@ sed -i &#39;s&#x2F;password_here&#x2F;NewPassWord1.&#x2F;&#39; &#x2F;var&#x2F;ww
 </ol>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/VpZrCxXw/TB1kknYHAL0gK0jSZFAXXcA9pXa-704-862.png" alt="img"></p>
 <ol start="6">
-<li><p>登录后，您就可以添加博客进行发布了。</p>
-<p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/VpZrCxXw/Snipaste_2020-06-10_12-56-08.png" alt="img"></p>
-<p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/VpZrCxXw/Snipaste_2020-06-10_12-55-41.png" alt="img"></p>
-</li>
+<li>登录后，您就可以添加博客进行发布了。</li>
 </ol>
+<p> <img src="https://img.zhuomu.xyz/view/img/2020/06/10/VpZrCxXw/Snipaste_2020-06-10_12-56-08.png" alt="img"></p>
+<p> <img src="https://img.zhuomu.xyz/view/img/2020/06/10/VpZrCxXw/Snipaste_2020-06-10_12-55-41.png" alt="img"></p>
 
                 
             </div>
@@ -1475,10 +1503,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

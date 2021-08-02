@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -518,8 +528,10 @@
                 <h2 id="文件与权限"><a href="#文件与权限" class="headerlink" title="文件与权限"></a>文件与权限</h2><h3 id="文件目录管理命令"><a href="#文件目录管理命令" class="headerlink" title="文件目录管理命令"></a>文件目录管理命令</h3><h3 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h3><p>命令描述：tree命令用于以树状图列出目录的内容。</p>
 <p>tree命令没有内置在系统中，使用tree命令需要执行以下命令来安装：</p>
 <pre class="line-numbers language-none"><code class="language-none">yum install -y tree<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令使用示例：</p>
 <pre class="line-numbers language-none"><code class="language-none">tree &#x2F;usr&#x2F;share&#x2F;wallpapers&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1FuM_Hvb2gK0jSZK9XXaEgFXa-533-237.png" alt="img"></p>
 <h3 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h3><p>命令描述： ls命令用于显示指定工作目录下的内容。</p>
@@ -556,6 +568,7 @@
 <p>命令使用示例：</p>
 <p>查看当前目录下的所有文件（包括隐藏文件）。</p>
 <pre class="line-numbers language-none"><code class="language-none">ll -a<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB10gRXHQP2gK0jSZPxXXacQpXa-546-381.png" alt="img"></p>
 <h3 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h3><p>命令描述：获取当前工作目录的绝对路径。</p>
@@ -701,6 +714,7 @@
 </li>
 </ul>
 <pre class="line-numbers language-none"><code class="language-none">mv .&#x2F;* &#x2F;tmp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h3 id="rename"><a href="#rename" class="headerlink" title="rename"></a>rename</h3><p>命令描述：rename命令用字符串替换的方式批量改变文件名。rename命令有C语言和Perl语言两个版本，这里介绍C语言版本的rename命令，不支持正则表达式。</p>
 <p>命令使用示例：</p>
 <ul>
@@ -711,6 +725,7 @@
 </ul>
 <h2 id="文件权限管理"><a href="#文件权限管理" class="headerlink" title="文件权限管理"></a>文件权限管理</h2><p>ls命令可以查看Linux系统上的文件、目录和设备的权限。</p>
 <pre class="line-numbers language-none"><code class="language-none">ls -l &#x2F;boot&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB12gXcHND1gK0jSZFKXXcJrVXa-869-420.png" alt="img"></p>
 <p>上述<code>ls -l</code>命令中显示的第一列就是文件权限信息，共11位字符，分5部分。</p>
 <ul>
@@ -741,29 +756,34 @@
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">echo &quot;echo &#39;Hello World&#39;&quot; &gt; hello.sh
 ll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1XPRcHNv1gK0jSZFFXXb0sXXa-520-111.png" alt="img"></p>
 <ol start="2">
 <li>将hello.sh文件增加属主的执行权限。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">chmod u+x hello.sh
 ll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1RX7nXSRLWu4jSZKPXXb6BpXa-469-110.png" alt="img"></p>
 <ol start="3">
 <li>将hello.sh文件撤销属主的执行权限。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">chmod u-x hello.sh
 ll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1.q8XHFP7gK0jSZFjXXc5aXXa-458-108.png" alt="img"></p>
 <ol start="4">
 <li>将hello.sh文件权限修改为八进制表示的744权限。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">chmod 744 hello.sh
 ll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1cq..HpT7gK0jSZFpXXaTkpXa-445-110.png" alt="img"></p>
 <ol start="5">
 <li>使用bash命令解释器执行hello.sh脚本文件。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">&#x2F;bin&#x2F;bash hello.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1mIFeHQT2gK0jSZFkXXcIQFXa-448-67.png" alt="img"></p>
 <p>其中，<code>u+x</code>表示增加属主的执行权限，u表示属主，g表示属组，o表示其他，a表示所有用户。</p>
 <h3 id="chown"><a href="#chown" class="headerlink" title="chown"></a>chown</h3><p>chown命令修改文件的属主和属组；<code>-R</code>参数以递归方式对子目录和文件进行修改；<code>ls -l</code>命令显示的第三列和第四列就是文件的属主和属组信息。</p>
@@ -774,29 +794,34 @@ ll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 <pre class="line-numbers language-none"><code class="language-none">whoami
 touch test.txt
 ll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1Xq..HpT7gK0jSZFpXXaTkpXa-457-153.png" alt="img"></p>
 <ol start="2">
 <li>创建两个用户。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">useradd test
 useradd admin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <ol start="3">
 <li>修改test.txt文件的属主用户为test。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">chown test test.txt
 ll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1IHVfHHj1gK0jSZFuXXcrHpXa-477-106.png" alt="img"></p>
 <ol start="4">
 <li>修改test.txt文件的属主和属组为admin。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">chown admin:admin test.txt
 ll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1KbVfHHj1gK0jSZFuXXcrHpXa-471-108.png" alt="img"></p>
 <h3 id="chgrp"><a href="#chgrp" class="headerlink" title="chgrp"></a>chgrp</h3><p>chgrp命令用于修改文件的属组。</p>
 <p>命令使用示例：</p>
 <p>将test.txt文件的属组改为root。</p>
 <pre class="line-numbers language-none"><code class="language-none">chgrp root test.txt
 ll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1uLg.HxD1gK0jSZFsXXbldVXa-522-108.png" alt="img"></p>
 <h1 id="文本处理"><a href="#文本处理" class="headerlink" title="文本处理"></a>文本处理</h1><h2 id="文本编辑工具Vim"><a href="#文本编辑工具Vim" class="headerlink" title="文本编辑工具Vim"></a>文本编辑工具Vim</h2><h3 id="vim的三种操作模式"><a href="#vim的三种操作模式" class="headerlink" title="vim的三种操作模式"></a>vim的三种操作模式</h3><p>vim有三种操作模式，分别是命令模式（Command mode）、输入模式（Insert mode）和底线命令模式（Last line mode）。</p>
 <p>三种模式切换快捷键：</p>
@@ -1041,6 +1066,7 @@ ll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 <li> 新建一个文件并进入vim命令模式。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">vim 静夜思.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1VZ4LHG61gK0jSZFlXXXDKFXa-911-414.png" alt="img"></p>
 <ol start="2">
 <li> 按下<code>i</code>进入输入模式，输入《静夜思》的诗名。</li>
@@ -1097,20 +1123,24 @@ ll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 <li> 将一个自增序列写入test.txt文件中。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">for i in $(seq 1 10); do echo $i &gt;&gt; test.txt ; done<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ol start="2">
 <li>查看文件内容。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">cat test.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB17S4FHHr1gK0jSZR0XXbP8XXa-612-258.png" alt="img"></p>
 <ol start="3">
 <li>将文件内容清空。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">cat &#x2F;dev&#x2F;null &gt; test.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ol start="4">
 <li>再次检查文件内容。</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">cat test.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1CQBEHQL0gK0jSZFtXXXQCXXa-570-69.png" alt="img"></p>
 <h3 id="more"><a href="#more" class="headerlink" title="more"></a>more</h3><p>命令描述：more命令从前向后分页显示文件内容。</p>
@@ -1150,6 +1180,7 @@ ll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 <p>命令使用示例：</p>
 <p>从第20行开始分页查看系统日志文件/var/log/messages。</p>
 <pre class="line-numbers language-none"><code class="language-none">more +20 &#x2F;var&#x2F;log&#x2F;messages<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1xcXGHHr1gK0jSZFDXXb9yVXa-1408-937.png" alt="img"></p>
 <h3 id="less"><a href="#less" class="headerlink" title="less"></a>less</h3><p>命令描述：less命令可以对文件或其它输出进行分页显示，与moe命令相似，但使用 less 可以随意浏览文件，而 more 仅能向前移动，却不能向后移动。</p>
@@ -1235,6 +1266,7 @@ ll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 <p>命令使用示例：</p>
 <p>查看命令历史使用记录并通过less分页显示。</p>
 <pre class="line-numbers language-none"><code class="language-none">history | less<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h3 id="head"><a href="#head" class="headerlink" title="head"></a>head</h3><p>命令描述：head命令用于查看文件开头指定行数的内容。</p>
 <p>命令格式：<code>head [参数] [文件]</code>。</p>
 <p>命令参数说明：</p>
@@ -1261,6 +1293,7 @@ ll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 <p>命令使用示例：</p>
 <p>查看/etc/passwd文件的前5行内容。</p>
 <pre class="line-numbers language-none"><code class="language-none">head -5 &#x2F;etc&#x2F;passwd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB13Pl7Xj39YK4jSZPcXXXrUFXa-590-153.png" alt="img"></p>
 <h3 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h3><p>命令描述：tail命令用于查看文档的后N行或持续刷新内容。</p>
@@ -1297,12 +1330,14 @@ ll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 <p>命令使用示例：</p>
 <p>查看/var/log/messages系统日志文件的最新10行，并保持实时刷新。</p>
 <pre class="line-numbers language-none"><code class="language-none">tail -f -n 10 &#x2F;var&#x2F;log&#x2F;messages<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1Pj8JHUY1gK0jSZFCXXcwqXXa-970-240.png" alt="img"></p>
 <p>按<code>ctrl+c</code>键退出文本实时查看界面。</p>
 <h3 id="stat"><a href="#stat" class="headerlink" title="stat"></a>stat</h3><p>命令描述：用来显示文件的详细信息，包括inode、atime、mtime、ctime等。</p>
 <p>命令使用示例：</p>
 <p>查看/etc/passwd文件的详细信息。</p>
 <pre class="line-numbers language-none"><code class="language-none">stat &#x2F;etc&#x2F;passwd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1cI8LHG61gK0jSZFlXXXDKFXa-628-195.png" alt="img"></p>
 <h3 id="wc"><a href="#wc" class="headerlink" title="wc"></a>wc</h3><p>命令描述：wc命令用于统计指定文本的行数、字数、字节数。</p>
@@ -1331,6 +1366,7 @@ ll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 <p>命令使用示例：</p>
 <p>统计/etc/passwd文件的行数。</p>
 <pre class="line-numbers language-none"><code class="language-none">wc -l &#x2F;etc&#x2F;passwd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1E2FKHND1gK0jSZFyXXciOVXa-486-49.png" alt="img"></p>
 <h3 id="file"><a href="#file" class="headerlink" title="file"></a>file</h3><p>命令描述： file命令用于辨识文件类型。</p>
@@ -1363,6 +1399,7 @@ ll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 <p>命令使用示例：</p>
 <p>查看/var/log/messages文件的文件类型。</p>
 <pre class="line-numbers language-none"><code class="language-none">file &#x2F;var&#x2F;log&#x2F;messages<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1aE0BHGL7gK0jSZFBXXXZZpXa-533-49.png" alt="img"></p>
 <h3 id="diff"><a href="#diff" class="headerlink" title="diff"></a>diff</h3><p>命令描述：diff命令用于比较文件的差异。</p>
@@ -1372,6 +1409,7 @@ ll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">echo -e &#39;第一行\n第二行\n我是log1第3行\n第四行\n第五行\n第六行&#39; &gt; 1.log
 echo -e &#39;第一行\n第二行\n我是log2第3行\n第四行&#39; &gt; 2.log<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <ol start="2">
 <li><p>分别查看两个文件<img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1KBxLHHj1gK0jSZFuXXcrHpXa-758-318.png" alt="img"></p>
 </li>
@@ -1439,30 +1477,30 @@ echo -e &#39;第一行\n第二行\n我是log2第3行\n第四行&#39; &gt; 2.log<
 <ul>
 <li><p>查看sshd服务配置文件中监听端口配置所在行编号。</p>
 <pre class="line-numbers language-none"><code class="language-none">grep -n Port &#x2F;etc&#x2F;ssh&#x2F;ssh_config<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 </li>
-</ul>
-<ul>
 <li><p>查询字符串在文本中出现的行数。</p>
 <pre class="line-numbers language-none"><code class="language-none">grep -c localhost &#x2F;etc&#x2F;hosts<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 </li>
-</ul>
-<ul>
 <li><p>反向查找，不显示符合条件的行。</p>
 <pre class="line-numbers language-none"><code class="language-none">ps -ef | grep sshd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">ps -ef | grep -v grep | grep sshd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p> 命令输出结果：</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1GVNGHUT1gK0jSZFrXXcNCXXa-668-149.png" alt="img"></p>
 </li>
 <li><p>以递归的方式查找目录下含有关键字的文件。</p>
 <pre class="line-numbers language-none"><code class="language-none">grep -r *.sh &#x2F;etc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 </li>
-</ul>
-<ul>
 <li><p>使用正则表达式匹配httpd配置文件中异常状态码响应的相关配置。</p>
 <pre class="line-numbers language-none"><code class="language-none">grep &#39;ntp[0-9].aliyun.com&#39; &#x2F;etc&#x2F;ntp.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 </li>
 </ul>
@@ -1543,24 +1581,22 @@ echo -e &#39;第一行\n第二行\n我是log2第3行\n第四行&#39; &gt; 2.log<
 <ul>
 <li><p>删除第3行到最后一行内容。</p>
 <pre class="line-numbers language-none"><code class="language-none">sed &#39;3,$d&#39; &#x2F;etc&#x2F;passwd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 </li>
-</ul>
-<ul>
 <li><p>在最后一行新增行。</p>
 <pre class="line-numbers language-none"><code class="language-none">sed &#39;$a admin:x:1000:1000:admin:&#x2F;home&#x2F;admin:&#x2F;bin&#x2F;bash&#39; &#x2F;etc&#x2F;passwd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 </li>
-</ul>
-<ul>
 <li><p>替换内容。</p>
 <pre class="line-numbers language-none"><code class="language-none">sed &#39;s&#x2F;SELINUX&#x3D;disabled&#x2F;SELINUX&#x3D;enforcing&#x2F;&#39; &#x2F;etc&#x2F;selinux&#x2F;config<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 </li>
-</ul>
-<ul>
 <li><p>替换行。</p>
 <pre class="line-numbers language-none"><code class="language-none">sed &#39;1c abcdefg&#39; &#x2F;etc&#x2F;passwd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 </li>
 </ul>
@@ -1626,45 +1662,38 @@ echo -e &#39;第一行\n第二行\n我是log2第3行\n第四行&#39; &gt; 2.log<
 <ul>
 <li><p>查看本机IP地址。</p>
 <pre class="line-numbers language-none"><code class="language-none">ifconfig eth0 |awk &#39;&#x2F;inet&#x2F;&#123;print $2&#125;&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 </li>
-</ul>
-<ul>
 <li><p>查看本机剩余磁盘容量。</p>
 <pre class="line-numbers language-none"><code class="language-none">df -h |awk &#39;&#x2F;\&#x2F;$&#x2F;&#123;print $4&#125;&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 </li>
-</ul>
-<ul>
 <li><p>统计系统用户个数。</p>
 <pre class="line-numbers language-none"><code class="language-none">awk -F: &#39;$3&lt;1000&#123;x++&#125; END&#123;print x&#125;&#39; &#x2F;etc&#x2F;passwd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 </li>
-</ul>
-<ul>
 <li><p>输出其中登录Shell不以nologin结尾（对第7个字段做!~反向匹配）的用户名、登录Shell信息。</p>
 <pre class="line-numbers language-none"><code class="language-none">awk -F: &#39;$7!~&#x2F;nologin$&#x2F;&#123;print $1,$7&#125;&#39; &#x2F;etc&#x2F;passwd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 </li>
-</ul>
-<ul>
 <li><p>输出/etc/passwd文件中前三行记录的用户名和用户uid。</p>
 <pre class="line-numbers language-none"><code class="language-none">head -3 &#x2F;etc&#x2F;passwd | awk  &#39;BEGIN&#123;FS&#x3D;&quot;:&quot;;print &quot;name\tuid&quot;&#125;&#123;print $1,&quot;\t&quot;$3&#125;END&#123;print &quot;sum lines &quot;NR&#125;&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 </li>
-</ul>
-<ul>
 <li><p>查看tcp连接数。</p>
 <pre class="line-numbers language-none"><code class="language-none">netstat -na | awk &#39;&#x2F;^tcp&#x2F; &#123;++S[$NF]&#125; END &#123;for(a in S) print a, S[a]&#125;&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 </li>
-</ul>
-<ul>
 <li><p>关闭指定服务的所有的进程。</p>
-<pre class="line-numbers language-none"><code class="language-none">ps -ef | grep httpd | awk &#123;&#39;print $2&#39;&#125; | xargs kill -9<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h3></li>
+<pre class="line-numbers language-none"><code class="language-none">ps -ef | grep httpd | awk &#123;&#39;print $2&#39;&#125; | xargs kill -9<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
-<p>命令描述：cut命令主要用来切割字符串，可以对输入的数据进行切割然后输出。</p>
+<h3 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h3><p>命令描述：cut命令主要用来切割字符串，可以对输入的数据进行切割然后输出。</p>
 <p>命令格式：<code>cut [参数] [文件]</code>。</p>
 <p>参数说明：</p>
 <table>
@@ -1731,24 +1760,22 @@ echo -e &#39;第一行\n第二行\n我是log2第3行\n第四行&#39; &gt; 2.log<
 <ul>
 <li><p>将输入字符由大写转换为小写。</p>
 <pre class="line-numbers language-none"><code class="language-none">echo &quot;HELLO WORLD&quot; | tr &#39;A-Z&#39; &#39;a-z&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 </li>
-</ul>
-<ul>
 <li><p>删除字符。</p>
 <pre class="line-numbers language-none"><code class="language-none">echo &quot;hello 123 world 456&quot; | tr -d &#39;0-9&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 </li>
-</ul>
-<ul>
 <li><p>压缩字符。</p>
 <pre class="line-numbers language-none"><code class="language-none">echo &quot;thissss is      a text linnnnnnne.&quot; | tr -s &#39; sn&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 </li>
-</ul>
-<ul>
 <li><p>产生随机密码。</p>
 <pre class="line-numbers language-none"><code class="language-none">cat &#x2F;dev&#x2F;urandom | tr -dc a-zA-Z0-9 | head -c 13<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1kGFGHQP2gK0jSZPxXXacQpXa-573-69.png" alt="img"></p>
 </li>
@@ -1762,8 +1789,10 @@ echo -e &#39;第一行\n第二行\n我是log2第3行\n第四行&#39; &gt; 2.log<
 <li><p>显示变量</p>
 <p>首先在shell环境中定义一个临时变量name。</p>
 <pre class="line-numbers language-none"><code class="language-none">export name&#x3D;&quot;Tom&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>使用echo命令将变量name的值显示到终端。</p>
 <pre class="line-numbers language-none"><code class="language-none">echo $name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>输出结果：</p>
 </li>
 </ul>
@@ -1772,14 +1801,17 @@ echo -e &#39;第一行\n第二行\n我是log2第3行\n第四行&#39; &gt; 2.log<
 <li><p>显示结果定向至文件</p>
 <p>以下命令会将文本<code>This is a test text.</code>输出重定向到文件test.txt中，如果文件已存在，将会覆盖文件内容，如果不存在则创建。其中<code>&gt;</code>符号表示输出重定向。</p>
 <pre class="line-numbers language-none"><code class="language-none">echo &quot;This is a test text.&quot; &gt; test.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>如果您希望将文本追加到文件内容最后，而不是覆盖它，请使用<code>&gt;&gt;</code>输出追加重定向符号。</p>
 </li>
 <li><p>显示命令执行结果</p>
 <p>以下命令将会在终端显示当前的工作路径。</p>
 <pre class="line-numbers language-none"><code class="language-none">echo &#96;pwd&#96;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>注意：pwd命令是用一对反引号（``）包裹，而不是一对单引号（’’）。</p>
 <p>使用<code>$(command)</code>形式可以达到相同效果。</p>
 <pre class="line-numbers language-none"><code class="language-none">echo $(pwd)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>输出结果：</p>
 </li>
 </ul>
@@ -1879,6 +1911,7 @@ echo -e &#39;第一行\n第二行\n我是log2第3行\n第四行&#39; &gt; 2.log<
 <ul>
 <li><p>按照默认格式查看当前系统时间</p>
 <pre class="line-numbers language-none"><code class="language-none">date<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>输出结果：</p>
 </li>
 </ul>
@@ -1886,6 +1919,7 @@ echo -e &#39;第一行\n第二行\n我是log2第3行\n第四行&#39; &gt; 2.log<
 <ul>
 <li><p>按照指定格式查看当前系统时间</p>
 <pre class="line-numbers language-none"><code class="language-none">date &quot;+%Y-%m-%d %H:%M:%S&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>输出结果：</p>
 </li>
 </ul>
@@ -1893,6 +1927,7 @@ echo -e &#39;第一行\n第二行\n我是log2第3行\n第四行&#39; &gt; 2.log<
 <ul>
 <li><p>查看今天是当年中的第几天</p>
 <pre class="line-numbers language-none"><code class="language-none">date &quot;+%j&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>输出结果：</p>
 </li>
 </ul>
@@ -1900,6 +1935,7 @@ echo -e &#39;第一行\n第二行\n我是log2第3行\n第四行&#39; &gt; 2.log<
 <ul>
 <li><p>将系统的当前时间设置为2020年02月20日20点20分20秒</p>
 <pre class="line-numbers language-none"><code class="language-none">date -s &quot;20200220 20:20:20&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>输出结果：</p>
 </li>
 </ul>
@@ -1910,8 +1946,10 @@ echo -e &#39;第一行\n第二行\n我是log2第3行\n第四行&#39; &gt; 2.log<
 </li>
 </ul>
 <pre class="line-numbers language-none"><code class="language-none">yum -y install ntp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>  b. 用ntpdate从时间服务器更新时间</p>
 <pre class="line-numbers language-none"><code class="language-none">ntpdate time.nist.gov<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>  输出结果：</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB11jd_Xj39YK4jSZPcXXXrUFXa-728-51.png" alt="img"></p>
 <h3 id="wget"><a href="#wget" class="headerlink" title="wget"></a>wget</h3><p>命令描述：在终端中下载文件。</p>
@@ -1952,6 +1990,7 @@ echo -e &#39;第一行\n第二行\n我是log2第3行\n第四行&#39; &gt; 2.log<
 <p>命令使用示例：</p>
 <p>下载一张图片到路径/root/static/img/中，<code>-p</code>参数默认值为当前路径，如果指定路径不存在会自动创建。</p>
 <pre class="line-numbers language-none"><code class="language-none">wget -P &#x2F;root&#x2F;static&#x2F;img&#x2F; http:&#x2F;&#x2F;img.alicdn.com&#x2F;tfs&#x2F;TB1.R._t7L0gK0jSZFxXXXWHVXa-2666-1500.png<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>输出结果：</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1vQxHHFT7gK0jSZFpXXaTkpXa-1740-257.png" alt="img"></p>
 <h3 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h3><p>命令描述：ps命令用于查看系统中的进程状态。</p>
@@ -1991,11 +2030,13 @@ echo -e &#39;第一行\n第二行\n我是log2第3行\n第四行&#39; &gt; 2.log<
 </tbody></table>
 <p>命令使用示例：</p>
 <pre class="line-numbers language-none"><code class="language-none">ps -ef | grep sshd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>输出结果：</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1PWHcaepyVu4jSZFhXXbBpVXa-588-93.png" alt="img"></p>
 <h3 id="top"><a href="#top" class="headerlink" title="top"></a>top</h3><p>命令描述：top命令动态地监视进程活动与系统负载等信息。</p>
 <p>命令使用示例：</p>
 <pre class="line-numbers language-none"><code class="language-none">top<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>输出结果：</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1RGHcaepyVu4jSZFhXXbBpVXa-700-345.png" alt="img"></p>
 <p>命令输出参数解释：</p>
@@ -2100,6 +2141,7 @@ echo -e &#39;第一行\n第二行\n我是log2第3行\n第四行&#39; &gt; 2.log<
 <p>命令使用示例：</p>
 <p>查询出crond服务下的所有进程ID。</p>
 <pre class="line-numbers language-none"><code class="language-none">pidof crond<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>输出结果：</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1iG8KHQL0gK0jSZFAXXcA9pXa-486-44.png" alt="img"></p>
 <h3 id="kill"><a href="#kill" class="headerlink" title="kill"></a>kill</h3><p>命令描述：kill命令用于终止指定PID的服务进程。</p>
@@ -2108,11 +2150,13 @@ echo -e &#39;第一行\n第二行\n我是log2第3行\n第四行&#39; &gt; 2.log<
 <p>命令使用示例：</p>
 <p>删除pid为1247的进程。</p>
 <pre class="line-numbers language-none"><code class="language-none">kill -9 1247<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h3 id="killall"><a href="#killall" class="headerlink" title="killall"></a>killall</h3><p>命令描述：killall命令用于终止指定名称的服务对应的全部进程。</p>
 <p>命令格式：<code>killall [进程名称]</code>。</p>
 <p>命令使用示例：</p>
 <p>删除crond服务下的所有进程。</p>
 <pre class="line-numbers language-none"><code class="language-none">killall crond<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h3 id="reboot"><a href="#reboot" class="headerlink" title="reboot"></a>reboot</h3><p>命令描述：reboot命令用来重启系统。</p>
 <p>命令格式：<code>reboot [-n] [-w] [-d] [-f] [-i]</code>。</p>
 <p>命令参数说明：</p>
@@ -2125,9 +2169,11 @@ echo -e &#39;第一行\n第二行\n我是log2第3行\n第四行&#39; &gt; 2.log<
 </ul>
 <p>命令使用示例：</p>
 <pre class="line-numbers language-none"><code class="language-none">reboot<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h3 id="poweroff"><a href="#poweroff" class="headerlink" title="poweroff"></a>poweroff</h3><p>命令描述：poweroff命令用来关闭系统。</p>
 <p>命令使用示例：</p>
 <pre class="line-numbers language-none"><code class="language-none">poweroff<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h2 id="系统状态检测命令"><a href="#系统状态检测命令" class="headerlink" title="系统状态检测命令"></a>系统状态检测命令</h2><h3 id="ifconfig"><a href="#ifconfig" class="headerlink" title="ifconfig"></a>ifconfig</h3><p>命令描述：ifconfig命令用于获取网卡配置与网络状态等信息。</p>
 <p>命令示例：</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/10/b3IA1hHm/TB1L3dIHUH1gK0jSZSyXXXtlpXa-634-351.png" alt="img"></p>
@@ -2155,30 +2201,27 @@ echo -e &#39;第一行\n第二行\n我是log2第3行\n第四行&#39; &gt; 2.log<
 <ul>
 <li><p>显示系统信息。</p>
 <pre class="line-numbers language-none"><code class="language-none">uname -a<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 </li>
-</ul>
-<ul>
 <li><p>显示当前系统的硬件架构。</p>
 <pre class="line-numbers language-none"><code class="language-none">uname -i<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 </li>
-</ul>
-<ul>
 <li><p>显示操作系统发行编号。</p>
 <pre class="line-numbers language-none"><code class="language-none">uname -r<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 </li>
-</ul>
-<ul>
 <li><p>显示操作系统名称。</p>
 <pre class="line-numbers language-none"><code class="language-none">uname -s<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 </li>
-</ul>
-<ul>
 <li><p>显示主机名称。</p>
 <pre class="line-numbers language-none"><code class="language-none">uname -n<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>命令输出结果：</p>
 </li>
 </ul>
@@ -3084,10 +3127,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

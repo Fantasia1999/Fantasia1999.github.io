@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -469,7 +479,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    267
+                    232
                 </div>
                 
 
@@ -500,29 +510,33 @@
 <p>要不然，重启后，肯定使用eth0设置中没有设dns的相关信息，使<code>/etc/resolv.conf</code>恢复到原来的状态。</p>
 <p>具体操作如下：</p>
 <pre class="line-numbers language-none"><code class="language-none">$ vim &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-eth0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>修改成下面这个样子</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">DEVICE&#x3D;&quot;eth0&quot;
-TYPE&#x3D;&quot;Ethernet&quot;
-UUID&#x3D;&quot;3b5xxc-6xx9-4xx69-9xx6-xxc8xxe5xx52&quot;
-ONBOOT&#x3D;&quot;yes&quot;
-NM_CONTROLLED&#x3D;&quot;yes&quot;
-BOOTPROTO&#x3D;none
-IPADDR&#x3D;xx.xx.xx.xx
-NETMASK&#x3D;&quot;255.255.255.0&quot;
-GATEWAY&#x3D;xx.xx.xx.xx
-BROADCAST&#x3D;&quot;xx.xx.xx.xx&quot;
-PREFIX&#x3D;24
-DEFROUTE&#x3D;yes
-IPV4_FAILURE_FATAL&#x3D;yes
-IPV6INIT&#x3D;no
-NAME&#x3D;&quot;System eth0&quot;
-DNS1&#x3D;x.x.x.x #114.114.114.114
-DNS2&#x3D;x.x.x.x #8.8.8.8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">DEVICE</span><span class="token operator">=</span><span class="token string">"eth0"</span>
+<span class="token assign-left variable">TYPE</span><span class="token operator">=</span><span class="token string">"Ethernet"</span>
+<span class="token assign-left variable">UUID</span><span class="token operator">=</span><span class="token string">"3b5xxc-6xx9-4xx69-9xx6-xxc8xxe5xx52"</span>
+<span class="token assign-left variable">ONBOOT</span><span class="token operator">=</span><span class="token string">"yes"</span>
+<span class="token assign-left variable">NM_CONTROLLED</span><span class="token operator">=</span><span class="token string">"yes"</span>
+<span class="token assign-left variable">BOOTPROTO</span><span class="token operator">=</span>none
+<span class="token assign-left variable">IPADDR</span><span class="token operator">=</span>xx.xx.xx.xx
+<span class="token assign-left variable">NETMASK</span><span class="token operator">=</span><span class="token string">"255.255.255.0"</span>
+<span class="token assign-left variable">GATEWAY</span><span class="token operator">=</span>xx.xx.xx.xx
+<span class="token assign-left variable">BROADCAST</span><span class="token operator">=</span><span class="token string">"xx.xx.xx.xx"</span>
+<span class="token assign-left variable">PREFIX</span><span class="token operator">=</span><span class="token number">24</span>
+<span class="token assign-left variable">DEFROUTE</span><span class="token operator">=</span>yes
+<span class="token assign-left variable">IPV4_FAILURE_FATAL</span><span class="token operator">=</span>yes
+<span class="token assign-left variable">IPV6INIT</span><span class="token operator">=</span>no
+<span class="token assign-left variable">NAME</span><span class="token operator">=</span><span class="token string">"System eth0"</span>
+<span class="token assign-left variable">DNS1</span><span class="token operator">=</span>x.x.x.x <span class="token comment">#114.114.114.114</span>
+<span class="token assign-left variable">DNS2</span><span class="token operator">=</span>x.x.x.x <span class="token comment">#8.8.8.8</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>这样设置后/etc/resolv.conf里面根本就不需要设置。</p>
 <p>重启</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ service network restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ <span class="token function">service</span> network restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>可以发现/etc/resolv.conf里面就有两个dns的解析ip了。</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ cat &#x2F;etc&#x2F;resolv.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ <span class="token function">cat</span> /etc/resolv.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
                 
             </div>
@@ -1268,10 +1282,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

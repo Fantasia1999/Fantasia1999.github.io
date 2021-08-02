@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -486,7 +496,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    557
+                    525
                 </div>
                 
 
@@ -515,26 +525,28 @@
 <h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>我有个朋友……</p>
 <p>帮朋友下一本书(<a href="!%5Bimg%5D(file:///C:%5CUsers%5Czhuom%5CAppData%5CRoaming%5CTencent%5CQQTempSys%25W@GJ$ACOF(TYDYECOKVDYB.png)https://kawajun.meclib.jp/store_deve_catalog/book/#target/page_no=1)">链接</a>，朋友告诉我单页pdf可以下载，能不能写个脚本批量下载了，我想既然单页可以下载，那分析一波下载url，或许有解，然后合并一下可能就完事，工作量不大。爽快答应！</p>
 <p>打开网站，发现单页pdf的url长这个样子<code>https://kawajun.meclib.jp/store_deve_catalog/book/pdf/0005.pdf</code>，改了个页数，用IDM试了一下，可以下载，简直太好了，不得不感叹网站的友好，于是，用py把链接打出来，在IDM上从剪切板导入链接批量下载。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"># https:&#x2F;&#x2F;kawajun.meclib.jp&#x2F;store_deve_catalog&#x2F;book&#x2F;pdf&#x2F;0005.pdf
-for i in range(1, 1153):
-    print(&quot;https:&#x2F;&#x2F;kawajun.meclib.jp&#x2F;store_deve_catalog&#x2F;book&#x2F;pdf&#x2F;&quot;+ str(i).zfill(4)+&#39;.pdf&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># https://kawajun.meclib.jp/store_deve_catalog/book/pdf/0005.pdf</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1153</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"https://kawajun.meclib.jp/store_deve_catalog/book/pdf/"</span><span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span>zfill<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">'.pdf'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <h1 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h1><h2 id="shell脚本"><a href="#shell脚本" class="headerlink" title="shell脚本"></a>shell脚本</h2><p>合并时候遇到了有加密口令的问题，于是乎开始Google解决方案，最终在github上找到了dalao的<code>unlock-pdf</code>项目。</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">#!&#x2F;bin&#x2F;bash
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token shebang important">#!/bin/bash</span>
 
-if [[ $# &#x3D;&#x3D; 1 ]]; then
-	input_dir&#x3D;$1
-else
-	echo &quot;Usage: $0 &#123;input_dir&#125;&quot;
-	exit 255
-fi
+<span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$#</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+	<span class="token assign-left variable">input_dir</span><span class="token operator">=</span><span class="token variable">$1</span>
+<span class="token keyword">else</span>
+	<span class="token builtin class-name">echo</span> <span class="token string">"Usage: <span class="token variable">$0</span> &#123;input_dir&#125;"</span>
+	<span class="token builtin class-name">exit</span> <span class="token number">255</span>
+<span class="token keyword">fi</span>
 
-output_dir&#x3D;&quot;$&#123;input_dir&#125;.decrypted&quot;
-mkdir -p $output_dir
+<span class="token assign-left variable">output_dir</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$&#123;input_dir&#125;</span>.decrypted"</span>
+<span class="token function">mkdir</span> -p <span class="token variable">$output_dir</span>
 
-for fn in &#96;ls -1 $input_dir&#96;
-do
-	qpdf --decrypt $&#123;input_dir&#125;&#x2F;$fn $&#123;output_dir&#125;&#x2F;$fn
-done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">for</span> <span class="token for-or-select variable">fn</span> <span class="token keyword">in</span> <span class="token variable"><span class="token variable">`</span><span class="token function">ls</span> -1 $input_dir<span class="token variable">`</span></span>
+<span class="token keyword">do</span>
+	qpdf --decrypt <span class="token variable">$&#123;input_dir&#125;</span>/<span class="token variable">$fn</span> <span class="token variable">$&#123;output_dir&#125;</span>/<span class="token variable">$fn</span>
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>将下列代码保存为.sh文件，windows平台打开的话，需要用WSL或者下载一个Git，就可以支持shell脚本。</p>
 <h2 id="安装qpdf"><a href="#安装qpdf" class="headerlink" title="安装qpdf"></a>安装qpdf</h2><p>当然，这个脚本是依赖于一个软件<code>qpdf</code>，如果采用brew安装的话，因为网络的原因，速度可能要慢一点，所以直接去<a target="_blank" rel="noopener" href="http://qpdf.sourceforge.net/">官网</a>下载。</p>
 <p>Windows平台：将<code>D:\qpdf-9.1.1\bin</code>添加到环境变量，即可安装成功。</p>
@@ -544,8 +556,10 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 ----inputfile
 -------test1.pdf
 -------test2.pdf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>打开Git bash</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">.&#x2F;unlock-pdf.sh inputfile&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">./unlock-pdf.sh inputfile/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>这样，就开始自动解密。</p>
 <p>解密完成后，会生成一个<code>.decrypted</code>文件夹，每个解密后的pdf文件都会在这里。</p>
 
@@ -1308,10 +1322,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

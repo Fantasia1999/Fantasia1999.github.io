@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -496,7 +506,7 @@
             <div id="articleContent">
                 <p>郑州轻工业学院首届“瑞琪杯”大学生程序设计大赛 F 1006</p>
 <p>HDU Virtual Contest 可以找到原题<br>迷宫bfs，求步数最少，多了一个跳跃的判断，题意有点模糊。</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>Time Limit: 2000/1000 MS (Java/Others) Memory Limit: 32768/32768 K (Java/Others)<br>Total Submission(s): 1 Accepted Submission(s): 1</p>
 <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>天外来客 likes playing computer game very much. Recently, he is playing a RPG game called “仙剑奇侠传4”. But when he was playing the game, he meets a very mad problem. There are so many mazes in the game and CHN was not good at passing the mazes. So he is very unhappy these days. Can you help him?<br>Here is a magic maze. When one person stands on a position(x0, y0), he can choose to jump to the other one position(x1, y1), which has a relation with the position(x0, y0). <strong>One position can have only one relation.（这里似乎有问题？？？）</strong> One person can move left, right, up or down. One move or one jump will take one minute.<br>There are only have ‘.’ or ‘#’, ’S’, ’E’ on the map of the magic maze. ’.’ indicates the blank which person can move on, ‘#’ indicates wall. Maybe a blank have relation of a wall. ’S’ indicates the entrance location. ‘E’ indicates the exit location . There is only one ‘S’ and one ‘E’.</p>
 <h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>The first line is an integer t, which means the number of test case in the data file. For each test case, the first line consist of two integer r (2&lt;=r&lt;=20) and c (2&lt;=c&lt;20), which mean the number of rows or columns. The next r line is the map’s description; each line consists of c letters. The next line is an integer k (0&lt;=k&lt;=(r*c)/2), which mean the relations of two position. The next k lines, each line consist of four integers x1, y1, x2, y2, which means (x1,y1) has a relation with (x2, y2) and (x2, y2) also has a relation with (x1, y1).<br>(0&lt;=x1,x2=&lt;r-1,0&lt;=y1,y2&lt;=c-1)<br>You can jump from one position to another.</p>
@@ -513,7 +523,9 @@ S..#..
 1 2 4 4
 0 1 4 5
 0 0 4 2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><pre class="line-numbers language-none"><code class="language-none">5<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>BFS水题，看错题了，gg。</p>
 <h3 id="Codes"><a href="#Codes" class="headerlink" title="Codes"></a>Codes</h3><p>AC代码</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#pragma warning(disable:4996)
@@ -1386,10 +1398,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

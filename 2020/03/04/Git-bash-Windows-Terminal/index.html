@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -486,7 +496,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    386
+                    380
                 </div>
                 
 
@@ -535,13 +545,15 @@
 <h2 id="乱码问题"><a href="#乱码问题" class="headerlink" title="乱码问题"></a>乱码问题</h2><p><strong>设置<code>git bash</code> 编码格式为<code>UTF-8</code></strong></p>
 <p>打开<code>bash.bashrc</code>配置文件，路径为：<code>C:\Program Files\Git\etc</code></p>
 <p>添加代码</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">export LANG&#x3D;&quot;zh_CN.UTF-8&quot;
-export LC_ALL&#x3D;&quot;zh_CN.UTF-8&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">LANG</span></span><span class="token operator">=</span><span class="token string">"zh_CN.UTF-8"</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">LC_ALL</span></span><span class="token operator">=</span><span class="token string">"zh_CN.UTF-8"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p><strong>设置<code>vim</code>编码格式为<code>UTF-8</code></strong></p>
 <p>编辑<code>vimrc</code>文件，路径为：<code>C:\Program Files\Git\etc</code></p>
 <p>添加以下代码</p>
 <pre class="line-numbers language-none"><code class="language-none">set nu &quot; show line number
 set fencs&#x3D;utf-8,gbk,utf-16,utf-32,ucs-bom<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
                 
             </div>
             <hr/>
@@ -1321,10 +1333,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

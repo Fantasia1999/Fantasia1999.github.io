@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -478,7 +488,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    717
+                    710
                 </div>
                 
 
@@ -509,9 +519,10 @@
 <h2 id="具体方法"><a href="#具体方法" class="headerlink" title="具体方法"></a>具体方法</h2><p>!&gt; 由于Pygments是由Python写的，请确保本地环境已安装Python3.x。</p>
 <ol>
 <li><p>通过<code>pip</code>命令安装<code>Pygments</code>的<code>Packaged versions</code></p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">pip install Pygments<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">pip <span class="token function">install</span> Pygments<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p><code>Pygments</code>提供多种使用方式，可以在<a target="_blank" rel="noopener" href="https://pygments.org/docs/quickstart/">这里</a>查看，这里我们介绍<a target="_blank" rel="noopener" href="https://pygments.org/docs/cmdline/"><code>CLI</code></a>模式，也就是<code>Command Line Interface</code>。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pygmentize -f html -O full -o test.html test.cpp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>对命令做一些解释：</p>
 <ul>
 <li><code>-f</code> 即format，表示输出文件的格式。</li>
@@ -526,15 +537,18 @@
 </li>
 </ol>
 <h2 id="部分其他参数以及输出效果"><a href="#部分其他参数以及输出效果" class="headerlink" title="部分其他参数以及输出效果"></a>部分其他参数以及输出效果</h2><p>!&gt; 以下部分test.html文件的预览是在原Microsoft Edge中截图，chrome截图效果可能会差些，但是不影响。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ pygmentize -O full,style&#x3D;emacs -o test.html test.cpp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ pygmentize -O full,style<span class="token operator">=</span>emacs -o test.html test.cpp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://img.zhuomu.xyz/view/img/2020/05/18/YQLR0301/image-20200518015322785.png" alt="image-20200518015322785"></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ pygmentize -f html -O style&#x3D;colorful,linenos&#x3D;1 -l cpp -o test.html test.cpp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ pygmentize -f html -O <span class="token assign-left variable">style</span><span class="token operator">=</span>colorful,linenos<span class="token operator">=</span><span class="token number">1</span> -l cpp -o test.html test.cpp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://img.zhuomu.xyz/view/img/2020/05/18/YQLR0301/image-20200518015201858.png" alt="image-20200518015201858"></p>
 <p>由于我比较懒，于是在<code>test.cpp</code>同目录下写了自动脚本，渲染完成后，直接调用浏览器打开html文件，这样，直接在命令行中运行bash脚本就可以直接打开渲染结果，然后复制到word文档中去。</p>
 <p>以下分享一下我的脚本<code>auto.sh</code> 的内容</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">#!&#x2F;bin&#x2F;sh
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/sh</span>
 pygmentize -f html -O full -o test.html test.cpp
-&quot;C:\Program Files (x86)\Google\Chrome\Application\chrome.exe&quot; $1 test.html<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token string">"C:\Program Files (x86)\Google\Chrome\Application<span class="token entity" title="\c">\c</span>hrome.exe"</span> <span class="token variable">$1</span> test.html<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>当然，你也可选择其他浏览器来打开这个html文件，只需要修改路径即可。</p>
 
                 
@@ -1300,10 +1314,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -482,7 +492,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    436
+                    431
                 </div>
                 
 
@@ -522,33 +532,31 @@
 <ul>
 <li><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nmcli d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>我这里是<code>ens33</code></p>
-</li>
+我这里是<code>ens33</code></li>
 </ul>
 </li>
 <li><p>编辑该网卡的配置</p>
 <ul>
-<li><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo vi &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-ens33<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<li><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">vi</span> /etc/sysconfig/network-scripts/ifcfg-ens33<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="http://img.zhuomu.xyz/view/img/2021/04/29/image-20210429-b8a4fe9.png" alt="ifcfg-ens33"></p>
-<p>这里我们将<code>BOTPROTO</code>设为<code>dhcp</code>，<code>ONBOOT</code>设为<code>yes</code></p>
-<p>按<code>Esc</code>，输入<code>:wq</code>进行保存</p>
-</li>
+<img src="http://img.zhuomu.xyz/view/img/2021/04/29/image-20210429-b8a4fe9.png" alt="ifcfg-ens33">这里我们将<code>BOTPROTO</code>设为<code>dhcp</code>，<code>ONBOOT</code>设为<code>yes</code>按<code>Esc</code>，输入<code>:wq</code>进行保存</li>
 </ul>
 </li>
 <li><p>重启网卡</p>
 <ul>
-<li><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl restart network.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-再次执行命令，发现可以正常安装了</li>
+<li><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl restart network.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 </li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo yum install update<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>再次执行命令，发现可以正常安装了</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> yum <span class="token function">install</span> update<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>如果是要配置静态IP的话，还需要在后边附上配置，追加以下即可。</p>
 <pre class="line-numbers language-none"><code class="language-none">IPADDR&#x3D;192.168.123.100
 NETMASK&#x3D;255.255.255.0
 GATEWAY&#x3D;192.168.123.1
 DNS1&#x3D;192.168.123.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>修改<code>BOOTPROTO</code>参数：<br><code>BOOTPROTO=static</code></p>
 <blockquote>
 <p>参考链接</p>
@@ -1317,10 +1325,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

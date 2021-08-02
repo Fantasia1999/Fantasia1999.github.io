@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -588,10 +598,12 @@ module<span class="token punctuation">.</span><span class="token function-variab
         item<span class="token operator">:</span> items<span class="token punctuation">,</span>
     <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>接着又搞了一个研究生处的RSS。</p>
 <p>这个和前边的很不一样，看到这研究生处官网的HTML代码，我开始怀疑这个人的能力了！怎么和前边不一样啊，class让你吃了吗？别人官网都有class这个的，你没有我怎么玩啊？</p>
 <p>那好吧，我又开始了我的传统艺能，看看人家是怎么写的吧，通过学习，好像也发现了点东西。</p>
 <pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> list <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'div table tbody tr td table tbody tr'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>这句话看样子是把这个HTML的结构给表示出来了，于是对着修改成了现在的样子。</p>
 <p>运行后，卧槽！牛逼啊！不愧是我！</p>
 <p>至此，研究生处的RSS也就出生了。（当然，也咨询了爬虫大佬栋哥<a target="_blank" rel="noopener" href="https://github.com/kiedeng">@kiedeng</a>，栋哥说用正则搞一下，凭借着正则的思想，我才发现了这段灵魂代码，感谢栋哥。）</p>
@@ -636,11 +648,13 @@ module<span class="token punctuation">.</span><span class="token function-variab
         item<span class="token operator">:</span> items<span class="token punctuation">,</span>
     <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="添加脚本文档"><a href="#添加脚本文档" class="headerlink" title="添加脚本文档"></a>添加脚本文档</h2><p>这部分说白了就是在文档中显示这个rss，帮助其他人使用，按照教程的操作，<code>npm run docs:dev</code>，好了，我运行了，但是，他报错了！这也是之前安装依赖的时候出现的错误没有注意，还好没影响我调试脚本。搞了半天，也检查了网络问题，用了淘宝源，能用的方法都用了，还是安装不成功。我投降！</p>
 <p>好在这部分只需要按照格式写一下markdown就可以了。</p>
 <h2 id="所以，pr到底是啥？"><a href="#所以，pr到底是啥？" class="headerlink" title="所以，pr到底是啥？"></a>所以，pr到底是啥？</h2><p>pull request，简称PR。</p>
 <p>确认我只在本地修改了4个文件（增加了两个，修改了两个）后，运行命令git add命令</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git add .\lib\routes\universities\zzuli\campus\index.js .\lib\routes\universities\zzuli\yjsc\index.js .\lib\router.js .\docs\university.md<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> <span class="token function">add</span> .<span class="token punctuation">\</span>lib<span class="token punctuation">\</span>routes<span class="token punctuation">\</span>universities<span class="token punctuation">\</span>zzuli<span class="token punctuation">\</span>campus<span class="token punctuation">\</span>index.js .<span class="token punctuation">\</span>lib<span class="token punctuation">\</span>routes<span class="token punctuation">\</span>universities<span class="token punctuation">\</span>zzuli<span class="token punctuation">\</span>yjsc<span class="token punctuation">\</span>index.js .<span class="token punctuation">\</span>lib<span class="token punctuation">\</span>router.js .<span class="token punctuation">\</span>docs<span class="token punctuation">\</span>university.md<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>然后git status一波看结果。</p>
 <pre class="line-numbers language-none"><code class="language-none">PS F:\DESK\rsshub\RSSHub&gt; git status
 On branch master
@@ -662,6 +676,7 @@ Changes not staged for commit:
 Untracked files:
 
         lib&#x2F;routes&#x2F;universities&#x2F;zzuli&#x2F;ggtz.js<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>我好想还有些残局没有收拾，忘记删除最开始的调试脚本，ggtz.js，还有一个文件进行了修改，并没有add它。</p>
 <ul>
 <li>删除ggtz.js <code>del ggtz.js</code>当然，linux是<code>rm -rf ggtz.js</code></li>
@@ -669,6 +684,7 @@ Untracked files:
 </ul>
 <p>开始commit</p>
 <pre class="line-numbers language-none"><code class="language-none">git commit -m &quot;Add 郑州轻工业大学&quot; -m &quot;包括郑州轻工业大学 智慧门户：公告信息、学工信息、教学信息、信息快递、学术报告、科研信息、网络公告、班车查询、周会表；研究生处：公告通知、招生工作、新闻资讯、培养工作、学位工作&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>这里说明一下，因为我想在pr中呈现出commit和description，我担心我只提供commit的话，对于其他人查看可能并不是很友好，于是搜了一下，第一个-m参数是commit，第二个-m参数是description部分。（事实证明，这好像没啥用，这个只是在本地的自己fork的仓库中呈现，pr的时候是有专门写描述的地方的。</p>
 <p>最后就是git push了，第一次好像没有push成功，根据提示又pull，push了几次，算是成功了。</p>
 <p>接下来就是终极问题，如何提交我的pr，在仓库中确确实实见到了我的commit，但是我怎样提交给原仓库呢？又是一波学习。</p>
@@ -1457,10 +1473,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

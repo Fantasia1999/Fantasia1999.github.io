@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -494,7 +504,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    1.4k
                 </div>
                 
 
@@ -527,12 +537,14 @@
 <p>提示：Centos官方已宣布在2020年停止对Centos6的维护更新，各大软件开发商也逐渐停止对Centos6的兼容，新服务器不建议使用Centos6</p>
 <h2 id="下载安装："><a href="#下载安装：" class="headerlink" title="下载安装："></a>下载安装：</h2><p>CentOS 7参考如下命令：</p>
 <pre class="line-numbers language-none"><code class="language-none">yum install -y wget &amp;&amp; wget -O install.sh http:&#x2F;&#x2F;download.bt.cn&#x2F;install&#x2F;install_6.0.sh &amp;&amp; sh install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p> 安装时，一路默认即可，该输入Y的输入Y。</p>
 <p> 安装完成，会出现面板地址及默认账号与密码，如下图。（注意新版本在端口号后面还有一个字符串，<strong>一定要全部保存</strong>）。</p>
 <pre class="line-numbers language-none"><code class="language-none">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
 Bt-Panel: http:&#x2F;&#x2F;your_ip:port&#x2F;xxxxxx
 username: default_useaname
 password: default_passwd<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>完成到这里时，可以用vultr自带的snapshot功能打一个快照，毕竟宝塔安装过程挺枯燥的。</p>
 <h2 id="配置宝塔"><a href="#配置宝塔" class="headerlink" title="配置宝塔"></a>配置宝塔</h2><ul>
 <li>访问<code>Bt-Panel-URL</code>地址，输入账号密码</li>
@@ -554,9 +566,11 @@ password: default_passwd<span aria-hidden="true" class="line-numbers-rows"><span
 <h1 id="0x03-安装V2ray"><a href="#0x03-安装V2ray" class="headerlink" title="0x03 安装V2ray"></a>0x03 安装V2ray</h1><p>这次使用官方脚本来安装 v2ray，不再使用第三方脚本，第三方脚本有不稳定或安全因素。 当然，第三方脚本用起来确实方便许多。使用官方脚本是因为我试过一个第三方脚本，搞了半天没装上去。</p>
 <p><strong>V2ray 官方脚本：</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">bash &lt;(curl -L -s https:&#x2F;&#x2F;install.direct&#x2F;go.sh)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p> 安装完成后会得到<code>端口</code>和 <code>UUID</code>，这两个都是随机生成的，但是有一定的规则性，不要自己随便修改。<strong>哦，对，这个东西也要记下来。</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">PORT:12345
 UUID:3dc8036b-c83a-4537-90d2-0d72a017ce09<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>到这里 ，我们已经完成大部分的工作了。当我第一次用官方脚本的时候也发现，竟然如此轻松。</p>
 <h1 id="0x04-配置SSL"><a href="#0x04-配置SSL" class="headerlink" title="0x04 配置SSL"></a>0x04 配置SSL</h1><p>选择 Let’s Encrypt ，推荐使用文件方式验证，输入你的邮箱，如果你的域名 ip 解析正确的话直接点提交就申请 SSL成功了，成功后如图：</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/03/03/KLYLUZMP/SSL.png" alt="SSL"> </p>
@@ -572,6 +586,7 @@ UUID:3dc8036b-c83a-4537-90d2-0d72a017ce09<span aria-hidden="true" class="line-nu
     proxy_set_header Host $http_host;
     proxy_read_timeout 300s;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ol>
 <li>第一行的<code>cs</code>是你自己<code>ws</code>的<code>path</code>路径，<code>斜杠</code>不要删除，可以自己修改，也可以不改；</li>
 <li> 还记得用官方脚本安装v2ray后出现的<code>PORT</code>吗，这个<code>PORT</code>后面的就是你的端口号。修改上面代码后保存。</li>
@@ -588,81 +603,81 @@ UUID:3dc8036b-c83a-4537-90d2-0d72a017ce09<span aria-hidden="true" class="line-nu
 <p> <strong>G ：</strong>光标移到最后一行 </p>
 <p> <strong>选</strong>中内容以后就可以其他的操作了，比如：<br> <strong>d</strong> 删除<strong>选</strong>中内容<br> <strong>y</strong> 复制<strong>选</strong>中内容到0号寄存器<br> <strong>“+y</strong> 复制<strong>选</strong>中内容到＋寄存器，也就是系统的剪贴板，供其他程序用<br>[/collapse]</p>
 <p>[collapse status=”false” title=”config.json”]</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;
-  &quot;policy&quot;: &#123;
-    &quot;levels&quot;: &#123;
-      &quot;0&quot;: &#123;
-        &quot;uplinkOnly&quot;: 0,
-        &quot;downlinkOnly&quot;: 0,
-        &quot;connIdle&quot;: 150,
-        &quot;handshake&quot;: 4
-      &#125;
-    &#125;
-  &#125;,
-  &quot;inbound&quot;: &#123;
-    &quot;listen&quot;: &quot;127.0.0.1&quot;,
-    &quot;port&quot;: 31914,    # 这里填写你的 v2ray 端口号，复制脚本请产出这句注释
-    &quot;protocol&quot;: &quot;vmess&quot;,
-    &quot;settings&quot;: &#123;
-      &quot;clients&quot;: [
-        &#123;
-          &quot;id&quot;: &quot;e1bc89df-c245-4da6-90cc-2d20ad80a611&quot;,    # 这里填写你的 v2ray UUID，复制脚本请删除这句注释
-          &quot;level&quot;: 1,
-          &quot;alterId&quot;: 32
-        &#125;
-      ]
-    &#125;,
-    &quot;streamSettings&quot;: &#123;
-      &quot;network&quot;: &quot;ws&quot;,
-      &quot;security&quot;: &quot;auto&quot;,
-      &quot;wsSettings&quot;: &#123;
-        &quot;path&quot;: &quot;&#x2F;cs&quot;,   # 这里填是你自己 ws 的 path,如果修改配置文件的时候没有修改过就不管，复制脚本请删除这句注释
-        &quot;headers&quot;: &#123;
-          &quot;Host&quot;: &quot;ss.example.com&quot;  # 这里填写你的域名，复制脚本请删除这句注释
-        &#125;
-      &#125;
-    &#125;
-  &#125;,
-  &quot;outbound&quot;: &#123;
-    &quot;protocol&quot;: &quot;freedom&quot;,
-    &quot;settings&quot;: &#123; &#125;
-  &#125;,
-  &quot;outboundDetour&quot;: [
-    &#123;
-      &quot;protocol&quot;: &quot;blackhole&quot;,
-      &quot;settings&quot;: &#123; &#125;,
-      &quot;tag&quot;: &quot;blocked&quot;
-    &#125;
-  ],
-  &quot;routing&quot;: &#123;
-    &quot;strategy&quot;: &quot;rules&quot;,
-    &quot;settings&quot;: &#123;
-      &quot;rules&quot;: [
-        &#123;
-          &quot;type&quot;: &quot;field&quot;,
-          &quot;ip&quot;: [
-            &quot;0.0.0.0&#x2F;8&quot;,
-            &quot;10.0.0.0&#x2F;8&quot;,
-            &quot;100.64.0.0&#x2F;10&quot;,
-            &quot;127.0.0.0&#x2F;8&quot;,
-            &quot;169.254.0.0&#x2F;16&quot;,
-            &quot;172.16.0.0&#x2F;12&quot;,
-            &quot;192.0.0.0&#x2F;24&quot;,
-            &quot;192.0.2.0&#x2F;24&quot;,
-            &quot;192.168.0.0&#x2F;16&quot;,
-            &quot;198.18.0.0&#x2F;15&quot;,
-            &quot;198.51.100.0&#x2F;24&quot;,
-            &quot;203.0.113.0&#x2F;24&quot;,
-            &quot;::1&#x2F;128&quot;,
-            &quot;fc00::&#x2F;7&quot;,
-            &quot;fe80::&#x2F;10&quot;
-          ],
-          &quot;outboundTag&quot;: &quot;blocked&quot;
-        &#125;
-      ]
-    &#125;
-  &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+  <span class="token property">"policy"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"levels"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+      <span class="token property">"0"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        <span class="token property">"uplinkOnly"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token property">"downlinkOnly"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token property">"connIdle"</span><span class="token operator">:</span> <span class="token number">150</span><span class="token punctuation">,</span>
+        <span class="token property">"handshake"</span><span class="token operator">:</span> <span class="token number">4</span>
+      <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token property">"inbound"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"listen"</span><span class="token operator">:</span> <span class="token string">"127.0.0.1"</span><span class="token punctuation">,</span>
+    <span class="token property">"port"</span><span class="token operator">:</span> <span class="token number">31914</span><span class="token punctuation">,</span>    # 这里填写你的 v2ray 端口号，复制脚本请产出这句注释
+    <span class="token property">"protocol"</span><span class="token operator">:</span> <span class="token string">"vmess"</span><span class="token punctuation">,</span>
+    <span class="token property">"settings"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+      <span class="token property">"clients"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">&#123;</span>
+          <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"e1bc89df-c245-4da6-90cc-2d20ad80a611"</span><span class="token punctuation">,</span>    # 这里填写你的 v2ray UUID，复制脚本请删除这句注释
+          <span class="token property">"level"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+          <span class="token property">"alterId"</span><span class="token operator">:</span> <span class="token number">32</span>
+        <span class="token punctuation">&#125;</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token property">"streamSettings"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+      <span class="token property">"network"</span><span class="token operator">:</span> <span class="token string">"ws"</span><span class="token punctuation">,</span>
+      <span class="token property">"security"</span><span class="token operator">:</span> <span class="token string">"auto"</span><span class="token punctuation">,</span>
+      <span class="token property">"wsSettings"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        <span class="token property">"path"</span><span class="token operator">:</span> <span class="token string">"/cs"</span><span class="token punctuation">,</span>   # 这里填是你自己 ws 的 path<span class="token punctuation">,</span>如果修改配置文件的时候没有修改过就不管，复制脚本请删除这句注释
+        <span class="token property">"headers"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+          <span class="token property">"Host"</span><span class="token operator">:</span> <span class="token string">"ss.example.com"</span>  # 这里填写你的域名，复制脚本请删除这句注释
+        <span class="token punctuation">&#125;</span>
+      <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token property">"outbound"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"protocol"</span><span class="token operator">:</span> <span class="token string">"freedom"</span><span class="token punctuation">,</span>
+    <span class="token property">"settings"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token property">"outboundDetour"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">&#123;</span>
+      <span class="token property">"protocol"</span><span class="token operator">:</span> <span class="token string">"blackhole"</span><span class="token punctuation">,</span>
+      <span class="token property">"settings"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+      <span class="token property">"tag"</span><span class="token operator">:</span> <span class="token string">"blocked"</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"routing"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"strategy"</span><span class="token operator">:</span> <span class="token string">"rules"</span><span class="token punctuation">,</span>
+    <span class="token property">"settings"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+      <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">&#123;</span>
+          <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"field"</span><span class="token punctuation">,</span>
+          <span class="token property">"ip"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"0.0.0.0/8"</span><span class="token punctuation">,</span>
+            <span class="token string">"10.0.0.0/8"</span><span class="token punctuation">,</span>
+            <span class="token string">"100.64.0.0/10"</span><span class="token punctuation">,</span>
+            <span class="token string">"127.0.0.0/8"</span><span class="token punctuation">,</span>
+            <span class="token string">"169.254.0.0/16"</span><span class="token punctuation">,</span>
+            <span class="token string">"172.16.0.0/12"</span><span class="token punctuation">,</span>
+            <span class="token string">"192.0.0.0/24"</span><span class="token punctuation">,</span>
+            <span class="token string">"192.0.2.0/24"</span><span class="token punctuation">,</span>
+            <span class="token string">"192.168.0.0/16"</span><span class="token punctuation">,</span>
+            <span class="token string">"198.18.0.0/15"</span><span class="token punctuation">,</span>
+            <span class="token string">"198.51.100.0/24"</span><span class="token punctuation">,</span>
+            <span class="token string">"203.0.113.0/24"</span><span class="token punctuation">,</span>
+            <span class="token string">"::1/128"</span><span class="token punctuation">,</span>
+            <span class="token string">"fc00::/7"</span><span class="token punctuation">,</span>
+            <span class="token string">"fe80::/10"</span>
+          <span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token property">"outboundTag"</span><span class="token operator">:</span> <span class="token string">"blocked"</span>
+        <span class="token punctuation">&#125;</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>[/collapse]</p>
 
                 
@@ -1432,10 +1447,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

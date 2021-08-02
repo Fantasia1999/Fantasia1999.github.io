@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -494,7 +504,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    186
+                    176
                 </div>
                 
 
@@ -520,14 +530,15 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="安装宝塔"><a href="#安装宝塔" class="headerlink" title="安装宝塔"></a>安装宝塔</h2><p><strong>Centos安装命令：</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum install -y wget &amp;&amp; wget -O install.sh http:&#x2F;&#x2F;download.bt.cn&#x2F;install&#x2F;install_6.0.sh &amp;&amp; sh install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> -y <span class="token function">wget</span> <span class="token operator">&amp;&amp;</span> <span class="token function">wget</span> -O install.sh http://download.bt.cn/install/install_6.0.sh <span class="token operator">&amp;&amp;</span> <span class="token function">sh</span> install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>其他参考<a target="_blank" rel="noopener" href="https://www.bt.cn/bbs/thread-19376-1-1.html">这里</a></p>
 <h2 id="安装docker管理器"><a href="#安装docker管理器" class="headerlink" title="安装docker管理器"></a>安装docker管理器</h2><p>在宝塔软件商店中安装<code>docker管理器</code></p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/03/15/zFHpLxZX/Snipaste_20200315190144.png" alt="QQ截图20200315190144"></p>
 <h2 id="开启端口"><a href="#开启端口" class="headerlink" title="开启端口"></a>开启端口</h2><p>在安全里边，开启8080端口，服务器安全组中也要把8080端口打开。</p>
-<h2 id="Docker-server"><a href="#Docker-server" class="headerlink" title="Docker server"></a>Docker server</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker run -p 8080:8080 -v coding-ide-home:&#x2F;root&#x2F;.coding-ide webide&#x2F;webide<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="Docker-server"><a href="#Docker-server" class="headerlink" title="Docker server"></a>Docker server</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker run -p <span class="token number">8080</span>:8080 -v coding-ide-home:/root/.coding-ide webide/webide<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>后台运行用这个</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker run -dit -p 8080:8080 -v coding-ide-home:&#x2F;root&#x2F;.coding-ide webide&#x2F;webide<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker run -dit -p <span class="token number">8080</span>:8080 -v coding-ide-home:/root/.coding-ide webide/webide<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <!--https://yarn.bootcss.com/docs/install/#centos-stable-->
 
 <h2 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h2><p>打开<code>http://yourip:8080</code></p>
@@ -1330,10 +1341,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -482,7 +492,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    101
+                    98
                 </div>
                 
 
@@ -509,12 +519,15 @@
             <div id="articleContent">
                 <p>服务器上附带的git版本是<code>git version 1.8.3.1</code>，在Cloud Studio中建议<code>版本&gt;=2</code>，所以需要升级一下。</p>
 <p>首先卸载Git</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">yum remove git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">yum remove <span class="token function">git</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>添加新的源，然后安装</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">yum install -y https:&#x2F;&#x2F;centos7.iuscommunity.org&#x2F;ius-release.rpm
-yum install -y git2u<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">yum <span class="token function">install</span> -y https://centos7.iuscommunity.org/ius-release.rpm
+yum <span class="token function">install</span> -y git2u<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>结束以后检查Git版本</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git --version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> --version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>我这里显示了当前最新的版本，<code>git version 2.16.6</code>。</p>
 <p>大功告成。</p>
 
@@ -1297,10 +1310,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

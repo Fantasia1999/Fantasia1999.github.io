@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -516,7 +526,9 @@
 <h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>Input contains one line: the text with color tags. The length is no more than 1000 characters.</p>
 <h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>Output three numbers count_red, count_yellow, count_blue, indicating the numbers of characters colored by red, yellow and blue.</p>
 <h1 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h1><pre class="line-numbers language-none"><code class="language-none">&lt;yellow&gt;aaa&lt;blue&gt;bbb&lt;&#x2F;blue&gt;ccc&lt;&#x2F;yellow&gt;dddd&lt;red&gt;abc&lt;&#x2F;red&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h1 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h1><pre class="line-numbers language-none"><code class="language-none">3 6 3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>这是一道练习赛的题目，刚开始看到这道题的时候，没读懂题意，错把<code>letter</code>译为<code>单词</code>，半天没读懂样例，后来重新读题意，发现是单词的意思，瞬间恍然大悟，后来想用搜索dfs来写，因为正好每一次输入都可以分解为若干个子问题，正好符合dfs的套路，但是写了半天后发现，代码不太好写。突然，灵光一现，想到用栈应该是可以处理的(其实最开始就想用栈，但是觉得dfs可能好写，后来发现有些难度)，其实想到用栈大概是因为最近在学数据结构，看到什么东西都想往栈上凑一凑！</p>
 <p>我们可以用栈来存储每种颜色，对于<code>&lt;yellow&gt;aaa&lt;/yellow&gt;</code>这样的表示，我们姑且称左边为<code>左颜色</code>，右边称为<code>右颜色</code>。</p>
 <ul>
@@ -565,6 +577,7 @@ int main()
     printf(&quot;%d %d %d\n&quot;, mp[&quot;red&quot;], mp[&quot;yellow&quot;], mp[&quot;blue&quot;]);
     return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
                 
             </div>
             <hr/>
@@ -1304,10 +1317,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

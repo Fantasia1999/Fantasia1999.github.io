@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -528,6 +538,7 @@
 <p>当时采取的方案是先上传到OLAINDEX，然后使用又拍云的CLI工具<code>upx.exe</code>，使用如下脚本批量上传到又拍云。</p>
 <pre class="line-numbers language-bat" data-language="bat"><code class="language-bat">.\upx.exe img-zhuomu user password
 .\upx.exe sync E:&#x2F;OneDrive&#x2F;OLAINDEX&#x2F;img &#x2F;view&#x2F;img&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>后来升级5.0后，OLAINDEX开始支持多账号登录，于是图片链接格式变为了<code>https://img.example.com/hashid/view/xxxx/head.jpg</code>，多加了一级用以区别账号，给我造成了很大的困扰，每次写插入图片链接时都需要删除一级目录。遂逐渐弃用。</p>
 <p>首先需要明白jsDelivr是如何给GitHub做CDN的。</p>
 <p>比如一个repository:<code>https://github.com/test/img</code>，只需要按照如下规则修改前缀即可。</p>
@@ -552,6 +563,7 @@ https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;jquery&#x2F;jquery@3.2.1&#x2F;sr
 
 &#x2F;&#x2F; add &#x2F; at the end to get a directory listing
 https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;jquery&#x2F;jquery&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>访问这个<code>https://cdn.jsdelivr.net/gh/test/img/</code>路径，可以直接获得目录的列表。</p>
 <p>所以我的url中，<code>/view</code>部分是多余的，我最终要实现的效果是<code>https://img.example.com/hashid/view/xxxx/head.jpg</code>-&gt;<code>https://cdn.jsdelivr.net/gh/test/img/xxxx/head.jpg</code>，通过查阅资料，发现使用显性URL跳转就可以实现这样的操作。</p>
 <h3 id="何为显性转发，何为隐性转发"><a href="#何为显性转发，何为隐性转发" class="headerlink" title="何为显性转发，何为隐性转发"></a>何为显性转发，何为隐性转发</h3><p><strong>隐性转发：</strong>用的是 iframe 框架技术、非重定向技术，效果为浏览器地址栏输入 <code>http://a.com</code> 回车，打开网站内容是目标地址 <code>http://cloud.tencent.com/</code> 的网站内容，但地址栏显示当前地址 <code>http://a.com</code> 。</p>
@@ -566,13 +578,14 @@ https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;jquery&#x2F;jquery&#x2F;<span ar
 <pre class="line-numbers language-ini" data-language="ini"><code class="language-ini"> server &#123;
         listen       80;
         server_name  img.example.com;
-        location &#x2F; &#123;
+        location / &#123;
             fastcgi_pass 127.0.0.1:8899; #此处为端口转发
-            # 下边两行为两种正则匹配策略
-            rewrite &#x2F;view&#x2F;(.*)$ https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;test&#x2F;$1 break;
-            rewrite &#x2F;(.*)$ https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;test&#x2F;$1 permanent;
+            <span class="token comment"># 下边两行为两种正则匹配策略</span>
+            rewrite /view/(.*)$ https://cdn.jsdelivr.net/gh/test/$1 break;
+            rewrite /(.*)$ https://cdn.jsdelivr.net/gh/test/$1 permanent;
         &#125;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>这里的正则匹配我写了两个，因为历史原因，需要规避<code>/view</code>这样的目录链接，所以写了两种。</p>
 <p>rewrite有三个参数：</p>
 <ul>
@@ -1384,10 +1397,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

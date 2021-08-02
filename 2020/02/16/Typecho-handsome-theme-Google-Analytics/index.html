@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -478,7 +488,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    232
+                    210
                 </div>
                 
 
@@ -504,17 +514,17 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>给网站添加Google Analytics分析<br>主题：handsome<br>Google Analytics <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Google%E5%88%86%E6%9E%90">wiki</a><br>Google分析（Google Analytics）是一个由Google所提供的网站流量统计服务。Google 分析（Analytics）现在是互联网上使用最广泛的网络分析服务。Google Analytics还提供了一个SDK，允许从iOS和Android应用程序收集使用数据，称为Google Analytics for Mobile Apps。</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>注册<a target="_blank" rel="noopener" href="https://analytics.google.com/analytics/web/">Google Analytics</a><br>获取统计代码<br>如果找不到代码，可以在图中的位置找到。<br><img src="https://img.zhuomu.xyz/view/img/2020/02/16/LIU9K0rC/Snipaste_2020-02-16_21-26-50.png" alt="Snipaste_2020-02-16_21-26-50.png"><br>获取到的大致格式如下：</p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;!-- Global site tag (gtag.js) - Google Analytics --&gt;
-&lt;script async src&#x3D;&quot;https:&#x2F;&#x2F;www.googletagmanager.com&#x2F;gtag&#x2F;js?id&#x3D;UA-XXXX&quot;&gt;&lt;&#x2F;script&gt;
-&lt;script&gt;
-  window.dataLayer &#x3D; window.dataLayer || [];
-  function gtag()&#123;dataLayer.push(arguments);&#125;
-  gtag(&#39;js&#39;, new Date());
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> <span class="token keyword">Global</span> site <span class="token function">tag</span> <span class="token punctuation">(</span>gtag<span class="token operator">.</span>js<span class="token punctuation">)</span> <span class="token operator">-</span> Google Analytics <span class="token operator">--</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>script async src<span class="token operator">=</span><span class="token string double-quoted-string">"https://www.googletagmanager.com/gtag/js?id=UA-XXXX"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span>script<span class="token operator">></span>
+  window<span class="token operator">.</span>dataLayer <span class="token operator">=</span> window<span class="token operator">.</span><span class="token class-name">dataLayer</span> <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">function</span> <span class="token function-definition function">gtag</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>dataLayer<span class="token operator">.</span><span class="token function">push</span><span class="token punctuation">(</span>arguments<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
+  <span class="token function">gtag</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'js'</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  gtag(&#39;config&#39;, &#39;UA-XXXX&#39;);
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <span class="token function">gtag</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'config'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'UA-XXXX'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>然后将本代码粘贴进入网站目录下<code>/usr/themes/handsome/component/footer.php</code>文件中<br>具体粘在尾部<code>&lt;/body&gt;</code>之前</p>
 <blockquote>
 <p>参考<a target="_blank" rel="noopener" href="https://limbopro.github.io/archives/396.html">博客</a></p>
@@ -1279,10 +1289,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

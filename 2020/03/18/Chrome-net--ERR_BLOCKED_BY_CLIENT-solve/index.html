@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -511,7 +521,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="0x00-问题复现"><a href="#0x00-问题复现" class="headerlink" title="0x00 问题复现"></a>0x00 问题复现</h2><p>在测试了一下网站迁移，在另一台服务器上搭建和网站一样的，迁移完成后，发现我的图片都显示不出来了<a id="more"></a>，用的是又拍云的图床，但是我并没有设置防盗链，图片的链接也是可以直接打开的，同时我也设置了<code>403</code>、<code>404</code>、<code>405</code>图片，按理说如果图床挂了，应该会有正常的反馈才是的。</p>
+                <h2 id="0x00-问题复现"><a href="#0x00-问题复现" class="headerlink" title="0x00 问题复现"></a>0x00 问题复现</h2><p>在测试了一下网站迁移，在另一台服务器上搭建和网站一样的，迁移完成后，发现我的图片都显示不出来了<span id="more"></span>，用的是又拍云的图床，但是我并没有设置防盗链，图片的链接也是可以直接打开的，同时我也设置了<code>403</code>、<code>404</code>、<code>405</code>图片，按理说如果图床挂了，应该会有正常的反馈才是的。</p>
 <p>多次更改图床的访问控制，还是无果，我坚信<del>不是浏览器的问题</del>，所以没有换一个浏览器尝试（最后疯狂打脸），当我在手机上可以打开的时候，我傻了……连的是统一个无线，这肯定是浏览器的问题啊，于是<code>F12</code>了一波，发现了猫腻。</p>
 <p>我图床的图片全线飘红<code>net::ERR_BLOCKED_BY_CLIENT</code></p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/03/18/HXTlbtds/Snipaste_2020-03-18_17-19-30.png" alt="Snipaste_2020-03-18_17-19-30"></p>
@@ -1288,10 +1298,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

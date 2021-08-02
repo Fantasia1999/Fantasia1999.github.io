@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -494,14 +504,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    2.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    9 分
                 </div>
                 
 
@@ -521,21 +531,21 @@
             <div id="articleContent">
                 <h1 id="Sublime-Text-3-ClangFormat格式化"><a href="#Sublime-Text-3-ClangFormat格式化" class="headerlink" title="Sublime Text 3 ClangFormat格式化"></a>Sublime Text 3 ClangFormat格式化</h1><h3 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h3><p><code>ctrl+shift+p</code>找到<code>Package Control: Install Package</code><br>搜索<code>ClangFormat</code>，等待安装即可</p>
 <h3 id="编译配置"><a href="#编译配置" class="headerlink" title="编译配置"></a>编译配置</h3><p><code>Tool</code> -&gt; <code>Build System</code> -&gt; <code>New Build System</code><br>保存文件名：myc++.build</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;
-	&quot;path&quot;: &quot;C:&#x2F;MinGW&#x2F;bin&quot;,
-	&quot;shell_cmd&quot;: &quot;g++ \&quot;$&#123;file&#125;\&quot; -o \&quot;$&#123;file_path&#125;&#x2F;$&#123;file_base_name&#125;\&quot;&quot;,
-	&quot;file_regex&quot;: &quot;^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$&quot;,
-	&quot;working_dir&quot;: &quot;$&#123;file_path&#125;&quot;,
-	&quot;selector&quot;: &quot;source.c, source.c++&quot;,
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+	<span class="token property">"path"</span><span class="token operator">:</span> <span class="token string">"C:/MinGW/bin"</span><span class="token punctuation">,</span>
+	<span class="token property">"shell_cmd"</span><span class="token operator">:</span> <span class="token string">"g++ \"$&#123;file&#125;\" -o \"$&#123;file_path&#125;/$&#123;file_base_name&#125;\""</span><span class="token punctuation">,</span>
+	<span class="token property">"file_regex"</span><span class="token operator">:</span> <span class="token string">"^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"</span><span class="token punctuation">,</span>
+	<span class="token property">"working_dir"</span><span class="token operator">:</span> <span class="token string">"$&#123;file_path&#125;"</span><span class="token punctuation">,</span>
+	<span class="token property">"selector"</span><span class="token operator">:</span> <span class="token string">"source.c, source.c++"</span><span class="token punctuation">,</span>
 
-	&quot;variants&quot;:
-	[
-		&#123;
-			&quot;name&quot;: &quot;Run&quot;,
-			&quot;shell_cmd&quot;: &quot;g++ \&quot;$&#123;file&#125;\&quot; -o \&quot;$&#123;file_path&#125;&#x2F;$&#123;file_base_name&#125;\&quot; &amp;&amp; \&quot;$&#123;file_path&#125;&#x2F;$&#123;file_base_name&#125;\&quot; &lt; in.txt &gt; out.txt&quot;
-		&#125;
-	]
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	<span class="token property">"variants"</span><span class="token operator">:</span>
+	<span class="token punctuation">[</span>
+		<span class="token punctuation">&#123;</span>
+			<span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Run"</span><span class="token punctuation">,</span>
+			<span class="token property">"shell_cmd"</span><span class="token operator">:</span> <span class="token string">"g++ \"$&#123;file&#125;\" -o \"$&#123;file_path&#125;/$&#123;file_base_name&#125;\" &amp;&amp; \"$&#123;file_path&#125;/$&#123;file_base_name&#125;\" &lt; in.txt > out.txt"</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>编译选项配置好后</p>
 <p>按<code>F7</code>，然后选择第二个<code>xxx Run</code>，以后直接按<code>F7</code>即可编译运行</p>
 <p>关于编译选项的一些解释：</p>
@@ -546,81 +556,81 @@
 <h3 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h3><p>安装<code>llvm</code>，一般装过vs后都会有的，直接Everything搜一波，我找到我的路径在<code>C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\Llvm\\bin\\clang-format.exe</code></p>
 <p>或者</p>
 <p>下载地址为<a target="_blank" rel="noopener" href="http://releases.llvm.org/">http://releases.llvm.org/</a> 。在Windows系统下，直接下载<code>binary</code>版本并安装即可。</p>
-<h4 id="Settings-User"><a href="#Settings-User" class="headerlink" title="Settings-User"></a>Settings-User</h4><pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;
-    &#x2F;&#x2F; This is the path to the binary for clang-format. If it is in your path,
-    &#x2F;&#x2F; it should just work out-of-the-box. Otherwise, you can set the full path,
-    &#x2F;&#x2F; which will look like this: 
-    &#x2F;&#x2F;    &quot;binary&quot;: &quot;&#x2F;path&#x2F;to&#x2F;clang&#x2F;bin&#x2F;clang-format&quot;
-    &#x2F;&#x2F; Note that you can set this from within ST directly through the Command
-    &#x2F;&#x2F; Palette. 
+<h4 id="Settings-User"><a href="#Settings-User" class="headerlink" title="Settings-User"></a>Settings-User</h4><pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+    <span class="token comment">// This is the path to the binary for clang-format. If it is in your path,</span>
+    <span class="token comment">// it should just work out-of-the-box. Otherwise, you can set the full path,</span>
+    <span class="token comment">// which will look like this: </span>
+    <span class="token comment">//    "binary": "/path/to/clang/bin/clang-format"</span>
+    <span class="token comment">// Note that you can set this from within ST directly through the Command</span>
+    <span class="token comment">// Palette. </span>
 
-    &quot;binary&quot;: &quot;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\Llvm\\bin\\clang-format.exe&quot;,
+    <span class="token property">"binary"</span><span class="token operator">:</span> <span class="token string">"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\Llvm\\bin\\clang-format.exe"</span><span class="token punctuation">,</span>
 
-    &#x2F;&#x2F; We use the Google style by default. This can be selected from ST using
-    &#x2F;&#x2F; the Command Palette. Choosing &#39;Custom&#39; means that the settings will
-    &#x2F;&#x2F; be loaded from the Sublime Text settings file (which is accessed
-    &#x2F;&#x2F; from within ST through preferences. Choosing &#39;File&#39; will look in the 
-    &#x2F;&#x2F; local directories from a clang-format settings file. See the clang-format
-    &#x2F;&#x2F; documentation to see how this works. 
+    <span class="token comment">// We use the Google style by default. This can be selected from ST using</span>
+    <span class="token comment">// the Command Palette. Choosing 'Custom' means that the settings will</span>
+    <span class="token comment">// be loaded from the Sublime Text settings file (which is accessed</span>
+    <span class="token comment">// from within ST through preferences. Choosing 'File' will look in the </span>
+    <span class="token comment">// local directories from a clang-format settings file. See the clang-format</span>
+    <span class="token comment">// documentation to see how this works. </span>
 
-    &quot;style&quot;: &quot;Custom&quot;,
+    <span class="token property">"style"</span><span class="token operator">:</span> <span class="token string">"Custom"</span><span class="token punctuation">,</span>
 
-    &#x2F;&#x2F; Setting this to true will run the formatter on every save. If you want to
-    &#x2F;&#x2F; only enable this for a given project, try checking out the package
-    &#x2F;&#x2F; &quot;Project-Specific&quot;.
+    <span class="token comment">// Setting this to true will run the formatter on every save. If you want to</span>
+    <span class="token comment">// only enable this for a given project, try checking out the package</span>
+    <span class="token comment">// "Project-Specific".</span>
     
-    &quot;format_on_save&quot;: true,
+    <span class="token property">"format_on_save"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
 
-    &#x2F;&#x2F; If format_on_save is set to true, ClangFormat checks if the current file
-    &#x2F;&#x2F; has its syntax set to a language in the list below. If it is in the list,
-    &#x2F;&#x2F; then the file will be formatted by ClangFormat.
+    <span class="token comment">// If format_on_save is set to true, ClangFormat checks if the current file</span>
+    <span class="token comment">// has its syntax set to a language in the list below. If it is in the list,</span>
+    <span class="token comment">// then the file will be formatted by ClangFormat.</span>
 
-    &quot;languages&quot;: [&quot;C&quot;, &quot;C++&quot;, &quot;C++11&quot;, &quot;JavaScript&quot;, &quot;Objective-C&quot;, &quot;Objective-C++&quot;]
-&#125;
+    <span class="token property">"languages"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"C"</span><span class="token punctuation">,</span> <span class="token string">"C++"</span><span class="token punctuation">,</span> <span class="token string">"C++11"</span><span class="token punctuation">,</span> <span class="token string">"JavaScript"</span><span class="token punctuation">,</span> <span class="token string">"Objective-C"</span><span class="token punctuation">,</span> <span class="token string">"Objective-C++"</span><span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="Custom-Style-User"><a href="#Custom-Style-User" class="headerlink" title="Custom Style-User"></a>Custom Style-User</h4><p>具体样式，可以参考<a target="_blank" rel="noopener" href="http://clang.llvm.org/docs/ClangFormatStyleOptions.html">官方</a>给出的说明。</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;
-    &quot;BasedOnStyle&quot;: &quot;Google&quot;,
-    &quot;IndentWidth&quot;: 4,
-    &quot;AlignAfterOpenBracket&quot;: true,
-    &quot;AlignConsecutiveAssignments&quot;: true,
-    &#x2F;&#x2F;# 连续声明时，对齐所有声明的变量名
-    &quot;AlignConsecutiveDeclarations&quot;: false,
-    &quot;MaxEmptyLinesToKeep&quot;: 4,
-    &quot;BreakBeforeBraces&quot;: &quot;Attach&quot;,
-    &quot;AllowShortIfStatementsOnASingleLine&quot;: true,
-    &quot;IndentCaseLabels&quot;: true,
-    &quot;ObjCBlockIndentWidth&quot;: 4,
-    &quot;ObjCSpaceAfterProperty&quot;: true,
-    &quot;ColumnLimit&quot;: 0,
-    &quot;AlignTrailingComments&quot;: true,
-    &quot;SpaceAfterCStyleCast&quot;: true,
-    &quot;SpacesInParentheses&quot;: false,
-    &quot;SpacesInSquareBrackets&quot;: false,
-    &quot;TabWidth&quot;: 4,
-    &quot;UseTab&quot;: &quot;Never&quot;,
-    &quot;AllowShortBlocksOnASingleLine&quot;: true,
-    &quot;AllowShortIfStatementsOnASingleLine&quot;: true,
-    &quot;AllowShortLoopsOnASingleLine&quot;: true,
-    &quot;BraceWrapping&quot;:&#123;
-        &quot;AfterClass&quot;:             false,
-        &quot;AfterControlStatement&quot;:  false,
-        &quot;AfterEnum&quot;:              false,
-        &quot;AfterFunction&quot;:          false,
-        &quot;AfterNamespace&quot;:         false,
-        &quot;AfterObjCDeclaration&quot;:   false,
-        &quot;AfterStruct&quot;:            false,
-        &quot;AfterUnion&quot;:             false,
-        &quot;BeforeCatch&quot;:            false,
-        &quot;BeforeElse&quot;:             false,
-        &quot;IndentBraces&quot;:           false,
-        &quot;SplitEmptyFunction&quot;:     true,
-        &quot;SplitEmptyRecord&quot;:       true,
-        &quot;SplitEmptyNamespace&quot;:    true
-    &#125;,
-    &quot;Cpp11BracedListStyle&quot;: true,
-    &quot;ColumnLimit&quot;: 80,
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+    <span class="token property">"BasedOnStyle"</span><span class="token operator">:</span> <span class="token string">"Google"</span><span class="token punctuation">,</span>
+    <span class="token property">"IndentWidth"</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+    <span class="token property">"AlignAfterOpenBracket"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"AlignConsecutiveAssignments"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token comment">//# 连续声明时，对齐所有声明的变量名</span>
+    <span class="token property">"AlignConsecutiveDeclarations"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"MaxEmptyLinesToKeep"</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+    <span class="token property">"BreakBeforeBraces"</span><span class="token operator">:</span> <span class="token string">"Attach"</span><span class="token punctuation">,</span>
+    <span class="token property">"AllowShortIfStatementsOnASingleLine"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"IndentCaseLabels"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"ObjCBlockIndentWidth"</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+    <span class="token property">"ObjCSpaceAfterProperty"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"ColumnLimit"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">"AlignTrailingComments"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"SpaceAfterCStyleCast"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"SpacesInParentheses"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"SpacesInSquareBrackets"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"TabWidth"</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+    <span class="token property">"UseTab"</span><span class="token operator">:</span> <span class="token string">"Never"</span><span class="token punctuation">,</span>
+    <span class="token property">"AllowShortBlocksOnASingleLine"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"AllowShortIfStatementsOnASingleLine"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"AllowShortLoopsOnASingleLine"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"BraceWrapping"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
+        <span class="token property">"AfterClass"</span><span class="token operator">:</span>             <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token property">"AfterControlStatement"</span><span class="token operator">:</span>  <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token property">"AfterEnum"</span><span class="token operator">:</span>              <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token property">"AfterFunction"</span><span class="token operator">:</span>          <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token property">"AfterNamespace"</span><span class="token operator">:</span>         <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token property">"AfterObjCDeclaration"</span><span class="token operator">:</span>   <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token property">"AfterStruct"</span><span class="token operator">:</span>            <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token property">"AfterUnion"</span><span class="token operator">:</span>             <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token property">"BeforeCatch"</span><span class="token operator">:</span>            <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token property">"BeforeElse"</span><span class="token operator">:</span>             <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token property">"IndentBraces"</span><span class="token operator">:</span>           <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token property">"SplitEmptyFunction"</span><span class="token operator">:</span>     <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token property">"SplitEmptyRecord"</span><span class="token operator">:</span>       <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token property">"SplitEmptyNamespace"</span><span class="token operator">:</span>    <span class="token boolean">true</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token property">"Cpp11BracedListStyle"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"ColumnLimit"</span><span class="token operator">:</span> <span class="token number">80</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>当然也可以看这里对每个选项的中文解释</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">---
 # 语言: None, Cpp, Java, JavaScript, ObjC, Proto, TableGen, TextProto
@@ -795,6 +805,7 @@ Standard:	Cpp11
 TabWidth:	4
 # 使用tab字符: Never, ForIndentation, ForContinuationAndIndentation, Always
 UseTab:	Never<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
 
 <blockquote>
@@ -1575,10 +1586,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

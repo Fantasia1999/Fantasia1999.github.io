@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -486,7 +496,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.4k
+                    5.3k
                 </div>
                 
 
@@ -632,20 +642,21 @@
 <p>  * 阻塞状态：正在执行的进程，由于等待某个事件发生而无法执行时，放弃CPU而处于阻塞状态</p>
 <p>    （I/O, 申请缓冲区不能满足，等待信号）</p>
 <h5 id="strcpy"><a href="#strcpy" class="headerlink" title="strcpy"></a>strcpy</h5><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
-char * strcpy( char *strDest, const char *strSrc ) 
+<span class="token keyword">char</span> <span class="token operator">*</span> <span class="token function">strcpy</span><span class="token punctuation">(</span> <span class="token keyword">char</span> <span class="token operator">*</span>strDest<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>strSrc <span class="token punctuation">)</span> 
 
-&#123;
+<span class="token punctuation">&#123;</span>
 
- assert( (strDest !&#x3D; NULL) &amp;&amp; (strSrc !&#x3D; NULL) );
+ <span class="token function">assert</span><span class="token punctuation">(</span> <span class="token punctuation">(</span>strDest <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>strSrc <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
- char *address &#x3D; strDest; 
+ <span class="token keyword">char</span> <span class="token operator">*</span>address <span class="token operator">=</span> strDest<span class="token punctuation">;</span> 
 
- while( (*strDest++ &#x3D; * strSrc++) !&#x3D; &#39;\0&#39; ); 
+ <span class="token keyword">while</span><span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token operator">*</span>strDest<span class="token operator">++</span> <span class="token operator">=</span> <span class="token operator">*</span> strSrc<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token string">'\0'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> 
 
- return address;
+ <span class="token keyword">return</span> address<span class="token punctuation">;</span>
 
-&#125;
+<span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h5 id="static"><a href="#static" class="headerlink" title="static"></a>static</h5><p>static关键字至少有下列n个作用：   </p>
 <p>（1）函数体内static变量的作用范围为该函数体，不同于auto变量，该变量的内存只被分配一次，因此其值在下次调用时仍维持上次的值；  </p>
 <p>（2）在模块内的static全局变量可以被模块内所用函数访问，但不能被模块外其它函数访问；   </p>
@@ -678,6 +689,7 @@ char * strcpy( char *strDest, const char *strSrc ) 
         preorder(roor-&gt;left());
         preorder(roor-&gt;right());
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li>非递归版本</li>
 </ul>
@@ -699,6 +711,7 @@ char * strcpy( char *strDest, const char *strSrc ) 
         &#125;
     &#125;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h5 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h5><ul>
 <li>插入排序</li>
 </ul>
@@ -707,60 +720,66 @@ char * strcpy( char *strDest, const char *strSrc ) 
         for (int j &#x3D; i; j &gt; 0 &amp;&amp; (A[j] &lt; A[j - 1]); --j) swap(A, j, j - 1);
     &#125;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
-<li>冒泡排序<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void bubSort(E A[], int n) &#123;
-    for (int i &#x3D; 0; i &lt; n - 1; ++i) &#123;
-        for (int j &#x3D; n - 1; j &gt; i &amp;&amp; A[j] &lt; A[j - 1]; --j) &#123;
-            swap(A, j, j - 1);
-        &#125;
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>选择排序<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void selectSort(E A[], int n) &#123;
-    int lowIndex;
-    for (int i &#x3D; 0; i &lt; n; ++i) &#123;
-        lowIndex &#x3D; i;
-        for (int j &#x3D; n - 1; j &gt; i; --j) &#123;
-            if (Comp::prior(A[j], A[lowIndex])) lowIndex &#x3D; j;
-            swap(A, i, lowIndex);
-        &#125;
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>Shell排序<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void insSort2(E A[], int n, in incr) &#123;
-    for (int i &#x3D; incr; i &lt; n; i +&#x3D; incr) &#123;
-        for (int j &#x3D; i; (j &gt;&#x3D; incr) &amp;&amp; (A[j] &gt; A[j - incr]); j -&#x3D; incr) &#123;
-            swap(A, j, j - incr);
-        &#125;
-    &#125;
-&#125;
+<li><p>冒泡排序</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">bubSort</span><span class="token punctuation">(</span>E A<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">></span> i <span class="token operator">&amp;&amp;</span> A<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> A<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token operator">--</span>j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">swap</span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> j<span class="token punctuation">,</span> j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>选择排序</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">selectSort</span><span class="token punctuation">(</span>E A<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> lowIndex<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        lowIndex <span class="token operator">=</span> i<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">></span> i<span class="token punctuation">;</span> <span class="token operator">--</span>j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">Comp</span><span class="token double-colon punctuation">::</span><span class="token function">prior</span><span class="token punctuation">(</span>A<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> A<span class="token punctuation">[</span>lowIndex<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> lowIndex <span class="token operator">=</span> j<span class="token punctuation">;</span>
+            <span class="token function">swap</span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> i<span class="token punctuation">,</span> lowIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>Shell排序</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">insSort2</span><span class="token punctuation">(</span>E A<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">,</span> in incr<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> incr<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i <span class="token operator">+=</span> incr<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span> <span class="token punctuation">(</span>j <span class="token operator">>=</span> incr<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>A<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">></span> A<span class="token punctuation">[</span>j <span class="token operator">-</span> incr<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> j <span class="token operator">-=</span> incr<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">swap</span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> j<span class="token punctuation">,</span> j <span class="token operator">-</span> incr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-void shellSort(E A[], int n) &#123;
-    for (int i &#x3D; n &#x2F; 2; i &gt; 2; i &#x2F;&#x3D; 2) &#123;
-        for (int j &#x3D; 0; j &lt; i; j++) insSort2(&amp;A[j], n - j, i);
-    &#125;
+<span class="token keyword">void</span> <span class="token function">shellSort</span><span class="token punctuation">(</span>E A<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> n <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">/=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> i<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token function">insSort2</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>A<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> n <span class="token operator">-</span> j<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    insSort2(A, n, 1);
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>归并排序</li>
+    <span class="token function">insSort2</span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> n<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>归并排序</p>
+</li>
 </ul>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void mergeSort(E A[], E temp[], int left, int right) &#123;
-    if (left &#x3D;&#x3D; right) return;
-    int mid &#x3D; (left + right) &#x2F; 2;
-    mergeSort&lt;E, Comp&gt;(A, temp, left, mid);
-    mergeSort&lt;E, Comp&gt;(A, temp, mid + 1, right);
-    for (int i &#x3D; left; i &lt;&#x3D; right; ++i) &#123; temp[i] &#x3D; A[i]; &#125;
-    int i1 &#x3D; left;
-    int i2 &#x3D; mid + 1;
-    for (int curr &#x3D; left; curr &lt;&#x3D; right; curr++) &#123;
-        if (i1 &#x3D;&#x3D; mid + 1)
-            A[curr] &#x3D; temp[i2++];
-        else if (i2 &gt; right)
-            A[curr] &#x3D; temp[i1++];
-        else if (Comp::prior(temp[i1], temp[i2]))
-            A[curr] &#x3D; temp[i1++];
-        else
-            A[curr] &#x3D; temp[i2++];
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">mergeSort</span><span class="token punctuation">(</span>E A<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> E temp<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> left<span class="token punctuation">,</span> <span class="token keyword">int</span> right<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">==</span> right<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> mid <span class="token operator">=</span> <span class="token punctuation">(</span>left <span class="token operator">+</span> right<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token generic-function"><span class="token function">mergeSort</span><span class="token generic class-name"><span class="token operator">&lt;</span>E<span class="token punctuation">,</span> Comp<span class="token operator">></span></span></span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> temp<span class="token punctuation">,</span> left<span class="token punctuation">,</span> mid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token generic-function"><span class="token function">mergeSort</span><span class="token generic class-name"><span class="token operator">&lt;</span>E<span class="token punctuation">,</span> Comp<span class="token operator">></span></span></span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> temp<span class="token punctuation">,</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> left<span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> right<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> temp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> A<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>
+    <span class="token keyword">int</span> i1 <span class="token operator">=</span> left<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> i2 <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> curr <span class="token operator">=</span> left<span class="token punctuation">;</span> curr <span class="token operator">&lt;=</span> right<span class="token punctuation">;</span> curr<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>i1 <span class="token operator">==</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            A<span class="token punctuation">[</span>curr<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">[</span>i2<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>i2 <span class="token operator">></span> right<span class="token punctuation">)</span>
+            A<span class="token punctuation">[</span>curr<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">[</span>i1<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">Comp</span><span class="token double-colon punctuation">::</span><span class="token function">prior</span><span class="token punctuation">(</span>temp<span class="token punctuation">[</span>i1<span class="token punctuation">]</span><span class="token punctuation">,</span> temp<span class="token punctuation">[</span>i2<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            A<span class="token punctuation">[</span>curr<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">[</span>i1<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span>
+            A<span class="token punctuation">[</span>curr<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">[</span>i2<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li><p>快速排序</p>
 </li>
@@ -770,31 +789,33 @@ void shellSort(E A[], int n) &#123;
 <h5 id="图遍历"><a href="#图遍历" class="headerlink" title="图遍历"></a>图遍历</h5><ul>
 <li>DFS（栈）</li>
 </ul>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void DFS(Graph* G, int v) &#123;
-    PreVisit(G, v);
-    G-&gt;setMark(v, VISITED);
-    for (int w &#x3D; G-&gt;first(v); w &lt; G-&gt;n; w &#x3D; G-&gt;next(v, w)) &#123;
-        if (G-&gt;getMark(w) &#x3D;&#x3D; UNVISITED) &#123; DFS(G, w); &#125;
-    &#125;
-    PostVisit(G, v);
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">DFS</span><span class="token punctuation">(</span>Graph<span class="token operator">*</span> G<span class="token punctuation">,</span> <span class="token keyword">int</span> v<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">PreVisit</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    G<span class="token operator">-></span><span class="token function">setMark</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> VISITED<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> w <span class="token operator">=</span> G<span class="token operator">-></span><span class="token function">first</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span> w <span class="token operator">&lt;</span> G<span class="token operator">-></span>n<span class="token punctuation">;</span> w <span class="token operator">=</span> G<span class="token operator">-></span><span class="token function">next</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> w<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>G<span class="token operator">-></span><span class="token function">getMark</span><span class="token punctuation">(</span>w<span class="token punctuation">)</span> <span class="token operator">==</span> UNVISITED<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token function">DFS</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> w<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token function">PostVisit</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li>BFS</li>
 </ul>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void BFS(Graph* G, int start, Queue&lt;int&gt;* Q) &#123;
-    int v, w;
-    Q-&gt;enqueue(start);
-    G-&gt;setMark(start, VISITED);
-    while (Q-&gt;length() !&#x3D; 0) &#123;
-        v &#x3D; Q-&gt;dequeue();
-        PreVisit(G, v);
-        for (w &#x3D; G-&gt;first(v); w &lt; G - n(); w &#x3D; G-&gt;next(v, w))
-            if (G-&gt;getMark(w) &#x3D;&#x3D; VISITED) &#123;
-                G-&gt;setMark(w, VISIED);
-                Q-&gt;enqueue(w);
-            &#125;
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">BFS</span><span class="token punctuation">(</span>Graph<span class="token operator">*</span> G<span class="token punctuation">,</span> <span class="token keyword">int</span> start<span class="token punctuation">,</span> Queue<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">*</span> Q<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> v<span class="token punctuation">,</span> w<span class="token punctuation">;</span>
+    Q<span class="token operator">-></span><span class="token function">enqueue</span><span class="token punctuation">(</span>start<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    G<span class="token operator">-></span><span class="token function">setMark</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> VISITED<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>Q<span class="token operator">-></span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        v <span class="token operator">=</span> Q<span class="token operator">-></span><span class="token function">dequeue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">PreVisit</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>w <span class="token operator">=</span> G<span class="token operator">-></span><span class="token function">first</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span> w <span class="token operator">&lt;</span> G <span class="token operator">-</span> <span class="token function">n</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> w <span class="token operator">=</span> G<span class="token operator">-></span><span class="token function">next</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> w<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>G<span class="token operator">-></span><span class="token function">getMark</span><span class="token punctuation">(</span>w<span class="token punctuation">)</span> <span class="token operator">==</span> VISITED<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                G<span class="token operator">-></span><span class="token function">setMark</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> VISIED<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                Q<span class="token operator">-></span><span class="token function">enqueue</span><span class="token punctuation">(</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h5 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h5><ul>
 <li><strong>在浏览器中输入<a target="_blank" rel="noopener" href="http://www.baidu.com后执行的全部过程/">www.baidu.com后执行的全部过程</a></strong></li>
 </ul>
@@ -1632,10 +1653,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -497,7 +507,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    15 分
+                    14 分
                 </div>
                 
 
@@ -520,63 +530,65 @@
 </blockquote>
 <h2 id="2-图形设备接口和图形程序设计"><a href="#2-图形设备接口和图形程序设计" class="headerlink" title="2 图形设备接口和图形程序设计"></a>2 图形设备接口和图形程序设计</h2><h3 id="2-2-绘制基本图形"><a href="#2-2-绘制基本图形" class="headerlink" title="2.2 绘制基本图形"></a>2.2 绘制基本图形</h3><h4 id="（1）画点"><a href="#（1）画点" class="headerlink" title="（1）画点"></a>（1）画点</h4><h5 id="textout和textoutw"><a href="#textout和textoutw" class="headerlink" title="textout和textoutw"></a>textout和textoutw</h5><p>TextOutW()用于Unicode的宽字符 TextOut()用于窄字符 在<a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=MFC&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao">MFC</a>里头，你只要看见带w的函数都是针对宽字符的，譬如w_char什么的</p>
 <h5 id="char-转为-CString"><a href="#char-转为-CString" class="headerlink" title="char * 转为 CString"></a>char * 转为 CString</h5><p>CString.format(“%s”,char*); <a target="_blank" rel="noopener" href="https://blog.csdn.net/lidandan2016/article/details/90260172">help here</a></p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F; Ccglab1View 绘图
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// Ccglab1View 绘图</span>
 
-void Ccglab1View::OnDraw(CDC* pDC)
-&#123;
-	&#x2F;*Ccglab1Doc* pDoc &#x3D; GetDocument();
+<span class="token keyword">void</span> <span class="token class-name">Ccglab1View</span><span class="token double-colon punctuation">::</span><span class="token function">OnDraw</span><span class="token punctuation">(</span>CDC<span class="token operator">*</span> pDC<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token comment">/*Ccglab1Doc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
-	CString x(&quot;zsz憨批！&quot;);
-	pDC-&gt;TextOut(30, 30, x);
+	CString x("zsz憨批！");
+	pDC->TextOut(30, 30, x);
 	if (!pDoc)
-		return;*&#x2F;
+		return;*/</span>
 	
-	&#x2F;&#x2F;绘制一组彩色点
+	<span class="token comment">//绘制一组彩色点</span>
 	
-	&#x2F;&#x2F;Ccglab1Doc* pDC &#x3D; GetDocument();
-	CString x(&quot;point:&quot;);
-	pDC-&gt;TextOut(20, 20, x);
+	<span class="token comment">//Ccglab1Doc* pDC = GetDocument();</span>
+	CString <span class="token function">x</span><span class="token punctuation">(</span><span class="token string">"point:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	pDC<span class="token operator">-></span><span class="token function">TextOut</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-	pDC-&gt;SetPixel(100, 20, RGB(255, 0, 0));&#x2F;*红*&#x2F;
-	pDC-&gt;SetPixel(110, 20, RGB(0, 255, 0));&#x2F;*绿*&#x2F;
-	pDC-&gt;SetPixel(120, 20, RGB(0, 0, 255));&#x2F;*蓝*&#x2F;
-	&#x2F;*pDC-&gt;SetPixel(100, 20, RGB(255, 255, 0));
-	pDC-&gt;SetPixel(100, 20, RGB(255, 0, 255));
-	pDC-&gt;SetPixel(100, 20, RGB(0, 255, 255));
-	pDC-&gt;SetPixel(100, 20, RGB(0, 0, 0));
-	pDC-&gt;SetPixel(100, 20, RGB(255, 255, 255));*&#x2F;
+	pDC<span class="token operator">-></span><span class="token function">SetPixel</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token function">RGB</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/*红*/</span>
+	pDC<span class="token operator">-></span><span class="token function">SetPixel</span><span class="token punctuation">(</span><span class="token number">110</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token function">RGB</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/*绿*/</span>
+	pDC<span class="token operator">-></span><span class="token function">SetPixel</span><span class="token punctuation">(</span><span class="token number">120</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token function">RGB</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/*蓝*/</span>
+	<span class="token comment">/*pDC->SetPixel(100, 20, RGB(255, 255, 0));
+	pDC->SetPixel(100, 20, RGB(255, 0, 255));
+	pDC->SetPixel(100, 20, RGB(0, 255, 255));
+	pDC->SetPixel(100, 20, RGB(0, 0, 0));
+	pDC->SetPixel(100, 20, RGB(255, 255, 255));*/</span>
 
 
-	&#x2F;&#x2F; TODO: 在此处为本机数据添加绘制代码
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	<span class="token comment">// TODO: 在此处为本机数据添加绘制代码</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>效果</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611211440337.png" alt="image-20200611211440337"></p>
 <h4 id="（2）画直线和折线"><a href="#（2）画直线和折线" class="headerlink" title="（2）画直线和折线"></a>（2）画直线和折线</h4><p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611213307435.png" alt="image-20200611213307435"></p>
 <p>折线</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611213338992.png" alt="image-20200611213338992"></p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611213408334.png" alt="image-20200611213408334"></p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F; Ccglab1View 绘图
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// Ccglab1View 绘图</span>
 
-void Ccglab1View::OnDraw(CDC* pDC)
-&#123;
-	&#x2F;&#x2F; 绘制直线
-	CString x(&quot;Line:&quot;);
-	pDC-&gt;TextOutW(20, 60, x);
-	pDC-&gt;MoveTo(20, 90);
-	pDC-&gt;LineTo(160, 90);
+<span class="token keyword">void</span> <span class="token class-name">Ccglab1View</span><span class="token double-colon punctuation">::</span><span class="token function">OnDraw</span><span class="token punctuation">(</span>CDC<span class="token operator">*</span> pDC<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token comment">// 绘制直线</span>
+	CString <span class="token function">x</span><span class="token punctuation">(</span><span class="token string">"Line:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	pDC<span class="token operator">-></span><span class="token function">TextOutW</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">60</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	pDC<span class="token operator">-></span><span class="token function">MoveTo</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">90</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	pDC<span class="token operator">-></span><span class="token function">LineTo</span><span class="token punctuation">(</span><span class="token number">160</span><span class="token punctuation">,</span> <span class="token number">90</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-	&#x2F;&#x2F; 绘制折线1
-	POINT polylinepoint[4] &#x3D; &#123; &#123;70, 240&#125;, &#123;20, 190&#125;, &#123;70, 190&#125;, &#123;20, 240&#125; &#125;;&#x2F;*定义四个点*&#x2F;
-	pDC-&gt;Polyline(polylinepoint, 4);&#x2F;*根据四个点，画出折线*&#x2F;
+	<span class="token comment">// 绘制折线1</span>
+	POINT polylinepoint<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">&#123;</span><span class="token number">70</span><span class="token punctuation">,</span> <span class="token number">240</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">190</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">70</span><span class="token punctuation">,</span> <span class="token number">190</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">240</span><span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span class="token comment">/*定义四个点*/</span>
+	pDC<span class="token operator">-></span><span class="token function">Polyline</span><span class="token punctuation">(</span>polylinepoint<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/*根据四个点，画出折线*/</span>
 
-	&#x2F;&#x2F; 绘制折线2
-	POINT polypolulinePt[9] &#x3D; &#123; &#123;95, 160&#125;, &#123;120, 185&#125;, &#123;120, 250&#125;, &#123;145, 160&#125;, &#123;120, 185&#125;, &#123;90, 185&#125;, &#123;150, 185&#125;, &#123;80, 210&#125;, &#123;160, 210&#125; &#125;;&#x2F;*定义9个点*&#x2F;
-	DWORD dwPolyPoints[4] &#x3D; &#123; 3, 2, 2, 2 &#125;;&#x2F;*分四段折线，分别占用3,2,2,2个顶点*&#x2F;
-	pDC-&gt;PolyPolyline(polypolulinePt, dwPolyPoints, 4);&#x2F;*四段折线的顶点，以及每条折线的顶点数，折线数量*&#x2F;
+	<span class="token comment">// 绘制折线2</span>
+	POINT polypolulinePt<span class="token punctuation">[</span><span class="token number">9</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">&#123;</span><span class="token number">95</span><span class="token punctuation">,</span> <span class="token number">160</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">120</span><span class="token punctuation">,</span> <span class="token number">185</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">120</span><span class="token punctuation">,</span> <span class="token number">250</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">145</span><span class="token punctuation">,</span> <span class="token number">160</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">120</span><span class="token punctuation">,</span> <span class="token number">185</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">90</span><span class="token punctuation">,</span> <span class="token number">185</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">150</span><span class="token punctuation">,</span> <span class="token number">185</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">80</span><span class="token punctuation">,</span> <span class="token number">210</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">160</span><span class="token punctuation">,</span> <span class="token number">210</span><span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span class="token comment">/*定义9个点*/</span>
+	DWORD dwPolyPoints<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span class="token comment">/*分四段折线，分别占用3,2,2,2个顶点*/</span>
+	pDC<span class="token operator">-></span><span class="token function">PolyPolyline</span><span class="token punctuation">(</span>polypolulinePt<span class="token punctuation">,</span> dwPolyPoints<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/*四段折线的顶点，以及每条折线的顶点数，折线数量*/</span>
 
 
-	&#x2F;&#x2F; TODO: 在此处为本机数据添加绘制代码
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	<span class="token comment">// TODO: 在此处为本机数据添加绘制代码</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <blockquote>
 <p>由于一条折线至少需要 2 个顶点，因此 dwPolyPoints 数组中的数不应该小于 2。 </p>
 </blockquote>
@@ -621,6 +633,7 @@ void Ccglab1View::OnDraw(CDC* pDC)
 
 	&#x2F;&#x2F; TODO: 在此处为本机数据添加绘制代码
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>示例</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611215236326.png" alt="image-20200611215236326"></p>
 <h4 id="（4）画封闭曲线"><a href="#（4）画封闭曲线" class="headerlink" title="（4）画封闭曲线"></a>（4）画封闭曲线</h4><p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611220248895.png" alt="image-20200611220248895"></p>
@@ -628,22 +641,23 @@ void Ccglab1View::OnDraw(CDC* pDC)
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611220317646.png" alt="image-20200611220317646"></p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611220332750.png" alt="image-20200611220332750"></p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611220344557.png" alt="image-20200611220344557"></p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F; Ccglab1View 绘图
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// Ccglab1View 绘图</span>
 
-void Ccglab1View::OnDraw(CDC* pDC)
-&#123;
-	&#x2F;&#x2F; 画封闭曲线
+<span class="token keyword">void</span> <span class="token class-name">Ccglab1View</span><span class="token double-colon punctuation">::</span><span class="token function">OnDraw</span><span class="token punctuation">(</span>CDC<span class="token operator">*</span> pDC<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token comment">// 画封闭曲线</span>
 
-	&#x2F;&#x2F; 绘制矩形、圆角矩形、椭圆和多边形
+	<span class="token comment">// 绘制矩形、圆角矩形、椭圆和多边形</span>
 
-	pDC-&gt;Rectangle(190, 270, 250, 310);
-	pDC-&gt;RoundRect(265, 270, 330, 310, 30, 20);
-	pDC-&gt;Ellipse(260 - 50, 200 - 30, 260 + 50, 200 + 30);
-	POINT polygonPts[3] &#x3D; &#123; &#123;390, 160&#125;, &#123;430, 220&#125;, &#123;350, 210&#125; &#125;;
-	pDC-&gt;Polygon(polygonPts, 3);
+	pDC<span class="token operator">-></span><span class="token function">Rectangle</span><span class="token punctuation">(</span><span class="token number">190</span><span class="token punctuation">,</span> <span class="token number">270</span><span class="token punctuation">,</span> <span class="token number">250</span><span class="token punctuation">,</span> <span class="token number">310</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	pDC<span class="token operator">-></span><span class="token function">RoundRect</span><span class="token punctuation">(</span><span class="token number">265</span><span class="token punctuation">,</span> <span class="token number">270</span><span class="token punctuation">,</span> <span class="token number">330</span><span class="token punctuation">,</span> <span class="token number">310</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	pDC<span class="token operator">-></span><span class="token function">Ellipse</span><span class="token punctuation">(</span><span class="token number">260</span> <span class="token operator">-</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">200</span> <span class="token operator">-</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">260</span> <span class="token operator">+</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">200</span> <span class="token operator">+</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	POINT polygonPts<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">&#123;</span><span class="token number">390</span><span class="token punctuation">,</span> <span class="token number">160</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">430</span><span class="token punctuation">,</span> <span class="token number">220</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">350</span><span class="token punctuation">,</span> <span class="token number">210</span><span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+	pDC<span class="token operator">-></span><span class="token function">Polygon</span><span class="token punctuation">(</span>polygonPts<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-	&#x2F;&#x2F; TODO: 在此处为本机数据添加绘制代码
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	<span class="token comment">// TODO: 在此处为本机数据添加绘制代码</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>效果</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611220428854.png" alt="image-20200611220428854"></p>
 <h3 id="2-3-画笔与画刷"><a href="#2-3-画笔与画刷" class="headerlink" title="2.3 画笔与画刷"></a>2.3 画笔与画刷</h3><h5 id="关于lopnWidth的数据类型"><a href="#关于lopnWidth的数据类型" class="headerlink" title="关于lopnWidth的数据类型"></a>关于lopnWidth的数据类型</h5><p>在lopnWidth的类型是POINT，但是y值未使用，可以大胆的使用<code>POINT&#123;1, 0&#125;</code></p>
@@ -675,6 +689,7 @@ void Ccglab1View::OnDraw(CDC* pDC)
 
 	&#x2F;&#x2F; TODO: 在此处为本机数据添加绘制代码
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>不同笔的测试</p>
 <pre class="line-numbers language-CPP" data-language="CPP"><code class="language-CPP">&#x2F;&#x2F; Ccglab1View 绘图
 
@@ -761,6 +776,7 @@ void Ccglab1View::OnDraw(CDC* pDC)
 
 	&#x2F;&#x2F; TODO: 在此处为本机数据添加绘制代码
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>效果</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611233826243.png" alt="image-20200611233826243"></p>
 <h4 id="（2）画刷"><a href="#（2）画刷" class="headerlink" title="（2）画刷"></a>（2）画刷</h4><p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611233914968.png" alt="image-20200611233914968"></p>
@@ -796,6 +812,7 @@ void Ccglab1View::OnDraw(CDC* pDC)
 
 	&#x2F;&#x2F; TODO: 在此处为本机数据添加绘制代码
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>效果</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611234841134.png" alt="image-20200611234841134"></p>
 <h3 id="2-4-文本显示"><a href="#2-4-文本显示" class="headerlink" title="2.4 文本显示"></a>2.4 文本显示</h3><p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612002351456.png" alt="image-20200612002351456"></p>
@@ -815,6 +832,7 @@ void Ccglab1View::OnDraw(CDC* pDC)
 
 	&#x2F;&#x2F; TODO: 在此处为本机数据添加绘制代码
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="（3）设置字符间距"><a href="#（3）设置字符间距" class="headerlink" title="（3）设置字符间距"></a>（3）设置字符间距</h4><p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612003309024.png" alt="image-20200612003309024"></p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612003327762.png" alt="image-20200612003327762"></p>
 <h4 id="（4）设置文本的对齐方式"><a href="#（4）设置文本的对齐方式" class="headerlink" title="（4）设置文本的对齐方式"></a>（4）设置文本的对齐方式</h4><p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612003355900.png" alt="image-20200612003355900"></p>
@@ -926,14 +944,13 @@ void CmyMouseView::OnRButtonUp(UINT &#x2F;* nFlags *&#x2F;, CPoint point)
 <li><p>新建项目，项目名：MouseSpring</p>
 </li>
 <li><p>在<code>类向导</code>中添加<code>成员变量</code>。</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">CPoint m_bO; &#x2F;&#x2F; 圆心
-&#x2F;*比较懒，省略了*&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">CPoint m_bO<span class="token punctuation">;</span> <span class="token comment">// 圆心</span>
+<span class="token comment">/*比较懒，省略了*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 
+
+<p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612111102290.png" alt="image-20200612111102290"></p>
 </li>
-</ol>
-<p>   <img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612111102290.png" alt="image-20200612111102290"></p>
-<ol start="3">
 <li><p>添加自定义的成员函数</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200613180956682.png" alt="image-20200613180956682"></p>
 </li>
@@ -1835,10 +1852,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

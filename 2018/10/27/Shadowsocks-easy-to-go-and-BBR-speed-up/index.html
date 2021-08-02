@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -482,14 +492,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    8 分
                 </div>
                 
 
@@ -510,12 +520,13 @@
                 <p>本文使用秋水逸冰一键安装脚本，包含Python、Go等版本，一键安装，简单设置端口，密码即可。</p>
 <p>同时，提供YouTube加速解决方案，采用Google官方BBR加速方案，具体原理可自行百度。</p>
 <p>本文保证可以快速安装，部署使用。</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h1 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h1><h2 id="脚本安装"><a href="#脚本安装" class="headerlink" title="脚本安装"></a>脚本安装</h2><p>使用root用户登录，运行以下命令：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">wget --no-check-certificate -O shadowsocks-all.sh https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;teddysun&#x2F;shadowsocks_install&#x2F;master&#x2F;shadowsocks-all.sh
-chmod +x shadowsocks-all.sh
-.&#x2F;shadowsocks-all.sh 2&gt;&amp;1 | tee shadowsocks-all.log<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh
+<span class="token function">chmod</span> +x shadowsocks-all.sh
+./shadowsocks-all.sh <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">|</span> <span class="token function">tee</span> shadowsocks-all.log<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="详细过程"><a href="#详细过程" class="headerlink" title="详细过程"></a>详细过程</h3><ul>
 <li>版本选择，有Shadowsocks-Python、ShadowsocksR、Shadowsocks-Go、Shadowsocks-libev这四种版本，默认是<code>Python</code>版的。我们这里也选择这个版本。</li>
 <li>password，设置一下你的ss登录密码，默认是<code>teddysun.com</code>。</li>
@@ -535,6 +546,7 @@ Your QR Code has been saved as a PNG file path:
 
 Welcome to visit:https:&#x2F;&#x2F;teddysun.com&#x2F;486.html
 Enjoy it!<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>这样就算安装成功了，下载Shadowsocks客户端，输入配置就可以使用了，这里提供Windows和Android的，其他的，可自行去<a target="_blank" rel="noopener" href="https://github.com/shadowsocks">Github</a>上找一下。</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/shadowsocks/shadowsocks-windows">Shadowsocks for Windows</a><ul>
@@ -547,14 +559,17 @@ Enjoy it!<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 </li>
 </ul>
 <h1 id="重启脚本"><a href="#重启脚本" class="headerlink" title="重启脚本"></a>重启脚本</h1><p>Shadowsocks-Python 版：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">&#x2F;etc&#x2F;init.d&#x2F;shadowsocks-python start<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/etc/init.d/shadowsocks-python start<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>启动脚本后面的参数（<code>start</code>,<code>stop</code>,<code>restart</code>,<code>status</code>）含义，从左至右依次为：启动，停止，重启，查看状态。</p>
 <p>使用其他操作，将<code>start</code>换成<code>stop</code>、<code>restart</code>、<code>status</code>即可。</p>
 <h1 id="卸载方法"><a href="#卸载方法" class="headerlink" title="卸载方法"></a>卸载方法</h1><p>若已安装多个版本，则卸载时也需多次运行（每次卸载一种）</p>
 <p>使用root用户登录，运行以下命令：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">.&#x2F;shadowsocks-all.sh uninstall<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./shadowsocks-all.sh uninstall<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h1 id="各Python版本默认配置文件"><a href="#各Python版本默认配置文件" class="headerlink" title="各Python版本默认配置文件"></a>各Python版本默认配置文件</h1><p>Shadowsocks-Python 版：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">&#x2F;etc&#x2F;shadowsocks-python&#x2F;config.json<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/etc/shadowsocks-python/config.json<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <blockquote>
 <p>来自 <a target="_blank" rel="noopener" href="https://teddysun.com/486.html">https://teddysun.com/486.html</a></p>
 </blockquote>
@@ -562,43 +577,50 @@ Enjoy it!<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 <p>Shadowsocks-Python 版的配置文件路径 <code>/etc/shadowsocks-python/config.json</code>，下面以修改该配置文件来说明。</p>
 <p>在 Linux 下建议使用 vim 或者 nano 来编辑此配置文件。具体如何使用这两种编辑器，这里不多说明，可自行去搜索相关用法。</p>
 <p>Shadowsocks-Python 版多端口配置文件示例：</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;
-&quot;server&quot;:&quot;0.0.0.0&quot;,
-&quot;local_address&quot;:&quot;127.0.0.1&quot;,
-&quot;local_port&quot;:1080,
-&quot;port_password&quot;:&#123;
-&quot;9000&quot;:&quot;password0&quot;,
-&quot;9001&quot;:&quot;password1&quot;,
-&quot;9002&quot;:&quot;password2&quot;,
-&quot;9003&quot;:&quot;password3&quot;,
-&quot;9004&quot;:&quot;password4&quot;
-&#125;,
-&quot;timeout&quot;:300,
-&quot;method&quot;:&quot;your_encryption_method&quot;,
-&quot;fast_open&quot;: false
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+<span class="token property">"server"</span><span class="token operator">:</span><span class="token string">"0.0.0.0"</span><span class="token punctuation">,</span>
+<span class="token property">"local_address"</span><span class="token operator">:</span><span class="token string">"127.0.0.1"</span><span class="token punctuation">,</span>
+<span class="token property">"local_port"</span><span class="token operator">:</span><span class="token number">1080</span><span class="token punctuation">,</span>
+<span class="token property">"port_password"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
+<span class="token property">"9000"</span><span class="token operator">:</span><span class="token string">"password0"</span><span class="token punctuation">,</span>
+<span class="token property">"9001"</span><span class="token operator">:</span><span class="token string">"password1"</span><span class="token punctuation">,</span>
+<span class="token property">"9002"</span><span class="token operator">:</span><span class="token string">"password2"</span><span class="token punctuation">,</span>
+<span class="token property">"9003"</span><span class="token operator">:</span><span class="token string">"password3"</span><span class="token punctuation">,</span>
+<span class="token property">"9004"</span><span class="token operator">:</span><span class="token string">"password4"</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="token property">"timeout"</span><span class="token operator">:</span><span class="token number">300</span><span class="token punctuation">,</span>
+<span class="token property">"method"</span><span class="token operator">:</span><span class="token string">"your_encryption_method"</span><span class="token punctuation">,</span>
+<span class="token property">"fast_open"</span><span class="token operator">:</span> <span class="token boolean">false</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>其他地方不用管，重点在于 <code>port_password</code> 字段的修改。</p>
 <p>你想要多少端口就添加多少端口，注意需要符合 json 格式，里面的最后一行后面是没有英文逗号的，整个大括号的最后需要有一个英文逗号。</p>
 <p>修改完成后，保存配置文件，重启。命令如下：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">&#x2F;etc&#x2F;init.d&#x2F;shadowsocks-python restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/etc/init.d/shadowsocks-python restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <blockquote>
 <p>来自 <a target="_blank" rel="noopener" href="https://teddysun.com/532.html">https://teddysun.com/532.html</a></p>
 </blockquote>
 <h1 id="连接不上解决方案"><a href="#连接不上解决方案" class="headerlink" title="连接不上解决方案"></a>连接不上解决方案</h1><p>如果新添加的端口无效，多半是没有开放端口，参考下边设置端口开放（8000改成自己想要开放的端口就可以了）。</p>
 <h2 id="CentOS7"><a href="#CentOS7" class="headerlink" title="CentOS7"></a>CentOS7</h2><p>centos7中的防火墙改成了firewall，使用iptables无作用。<br>启动防火墙</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl start firewalld.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>开放端口</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">firewall-cmd --zone&#x3D;public --add-port&#x3D;8000&#x2F;tcp --permanent<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">firewall-cmd --zone<span class="token operator">=</span>public --add-port<span class="token operator">=</span><span class="token number">8000</span>/tcp --permanent<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>返回<code>success</code>代表成功。</p>
 <p>重启防火墙</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl restart firewalld.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h2 id="CentOS6"><a href="#CentOS6" class="headerlink" title="CentOS6"></a>CentOS6</h2><p>CentOS6 使用如下命令。</p>
 <p>开放端口</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">&#x2F;sbin&#x2F;iptables -I INPUT -p tcp --dport 8000 -j ACCEPT<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/sbin/iptables -I INPUT -p tcp --dport <span class="token number">8000</span> -j ACCEPT<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>保存</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">&#x2F;etc&#x2F;rc.d&#x2F;init.d&#x2F;iptables save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/etc/rc.d/init.d/iptables save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>重启防火墙</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">&#x2F;etc&#x2F;init.d&#x2F;iptables restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/etc/init.d/iptables restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h1 id="GoogleBBR加速"><a href="#GoogleBBR加速" class="headerlink" title="GoogleBBR加速"></a>GoogleBBR加速</h1><p>最近，Google 开源了其 TCP BBR 拥塞控制算法，并提交到了 Linux 内核，从 4.9 开始，Linux 内核已经用上了该算法。根据以往的传统，Google 总是先在自家的生产环境上线运用后，才会将代码开源，此次也不例外。</p>
 <p>根据实地测试，在部署了最新版内核并开启了 TCP BBR 的机器上，网速甚至可以提升好几个数量级。</p>
 <p>于是我根据目前三大发行版的最新内核，开发了一键安装最新内核并开启 TCP BBR 脚本。</p>
@@ -617,50 +639,57 @@ Enjoy it!<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 </ol>
 <h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>使用root用户登录，运行以下命令：</p>
 <pre class="line-numbers language-none"><code class="language-none">wget --no-check-certificate https:&#x2F;&#x2F;github.com&#x2F;teddysun&#x2F;across&#x2F;raw&#x2F;master&#x2F;bbr.sh &amp;&amp; chmod +x bbr.sh &amp;&amp; .&#x2F;bbr.sh <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>安装完成后，脚本会提示需要重启 VPS，输入 y 并回车后重启。</p>
 <p>重启完成后，进入 VPS，验证一下是否成功安装最新内核并开启 TCP BBR，输入以下命令：</p>
 <pre class="line-numbers language-none"><code class="language-none">uname -r<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>查看内核版本，显示为最新版就表示 OK 了</p>
 <pre class="line-numbers language-none"><code class="language-none">sysctl net.ipv4.tcp_available_congestion_control<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>返回值一般为：<code>net.ipv4.tcp_available_congestion_control = bbr cubic reno</code></p>
 <p>或者为：<code>net.ipv4.tcp_available_congestion_control = reno cubic bbr</code></p>
 <pre class="line-numbers language-none"><code class="language-none">sysctl net.ipv4.tcp_congestion_control<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>返回值一般为：<code>net.ipv4.tcp_congestion_control = bbr</code></p>
 <pre class="line-numbers language-none"><code class="language-none">sysctl net.core.default_qdisc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>返回值一般为：<code>net.core.default_qdisc = fq</code></p>
 <pre class="line-numbers language-none"><code class="language-none">lsmod | grep bbr<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>返回值有 tcp_bbr 模块即说明 bbr 已启动。注意：并不是所有的 VPS 都会有此返回值，若没有也属正常。</p>
 <blockquote>
 <p>参考资料：<a target="_blank" rel="noopener" href="https://teddysun.com/489.html">https://teddysun.com/489.html</a></p>
 </blockquote>
 <h2 id="采用OpenVZ架构的BBR加速"><a href="#采用OpenVZ架构的BBR加速" class="headerlink" title="采用OpenVZ架构的BBR加速"></a>采用OpenVZ架构的BBR加速</h2><p>OpenVZ平台的通过使用Rinetd来进行BBR加速，如果本方案无法正常安装，请查找别的Rinetd一键安装脚本即可。</p>
-<h3 id="Debian-or-Ubuntu系统"><a href="#Debian-or-Ubuntu系统" class="headerlink" title="Debian or Ubuntu系统"></a>Debian or Ubuntu系统</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">#适用于单网卡（单IP）服务器：
-wget https:&#x2F;&#x2F;github.com&#x2F;tcp-nanqinlang&#x2F;lkl-rinetd&#x2F;releases&#x2F;download&#x2F;1.1.0&#x2F;tcp_nanqinlang-rinetd-debianorubuntu.sh
-bash tcp_nanqinlang-rinetd-debianorubuntu.sh
-#如果提示only support OpenVZ !，则使用下面这个脚本
-wget https:&#x2F;&#x2F;github.com&#x2F;tcp-nanqinlang&#x2F;lkl-rinetd&#x2F;releases&#x2F;download&#x2F;1.1.0-nocheckvirt&#x2F;tcp_nanqinlang-rinetd-debianorubuntu-nocheckvirt.sh
-bash tcp_nanqinlang-rinetd-debianorubuntu-nocheckvirt.sh
+<h3 id="Debian-or-Ubuntu系统"><a href="#Debian-or-Ubuntu系统" class="headerlink" title="Debian or Ubuntu系统"></a>Debian or Ubuntu系统</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#适用于单网卡（单IP）服务器：</span>
+<span class="token function">wget</span> https://github.com/tcp-nanqinlang/lkl-rinetd/releases/download/1.1.0/tcp_nanqinlang-rinetd-debianorubuntu.sh
+<span class="token function">bash</span> tcp_nanqinlang-rinetd-debianorubuntu.sh
+<span class="token comment">#如果提示only support OpenVZ !，则使用下面这个脚本</span>
+<span class="token function">wget</span> https://github.com/tcp-nanqinlang/lkl-rinetd/releases/download/1.1.0-nocheckvirt/tcp_nanqinlang-rinetd-debianorubuntu-nocheckvirt.sh
+<span class="token function">bash</span> tcp_nanqinlang-rinetd-debianorubuntu-nocheckvirt.sh
 
-#适用于多网卡（多IP）服务器，会为所有网卡（所有IP）提供加速：
-wget https:&#x2F;&#x2F;github.com&#x2F;tcp-nanqinlang&#x2F;lkl-rinetd&#x2F;releases&#x2F;download&#x2F;1.1.0&#x2F;tcp_nanqinlang-rinetd-debianorubuntu-multiNIC.sh
-bash tcp_nanqinlang-rinetd-debianorubuntu-multiNIC.sh
-#如果提示only support OpenVZ !，则使用下面这个脚本
-wget https:&#x2F;&#x2F;github.com&#x2F;tcp-nanqinlang&#x2F;lkl-rinetd&#x2F;releases&#x2F;download&#x2F;1.1.0-nocheckvirt&#x2F;tcp_nanqinlang-rinetd-debianorubuntu-nocheckvirt-multiNIC.sh
-bash tcp_nanqinlang-rinetd-debianorubuntu-nocheckvirt-multiNIC.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="CentOS-7系统"><a href="#CentOS-7系统" class="headerlink" title="CentOS 7系统"></a>CentOS 7系统</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">#和上面一样，也分单网卡和多网卡版本
-#单网卡
-wget https:&#x2F;&#x2F;github.com&#x2F;tcp-nanqinlang&#x2F;lkl-rinetd&#x2F;releases&#x2F;download&#x2F;1.1.0&#x2F;tcp_nanqinlang-rinetd-centos.sh
-bash tcp_nanqinlang-rinetd-centos.sh
-#如果提示only support OpenVZ !，则使用下面这个脚本
-wget https:&#x2F;&#x2F;github.com&#x2F;tcp-nanqinlang&#x2F;lkl-rinetd&#x2F;releases&#x2F;download&#x2F;1.1.0-nocheckvirt&#x2F;tcp_nanqinlang-rinetd-centos-nocheckvirt.sh
-bash tcp_nanqinlang-rinetd-centos-nocheckvirt.sh
+<span class="token comment">#适用于多网卡（多IP）服务器，会为所有网卡（所有IP）提供加速：</span>
+<span class="token function">wget</span> https://github.com/tcp-nanqinlang/lkl-rinetd/releases/download/1.1.0/tcp_nanqinlang-rinetd-debianorubuntu-multiNIC.sh
+<span class="token function">bash</span> tcp_nanqinlang-rinetd-debianorubuntu-multiNIC.sh
+<span class="token comment">#如果提示only support OpenVZ !，则使用下面这个脚本</span>
+<span class="token function">wget</span> https://github.com/tcp-nanqinlang/lkl-rinetd/releases/download/1.1.0-nocheckvirt/tcp_nanqinlang-rinetd-debianorubuntu-nocheckvirt-multiNIC.sh
+<span class="token function">bash</span> tcp_nanqinlang-rinetd-debianorubuntu-nocheckvirt-multiNIC.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-#多网卡
-wget https:&#x2F;&#x2F;github.com&#x2F;tcp-nanqinlang&#x2F;lkl-rinetd&#x2F;releases&#x2F;download&#x2F;1.1.0&#x2F;tcp_nanqinlang-rinetd-centos.sh
-bash tcp_nanqinlang-rinetd-centos.sh
-#如果提示only support OpenVZ !，则使用下面这个脚本
-wget https:&#x2F;&#x2F;github.com&#x2F;tcp-nanqinlang&#x2F;lkl-rinetd&#x2F;releases&#x2F;download&#x2F;1.1.0-nocheckvirt&#x2F;tcp_nanqinlang-rinetd-debianorubuntu-nocheckvirt-multiNIC.sh
-bash tcp_nanqinlang-rinetd-debianorubuntu-nocheckvirt-multiNIC.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="CentOS-7系统"><a href="#CentOS-7系统" class="headerlink" title="CentOS 7系统"></a>CentOS 7系统</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#和上面一样，也分单网卡和多网卡版本</span>
+<span class="token comment">#单网卡</span>
+<span class="token function">wget</span> https://github.com/tcp-nanqinlang/lkl-rinetd/releases/download/1.1.0/tcp_nanqinlang-rinetd-centos.sh
+<span class="token function">bash</span> tcp_nanqinlang-rinetd-centos.sh
+<span class="token comment">#如果提示only support OpenVZ !，则使用下面这个脚本</span>
+<span class="token function">wget</span> https://github.com/tcp-nanqinlang/lkl-rinetd/releases/download/1.1.0-nocheckvirt/tcp_nanqinlang-rinetd-centos-nocheckvirt.sh
+<span class="token function">bash</span> tcp_nanqinlang-rinetd-centos-nocheckvirt.sh
+
+<span class="token comment">#多网卡</span>
+<span class="token function">wget</span> https://github.com/tcp-nanqinlang/lkl-rinetd/releases/download/1.1.0/tcp_nanqinlang-rinetd-centos.sh
+<span class="token function">bash</span> tcp_nanqinlang-rinetd-centos.sh
+<span class="token comment">#如果提示only support OpenVZ !，则使用下面这个脚本</span>
+<span class="token function">wget</span> https://github.com/tcp-nanqinlang/lkl-rinetd/releases/download/1.1.0-nocheckvirt/tcp_nanqinlang-rinetd-debianorubuntu-nocheckvirt-multiNIC.sh
+<span class="token function">bash</span> tcp_nanqinlang-rinetd-debianorubuntu-nocheckvirt-multiNIC.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><p>在<code>/home/tcp_nanqinlang</code>进行安装，所以安装完成后不要动这个文件夹了（除非你想修改端口）。</p>
 <p>安装过程中，会提示输入端口号。多个端口号用空格隔开。不支持端口段。</p>
 <p>安装完成后，会开启<code>rinetd-bbr</code>。以后重启机器也会随开机自启。</p>
@@ -1421,10 +1450,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -357,9 +367,7 @@
 
 
 <script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+    $('.bg-cover').css('background-image', 'url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/banner/0.jpg)');
 </script>
 
 
@@ -497,8 +505,8 @@
                             
                                 数据结构代码线性表——顺序表逆转顺序表中的所有元素void Reverse(int A[], int n)&#123;
     int i, t;
-    for(i&#x3D;0;i&lt;n&#x2F;2;i++)&#123;
-    
+    for(i=0;i&lt;n/2;i++)&#123;
+        t = A[
                             
                         </div>
                         <div class="publish-info">
@@ -731,8 +739,9 @@ Windows蓝屏分析工具BlueScreenView使用方法介绍
                                 文件与权限文件目录管理命令tree命令描述：tree命令用于以树状图列出目录的内容。
 tree命令没有内置在系统中，使用tree命令需要执行以下命令来安装：
 yum install -y tree
+
 命令使用示例：
-tree &#x2F;us
+tree &#x2F;u
                             
                         </div>
                         <div class="publish-info">
@@ -1338,10 +1347,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

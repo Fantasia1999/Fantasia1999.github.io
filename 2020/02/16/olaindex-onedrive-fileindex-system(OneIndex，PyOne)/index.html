@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -493,7 +503,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    4 分
                 </div>
                 
 
@@ -542,19 +552,20 @@
 <li>华为云：<a target="_blank" rel="noopener" href="https://www.bt.cn/bbs/thread-3923-1-1.html">https://www.bt.cn/bbs/thread-3923-1-1.html</a></li>
 </ul>
 <h4 id="下面安装默认以达到以上要求。"><a href="#下面安装默认以达到以上要求。" class="headerlink" title="下面安装默认以达到以上要求。"></a>下面安装默认以达到以上要求。</h4><h2 id="宝塔安装"><a href="#宝塔安装" class="headerlink" title="宝塔安装"></a>宝塔安装</h2><h3 id="安装面板命令："><a href="#安装面板命令：" class="headerlink" title="安装面板命令："></a>安装面板命令：</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Centos安装命令：
-yum install -y wget &amp;&amp; wget -O install.sh http:&#x2F;&#x2F;download.bt.cn&#x2F;install&#x2F;install_6.0.sh &amp;&amp; sh install.sh
+yum <span class="token function">install</span> -y <span class="token function">wget</span> <span class="token operator">&amp;&amp;</span> <span class="token function">wget</span> -O install.sh http://download.bt.cn/install/install_6.0.sh <span class="token operator">&amp;&amp;</span> <span class="token function">sh</span> install.sh
 
-Ubuntu&#x2F;Deepin安装命令：
-wget -O install.sh http:&#x2F;&#x2F;download.bt.cn&#x2F;install&#x2F;install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh
+Ubuntu/Deepin安装命令：
+<span class="token function">wget</span> -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> <span class="token function">bash</span> install.sh
 
 Debian安装命令：
-wget -O install.sh http:&#x2F;&#x2F;download.bt.cn&#x2F;install&#x2F;install-ubuntu_6.0.sh &amp;&amp; bash install.sh
+<span class="token function">wget</span> -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh <span class="token operator">&amp;&amp;</span> <span class="token function">bash</span> install.sh
 
 Fedora安装命令:
-wget -O install.sh http:&#x2F;&#x2F;download.bt.cn&#x2F;install&#x2F;install_6.0.sh &amp;&amp; bash install.sh
+<span class="token function">wget</span> -O install.sh http://download.bt.cn/install/install_6.0.sh <span class="token operator">&amp;&amp;</span> <span class="token function">bash</span> install.sh
 
 Linux面板6.9.6升级命令：
-curl http:&#x2F;&#x2F;download.bt.cn&#x2F;install&#x2F;update6.sh|bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">curl</span> http://download.bt.cn/install/update6.sh<span class="token operator">|</span><span class="token function">bash</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>其他系统安装查看</p>
 <p>安装完毕，根据返回信息登陆宝塔面板：</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/02/16/AtDA0M7y/5d1e034a3a9fc70357.png" alt="cmd-bt"></p>
@@ -571,7 +582,8 @@ curl http:&#x2F;&#x2F;download.bt.cn&#x2F;install&#x2F;update6.sh|bash<span aria
 <p><img src="https://img.zhuomu.xyz/view/img/2020/02/16/AtDA0M7y/5d1e047f2ddcc58142.png" alt="禁用函数"></p>
 <h3 id="修改-composer-源（国外服务器请忽略）"><a href="#修改-composer-源（国外服务器请忽略）" class="headerlink" title="修改 composer 源（国外服务器请忽略）"></a>修改 composer 源（国外服务器请忽略）</h3><p>宝塔面板默认安装了 Composer 包管理器</p>
 <p>进入命令行Console，执行以下命令更换为国内源</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">composer config -g repo.packagist composer https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;composer&#x2F; # 更换源为国内源，国外服务器可忽略此步骤<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">composer</span> config -g repo.packagist <span class="token function">composer</span> https://mirrors.aliyun.com/composer/ <span class="token comment"># 更换源为国内源，国外服务器可忽略此步骤</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>到此基本的PHP环境准备完毕</p>
 <h2 id="安装配置-OLAINDEX"><a href="#安装配置-OLAINDEX" class="headerlink" title="安装配置 OLAINDEX"></a>安装配置 OLAINDEX</h2><h3 id="新建站点"><a href="#新建站点" class="headerlink" title="新建站点"></a>新建站点</h3><p>这里选择新建站点，填写域名后，保持默认配置。</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/02/16/AtDA0M7y/5d1e053115bf622627.png" alt="新建站点"></p>
@@ -579,16 +591,17 @@ curl http:&#x2F;&#x2F;download.bt.cn&#x2F;install&#x2F;update6.sh|bash<span aria
 <h3 id="初始化-OLAINDEX"><a href="#初始化-OLAINDEX" class="headerlink" title="初始化 OLAINDEX"></a>初始化 OLAINDEX</h3><p>首先打开宝塔ssh</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/02/16/AtDA0M7y/5d1e06619bf1057358.png" alt="img"></p>
 <p>按照一下步骤执行：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cd web目录 # 刚才新建站点的目录 这里是 &#x2F;www&#x2F;wwwroot&#x2F;t_ningkai_wang
-git clone https:&#x2F;&#x2F;github.com&#x2F;WangNingkai&#x2F;OLAINDEX.git tmp 
-mv tmp&#x2F;.git . 
-rm -rf tmp 
-git reset --hard 
-cp database&#x2F;database.sample.sqlite database&#x2F;database.sqlite  # 数据库文件
-composer install -vvv # 这里确保已经安装composer成功  # 如果报权限问题，建议先执行权限命令
-chmod -R 755 storage&#x2F;
-chown -R www:www *
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> web目录 <span class="token comment"># 刚才新建站点的目录 这里是 /www/wwwroot/t_ningkai_wang</span>
+<span class="token function">git</span> clone https://github.com/WangNingkai/OLAINDEX.git tmp 
+<span class="token function">mv</span> tmp/.git <span class="token builtin class-name">.</span> 
+<span class="token function">rm</span> -rf tmp 
+<span class="token function">git</span> reset --hard 
+<span class="token function">cp</span> database/database.sample.sqlite database/database.sqlite  <span class="token comment"># 数据库文件</span>
+<span class="token function">composer</span> <span class="token function">install</span> -vvv <span class="token comment"># 这里确保已经安装composer成功  # 如果报权限问题，建议先执行权限命令</span>
+<span class="token function">chmod</span> -R <span class="token number">755</span> storage/
+<span class="token function">chown</span> -R www:www *
 php artisan od:install<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>到此我们安装好了OLAINDEX</p>
 <h3 id="配置站点信息"><a href="#配置站点信息" class="headerlink" title="配置站点信息"></a>配置站点信息</h3><p><img src="https://img.zhuomu.xyz/view/img/2020/02/16/AtDA0M7y/5d1e05b23a26f53416.png" alt="设置"></p>
 <h4 id="首先站点目录"><a href="#首先站点目录" class="headerlink" title="首先站点目录"></a>首先站点目录</h4><p><img src="https://img.zhuomu.xyz/view/img/2020/02/16/AtDA0M7y/5d1e05f97706e99358.png" alt="目录设置"></p>
@@ -1363,10 +1376,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

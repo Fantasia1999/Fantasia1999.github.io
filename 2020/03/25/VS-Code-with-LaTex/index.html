@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -490,14 +500,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    414
+                    268
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -518,97 +528,97 @@
                 <p>对于如何安装TexLive，可以参考这篇文档<br>[post cid=”96” /]</p>
 <h2 id="安装VS-Code"><a href="#安装VS-Code" class="headerlink" title="安装VS Code"></a>安装VS Code</h2><p><a target="_blank" rel="noopener" href="https://code.visualstudio.com/">官方地址</a></p>
 <h2 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h2><p>market搜索<code>LaTeX Workshop</code></p>
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><p>在VS Code的<code>seeting.json</code>添加以下内容</p>
 <p>!&gt; 这里的<strong>tools</strong>部分，可以自定义编译选项，如果有报错，根据自己的提示修改下边<strong>args</strong>里边的参数。</p>
 <p>[collapse status=”false” title=”setting.json”]</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">&quot;latex-workshop.latex.tools&quot;: [
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token property">"latex-workshop.latex.tools"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
         
-        &#123;
-            &quot;name&quot;: &quot;xelatex&quot;,
-            &quot;command&quot;: &quot;xelatex&quot;,
-            &quot;args&quot;: [
-              &quot;-synctex&#x3D;1&quot;, 
-              &quot;-interaction&#x3D;nonstopmode&quot;,
-              &quot;-shell-escape&quot;,
-              &quot;%DOC%&quot;
-            ]
-        &#125;, 
-        &#123;
-            &quot;name&quot;: &quot;bibtex&quot;,
-            &quot;command&quot;: &quot;bibtex&quot;,
-            &quot;args&quot;: [
-                &quot;%DOCFILE%&quot;
-            ]
-        &#125;
-    ],
-    &quot;latex-workshop.latex.recipes&quot;: [
-        &#123;
-          &quot;name&quot;: &quot;xelatex&quot;,
-          &quot;tools&quot;: [
-            &quot;xelatex&quot;
-          ]
-        &#125;,
-        &#123;
-          &quot;name&quot;: &quot;PDFLaTeX&quot;,
-          &quot;tools&quot;: [
-            &quot;pdflatex&quot;
-          ]
-        &#125;,
-        &#123;
-          &quot;name&quot;: &quot;latexmk&quot;,
-          &quot;tools&quot;: [
-            &quot;latexmk&quot;
-          ]
-        &#125;,
-        &#123;
-          &quot;name&quot;: &quot;bibtex&quot;,
-          &quot;tools&quot;: [
-            &quot;bibtex&quot;
-          ]
-        &#125;,
-        &#123;
-          &quot;name&quot;: &quot;pdflatex -&gt; bibtex -&gt; pdflatex*2&quot;,
-          &quot;tools&quot;: [
-            &quot;pdflatex&quot;,
-            &quot;bibtex&quot;,
-            &quot;pdflatex&quot;,
-            &quot;pdflatex&quot;
-          ]
-        &#125;,
-        &#123;
-          &quot;name&quot;: &quot;xelatex -&gt; bibtex -&gt; xelatex*2&quot;,
-          &quot;tools&quot;: [
-            &quot;xelatex&quot;,
-            &quot;bibtex&quot;,
-            &quot;xelatex&quot;,
-            &quot;xelatex&quot;
-          ]
-        &#125;
-    ],
-    &quot;latex-workshop.latex.clean.fileTypes&quot;: [
-      &quot;*.aux&quot;,
-      &quot;*.bbl&quot;,
-      &quot;*.blg&quot;,
-      &quot;*.idx&quot;,
-      &quot;*.ind&quot;,
-      &quot;*.lof&quot;,
-      &quot;*.lot&quot;,
-      &quot;*.out&quot;,
-      &quot;*.toc&quot;,
-      &quot;*.acn&quot;,
-      &quot;*.acr&quot;,
-      &quot;*.alg&quot;,
-      &quot;*.glg&quot;,
-      &quot;*.glo&quot;,
-      &quot;*.gls&quot;,
-      &quot;*.ist&quot;,
-      &quot;*.fls&quot;,
-      &quot;*.log&quot;,
-      &quot;*.fdb_latexmk&quot;,
-      &quot;*.gz&quot;
-    ],
-    &quot;latex-workshop.view.pdf.viewer&quot;: &quot;tab&quot;,<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        <span class="token punctuation">&#123;</span>
+            <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"xelatex"</span><span class="token punctuation">,</span>
+            <span class="token property">"command"</span><span class="token operator">:</span> <span class="token string">"xelatex"</span><span class="token punctuation">,</span>
+            <span class="token property">"args"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+              <span class="token string">"-synctex=1"</span><span class="token punctuation">,</span> 
+              <span class="token string">"-interaction=nonstopmode"</span><span class="token punctuation">,</span>
+              <span class="token string">"-shell-escape"</span><span class="token punctuation">,</span>
+              <span class="token string">"%DOC%"</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> 
+        <span class="token punctuation">&#123;</span>
+            <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"bibtex"</span><span class="token punctuation">,</span>
+            <span class="token property">"command"</span><span class="token operator">:</span> <span class="token string">"bibtex"</span><span class="token punctuation">,</span>
+            <span class="token property">"args"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"%DOCFILE%"</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"latex-workshop.latex.recipes"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">&#123;</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"xelatex"</span><span class="token punctuation">,</span>
+          <span class="token property">"tools"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"xelatex"</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        <span class="token punctuation">&#123;</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"PDFLaTeX"</span><span class="token punctuation">,</span>
+          <span class="token property">"tools"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"pdflatex"</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        <span class="token punctuation">&#123;</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"latexmk"</span><span class="token punctuation">,</span>
+          <span class="token property">"tools"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"latexmk"</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        <span class="token punctuation">&#123;</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"bibtex"</span><span class="token punctuation">,</span>
+          <span class="token property">"tools"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"bibtex"</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        <span class="token punctuation">&#123;</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"pdflatex -> bibtex -> pdflatex*2"</span><span class="token punctuation">,</span>
+          <span class="token property">"tools"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"pdflatex"</span><span class="token punctuation">,</span>
+            <span class="token string">"bibtex"</span><span class="token punctuation">,</span>
+            <span class="token string">"pdflatex"</span><span class="token punctuation">,</span>
+            <span class="token string">"pdflatex"</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        <span class="token punctuation">&#123;</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"xelatex -> bibtex -> xelatex*2"</span><span class="token punctuation">,</span>
+          <span class="token property">"tools"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"xelatex"</span><span class="token punctuation">,</span>
+            <span class="token string">"bibtex"</span><span class="token punctuation">,</span>
+            <span class="token string">"xelatex"</span><span class="token punctuation">,</span>
+            <span class="token string">"xelatex"</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"latex-workshop.latex.clean.fileTypes"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">"*.aux"</span><span class="token punctuation">,</span>
+      <span class="token string">"*.bbl"</span><span class="token punctuation">,</span>
+      <span class="token string">"*.blg"</span><span class="token punctuation">,</span>
+      <span class="token string">"*.idx"</span><span class="token punctuation">,</span>
+      <span class="token string">"*.ind"</span><span class="token punctuation">,</span>
+      <span class="token string">"*.lof"</span><span class="token punctuation">,</span>
+      <span class="token string">"*.lot"</span><span class="token punctuation">,</span>
+      <span class="token string">"*.out"</span><span class="token punctuation">,</span>
+      <span class="token string">"*.toc"</span><span class="token punctuation">,</span>
+      <span class="token string">"*.acn"</span><span class="token punctuation">,</span>
+      <span class="token string">"*.acr"</span><span class="token punctuation">,</span>
+      <span class="token string">"*.alg"</span><span class="token punctuation">,</span>
+      <span class="token string">"*.glg"</span><span class="token punctuation">,</span>
+      <span class="token string">"*.glo"</span><span class="token punctuation">,</span>
+      <span class="token string">"*.gls"</span><span class="token punctuation">,</span>
+      <span class="token string">"*.ist"</span><span class="token punctuation">,</span>
+      <span class="token string">"*.fls"</span><span class="token punctuation">,</span>
+      <span class="token string">"*.log"</span><span class="token punctuation">,</span>
+      <span class="token string">"*.fdb_latexmk"</span><span class="token punctuation">,</span>
+      <span class="token string">"*.gz"</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"latex-workshop.view.pdf.viewer"</span><span class="token operator">:</span> <span class="token string">"tab"</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>[/collapse]</p>
 <h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><ul>
 <li><code>Ctrl+Alt+B</code>编译，<code>Ctrl+S</code>保存的时候也会自动编译。</li>
@@ -1387,10 +1397,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

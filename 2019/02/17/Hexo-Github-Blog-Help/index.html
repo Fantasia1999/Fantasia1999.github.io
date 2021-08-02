@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -469,14 +479,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.8k
+                    3.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    16 分
+                    15 分
                 </div>
                 
 
@@ -505,54 +515,55 @@
 </ul>
 <p>hexo+Github搭建博客的教程网上有很多了，初次搭建，可参考知乎上的一篇教程</p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26625249">GitHub+Hexo 搭建个人网站详细教程</a> //<strong>强烈推荐！！！</strong></p>
-<a id="more"></a>
+<span id="more"></span>
 
 <p>本文主要记录我在使用hexo的时候，从网上搜集的一些方法，整理了一下，写成博客，内容大多从网络上转载过来的，有些图省事，直接搬了过来，大多数都标记了出处，如有侵权，请<a href="mailto:yourname@gmail.com">联系</a>我删除。</p>
 <h1 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h1><h2 id="主界面"><a href="#主界面" class="headerlink" title="主界面"></a>主界面</h2><h3 id="主页文章添加阴影效果"><a href="#主页文章添加阴影效果" class="headerlink" title="主页文章添加阴影效果"></a>主页文章添加阴影效果</h3><p>修改<code>custom.styl</code> 文件，添加以下代码。位置：<code>themes/next/source/css/_custom/custom.styl</code></p>
-<pre class="line-numbers language-stylus" data-language="stylus"><code class="language-stylus">&#x2F;&#x2F; 主页文章添加阴影效果
- .post &#123;
-   margin-top: 60px;
-   margin-bottom: 60px;
-   padding: 25px;
-   -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);
-   -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
-  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-stylus" data-language="stylus"><code class="language-stylus"><span class="token selector"><span class="token comment">// 主页文章添加阴影效果</span></span>
+ <span class="token selector">.post <span class="token punctuation">&#123;</span></span>
+   <span class="token property-declaration"><span class="token property">margin-top</span><span class="token punctuation">:</span> <span class="token number">60</span><span class="token unit">px</span><span class="token punctuation">;</span></span>
+   <span class="token property-declaration"><span class="token property">margin-bottom</span><span class="token punctuation">:</span> <span class="token number">60</span><span class="token unit">px</span><span class="token punctuation">;</span></span>
+   <span class="token property-declaration"><span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">25</span><span class="token unit">px</span><span class="token punctuation">;</span></span>
+   <span class="token property-declaration"><span class="token property">-webkit-box-shadow</span><span class="token punctuation">:</span> <span class="token number">0</span> <span class="token number">0</span> <span class="token number">5</span><span class="token unit">px</span> <span class="token func"><span class="token function">rgba</span><span class="token punctuation">(</span><span class="token number">202</span><span class="token punctuation">,</span> <span class="token number">203</span><span class="token punctuation">,</span> <span class="token number">203</span><span class="token punctuation">,</span> <span class="token number">.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></span>
+   <span class="token property-declaration"><span class="token property">-moz-box-shadow</span><span class="token punctuation">:</span> <span class="token number">0</span> <span class="token number">0</span> <span class="token number">5</span><span class="token unit">px</span> <span class="token func"><span class="token function">rgba</span><span class="token punctuation">(</span><span class="token number">202</span><span class="token punctuation">,</span> <span class="token number">203</span><span class="token punctuation">,</span> <span class="token number">204</span><span class="token punctuation">,</span> <span class="token number">.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></span>
+  <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="首页不显示全文-只显示预览"><a href="#首页不显示全文-只显示预览" class="headerlink" title="首页不显示全文(只显示预览)"></a>首页不显示全文(只显示预览)</h3><ul>
 <li><p>打开主题配置文件<code>/themes/next/_config.yml</code>，将<code>auto_excerpt</code>下面的<code>enable:</code>的值，改成<code>true</code></p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"># Automatically Excerpt. Not recommand.
-# Please use &lt;!-- more --&gt; in the post to control excerpt accurately.
-auto_excerpt:
-enable: true
-length: 150<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># Automatically Excerpt. Not recommand.</span>
+<span class="token comment"># Please use &lt;!-- more --> in the post to control excerpt accurately.</span>
+<span class="token key atrule">auto_excerpt</span><span class="token punctuation">:</span>
+<span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+<span class="token key atrule">length</span><span class="token punctuation">:</span> <span class="token number">150</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
 <blockquote>
 <p>除了这个方法，还有一个更灵活的方法，直接在编辑的文章中添加<code>&lt;!--more--&gt;</code>标记。这样只会显示<code>&lt;!--more--&gt;</code>标记之前的那部份。</p>
 </blockquote>
-</li>
-</ul>
 <h3 id="显示阅读百分比"><a href="#显示阅读百分比" class="headerlink" title="显示阅读百分比"></a>显示阅读百分比</h3><ul>
 <li><p>打开<code>themes/next/_config.yml</code>主题配置文件,找到<code># Scroll percent label in b2t button</code>将<code>scrollpercent:</code>的值,改成<code>true</code></p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"># Scroll percent label in b2t button
-  scrollpercent: true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h3 id="设置「阅读全文」"><a href="#设置「阅读全文」" class="headerlink" title="设置「阅读全文」"></a>设置「阅读全文」</h3></li>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># Scroll percent label in b2t button</span>
+  <span class="token key atrule">scrollpercent</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 </ul>
-<p>NexT 提供三种方式来控制文章在首页的显示方式。 也就是说，在首页显示文章的摘录并显示 <strong>阅读全文</strong> 按钮，可以通过以下方法：</p>
+<h3 id="设置「阅读全文」"><a href="#设置「阅读全文」" class="headerlink" title="设置「阅读全文」"></a>设置「阅读全文」</h3><p>NexT 提供三种方式来控制文章在首页的显示方式。 也就是说，在首页显示文章的摘录并显示 <strong>阅读全文</strong> 按钮，可以通过以下方法：</p>
 <ol>
 <li><p>在文章中使用 <code>&lt;!-- more --&gt;</code> 手动进行截断，Hexo 提供的方式 推荐</p>
 </li>
 <li><p>在文章的 <a target="_blank" rel="noopener" href="https://hexo.io/docs/front-matter.html">front-matter</a> 中添加 <code>description</code>，并提供文章摘录</p>
 </li>
 <li><p>自动形成摘要，在 主题配置文件 中添加：</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">auto_excerpt:
-  enable: true
-  length: 150<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">auto_excerpt</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">length</span><span class="token punctuation">:</span> <span class="token number">150</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>默认截取的长度为 <code>150</code> 字符，可以根据需要自行设定</p>
 </li>
 </ol>
 <p>建议使用 <code>&lt;!-- more --&gt;</code>（即第一种方式），除了可以精确控制需要显示的摘录内容以外， 这种方式也可以让 Hexo 中的插件更好的识别。</p>
 <h3 id="如何更改内容区域的宽度？Scheme-Pisces专用"><a href="#如何更改内容区域的宽度？Scheme-Pisces专用" class="headerlink" title="如何更改内容区域的宽度？Scheme Pisces专用"></a>如何更改内容区域的宽度？Scheme Pisces专用</h3><p>对于 Pisces Scheme，需要同时修改 <code>header</code> 的宽度、<code>.main-inner</code> 的宽度以及 <code>.content-wrap</code> 的宽度。例如，使用百分比（Pisces 的布局定义在 <code>source/css/_schemes/Picses/_layout.styl</code> 中）：</p>
-<pre class="line-numbers language-stylus" data-language="stylus"><code class="language-stylus">header&#123; width: 90%; &#125;
-.container .main-inner &#123; width: 90%; &#125;
-.content-wrap &#123; width: calc(100% - 260px); &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-stylus" data-language="stylus"><code class="language-stylus"><span class="token selector">header<span class="token punctuation">&#123;</span></span> <span class="token property-declaration"><span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">90</span><span class="token unit">%</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span></span>
+<span class="token selector">.container .main-inner <span class="token punctuation">&#123;</span></span> <span class="token property-declaration"><span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">90</span><span class="token unit">%</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span></span>
+<span class="token selector">.content-wrap <span class="token punctuation">&#123;</span></span> <span class="token property-declaration"><span class="token property">width</span><span class="token punctuation">:</span> <span class="token func"><span class="token function">calc</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token unit">%</span> <span class="token operator">-</span> <span class="token number">260</span><span class="token unit">px</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>我并未对这个布局进行测试，自定义修改需要自己进行测试。另外，我觉得超过一定宽度后（一行内文字太多导致换行跨度太大），阅读体验都不怎么样。</p>
 <h2 id="顶部"><a href="#顶部" class="headerlink" title="顶部"></a>顶部</h2><h3 id="添加顶部加载条"><a href="#添加顶部加载条" class="headerlink" title="添加顶部加载条"></a>添加顶部加载条</h3><ul>
 <li>打开<code>themes/next/_config.yml</code>主题配置文件，将<code>pace:</code>的值,改成<code>true</code></li>
@@ -568,204 +579,200 @@ length: 150<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 </ul>
 <h2 id="底部"><a href="#底部" class="headerlink" title="底部"></a>底部</h2><h3 id="站点建立时间"><a href="#站点建立时间" class="headerlink" title="站点建立时间"></a>站点建立时间</h3><p>这个时间将在站点的底部显示，例如 <code>© 2013 - 2015</code>。 编辑 主题配置文件，新增字段 <code>since</code>。</p>
 <p>配置示例</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">since: 2013<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">since</span><span class="token punctuation">:</span> <span class="token number">2013</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h2 id="小东西"><a href="#小东西" class="headerlink" title="小东西"></a>小东西</h2><h3 id="自定义鼠标样式"><a href="#自定义鼠标样式" class="headerlink" title="自定义鼠标样式"></a>自定义鼠标样式</h3><ul>
 <li><p>打开<code>themes/next/source/css/_custom/custom.styl</code>,在里面添加如下代码：</p>
-<pre class="line-numbers language-stylus" data-language="stylus"><code class="language-stylus">&#x2F;&#x2F; 鼠标样式
-  * &#123;
-      cursor: url(&quot;https:&#x2F;&#x2F;blog-1251102893.cos.ap-shanghai.myqcloud.com&#x2F;blog&#x2F;pointer2.png&quot;),auto!important
-  &#125;
-  :active &#123;
-      cursor: url(&quot;https:&#x2F;&#x2F;blog-1251102893.cos.ap-shanghai.myqcloud.com&#x2F;blog&#x2F;pointer.png&quot;),auto!important
-  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-stylus" data-language="stylus"><code class="language-stylus"><span class="token selector"><span class="token comment">// 鼠标样式</span></span>
+  <span class="token selector">* <span class="token punctuation">&#123;</span></span>
+      <span class="token property-declaration"><span class="token property">cursor</span><span class="token punctuation">:</span> <span class="token url">url("https://blog-1251102893.cos.ap-shanghai.myqcloud.com/blog/pointer2.png")</span><span class="token property">,auto!important</span></span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token selector">:active <span class="token punctuation">&#123;</span></span>
+      <span class="token property-declaration"><span class="token property">cursor</span><span class="token punctuation">:</span> <span class="token url">url("https://blog-1251102893.cos.ap-shanghai.myqcloud.com/blog/pointer.png")</span><span class="token property">,auto!important</span></span>
+  <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>其中url里面必须是ico图片，ico图片可以上传到网上，然后获取外链，复制到url里就行了。</p>
 <p>小技巧：二个ICO图标可以设置成一大一小。这样点击起来，就会有动画效果了。</p>
 </li>
 </ul>
 <h3 id="各区域动态载入效果"><a href="#各区域动态载入效果" class="headerlink" title="各区域动态载入效果"></a>各区域动态载入效果</h3><ul>
 <li><p>编辑<code>themes/netx/_config.yml</code>找到<code>motion</code>,将<code>enable</code>的值，改成<code>true</code></p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"># Use velocity to animate everything.
-motion:
-  enable: true
-  async: false
-  transition:
-    # Transition variants:
-    # fadeIn | fadeOut | flipXIn | flipXOut | flipYIn | flipYOut | flipBounceXIn | flipBounceXOut | flipBounceYIn | flipBounceYOut
-    post_block: fadeIn #主页载入效果
-    post_header: bounceRightIn #文章标题载入效果
-    post_body: slideDownIn
-    coll_header: bounceLeftIn
-    # Only for Pisces | Gemini.
-    sidebar: bounceLeftIn #侧边栏载入效果<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><code>#</code>号里都是载入效果，可以自行尝试。</p>
-</li>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># Use velocity to animate everything.</span>
+<span class="token key atrule">motion</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">async</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">transition</span><span class="token punctuation">:</span>
+    <span class="token comment"># Transition variants:</span>
+    <span class="token comment"># fadeIn | fadeOut | flipXIn | flipXOut | flipYIn | flipYOut | flipBounceXIn | flipBounceXOut | flipBounceYIn | flipBounceYOut</span>
+    <span class="token key atrule">post_block</span><span class="token punctuation">:</span> fadeIn <span class="token comment">#主页载入效果</span>
+    <span class="token key atrule">post_header</span><span class="token punctuation">:</span> bounceRightIn <span class="token comment">#文章标题载入效果</span>
+    <span class="token key atrule">post_body</span><span class="token punctuation">:</span> slideDownIn
+    <span class="token key atrule">coll_header</span><span class="token punctuation">:</span> bounceLeftIn
+    <span class="token comment"># Only for Pisces | Gemini.</span>
+    <span class="token key atrule">sidebar</span><span class="token punctuation">:</span> bounceLeftIn <span class="token comment">#侧边栏载入效果</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
+<p><code>#</code>号里都是载入效果，可以自行尝试。</p>
 <h3 id="美化右侧滚动条"><a href="#美化右侧滚动条" class="headerlink" title="美化右侧滚动条"></a>美化右侧滚动条</h3><ul>
 <li><p>打开<code>themes\next\source\css\_custom\custom.styl</code>文件，将下面的代码添加进去。</p>
-<pre class="line-numbers language-stylus" data-language="stylus"><code class="language-stylus">&#x2F;&#x2F;设置滚动条的样式
-&#x2F;&#x2F;参考https:&#x2F;&#x2F;segmentfault.com&#x2F;a&#x2F;1190000003708894
-::-webkit-scrollbar &#123;
-      width: 5px;
-      height: 5px;
+<pre class="line-numbers language-stylus" data-language="stylus"><code class="language-stylus"><span class="token comment">//设置滚动条的样式</span>
+<span class="token comment">//参考https://segmentfault.com/a/1190000003708894</span>
+<span class="token selector">::-webkit-scrollbar <span class="token punctuation">&#123;</span></span>
+      <span class="token property-declaration"><span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token unit">px</span><span class="token punctuation">;</span></span>
+      <span class="token property-declaration"><span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token unit">px</span><span class="token punctuation">;</span></span>
 
-&#125;
-&#x2F;&#x2F;滚动槽
-::-webkit-scrollbar-track &#123;
-      background: #eee;
+<span class="token punctuation">&#125;</span>
+<span class="token selector"><span class="token comment">//滚动槽</span>
+::-webkit-scrollbar-track <span class="token punctuation">&#123;</span></span>
+      <span class="token property-declaration"><span class="token property">background</span><span class="token punctuation">:</span> <span class="token hexcode">#eee</span><span class="token punctuation">;</span></span>
 
-&#125;
-&#x2F;&#x2F;滚动条滑块
-::-webkit-scrollbar-thumb &#123;
-      border-radius: 5px;
-        background-color: #ccc;
+<span class="token punctuation">&#125;</span>
+<span class="token selector"><span class="token comment">//滚动条滑块</span>
+::-webkit-scrollbar-thumb <span class="token punctuation">&#123;</span></span>
+      <span class="token property-declaration"><span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token unit">px</span><span class="token punctuation">;</span></span>
+        <span class="token property-declaration"><span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token hexcode">#ccc</span><span class="token punctuation">;</span></span>
 
-&#125;
-::-webkit-scrollbar-thumb:hover &#123;
-      background-color: rgb(247, 149, 51);
+<span class="token punctuation">&#125;</span>
+<span class="token selector">::-webkit-scrollbar-thumb:hover <span class="token punctuation">&#123;</span></span>
+      <span class="token property-declaration"><span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token func"><span class="token function">rgb</span><span class="token punctuation">(</span><span class="token number">247</span><span class="token punctuation">,</span> <span class="token number">149</span><span class="token punctuation">,</span> <span class="token number">51</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></span>
 
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="优化选择的文字样式"><a href="#优化选择的文字样式" class="headerlink" title="优化选择的文字样式"></a>优化选择的文字样式</h3></li>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h3 id="优化选择的文字样式"><a href="#优化选择的文字样式" class="headerlink" title="优化选择的文字样式"></a>优化选择的文字样式</h3><ul>
 <li><p>打开<code>themes\next\source\css\_custom\custom.styl</code>文件，将下面的代码添加进去。</p>
-<pre class="line-numbers language-stylus" data-language="stylus"><code class="language-stylus">::selection &#123;
-      background-color: rgb(255, 241, 89);
-        color: #555;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="点击出现桃心效果"><a href="#点击出现桃心效果" class="headerlink" title="点击出现桃心效果"></a>点击出现桃心效果</h3></li>
+<pre class="line-numbers language-stylus" data-language="stylus"><code class="language-stylus"><span class="token selector">::selection <span class="token punctuation">&#123;</span></span>
+      <span class="token property-declaration"><span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token func"><span class="token function">rgb</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">241</span><span class="token punctuation">,</span> <span class="token number">89</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></span>
+        <span class="token property-declaration"><span class="token property">color</span><span class="token punctuation">:</span> <span class="token hexcode">#555</span><span class="token punctuation">;</span></span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h3 id="点击出现桃心效果"><a href="#点击出现桃心效果" class="headerlink" title="点击出现桃心效果"></a>点击出现桃心效果</h3><ul>
 <li><p>打开<a target="_blank" rel="noopener" href="https://blog-1251102893.cos.ap-shanghai.myqcloud.com/blog/love.js">love.js</a>网站，然后将里面的代码copy一下，新建<code>love.js</code>文件并且将代码粘贴进去，然后保存。</p>
 </li>
 <li><p>将<code>love.js</code>文件放到路径<code>themes/next/source/js/src</code>里面，然后打开<code>themes/next/layout/_layout.swig</code>文件,在末尾（在前面引用会出现找不到的bug）<br>添加以下代码：</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 页面点击小红心 <span class="token operator">--</span><span class="token operator">></span>
-<span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span> src<span class="token operator">=</span><span class="token string">"/js/src/love.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h1 id="侧边栏"><a href="#侧边栏" class="headerlink" title="侧边栏"></a>侧边栏</h1></li>
+</li>
 </ul>
-<h2 id="分类和标签显示-tags-categories"><a href="#分类和标签显示-tags-categories" class="headerlink" title="分类和标签显示(tags, categories)"></a>分类和标签显示(tags, categories)</h2><ol>
+  <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 页面点击小红心 <span class="token operator">--</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span> src<span class="token operator">=</span><span class="token string">"/js/src/love.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h1 id="侧边栏"><a href="#侧边栏" class="headerlink" title="侧边栏"></a>侧边栏</h1><h2 id="分类和标签显示-tags-categories"><a href="#分类和标签显示-tags-categories" class="headerlink" title="分类和标签显示(tags, categories)"></a>分类和标签显示(tags, categories)</h2><ol>
 <li><p>新建一个页面，命名为<code>tags</code>。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new page &quot;tags&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new page <span class="token string">"tags"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>编辑新建的<code>index.md</code>文档，这个<code>index.md</code>存在<strong>站点</strong>的<code>source\tags</code>目录下。</p>
 <pre class="line-numbers language-none"><code class="language-none">---
 title: TagCloud #这个是tags页面的标题
 type: tags
 layout: &quot;tags&quot;
 ---<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <blockquote>
 <p>注意：如果启用评论功能，默认页面也会带有评论。需要关闭的话，请添加字段 comments 并将值设置为 false。</p>
 </blockquote>
-<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">---
-title: TagCloud #这个是tags页面的标题
-type: tags
-layout: &quot;tags&quot;
-comments: false
----<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token front-matter-block"><span class="token punctuation">---</span>
+<span class="token font-matter yaml language-yaml"><span class="token key atrule">title</span><span class="token punctuation">:</span> TagCloud <span class="token comment">#这个是tags页面的标题</span>
+<span class="token key atrule">type</span><span class="token punctuation">:</span> tags
+<span class="token key atrule">layout</span><span class="token punctuation">:</span> <span class="token string">"tags"</span>
+<span class="token key atrule">comments</span><span class="token punctuation">:</span> <span class="token boolean important">false</span></span>
+<span class="token punctuation">---</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li><p>在<code>menu</code>中打开，编辑<strong>主题</strong>配置文件<code>_config.yml</code>，添加<code>tags</code>到<code>menu</code>下，说白了就是把注释删掉。</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">menu:
-  home: &#x2F; || home
-  tags: &#x2F;tags&#x2F; || tags
-  archives: &#x2F;archives&#x2F; || archive<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">menu</span><span class="token punctuation">:</span>
+  <span class="token key atrule">home</span><span class="token punctuation">:</span> / <span class="token punctuation">|</span><span class="token punctuation">|</span> home
+  <span class="token key atrule">tags</span><span class="token punctuation">:</span> /tags/ <span class="token punctuation">|</span><span class="token punctuation">|</span> tags
+  <span class="token key atrule">archives</span><span class="token punctuation">:</span> /archives/ <span class="token punctuation">|</span><span class="token punctuation">|</span> archive<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ol>
 <blockquote>
 <p><code>categories</code>的设置类似，把对应的<code>tags</code>改成<code>categories</code>即可。</p>
 <p><code>index.md</code>文档中的<code>title</code>后边的字段可以自定义。</p>
 </blockquote>
-</li>
-</ol>
 <h2 id="添加RSS订阅"><a href="#添加RSS订阅" class="headerlink" title="添加RSS订阅"></a>添加RSS订阅</h2><ul>
 <li><p>安装RSS插件</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">npm install hexo-generator-feed --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> hexo-generator-feed --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>编辑<strong>主题</strong>配置文件<code>_config.yml</code>，添加以下代码开启</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">#rss feed
-feed:
-    type: atom
-    path: atom.xml
-    limit: 5
-    hub:
-    content: &#39;true&#39;
-    content_limit:
-    content_limit_delim: &#39; &#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment">#rss feed</span>
+<span class="token key atrule">feed</span><span class="token punctuation">:</span>
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> atom
+    <span class="token key atrule">path</span><span class="token punctuation">:</span> atom.xml
+    <span class="token key atrule">limit</span><span class="token punctuation">:</span> <span class="token number">5</span>
+    <span class="token key atrule">hub</span><span class="token punctuation">:</span>
+    <span class="token key atrule">content</span><span class="token punctuation">:</span> <span class="token string">'true'</span>
+    <span class="token key atrule">content_limit</span><span class="token punctuation">:</span>
+    <span class="token key atrule">content_limit_delim</span><span class="token punctuation">:</span> <span class="token string">' '</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
 <p>参数的含义：</p>
-</li>
-<li><p><code>type</code>: <code>RSS</code>的类型(<code>atom/rss2</code>)</p>
-</li>
-<li><p><code>path</code>: 文件路径,默认是<code>atom.xml/rss2.xml</code></p>
-</li>
-<li><p><code>limit</code>: 展示文章的数量,使用<strong>0</strong>或则<strong>false</strong>代表展示全部</p>
-</li>
-<li><p><code>hub</code>:</p>
-</li>
-<li><p><code>content</code>: 在<code>RSS</code>文件中是否包含内容 ,有3个值 <code>true/false</code>默认不填为<code>false</code></p>
-</li>
-<li><p><code>content_limit</code>: 指定内容的长度作为摘要,仅仅在上面<code>content</code>设置为<code>false</code>和<code>没有自定义的描述出现</code></p>
-</li>
-<li><p><code>content_limit_delim</code>: 上面截取描述的分隔符,截取内容是以指定的这个分隔符作为截取结束的标志.在达到规定的内容长度之前最后出现的这个分隔符之前的内容,，防止从中间截断.</p>
-</li>
+<ul>
+<li><code>type</code>: <code>RSS</code>的类型(<code>atom/rss2</code>)</li>
+<li><code>path</code>: 文件路径,默认是<code>atom.xml/rss2.xml</code></li>
+<li><code>limit</code>: 展示文章的数量,使用<strong>0</strong>或则<strong>false</strong>代表展示全部</li>
+<li><code>hub</code>:</li>
+<li><code>content</code>: 在<code>RSS</code>文件中是否包含内容 ,有3个值 <code>true/false</code>默认不填为<code>false</code></li>
+<li><code>content_limit</code>: 指定内容的长度作为摘要,仅仅在上面<code>content</code>设置为<code>false</code>和<code>没有自定义的描述出现</code></li>
+<li><code>content_limit_delim</code>: 上面截取描述的分隔符,截取内容是以指定的这个分隔符作为截取结束的标志.在达到规定的内容长度之前最后出现的这个分隔符之前的内容,，防止从中间截断.</li>
 </ul>
 <blockquote>
 </blockquote>
 <h2 id="友情链接Blog-rolls"><a href="#友情链接Blog-rolls" class="headerlink" title="友情链接Blog rolls"></a>友情链接Blog rolls</h2><ul>
 <li><p>编辑文件<code>themes/next/_config.yml</code>，找到<code># Blog rolls</code>修改成下面的样子就OK了。(links里面写你想要的链接):</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"># Blog rolls
-links_icon: link
-links_title: Links
-links_layout: block
-#links_layout: inline
-links:
-  Title: http:&#x2F;&#x2F;example.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="头像"><a href="#头像" class="headerlink" title="头像"></a>头像</h2></li>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># Blog rolls</span>
+<span class="token key atrule">links_icon</span><span class="token punctuation">:</span> link
+<span class="token key atrule">links_title</span><span class="token punctuation">:</span> Links
+<span class="token key atrule">links_layout</span><span class="token punctuation">:</span> block
+<span class="token comment">#links_layout: inline</span>
+<span class="token key atrule">links</span><span class="token punctuation">:</span>
+  <span class="token key atrule">Title</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//example.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
-<p>Sidebar Avatar</p>
+<h2 id="头像"><a href="#头像" class="headerlink" title="头像"></a>头像</h2><p>Sidebar Avatar</p>
 <ul>
 <li><p>修改文件<code>themes/next/_config.yml</code>，找到<code>avatar</code>，修改成如下格式即可，<code>url</code>可以是一个网络链接，也可以是本地图片，具体格式看注释。</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"># Sidebar Avatar
-avatar:
-  # in theme directory(source&#x2F;images): &#x2F;images&#x2F;avatar.gif
-  # in site  directory(source&#x2F;uploads): &#x2F;uploads&#x2F;avatar.gif
-  # You can also use other linking images.
-  url: https:&#x2F;&#x2F;blog-1251102893.cos.ap-shanghai.myqcloud.com&#x2F;avatar.jpg
-  # If true, the avatar would be dispalyed in circle.
-  rounded: true
-  # The value of opacity should be choose from 0 to 1 to set the opacity of the avatar.
-  opacity: 1
-  # If true, the avatar would be rotated with the cursor.
-  rotated: true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="联系方式及社交链接"><a href="#联系方式及社交链接" class="headerlink" title="联系方式及社交链接"></a>联系方式及社交链接</h2></li>
-<li><p>修改<code>themes/next/_config.yml</code>站点配置文件，找到<code># Social Links</code>,将<code>social:</code>下面对应的<code>#</code>号去掉。</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"># Social Links
-# find other icon : https:&#x2F;&#x2F;fontawesome.com&#x2F;cheatsheet?from&#x3D;io
-social:
-  GitHub: https:&#x2F;&#x2F;github.com&#x2F;yourname || github
-  E-Mail: mailto:yourname@gmail.com || envelope
-  Weibo: https:&#x2F;&#x2F;weibo.com&#x2F;yourname || weibo
-  #Google: https:&#x2F;&#x2F;plus.google.com&#x2F;yourname || google
-  #Twitter: https:&#x2F;&#x2F;twitter.com&#x2F;yourname || twitter
-
-social_icons:
-  enable: true
-  icons_only: false
-  transition: false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="侧边栏社交链接"><a href="#侧边栏社交链接" class="headerlink" title="侧边栏社交链接"></a>侧边栏社交链接</h2></li>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># Sidebar Avatar</span>
+<span class="token key atrule">avatar</span><span class="token punctuation">:</span>
+  <span class="token comment"># in theme directory(source/images): /images/avatar.gif</span>
+  <span class="token comment"># in site  directory(source/uploads): /uploads/avatar.gif</span>
+  <span class="token comment"># You can also use other linking images.</span>
+  <span class="token key atrule">url</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//blog<span class="token punctuation">-</span>1251102893.cos.ap<span class="token punctuation">-</span>shanghai.myqcloud.com/avatar.jpg
+  <span class="token comment"># If true, the avatar would be dispalyed in circle.</span>
+  <span class="token key atrule">rounded</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token comment"># The value of opacity should be choose from 0 to 1 to set the opacity of the avatar.</span>
+  <span class="token key atrule">opacity</span><span class="token punctuation">:</span> <span class="token number">1</span>
+  <span class="token comment"># If true, the avatar would be rotated with the cursor.</span>
+  <span class="token key atrule">rotated</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
-<p>侧栏社交链接的修改包含两个部分，第一是链接，第二是链接图标。 两者配置均在 主题配置文件 中。</p>
+<h2 id="联系方式及社交链接"><a href="#联系方式及社交链接" class="headerlink" title="联系方式及社交链接"></a>联系方式及社交链接</h2><ul>
+<li><p>修改<code>themes/next/_config.yml</code>站点配置文件，找到<code># Social Links</code>,将<code>social:</code>下面对应的<code>#</code>号去掉。</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># Social Links</span>
+<span class="token comment"># find other icon : https://fontawesome.com/cheatsheet?from=io</span>
+<span class="token key atrule">social</span><span class="token punctuation">:</span>
+  <span class="token key atrule">GitHub</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//github.com/yourname <span class="token punctuation">|</span><span class="token punctuation">|</span> github
+  <span class="token key atrule">E-Mail</span><span class="token punctuation">:</span> mailto<span class="token punctuation">:</span>yourname@gmail.com <span class="token punctuation">|</span><span class="token punctuation">|</span> envelope
+  <span class="token key atrule">Weibo</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//weibo.com/yourname <span class="token punctuation">|</span><span class="token punctuation">|</span> weibo
+  <span class="token comment">#Google: https://plus.google.com/yourname || google</span>
+  <span class="token comment">#Twitter: https://twitter.com/yourname || twitter</span>
+
+<span class="token key atrule">social_icons</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">icons_only</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">transition</span><span class="token punctuation">:</span> <span class="token boolean important">false</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h2 id="侧边栏社交链接"><a href="#侧边栏社交链接" class="headerlink" title="侧边栏社交链接"></a>侧边栏社交链接</h2><p>侧栏社交链接的修改包含两个部分，第一是链接，第二是链接图标。 两者配置均在 主题配置文件 中。</p>
 <ol>
 <li><p>链接放置在 <code>social</code> 字段下，一行一个链接。其键值格式是 <code>显示文本: 链接地址</code>。</p>
 <p>配置示例</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"># Social links
-social:
-  GitHub: https:&#x2F;&#x2F;github.com&#x2F;your-user-name
-  Twitter: https:&#x2F;&#x2F;twitter.com&#x2F;your-user-name
-  微博: http:&#x2F;&#x2F;weibo.com&#x2F;your-user-name
-  豆瓣: http:&#x2F;&#x2F;douban.com&#x2F;people&#x2F;your-user-name
-  知乎: http:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;your-user-name
-  # 等等<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># Social links</span>
+<span class="token key atrule">social</span><span class="token punctuation">:</span>
+  <span class="token key atrule">GitHub</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//github.com/your<span class="token punctuation">-</span>user<span class="token punctuation">-</span>name
+  <span class="token key atrule">Twitter</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//twitter.com/your<span class="token punctuation">-</span>user<span class="token punctuation">-</span>name
+  <span class="token key atrule">微博</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//weibo.com/your<span class="token punctuation">-</span>user<span class="token punctuation">-</span>name
+  <span class="token key atrule">豆瓣</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//douban.com/people/your<span class="token punctuation">-</span>user<span class="token punctuation">-</span>name
+  <span class="token key atrule">知乎</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//www.zhihu.com/people/your<span class="token punctuation">-</span>user<span class="token punctuation">-</span>name
+  <span class="token comment"># 等等</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li><p>设定链接的图标，对应的字段是 <code>social_icons</code>。其键值格式是 <code>匹配键: Font Awesome 图标名称</code>， <code>匹配键</code> 与上一步所配置的链接的 <code>显示文本</code> 相同（大小写严格匹配），<code>图标名称</code> 是 Font Awesome 图标的名字（不必带 <code>fa-</code> 前缀）。<code>enable</code> 选项用于控制是否显示图标，你可以设置成 <code>false</code> 来去掉图标。</p>
 <p>配置示例</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"># Social Icons
-social_icons:
-  enable: true
-  # Icon Mappings
-  GitHub: github
-  Twitter: twitter
-  微博: weibo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="腾讯公益404页面"><a href="#腾讯公益404页面" class="headerlink" title="腾讯公益404页面"></a>腾讯公益404页面</h2></li>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># Social Icons</span>
+<span class="token key atrule">social_icons</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token comment"># Icon Mappings</span>
+  <span class="token key atrule">GitHub</span><span class="token punctuation">:</span> github
+  <span class="token key atrule">Twitter</span><span class="token punctuation">:</span> twitter
+  <span class="token key atrule">微博</span><span class="token punctuation">:</span> weibo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
-<p>腾讯公益404页面，寻找丢失儿童，让大家一起关注此项公益事业！效果click <a target="_blank" rel="noopener" href="https://5chenglin.github.io/404.html">here</a></p>
+<h2 id="腾讯公益404页面"><a href="#腾讯公益404页面" class="headerlink" title="腾讯公益404页面"></a>腾讯公益404页面</h2><p>腾讯公益404页面，寻找丢失儿童，让大家一起关注此项公益事业！效果click <a target="_blank" rel="noopener" href="https://5chenglin.github.io/404.html">here</a></p>
 <p>使用方法，新建 404.html 页面，放到<strong>主题</strong>的 <code>source</code> 目录下，内容如下：</p>
 <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">HTML</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
@@ -785,6 +792,7 @@ social_icons:
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://qzone.qq.com/gy/404/page.js<span class="token punctuation">"</span></span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h1 id="文章界面"><a href="#文章界面" class="headerlink" title="文章界面"></a>文章界面</h1><h2 id="设置代码高亮主题"><a href="#设置代码高亮主题" class="headerlink" title="设置代码高亮主题"></a>设置代码高亮主题</h2><p>NexT 使用 <a target="_blank" rel="noopener" href="https://github.com/chriskempson/tomorrow-theme">Tomorrow Theme</a> 作为代码高亮，共有5款主题供你选择。 NexT 默认使用的是 白色的 <code>normal</code> 主题，可选的值有 <code>normal</code>，<code>night</code>， <code>night blue</code>， <code>night bright</code>， <code>night eighties</code>：</p>
 <table>
 <thead>
@@ -806,10 +814,11 @@ social_icons:
 </tbody></table>
 <p>更改 <code>highlight_theme</code> 字段，将其值设定成你所喜爱的高亮主题，例如：</p>
 <p>高亮主题设置示例</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"># Code Highlight theme
-# Available value: normal | night | night eighties | night blue | night bright
-# https:&#x2F;&#x2F;github.com&#x2F;chriskempson&#x2F;tomorrow-theme
-highlight_theme: normal<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># Code Highlight theme</span>
+<span class="token comment"># Available value: normal | night | night eighties | night blue | night bright</span>
+<span class="token comment"># https://github.com/chriskempson/tomorrow-theme</span>
+<span class="token key atrule">highlight_theme</span><span class="token punctuation">:</span> normal<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="图片放大预览Fancybox"><a href="#图片放大预览Fancybox" class="headerlink" title="图片放大预览Fancybox"></a>图片放大预览Fancybox</h2><p>参考fancybox文档即可</p>
 <p>There is support for old version 2 and new version 3.</p>
 <p>Choose only any one variant, do not need to install both.</p>
@@ -833,43 +842,43 @@ highlight_theme: normal<span aria-hidden="true" class="line-numbers-rows"><span>
 </ol>
 <h2 id="结尾添加“本文结束”标记"><a href="#结尾添加“本文结束”标记" class="headerlink" title="结尾添加“本文结束”标记"></a>结尾添加“本文结束”标记</h2><ul>
 <li><p>在路径<code>themes/next/layout/_macro</code>中新建<code>passage-end-tag.swig</code>文件,并添加以下内容：</p>
-<pre class="line-numbers language-django" data-language="django"><code class="language-django">&lt;div&gt;
-    &#123;% if not is_index %&#125;
-        &lt;div style&#x3D;&quot;text-align:center;color: #ccc;font-size:14px;&quot;&gt;
+<pre class="line-numbers language-django" data-language="django"><code class="language-django"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+    <span class="token django language-django"><span class="token delimiter punctuation">&#123;%</span> <span class="token tag keyword">if</span> <span class="token keyword">not</span> <span class="token variable">is_index</span> <span class="token delimiter punctuation">%&#125;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">text-align</span><span class="token punctuation">:</span>center<span class="token punctuation">;</span><span class="token property">color</span><span class="token punctuation">:</span> #ccc<span class="token punctuation">;</span><span class="token property">font-size</span><span class="token punctuation">:</span>14px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
             -------------本文结束
-            &lt;i class&#x3D;&quot;fa fa-paw&quot;&gt;&lt;&#x2F;i&gt;
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fa fa-paw<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">></span></span>
             感谢您的阅读-------------
-        &lt;&#x2F;div&gt;
-    &#123;% endif %&#125;
-&lt;&#x2F;div&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token django language-django"><span class="token delimiter punctuation">&#123;%</span> <span class="token tag keyword">endif</span> <span class="token delimiter punctuation">%&#125;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li><p>接着打开<code>themes/next/layout/_macro/post.swig</code>文件，在<code>post-body</code>之后，<code>post-footer</code>之前添加如下代码,(大概在350行左右的位置)：</p>
-<pre class="line-numbers language-django" data-language="django"><code class="language-django">&lt;div&gt;
-  &#123;% if not is_index %&#125;
-    &#123;% include &#39;passage-end-tag.swig&#39; %&#125;
-  &#123;% endif %&#125;
-&lt;&#x2F;div&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<pre class="line-numbers language-django" data-language="django"><code class="language-django"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+  <span class="token django language-django"><span class="token delimiter punctuation">&#123;%</span> <span class="token tag keyword">if</span> <span class="token keyword">not</span> <span class="token variable">is_index</span> <span class="token delimiter punctuation">%&#125;</span></span>
+    <span class="token django language-django"><span class="token delimiter punctuation">&#123;%</span> <span class="token tag keyword">include</span> <span class="token string">'passage-end-tag.swig'</span> <span class="token delimiter punctuation">%&#125;</span></span>
+  <span class="token django language-django"><span class="token delimiter punctuation">&#123;%</span> <span class="token tag keyword">endif</span> <span class="token delimiter punctuation">%&#125;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li><p>然后打开主题配置文件<code>_config.yml</code>,在末尾添加</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"># 文章末尾添加“本文结束”标记
-passage_end_tag:
-  enabled: true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="修改文章内链接文本样式"><a href="#修改文章内链接文本样式" class="headerlink" title="修改文章内链接文本样式"></a>修改文章内链接文本样式</h2></li>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># 文章末尾添加“本文结束”标记</span>
+<span class="token key atrule">passage_end_tag</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h2 id="修改文章内链接文本样式"><a href="#修改文章内链接文本样式" class="headerlink" title="修改文章内链接文本样式"></a>修改文章内链接文本样式</h2><ul>
 <li><p>修改文件<code>themes/next/source/css/_common/components/post/post.styl</code>，在末尾添加如下<code>css</code>样式：</p>
-<pre class="line-numbers language-stylus" data-language="stylus"><code class="language-stylus">&#x2F;&#x2F; 文章内链接文本样式
-.post-body p a&#123;
-  color: #0593d3;
-  border-bottom: none;
-  border-bottom: 1px solid #0593d3;
-  &amp;:hover &#123;
-    color: #fc6423;
-    border-bottom: none;
-    border-bottom: 1px solid #fc6423;
-  &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-stylus" data-language="stylus"><code class="language-stylus"><span class="token selector"><span class="token comment">// 文章内链接文本样式</span>
+.post-body p a<span class="token punctuation">&#123;</span></span>
+  <span class="token property-declaration"><span class="token property">color</span><span class="token punctuation">:</span> <span class="token hexcode">#0593d3</span><span class="token punctuation">;</span></span>
+  <span class="token property-declaration"><span class="token property">border-bottom</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span></span>
+  <span class="token property-declaration"><span class="token property">border-bottom</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token unit">px</span> solid <span class="token hexcode">#0593d3</span><span class="token punctuation">;</span></span>
+  <span class="token selector">&amp;:hover <span class="token punctuation">&#123;</span></span>
+    <span class="token property-declaration"><span class="token property">color</span><span class="token punctuation">:</span> <span class="token hexcode">#fc6423</span><span class="token punctuation">;</span></span>
+    <span class="token property-declaration"><span class="token property">border-bottom</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span></span>
+    <span class="token property-declaration"><span class="token property">border-bottom</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token unit">px</span> solid <span class="token hexcode">#fc6423</span><span class="token punctuation">;</span></span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
 <blockquote>
 <p>其中选择<code>.post-body</code>是为了不影响标题，选择<code>p</code>是为了不影响首页“阅读全文”的显示样式,颜色可以自己定义。</p>
 </blockquote>
-</li>
-</ul>
 <h1 id="编辑、推送"><a href="#编辑、推送" class="headerlink" title="编辑、推送"></a>编辑、推送</h1><h2 id="不处理’source’目录的个别文件"><a href="#不处理’source’目录的个别文件" class="headerlink" title="不处理’source’目录的个别文件"></a>不处理’source’目录的个别文件</h2><blockquote>
 <p>有时候我们对某些文件不需要进行 hexo 博客主题渲染，需要过滤。</p>
 </blockquote>
@@ -880,9 +889,10 @@ passage_end_tag:
 <li>单个文件夹下全部文件以及子目录:skip_render: demo/**</li>
 <li>多个文件夹以及各种复杂情况：</li>
 </ol>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">skip_render:
-   - &#39;demo&#x2F;*.html&#39;
-   - &#39;demo&#x2F;**&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">skip_render</span><span class="token punctuation">:</span>
+   <span class="token punctuation">-</span> <span class="token string">'demo/*.html'</span>
+   <span class="token punctuation">-</span> <span class="token string">'demo/**'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="添加文章时，自动打开markdown编辑器"><a href="#添加文章时，自动打开markdown编辑器" class="headerlink" title="添加文章时，自动打开markdown编辑器"></a>添加文章时，自动打开markdown编辑器</h2><p>找到博客根目录，打开scripts活页夹(没有的话，自己创建一个)。</p>
 <p>创建一个JavaScript文件，可任意命名。</p>
 <p>打开所创建的JavaScript文件，输入以下内容</p>
@@ -898,8 +908,10 @@ hexo<span class="token punctuation">.</span><span class="token function">on</spa
 hexo<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'new'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
   <span class="token function">spawn</span><span class="token punctuation">(</span><span class="token string">'start "" "markdown编辑器绝对路径" '</span> <span class="token operator">+</span> data<span class="token punctuation">.</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>注意: markdown编辑器绝对路径 格式为(例如打开Typora)</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">C:\\Program Files\\Typora\\Typora.exe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">C:<span class="token punctuation">\</span><span class="token punctuation">\</span>Program Files<span class="token punctuation">\</span><span class="token punctuation">\</span>Typora<span class="token punctuation">\</span><span class="token punctuation">\</span>Typora.exe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <blockquote>
 <p>来源： <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3a01cc514ce7">https://www.jianshu.com/p/3a01cc514ce7</a></p>
 <p>参考：<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues/1007">hexo Github issue</a>  <a target="_blank" rel="noopener" href="https://notes.doublemine.me/2015-06-29-Hexo%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E6%97%B6%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80%E7%BC%96%E8%BE%91%E5%99%A8.html">Hexo添加文章时自动打开编辑器</a> </p>
@@ -916,7 +928,8 @@ hexo<span class="token punctuation">.</span><span class="token function">on</spa
 <li>腾讯云COS，内容存储服务，用于图床文件的存储，实现CDN加速。</li>
 </ul>
 <h2 id="npm访问速度慢问题："><a href="#npm访问速度慢问题：" class="headerlink" title="npm访问速度慢问题："></a>npm访问速度慢问题：</h2><p>只需要使用–registry参数指定镜像服务器地址，为了避免每次安装都需要–registry参数，可以使用如下命令进行永久设置：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ npm config set registry http:&#x2F;&#x2F;registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">npm</span> config <span class="token builtin class-name">set</span> registry http://registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>换了国内镜像，npm安装速度就很快了.</p>
 <h2 id="npm离线安装："><a href="#npm离线安装：" class="headerlink" title="npm离线安装："></a>npm离线安装：</h2><ul>
 <li>找到对应插件GitHub地址，download</li>
@@ -1682,10 +1695,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     

@@ -45,6 +45,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -469,7 +479,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    662
+                    633
                 </div>
                 
 
@@ -552,36 +562,37 @@
 <p>${\lim\limits_{n \to \infty }} S_n = \lim\limits_{n \to \infty}\frac{a_1 \times (1-q^n)}{1-q} = \frac{a_1}{1-q}$</p>
 <p>当然，我们前边求的是边长，要求周长，再乘上$n$即可</p>
 <p>所以结果为：$n \times \frac{a_1}{1-q}$</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;bits&#x2F;stdc++.h&gt;
-&#x2F;&#x2F;#define LOCAL
-using namespace std;
-const int maxn &#x3D; 1e5 + 10;
-typedef long long LL;
-const double pi &#x3D; acos(-1);
-void solve()
-&#123;
-    int n;
-    while (cin &gt;&gt; n)
-    &#123;
-        double arc &#x3D; pi &#x2F; n;
-        double a1 &#x3D; 100, q &#x3D; cos(arc);
-        &#x2F;&#x2F;cout &lt;&lt; &quot;q &#x3D; &quot; &lt;&lt; q &lt;&lt; endl;
-        double ans &#x3D; a1 &#x2F; (1 - q);
-        printf(&quot;%.2f\n&quot;, ans * n);
-    &#125;
-&#125;
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token comment">//#define LOCAL</span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> maxn <span class="token operator">=</span> <span class="token number">1e5</span> <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token keyword">typedef</span> <span class="token keyword">long</span> <span class="token keyword">long</span> LL<span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">double</span> pi <span class="token operator">=</span> <span class="token function">acos</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">solve</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>cin <span class="token operator">>></span> n<span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">double</span> arc <span class="token operator">=</span> pi <span class="token operator">/</span> n<span class="token punctuation">;</span>
+        <span class="token keyword">double</span> a1 <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">,</span> q <span class="token operator">=</span> <span class="token function">cos</span><span class="token punctuation">(</span>arc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//cout &lt;&lt; "q = " &lt;&lt; q &lt;&lt; endl;</span>
+        <span class="token keyword">double</span> ans <span class="token operator">=</span> a1 <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%.2f\n"</span><span class="token punctuation">,</span> ans <span class="token operator">*</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-int main()
-&#123;
-#ifdef LOCAL
-    freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
-    freopen(&quot;out.txt&quot;, &quot;w&quot;, stdout);
-#endif
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifdef</span> <span class="token expression">LOCAL</span></span>
+    <span class="token function">freopen</span><span class="token punctuation">(</span><span class="token string">"in.txt"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">,</span> <span class="token constant">stdin</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">freopen</span><span class="token punctuation">(</span><span class="token string">"out.txt"</span><span class="token punctuation">,</span> <span class="token string">"w"</span><span class="token punctuation">,</span> <span class="token constant">stdout</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span>
 
-    solve();
+    <span class="token function">solve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -1330,10 +1341,6 @@ $(function () {
     
     
 
-    
-    
-    <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     
