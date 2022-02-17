@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>卓木&#39;s Blog</title>
+    <link>https://blog.zhuomu.xyz/</link>
+    
+    <atom:link href="https://blog.zhuomu.xyz/rss2.xml" rel="self" type="application/rss+xml"/>
+    
+    <description>学习 分享 开源</description>
+    <pubDate>Thu, 17 Feb 2022 08:43:00 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>重装系统后配置Git和Terminal环境</title>
+      <link>https://blog.zhuomu.xyz/2022/02/17/backup-git-config-and-beautify-windows-terminal/</link>
+      <guid>https://blog.zhuomu.xyz/2022/02/17/backup-git-config-and-beautify-windows-terminal/</guid>
+      <pubDate>Thu, 17 Feb 2022 08:43:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;blockquote&gt;
+&lt;p&gt;最好事先将就系统里边的&lt;code&gt;.ssh&lt;/code&gt;文件夹备份。&lt;/p&gt;
+&lt;p&gt;.gitconfig&lt;/p&gt;
+&lt;p&gt;这两个就可以了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;配置Terminal&lt;/p&gt;
+&lt;h3 id=&quot;安装字体&quot;&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</category>
+      
+      
+      <category domain="https://blog.zhuomu.xyz/tags/git/">Git</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/terminal/">Terminal</category>
+      
+      
+      <comments>https://blog.zhuomu.xyz/2022/02/17/backup-git-config-and-beautify-windows-terminal/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Windows Docker Desktop的使用</title>
+      <link>https://blog.zhuomu.xyz/2022/02/12/the-usage-of-docker-desktop-at-windows/</link>
+      <guid>https://blog.zhuomu.xyz/2022/02/12/the-usage-of-docker-desktop-at-windows/</guid>
+      <pubDate>Sat, 12 Feb 2022 13:29:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;下载安装Docker-Desktop&quot;&gt;&lt;a href=&quot;#下载安装Docker-Desktop&quot; class=&quot;headerlink&quot; title=&quot;下载安装Docker Desktop&quot;&gt;&lt;/a&gt;下载安装Docker Desktop&lt;/h2&gt;&lt;p&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</category>
+      
+      
+      <category domain="https://blog.zhuomu.xyz/tags/docker/">Docker</category>
+      
+      
+      <comments>https://blog.zhuomu.xyz/2022/02/12/the-usage-of-docker-desktop-at-windows/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>JBL-GO-2-auto-sleep</title>
+      <link>https://blog.zhuomu.xyz/2022/02/07/jbl-go-2-auto-sleep/</link>
+      <guid>https://blog.zhuomu.xyz/2022/02/07/jbl-go-2-auto-sleep/</guid>
+      <pubDate>Mon, 07 Feb 2022 09:18:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;原因分析：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;问了度娘，有人告知是JBL音箱有一个电容在控制它，只要超过一定时间没有播放声音（没有对电容进行放电），就会自动关机。大神的方法是拆机把这个电容废掉，我得没有这个实力，只能曲线救国。(&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E9%9A%8F%E7%AC%94/">技术随笔</category>
+      
+      
+      <category domain="https://blog.zhuomu.xyz/tags/jbl/">JBL</category>
+      
+      
+      <comments>https://blog.zhuomu.xyz/2022/02/07/jbl-go-2-auto-sleep/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>CenOS 7 桥接网络配置</title>
+      <link>https://blog.zhuomu.xyz/2021/04/29/centos-7-minimal-bridging/</link>
+      <guid>https://blog.zhuomu.xyz/2021/04/29/centos-7-minimal-bridging/</guid>
+      <pubDate>Thu, 29 Apr 2021 08:06:59 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;最近在部署一个远程开发环境，为了稳定，就不再安装GUI界面了，直接ssh远程过去开发，所以选择了Minimal安装，Linux发行版选择的是CentOS 7</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/">技术博文</category>
+      
+      
+      <category domain="https://blog.zhuomu.xyz/tags/centos/">centos</category>
+      
+      
+      <comments>https://blog.zhuomu.xyz/2021/04/29/centos-7-minimal-bridging/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>配置PicGo上传图片到Github图床</title>
+      <link>https://blog.zhuomu.xyz/2021/04/28/upload-image-by-picgo/</link>
+      <guid>https://blog.zhuomu.xyz/2021/04/28/upload-image-by-picgo/</guid>
+      <pubDate>Wed, 28 Apr 2021 08:56:24 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;配置PicGo上传图片到Github图床&quot;&gt;&lt;a href=&quot;#配置PicGo上传图片到Github图床&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/">技术博文</category>
+      
+      
+      <category domain="https://blog.zhuomu.xyz/tags/github/">Github</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/%E5%9B%BE%E5%BA%8A/">图床</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/picgo/">PicGO</category>
+      
+      
+      <comments>https://blog.zhuomu.xyz/2021/04/28/upload-image-by-picgo/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>记一次博客图床迁移</title>
+      <link>https://blog.zhuomu.xyz/2021/03/05/move-OLAINDEX-to-PicGo/</link>
+      <guid>https://blog.zhuomu.xyz/2021/03/05/move-OLAINDEX-to-PicGo/</guid>
+      <pubDate>Fri, 05 Mar 2021 09:50:19 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
+      
+      
+      <category domain="https://blog.zhuomu.xyz/tags/jsdelivr/">jsDelivr</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/%E5%9B%BE%E5%BA%8A/">图床</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/nginx/">Nginx</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/cdn/">CDN</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/picgo/">PicGo</category>
+      
+      
+      <comments>https://blog.zhuomu.xyz/2021/03/05/move-OLAINDEX-to-PicGo/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>MySQL-Notes</title>
+      <link>https://blog.zhuomu.xyz/2021/03/04/mysql-notes/</link>
+      <guid>https://blog.zhuomu.xyz/2021/03/04/mysql-notes/</guid>
+      <pubDate>Thu, 04 Mar 2021 14:19:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;尚硅谷MySQL学习笔记&quot;&gt;&lt;a href=&quot;#尚硅谷MySQL学习笔记&quot; class=&quot;headerlink&quot; title=&quot;尚硅谷MySQL学习笔记&quot;&gt;&lt;/a&gt;尚硅谷MySQL学习笔记&lt;/h1&gt;&lt;h3 id=&quot;3-SQL分类&quot;&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
+      
+      
+      <category domain="https://blog.zhuomu.xyz/tags/mysql/">MySQL</category>
+      
+      
+      <comments>https://blog.zhuomu.xyz/2021/03/04/mysql-notes/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>更改Ubuntu的时间为北京时间（东八区）</title>
+      <link>https://blog.zhuomu.xyz/2021/01/23/ubuntu-cst-utc-8/</link>
+      <guid>https://blog.zhuomu.xyz/2021/01/23/ubuntu-cst-utc-8/</guid>
+      <pubDate>Sat, 23 Jan 2021 15:29:25 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;blockquote&gt;
+&lt;p&gt;一条命令即可。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo cp</description>
+          
+        
+      
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/tags/ubuntu/">ubuntu</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/linux/">linux</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/date/">date</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/cst/">cst</category>
+      
+      
+      <comments>https://blog.zhuomu.xyz/2021/01/23/ubuntu-cst-utc-8/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>数据结构代码题汇总</title>
+      <link>https://blog.zhuomu.xyz/2020/11/13/DS-code/</link>
+      <guid>https://blog.zhuomu.xyz/2020/11/13/DS-code/</guid>
+      <pubDate>Fri, 13 Nov 2020 20:21:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;数据结构代码&quot;&gt;&lt;a href=&quot;#数据结构代码&quot; class=&quot;headerlink&quot; title=&quot;数据结构代码&quot;&gt;&lt;/a&gt;数据结构代码&lt;/h1&gt;&lt;h2 id=&quot;线性表——顺序表&quot;&gt;&lt;a href=&quot;#线性表——顺序表&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
+      
+      
+      
+      <comments>https://blog.zhuomu.xyz/2020/11/13/DS-code/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>cmd/Git/Git bash/Linux命令行使用代理</title>
+      <link>https://blog.zhuomu.xyz/2020/08/26/cmd-Git-bash-proxy/</link>
+      <guid>https://blog.zhuomu.xyz/2020/08/26/cmd-Git-bash-proxy/</guid>
+      <pubDate>Wed, 26 Aug 2020 03:49:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;blockquote&gt;
+&lt;p&gt;更推荐使用Clash for Windows，然后使用TUN模式接管所有流量。&lt;/p&gt;
+&lt;p&gt;update: &lt;em&gt;2022-02-17&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;V2ray下命令行使用代理&lt;/p&gt;
+&lt;h2</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
+      
+      
+      <category domain="https://blog.zhuomu.xyz/tags/linux/">Linux</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/git/">Git</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/cmd/">cmd</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/bash/">bash</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/%E4%BB%A3%E7%90%86/">代理</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/shell/">shell</category>
+      
+      
+      <comments>https://blog.zhuomu.xyz/2020/08/26/cmd-Git-bash-proxy/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Windows黑屏蓝屏白屏查错方法</title>
+      <link>https://blog.zhuomu.xyz/2020/08/09/Windows-black-blue-screen/</link>
+      <guid>https://blog.zhuomu.xyz/2020/08/09/Windows-black-blue-screen/</guid>
+      <pubDate>Sun, 09 Aug 2020 05:16:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
+      
+      
+      <category domain="https://blog.zhuomu.xyz/tags/windows/">Windows</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/%E8%93%9D%E5%B1%8F/">蓝屏</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/%E9%BB%91%E5%B1%8F/">黑屏</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/%E7%99%BD%E5%B1%8F/">白屏</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/bluescreenview/">BlueScreenView</category>
+      
+      
+      <comments>https://blog.zhuomu.xyz/2020/08/09/Windows-black-blue-screen/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>记一次博客大锅</title>
+      <link>https://blog.zhuomu.xyz/2020/07/23/a-big-error/</link>
+      <guid>https://blog.zhuomu.xyz/2020/07/23/a-big-error/</guid>
+      <pubDate>Thu, 23 Jul 2020 09:07:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;事故原因：&quot;&gt;&lt;a href=&quot;#事故原因：&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E9%9A%8F%E7%AC%94/">随笔</category>
+      
+      
+      <category domain="https://blog.zhuomu.xyz/tags/typecho/">Typecho</category>
+      
+      
+      <comments>https://blog.zhuomu.xyz/2020/07/23/a-big-error/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>自定义RSSHub订阅学校官网，一劳永逸</title>
+      <link>https://blog.zhuomu.xyz/2020/07/22/RSSHub-with-university/</link>
+      <guid>https://blog.zhuomu.xyz/2020/07/22/RSSHub-with-university/</guid>
+      <pubDate>Wed, 22 Jul 2020 03:47:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;疫情初期，阿里云赠送在校大学生免费使用一年2G2H云服务器，想着不能浪费了，能不能在上边搭一些服务玩一玩。自己对信息的获取也是比较重视的，很早就在用RSS，这种订阅方式很高效，订阅自己关注的几个博客就可以，与之对应的是，微博、微信、知乎这些地方的信息量太大了，看一会很容易造</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/">技术博文</category>
+      
+      
+      <category domain="https://blog.zhuomu.xyz/tags/git/">Git</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/rss/">rss</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/rsshub/">RSSHub</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/js/">js</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/github/">Github</category>
+      
+      
+      <comments>https://blog.zhuomu.xyz/2020/07/22/RSSHub-with-university/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>基于 MFC 计算机图形学 实验1（Visual C++图形程序设计 ）</title>
+      <link>https://blog.zhuomu.xyz/2020/06/13/MFC-GC-lab1-Visual-C++/</link>
+      <guid>https://blog.zhuomu.xyz/2020/06/13/MFC-GC-lab1-Visual-C++/</guid>
+      <pubDate>Sat, 13 Jun 2020 02:28:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;1-MFC应用程序开发方法&quot;&gt;&lt;a href=&quot;#1-MFC应用程序开发方法&quot; class=&quot;headerlink&quot; title=&quot;1 MFC应用程序开发方法&quot;&gt;&lt;/a&gt;1 MFC应用程序开发方法&lt;/h2&gt;&lt;h3 id=&quot;1-1-创建MFC工程文件&quot;&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
+      
+      
+      <category domain="https://blog.zhuomu.xyz/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/cg/">CG</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/mfc/">MFC</category>
+      
+      
+      <comments>https://blog.zhuomu.xyz/2020/06/13/MFC-GC-lab1-Visual-C++/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>阿里云CES WordPress测试</title>
+      <link>https://blog.zhuomu.xyz/2020/06/09/aliyun-CES-WordPress/</link>
+      <guid>https://blog.zhuomu.xyz/2020/06/09/aliyun-CES-WordPress/</guid>
+      <pubDate>Tue, 09 Jun 2020 21:26:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;环境部署&quot;&gt;&lt;a href=&quot;#环境部署&quot; class=&quot;headerlink&quot; title=&quot;环境部署&quot;&gt;&lt;/a&gt;环境部署&lt;/h2&gt;&lt;h3 id=&quot;安装-Apache-HTTP-服务&quot;&gt;&lt;a href=&quot;#安装-Apache-HTTP-服务&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/">技术博文</category>
+      
+      
+      <category domain="https://blog.zhuomu.xyz/tags/blog/">blog</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/wordpress/">WordPress</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/ces/">CES</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/%E9%98%BF%E9%87%8C%E4%BA%91/">阿里云</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/%E5%8D%9A%E5%AE%A2/">博客</category>
+      
+      
+      <comments>https://blog.zhuomu.xyz/2020/06/09/aliyun-CES-WordPress/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Linux命令入门</title>
+      <link>https://blog.zhuomu.xyz/2020/06/09/Linux-command-introduction/</link>
+      <guid>https://blog.zhuomu.xyz/2020/06/09/Linux-command-introduction/</guid>
+      <pubDate>Tue, 09 Jun 2020 21:18:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;文件与权限&quot;&gt;&lt;a href=&quot;#文件与权限&quot; class=&quot;headerlink&quot; title=&quot;文件与权限&quot;&gt;&lt;/a&gt;文件与权限&lt;/h2&gt;&lt;h3 id=&quot;文件目录管理命令&quot;&gt;&lt;a href=&quot;#文件目录管理命令&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
+      
+      
+      <category domain="https://blog.zhuomu.xyz/tags/linux/">Linux</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/centos/">CentOS</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/%E5%91%BD%E4%BB%A4/">命令</category>
+      
+      
+      <comments>https://blog.zhuomu.xyz/2020/06/09/Linux-command-introduction/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>用 Pygments 给实验报告的代码润润色</title>
+      <link>https://blog.zhuomu.xyz/2020/05/17/Pygments-highlight-code/</link>
+      <guid>https://blog.zhuomu.xyz/2020/05/17/Pygments-highlight-code/</guid>
+      <pubDate>Sun, 17 May 2020 10:01:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;最初接触到这个东西是在写XCPC板子时遇到的，从Github上clone了人家的$\LaTeX$源码，然后在编译的时候发现需要安装&lt;code&gt;Pygments&lt;/code&gt;，所以又查了些资料，发现这个项目润色后的代码确实美观。之前用的是&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
+      
+      
+      
+      <comments>https://blog.zhuomu.xyz/2020/05/17/Pygments-highlight-code/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>更改Win10 DNS</title>
+      <link>https://blog.zhuomu.xyz/2020/05/11/change-Win10-DNS/</link>
+      <guid>https://blog.zhuomu.xyz/2020/05/11/change-Win10-DNS/</guid>
+      <pubDate>Mon, 11 May 2020 02:34:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;更改Win10-DNS&quot;&gt;&lt;a href=&quot;#更改Win10-DNS&quot; class=&quot;headerlink&quot; title=&quot;更改Win10 DNS&quot;&gt;&lt;/a&gt;更改Win10 DNS&lt;/h2&gt;&lt;h3 id=&quot;0x00-预备知识&quot;&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
+      
+      
+      <category domain="https://blog.zhuomu.xyz/tags/dns/">DNS</category>
+      
+      
+      <comments>https://blog.zhuomu.xyz/2020/05/11/change-Win10-DNS/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>解决 Github 图片资源无法显示问题</title>
+      <link>https://blog.zhuomu.xyz/2020/05/10/Github-img-error/</link>
+      <guid>https://blog.zhuomu.xyz/2020/05/10/Github-img-error/</guid>
+      <pubDate>Sun, 10 May 2020 01:34:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;解决-Github-图片资源无法显示问题&quot;&gt;&lt;a href=&quot;#解决-Github-图片资源无法显示问题&quot; class=&quot;headerlink&quot; title=&quot;解决 Github 图片资源无法显示问题&quot;&gt;&lt;/a&gt;解决 Github</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/">技术博文</category>
+      
+      
+      
+      <comments>https://blog.zhuomu.xyz/2020/05/10/Github-img-error/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>用人体工学调整你的桌面[by:Microsoft]</title>
+      <link>https://blog.zhuomu.xyz/2020/05/07/comfortable-desk-Microsoft/</link>
+      <guid>https://blog.zhuomu.xyz/2020/05/07/comfortable-desk-Microsoft/</guid>
+      <pubDate>Thu, 07 May 2020 09:46:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;设置你的桌面&quot;&gt;&lt;a href=&quot;#设置你的桌面&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E9%9A%8F%E7%AC%94/">随笔</category>
+      
+      
+      <category domain="https://blog.zhuomu.xyz/tags/%E4%BA%BA%E4%BD%93%E5%B7%A5%E5%AD%A6/">人体工学</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/microsoft/">Microsoft</category>
+      
+      
+      <comments>https://blog.zhuomu.xyz/2020/05/07/comfortable-desk-Microsoft/#disqus_thread</comments>
+      
+    </item>
+    
+  </channel>
+</rss>

@@ -1,535 +1,252 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="zh-CN">
-
-
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="程序员面试宝典-基础知识总结, 卓木&#39;s Blog">
-    <meta name="description" content="学习 分享 开源">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico">
+  <link rel="mask-icon" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico" color="#222">
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158292871-1"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-        dataLayer.push(arguments);
-    }
+<link rel="stylesheet" href="/css/main.css">
 
-    gtag('js', new Date());
-    gtag('config', 'UA-158292871-1');
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=LatoEB Garamond:300,300italic,400,400italic,700,700italic|JetBrains Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://blog.zhuomu.xyz').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"flat"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"buttons","active":null,"storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}}},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
 </script>
 
+  <meta name="description" content="程序员面试宝典const 位置  const位于星号左侧，则const就是被用来修饰指针指向的变量， 如果位于右侧，则就是修饰指针本身。 mutable  在const成员函数中，用mutable修饰成员变量 sizeof  class A｛  ​    int a；  ​    static int b；  ｝   静态变量是存放在全局数据区的，sizeof只计算栈中分配的大小，所以sizeof">
+<meta property="og:type" content="article">
+<meta property="og:title" content="程序员面试宝典-基础知识总结">
+<meta property="og:url" content="https://blog.zhuomu.xyz/2020/02/12/offer/index.html">
+<meta property="og:site_name" content="卓木&#39;s Blog">
+<meta property="og:description" content="程序员面试宝典const 位置  const位于星号左侧，则const就是被用来修饰指针指向的变量， 如果位于右侧，则就是修饰指针本身。 mutable  在const成员函数中，用mutable修饰成员变量 sizeof  class A｛  ​    int a；  ​    static int b；  ｝   静态变量是存放在全局数据区的，sizeof只计算栈中分配的大小，所以sizeof">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-12T08:13:00.000Z">
+<meta property="article:modified_time" content="2020-02-23T07:34:10.000Z">
+<meta property="article:author" content="卓木">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary">
 
-    <title>程序员面试宝典-基础知识总结 | 卓木&#39;s Blog</title>
-    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico">
+<link rel="canonical" href="https://blog.zhuomu.xyz/2020/02/12/offer/">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/css/my.css">
 
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/jquery/jquery.min.js"></script>
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>程序员面试宝典-基础知识总结 | 卓木's Blog</title>
+  
 
-<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="卓木's Blog" type="application/atom+xml">
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="卓木's Blog" type="application/rss+xml">
 </head>
 
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
 
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
 
-   <style>
-    body{
-       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
-       background-repeat:no-repeat;
-       background-size:cover;
-       background-attachment:fixed;
-    }
-</style>
-
-
-
-<body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/avatar.jpg" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">卓木&#39;s Blog</span>
-                </a>
-            </div>
-            
-
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>友情链接</span>
-    </a>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-</ul>
-
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
-        
-        <img src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/avatar.jpg" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">卓木&#39;s Blog</div>
-        <div class="logo-desc">
-            
-            学习 分享 开源
-            
-        </div>
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">卓木's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
+  </div>
 
-    
-
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			友情链接
-		</a>
-          
-        </li>
-        
-        
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://github.com/Fantasia1999" class="waves-effect waves-light" target="_blank">
-                <i class="fab fa-github-square fa-fw"></i>Follow Me
-            </a>
-        </li>
-        
-    </ul>
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
 </div>
 
 
-        </div>
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
 
-        
-            <style>
-    .nav-transparent .github-corner {
-        display: none !important;
-    }
+    <a href="/" rel="section"><i class="fa fa-fw fa-desktop"></i>Home</a>
 
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
+  </li>
+        <li class="menu-item menu-item-kindle">
 
-    .github-corner svg {
-        color: #0f9d58;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
+    <a href="/blog.zhuomu.xyz/Kindle" rel="section"><i class="fa fa-fw fa-book"></i>Kindle</a>
 
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
+  </li>
+        <li class="menu-item menu-item-about">
 
-    .github-corner .octo-arm {
-        animation: none;
-    }
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user-circle-o"></i>About</a>
 
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
-        }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
-    }
-</style>
+  </li>
+  </ul>
 
-<a href="https://github.com/Fantasia1999" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
-   data-tooltip="Follow Me" data-position="left" data-delay="50">
-    <svg viewBox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
-        
-    </nav>
-
-</header>
-
-    
-
-
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/featureimages/4.jpg')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">程序员面试宝典-基础知识总结</h1>
-                </div>
-            </div>
-        </div>
-    </div>
+</nav>
 </div>
-
-
-
-
-<main class="post-container content">
+    </header>
 
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/tocbot/tocbot.css">
-<style>
-    #articleContent h1::before,
-    #articleContent h2::before,
-    #articleContent h3::before,
-    #articleContent h4::before,
-    #articleContent h5::before,
-    #articleContent h6::before {
-        display: block;
-        content: " ";
-        height: 100px;
-        margin-top: -100px;
-        visibility: hidden;
-    }
 
-    #articleContent :focus {
-        outline: none;
-    }
 
-    .toc-fixed {
-        position: fixed;
-        top: 64px;
-    }
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
 
-    .toc-widget {
-        width: 345px;
-        padding-left: 20px;
-    }
+          <div class="content">
+            
 
-    .toc-widget .toc-title {
-        padding: 35px 0 15px 17px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.zhuomu.xyz/2020/02/12/offer/">
 
-    .toc-widget ol {
-        padding: 0;
-        list-style: none;
-    }
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/avatar.jpg">
+      <meta itemprop="name" content="卓木">
+      <meta itemprop="description" content="学习 分享 开源">
+    </span>
 
-    #toc-content {
-        padding-bottom: 30px;
-        overflow: auto;
-    }
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="卓木's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          程序员面试宝典-基础知识总结
+        </h1>
 
-    #toc-content ol {
-        padding-left: 10px;
-    }
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-    #toc-content ol li {
-        padding-left: 10px;
-    }
+              <time title="创建时间：2020-02-12 16:13:00" itemprop="dateCreated datePublished" datetime="2020-02-12T16:13:00+08:00">2020-02-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-23 15:34:10" itemprop="dateModified" datetime="2020-02-23T15:34:10+08:00">2020-02-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+            </span>
 
-    #toc-content .toc-link:hover {
-        color: #42b983;
-        font-weight: 700;
-        text-decoration: underline;
-    }
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/02/12/offer/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/02/12/offer/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
-    #toc-content .toc-link::before {
-        background-color: transparent;
-        max-height: 25px;
-
-        position: absolute;
-        right: 23.5vw;
-        display: block;
-    }
-
-    #toc-content .is-active-link {
-        color: #42b983;
-    }
-
-    #floating-toc-btn {
-        position: fixed;
-        right: 15px;
-        bottom: 76px;
-        padding-top: 15px;
-        margin-bottom: 0;
-        z-index: 998;
-    }
-
-    #floating-toc-btn .btn-floating {
-        width: 48px;
-        height: 48px;
-    }
-
-    #floating-toc-btn .btn-floating i {
-        line-height: 48px;
-        font-size: 1.4rem;
-    }
-</style>
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                    <div class="article-tag">
-                        
-                            <a href="/tags/c/">
-                                <span class="chip bg-color">c++</span>
-                            </a>
-                        
-                            <a href="/tags/%E9%9D%A2%E8%AF%95/">
-                                <span class="chip bg-color">面试</span>
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
-                                笔记
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-12
-                </div>
-                
-
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-23
-                </div>
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.3k
-                </div>
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    20 分
-                </div>
-                
-
-                
-            </div>
         </div>
-        <hr class="clearfix">
+      </header>
 
-        
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/prism/prism.css">
-        
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-        
-
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <h3 id="程序员面试宝典"><a href="#程序员面试宝典" class="headerlink" title="程序员面试宝典"></a>程序员面试宝典</h3><h5 id="const-位置"><a href="#const-位置" class="headerlink" title="const 位置"></a>const 位置</h5><p>  const位于星号左侧，则const就是被用来修饰指针指向的变量， 如果位于右侧，则就是修饰指针本身。</p>
+      
+        <h3 id="程序员面试宝典"><a href="#程序员面试宝典" class="headerlink" title="程序员面试宝典"></a>程序员面试宝典</h3><h5 id="const-位置"><a href="#const-位置" class="headerlink" title="const 位置"></a>const 位置</h5><p>  const位于星号左侧，则const就是被用来修饰指针指向的变量， 如果位于右侧，则就是修饰指针本身。</p>
 <h5 id="mutable"><a href="#mutable" class="headerlink" title="mutable"></a>mutable</h5><p>  在const成员函数中，用mutable修饰成员变量</p>
-<h5 id="sizeof"><a href="#sizeof" class="headerlink" title="sizeof"></a>sizeof</h5><pre class="line-numbers language-none"><code class="language-none">  class A｛
-
-  ​    int a；
-
-  ​    static int b；
-
-  ｝<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="sizeof"><a href="#sizeof" class="headerlink" title="sizeof"></a>sizeof</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  class A｛</span><br><span class="line"></span><br><span class="line">  ​    int a；</span><br><span class="line"></span><br><span class="line">  ​    static int b；</span><br><span class="line"></span><br><span class="line">  ｝</span><br></pre></td></tr></table></figure>
 <p>  静态变量是存放在全局数据区的，sizeof只计算栈中分配的大小，所以sizeof（A）不包括b</p>
 <h5 id="const与-define区别"><a href="#const与-define区别" class="headerlink" title="const与#define区别"></a>const与#define区别</h5><p>  const常量有数据类型，宏没有数据类型；编译器可以对const进行类型安全检查，对后者只进行字符替换</p>
 <h5 id="内存中的数据对齐"><a href="#内存中的数据对齐" class="headerlink" title="内存中的数据对齐"></a>内存中的数据对齐</h5><p>  一般按照4字节进行对齐</p>
@@ -588,10 +305,10 @@
 <ul>
 <li>this在成员函数的开始执行前构造的，在成员的执行结束后清除。</li>
 </ul>
-<h5 id="malloc-free-new-delete"><a href="#malloc-free-new-delete" class="headerlink" title="malloc/free new/delete"></a>malloc/free new/delete</h5><ul>
-<li><p>malloc与free是C++/C语言的标准库函数，new/delete是C++的运算符。对于非内部数据类型的对象而言，光用malloc/free无法满足动态对象的要求。对象在创建的同时要自动执行构造函数，对象消亡之前要自动执行析构函数。由于malloc/free是库函数而不是运算符，不在编译器控制权限之内，不能把执行构造函数和析构函数的任务强加于malloc/free。</p>
+<h5 id="malloc-x2F-free-new-x2F-delete"><a href="#malloc-x2F-free-new-x2F-delete" class="headerlink" title="malloc&#x2F;free new&#x2F;delete"></a>malloc&#x2F;free new&#x2F;delete</h5><ul>
+<li><p>malloc与free是C++&#x2F;C语言的标准库函数，new&#x2F;delete是C++的运算符。对于非内部数据类型的对象而言，光用malloc&#x2F;free无法满足动态对象的要求。对象在创建的同时要自动执行构造函数，对象消亡之前要自动执行析构函数。由于malloc&#x2F;free是库函数而不是运算符，不在编译器控制权限之内，不能把执行构造函数和析构函数的任务强加于malloc&#x2F;free。</p>
 </li>
-<li><p><strong>运算符</strong>是语言自身的特性，它有固定的语义，而且编译器也知道意味着什么。就像 +-*/ 一样，由编译器解释语义，生成相应的代码。 <strong>库函数</strong>是依赖于库的，没有库就没有它，也就是一定程度上独立于语言的。理论上，编译器不知道也不关心函数的作用，编译器只保证编译函数，以及调用该函数时参数和返回值符合语法，并生成相应 call 函数的代码。但实际中一些高级点的编译器，都会对标准库自带的一些函数进行特别处理。</p>
+<li><p><strong>运算符</strong>是语言自身的特性，它有固定的语义，而且编译器也知道意味着什么。就像 +-*&#x2F; 一样，由编译器解释语义，生成相应的代码。 <strong>库函数</strong>是依赖于库的，没有库就没有它，也就是一定程度上独立于语言的。理论上，编译器不知道也不关心函数的作用，编译器只保证编译函数，以及调用该函数时参数和返回值符合语法，并生成相应 call 函数的代码。但实际中一些高级点的编译器，都会对标准库自带的一些函数进行特别处理。</p>
 </li>
 </ul>
 <h5 id="Struct和class"><a href="#Struct和class" class="headerlink" title="Struct和class"></a>Struct和class</h5><ul>
@@ -649,22 +366,8 @@
 <p>  * 就绪状态：进程以分配道处CPU之外的其他资源</p>
 <p>  * 执行状态：获得CPU，正在执行</p>
 <p>  * 阻塞状态：正在执行的进程，由于等待某个事件发生而无法执行时，放弃CPU而处于阻塞状态</p>
-<p>    （I/O, 申请缓冲区不能满足，等待信号）</p>
-<h5 id="strcpy"><a href="#strcpy" class="headerlink" title="strcpy"></a>strcpy</h5><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
-<span class="token keyword">char</span> <span class="token operator">*</span> <span class="token function">strcpy</span><span class="token punctuation">(</span> <span class="token keyword">char</span> <span class="token operator">*</span>strDest<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>strSrc <span class="token punctuation">)</span> 
-
-<span class="token punctuation">&#123;</span>
-
- <span class="token function">assert</span><span class="token punctuation">(</span> <span class="token punctuation">(</span>strDest <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>strSrc <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-
- <span class="token keyword">char</span> <span class="token operator">*</span>address <span class="token operator">=</span> strDest<span class="token punctuation">;</span> 
-
- <span class="token keyword">while</span><span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token operator">*</span>strDest<span class="token operator">++</span> <span class="token operator">=</span> <span class="token operator">*</span> strSrc<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token char">'\0'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> 
-
- <span class="token keyword">return</span> address<span class="token punctuation">;</span>
-
-<span class="token punctuation">&#125;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>    （I&#x2F;O, 申请缓冲区不能满足，等待信号）</p>
+<h5 id="strcpy"><a href="#strcpy" class="headerlink" title="strcpy"></a>strcpy</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="type">char</span> * <span class="title">strcpy</span><span class="params">( <span class="type">char</span> *strDest, <span class="type">const</span> <span class="type">char</span> *strSrc )</span> </span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line"> <span class="built_in">assert</span>( (strDest != <span class="literal">NULL</span>) &amp;&amp; (strSrc != <span class="literal">NULL</span>) );</span><br><span class="line"></span><br><span class="line"> <span class="type">char</span> *address = strDest; </span><br><span class="line"></span><br><span class="line"> <span class="keyword">while</span>( (*strDest++ = * strSrc++) != <span class="string">&#x27;\0&#x27;</span> ); </span><br><span class="line"></span><br><span class="line"> <span class="keyword">return</span> address;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h5 id="static"><a href="#static" class="headerlink" title="static"></a>static</h5><p>static关键字至少有下列n个作用：   </p>
 <p>（1）函数体内static变量的作用范围为该函数体，不同于auto变量，该变量的内存只被分配一次，因此其值在下次调用时仍维持上次的值；  </p>
@@ -691,103 +394,32 @@
 <h5 id="二叉树遍历"><a href="#二叉树遍历" class="headerlink" title="二叉树遍历"></a>二叉树遍历</h5><ul>
 <li>递归版本</li>
 </ul>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">template &lt;typename E&gt;
-    void preorder(BinNode&lt;E&gt;* root) &#123;
-          if (root &#x3D;&#x3D; NULL)
-        visit(root);
-        preorder(roor-&gt;left());
-        preorder(roor-&gt;right());
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> E&gt;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">preorder</span><span class="params">(BinNode&lt;E&gt;* root)</span> </span>&#123;</span><br><span class="line">          <span class="keyword">if</span> (root == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="built_in">visit</span>(root);</span><br><span class="line">        <span class="built_in">preorder</span>(roor-&gt;<span class="built_in">left</span>());</span><br><span class="line">        <span class="built_in">preorder</span>(roor-&gt;<span class="built_in">right</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>非递归版本</li>
 </ul>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void preorderTraversalNew(TreeNode *root, vector&lt;int&gt; &amp;path) &#123;
-    stack&lt;pair&lt;TreeNode *, bool&gt;&gt; s;
-    s.push(root, false);
-    bool visited;
-    while (!s.empty()) &#123;
-        root    &#x3D; s.top().first;
-        visited &#x3D; s.top().second;
-        s.pop()
- if (root &#x3D;&#x3D; NULL) continue;
-        if (visited) &#123;
-            path.push_back(root-&gt;val);
-        &#125; else &#123;
-            s.push(make_pair(root-&gt;right(), false));
-            s.push(make_pair(root-&gt;left(), false));
-            s.push(make_pair(root, true));
-        &#125;
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">preorderTraversalNew</span><span class="params">(TreeNode *root, vector&lt;<span class="type">int</span>&gt; &amp;path)</span> </span>&#123;</span><br><span class="line">    stack&lt;pair&lt;TreeNode *, <span class="type">bool</span>&gt;&gt; s;</span><br><span class="line">    s.<span class="built_in">push</span>(root, <span class="literal">false</span>);</span><br><span class="line">    <span class="type">bool</span> visited;</span><br><span class="line">    <span class="keyword">while</span> (!s.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        root    = s.<span class="built_in">top</span>().first;</span><br><span class="line">        visited = s.<span class="built_in">top</span>().second;</span><br><span class="line">        s.<span class="built_in">pop</span>()</span><br><span class="line"> <span class="keyword">if</span> (root == <span class="literal">NULL</span>) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">if</span> (visited) &#123;</span><br><span class="line">            path.<span class="built_in">push_back</span>(root-&gt;val);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            s.<span class="built_in">push</span>(<span class="built_in">make_pair</span>(root-&gt;<span class="built_in">right</span>(), <span class="literal">false</span>));</span><br><span class="line">            s.<span class="built_in">push</span>(<span class="built_in">make_pair</span>(root-&gt;<span class="built_in">left</span>(), <span class="literal">false</span>));</span><br><span class="line">            s.<span class="built_in">push</span>(<span class="built_in">make_pair</span>(root, <span class="literal">true</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h5 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h5><ul>
 <li>插入排序</li>
 </ul>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">void insSort(E A[], int n) &#123;
-    for (int i &#x3D; 1; i &lt; n; ++i) &#123;
-        for (int j &#x3D; i; j &gt; 0 &amp;&amp; (A[j] &lt; A[j - 1]); --j) swap(A, j, j - 1);
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">insSort</span><span class="params">(E A[], <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = i; j &gt; <span class="number">0</span> &amp;&amp; (A[j] &lt; A[j - <span class="number">1</span>]); --j) <span class="built_in">swap</span>(A, j, j - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p>冒泡排序</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">bubSort</span><span class="token punctuation">(</span>E A<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">></span> i <span class="token operator">&amp;&amp;</span> A<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> A<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token operator">--</span>j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token function">swap</span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> j<span class="token punctuation">,</span> j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">bubSort</span><span class="params">(E A[], <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = n - <span class="number">1</span>; j &gt; i &amp;&amp; A[j] &lt; A[j - <span class="number">1</span>]; --j) &#123;</span><br><span class="line">            <span class="built_in">swap</span>(A, j, j - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>选择排序</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">selectSort</span><span class="token punctuation">(</span>E A<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">int</span> lowIndex<span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        lowIndex <span class="token operator">=</span> i<span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">></span> i<span class="token punctuation">;</span> <span class="token operator">--</span>j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">Comp</span><span class="token double-colon punctuation">::</span><span class="token function">prior</span><span class="token punctuation">(</span>A<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> A<span class="token punctuation">[</span>lowIndex<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> lowIndex <span class="token operator">=</span> j<span class="token punctuation">;</span>
-            <span class="token function">swap</span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> i<span class="token punctuation">,</span> lowIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">selectSort</span><span class="params">(E A[], <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> lowIndex;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        lowIndex = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = n - <span class="number">1</span>; j &gt; i; --j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (Comp::<span class="built_in">prior</span>(A[j], A[lowIndex])) lowIndex = j;</span><br><span class="line">            <span class="built_in">swap</span>(A, i, lowIndex);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>Shell排序</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">insSort2</span><span class="token punctuation">(</span>E A<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">,</span> in incr<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> incr<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i <span class="token operator">+=</span> incr<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span> <span class="token punctuation">(</span>j <span class="token operator">>=</span> incr<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>A<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">></span> A<span class="token punctuation">[</span>j <span class="token operator">-</span> incr<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> j <span class="token operator">-=</span> incr<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token function">swap</span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> j<span class="token punctuation">,</span> j <span class="token operator">-</span> incr<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-
-<span class="token keyword">void</span> <span class="token function">shellSort</span><span class="token punctuation">(</span>E A<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> n <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">/=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> i<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token function">insSort2</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>A<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> n <span class="token operator">-</span> j<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-
-    <span class="token function">insSort2</span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> n<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">insSort2</span><span class="params">(E A[], <span class="type">int</span> n, in incr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = incr; i &lt; n; i += incr) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = i; (j &gt;= incr) &amp;&amp; (A[j] &gt; A[j - incr]); j -= incr) &#123;</span><br><span class="line">            <span class="built_in">swap</span>(A, j, j - incr);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">shellSort</span><span class="params">(E A[], <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = n / <span class="number">2</span>; i &gt; <span class="number">2</span>; i /= <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; i; j++) <span class="built_in">insSort2</span>(&amp;A[j], n - j, i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">insSort2</span>(A, n, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>归并排序</p>
 </li>
 </ul>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">mergeSort</span><span class="token punctuation">(</span>E A<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> E temp<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> left<span class="token punctuation">,</span> <span class="token keyword">int</span> right<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">==</span> right<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> mid <span class="token operator">=</span> <span class="token punctuation">(</span>left <span class="token operator">+</span> right<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
-    <span class="token generic-function"><span class="token function">mergeSort</span><span class="token generic class-name"><span class="token operator">&lt;</span>E<span class="token punctuation">,</span> Comp<span class="token operator">></span></span></span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> temp<span class="token punctuation">,</span> left<span class="token punctuation">,</span> mid<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token generic-function"><span class="token function">mergeSort</span><span class="token generic class-name"><span class="token operator">&lt;</span>E<span class="token punctuation">,</span> Comp<span class="token operator">></span></span></span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> temp<span class="token punctuation">,</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> right<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> left<span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> right<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> temp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> A<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>
-    <span class="token keyword">int</span> i1 <span class="token operator">=</span> left<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> i2 <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> curr <span class="token operator">=</span> left<span class="token punctuation">;</span> curr <span class="token operator">&lt;=</span> right<span class="token punctuation">;</span> curr<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>i1 <span class="token operator">==</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
-            A<span class="token punctuation">[</span>curr<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">[</span>i2<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>i2 <span class="token operator">></span> right<span class="token punctuation">)</span>
-            A<span class="token punctuation">[</span>curr<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">[</span>i1<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">Comp</span><span class="token double-colon punctuation">::</span><span class="token function">prior</span><span class="token punctuation">(</span>temp<span class="token punctuation">[</span>i1<span class="token punctuation">]</span><span class="token punctuation">,</span> temp<span class="token punctuation">[</span>i2<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            A<span class="token punctuation">[</span>curr<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">[</span>i1<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span>
-            A<span class="token punctuation">[</span>curr<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">[</span>i2<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">mergeSort</span><span class="params">(E A[], E temp[], <span class="type">int</span> left, <span class="type">int</span> right)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (left == right) <span class="keyword">return</span>;</span><br><span class="line">    <span class="type">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">mergeSort</span>&lt;E, Comp&gt;(A, temp, left, mid);</span><br><span class="line">    <span class="built_in">mergeSort</span>&lt;E, Comp&gt;(A, temp, mid + <span class="number">1</span>, right);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = left; i &lt;= right; ++i) &#123; temp[i] = A[i]; &#125;</span><br><span class="line">    <span class="type">int</span> i1 = left;</span><br><span class="line">    <span class="type">int</span> i2 = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> curr = left; curr &lt;= right; curr++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i1 == mid + <span class="number">1</span>)</span><br><span class="line">            A[curr] = temp[i2++];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (i2 &gt; right)</span><br><span class="line">            A[curr] = temp[i1++];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (Comp::<span class="built_in">prior</span>(temp[i1], temp[i2]))</span><br><span class="line">            A[curr] = temp[i1++];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            A[curr] = temp[i2++];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p>快速排序</p>
@@ -798,32 +430,12 @@
 <h5 id="图遍历"><a href="#图遍历" class="headerlink" title="图遍历"></a>图遍历</h5><ul>
 <li>DFS（栈）</li>
 </ul>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">DFS</span><span class="token punctuation">(</span>Graph<span class="token operator">*</span> G<span class="token punctuation">,</span> <span class="token keyword">int</span> v<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token function">PreVisit</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    G<span class="token operator">-></span><span class="token function">setMark</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> VISITED<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> w <span class="token operator">=</span> G<span class="token operator">-></span><span class="token function">first</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span> w <span class="token operator">&lt;</span> G<span class="token operator">-></span>n<span class="token punctuation">;</span> w <span class="token operator">=</span> G<span class="token operator">-></span><span class="token function">next</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> w<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>G<span class="token operator">-></span><span class="token function">getMark</span><span class="token punctuation">(</span>w<span class="token punctuation">)</span> <span class="token operator">==</span> UNVISITED<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token function">DFS</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> w<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token function">PostVisit</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">DFS</span><span class="params">(Graph* G, <span class="type">int</span> v)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">PreVisit</span>(G, v);</span><br><span class="line">    G-&gt;<span class="built_in">setMark</span>(v, VISITED);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> w = G-&gt;<span class="built_in">first</span>(v); w &lt; G-&gt;n; w = G-&gt;<span class="built_in">next</span>(v, w)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (G-&gt;<span class="built_in">getMark</span>(w) == UNVISITED) &#123; <span class="built_in">DFS</span>(G, w); &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">PostVisit</span>(G, v);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>BFS</li>
 </ul>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">BFS</span><span class="token punctuation">(</span>Graph<span class="token operator">*</span> G<span class="token punctuation">,</span> <span class="token keyword">int</span> start<span class="token punctuation">,</span> Queue<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">*</span> Q<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">int</span> v<span class="token punctuation">,</span> w<span class="token punctuation">;</span>
-    Q<span class="token operator">-></span><span class="token function">enqueue</span><span class="token punctuation">(</span>start<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    G<span class="token operator">-></span><span class="token function">setMark</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> VISITED<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>Q<span class="token operator">-></span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        v <span class="token operator">=</span> Q<span class="token operator">-></span><span class="token function">dequeue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">PreVisit</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span>w <span class="token operator">=</span> G<span class="token operator">-></span><span class="token function">first</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span> w <span class="token operator">&lt;</span> G <span class="token operator">-</span> <span class="token function">n</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> w <span class="token operator">=</span> G<span class="token operator">-></span><span class="token function">next</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> w<span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>G<span class="token operator">-></span><span class="token function">getMark</span><span class="token punctuation">(</span>w<span class="token punctuation">)</span> <span class="token operator">==</span> VISITED<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                G<span class="token operator">-></span><span class="token function">setMark</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> VISIED<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                Q<span class="token operator">-></span><span class="token function">enqueue</span><span class="token punctuation">(</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">BFS</span><span class="params">(Graph* G, <span class="type">int</span> start, Queue&lt;<span class="type">int</span>&gt;* Q)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> v, w;</span><br><span class="line">    Q-&gt;<span class="built_in">enqueue</span>(start);</span><br><span class="line">    G-&gt;<span class="built_in">setMark</span>(start, VISITED);</span><br><span class="line">    <span class="keyword">while</span> (Q-&gt;<span class="built_in">length</span>() != <span class="number">0</span>) &#123;</span><br><span class="line">        v = Q-&gt;<span class="built_in">dequeue</span>();</span><br><span class="line">        <span class="built_in">PreVisit</span>(G, v);</span><br><span class="line">        <span class="keyword">for</span> (w = G-&gt;<span class="built_in">first</span>(v); w &lt; G - <span class="built_in">n</span>(); w = G-&gt;<span class="built_in">next</span>(v, w))</span><br><span class="line">            <span class="keyword">if</span> (G-&gt;<span class="built_in">getMark</span>(w) == VISITED) &#123;</span><br><span class="line">                G-&gt;<span class="built_in">setMark</span>(w, VISIED);</span><br><span class="line">                Q-&gt;<span class="built_in">enqueue</span>(w);</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h5 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h5><ul>
 <li><strong>在浏览器中输入<a target="_blank" rel="noopener" href="http://www.baidu.com后执行的全部过程/">www.baidu.com后执行的全部过程</a></strong></li>
@@ -837,9 +449,9 @@
 <li><strong>TCP三次握手和四次挥手的全过程</strong></li>
 </ul>
 <p>    <strong>三次握手：</strong></p>
-<p>    第一次握手：客户端发送syn包(syn=x)到服务器，并进入SYN_SEND状态，等待服务器确认； </p>
-<p>    第二次握手：服务器收到syn包，必须确认客户的SYN（ack=x+1），同时自己也发送一个SYN包（syn=y），即SYN+ACK包，此时服务器进入SYN_RECV状态； </p>
-<p>    第三次握手：客户端收到服务器的SYN＋ACK包，向服务器发送确认包ACK(ack=y+1)，此包发送完毕，客户端和服务器进入ESTABLISHED状态，完成三次握手。 </p>
+<p>    第一次握手：客户端发送syn包(syn&#x3D;x)到服务器，并进入SYN_SEND状态，等待服务器确认； </p>
+<p>    第二次握手：服务器收到syn包，必须确认客户的SYN（ack&#x3D;x+1），同时自己也发送一个SYN包（syn&#x3D;y），即SYN+ACK包，此时服务器进入SYN_RECV状态； </p>
+<p>    第三次握手：客户端收到服务器的SYN＋ACK包，向服务器发送确认包ACK(ack&#x3D;y+1)，此包发送完毕，客户端和服务器进入ESTABLISHED状态，完成三次握手。 </p>
 <p>    握手过程中传送的包里不包含数据，三次握手完毕后，客户端与服务器才正式开始传送数据。理想状态下，TCP连接一旦建立，在通信双方中的任何一方主动关闭连接之前，TCP 连接都将被一直保持下去。 </p>
 <p>    <strong>四次挥手</strong></p>
 <p>    与建立连接的”三次握手”类似，断开一个TCP连接则需要”四次握手”。 </p>
@@ -875,801 +487,255 @@
 <p>  信号量（CSemaphore）：用来通知线程有一些事件已发生，从而启动后继任务的开始。</p>
 <h5 id="海量不重复数据的查找和排序"><a href="#海量不重复数据的查找和排序" class="headerlink" title="海量不重复数据的查找和排序"></a>海量不重复数据的查找和排序</h5><p>采用bitmap <a target="_blank" rel="noopener" href="http://blog.csdn.net/lingess/article/details/8128133">http://blog.csdn.net/lingess/article/details/8128133</a></p>
 
-                
-            </div>
-            <hr/>
-
-            
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://blog.zhuomu.xyz" rel="external nofollow noreferrer">卓木</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://blog.zhuomu.xyz/2020/02/12/offer/">https://blog.zhuomu.xyz/2020/02/12/offer/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY-NC 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="https://blog.zhuomu.xyz" target="_blank">卓木</a>
-                    !
-                </span>
-            </div>
-        
     </div>
 
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
+    
+    
+    
 
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/c/" rel="tag"># c++</a>
+              <a href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag"># 面试</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/08/v2ray-WS-TLS-Cloudflare/" rel="prev" title="v2ray WS TLS Cloudflare节点“加”速">
+      <i class="fa fa-chevron-left"></i> v2ray WS TLS Cloudflare节点“加”速
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/15/Sublime-Text-3-ClangFormat/" rel="next" title="Sublime Text 3 ClangFormat格式化">
+      Sublime Text 3 ClangFormat格式化 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
       }
-    </script>
-
-
-
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
-                    
-                        <div class="article-tag">
-                            
-                                <a href="/tags/c/">
-                                    <span class="chip bg-color">c++</span>
-                                </a>
-                            
-                                <a href="/tags/%E9%9D%A2%E8%AF%95/">
-                                    <span class="chip bg-color">面试</span>
-                                </a>
-                            
-                        </div>
-                    
-                </div>
-                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/share/css/share.min.css">
-<div id="article-share">
-
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/share/js/social-share.min.js"></script>
-    
-
-    
-
-</div>
-
-                </div>
-            </div>
-            
-                <style>
-    #reward {
-        margin: 40px 0;
-        text-align: center;
     }
-
-    #reward .reward-link {
-        font-size: 1.4rem;
-        line-height: 38px;
-    }
-
-    #reward .btn-floating:hover {
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    #rewardModal {
-        width: 320px;
-        height: 350px;
-    }
-
-    #rewardModal .reward-title {
-        margin: 15px auto;
-        padding-bottom: 5px;
-    }
-
-    #rewardModal .modal-content {
-        padding: 10px;
-    }
-
-    #rewardModal .close {
-        position: absolute;
-        right: 15px;
-        top: 15px;
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 1.3rem;
-        line-height: 20px;
-        cursor: pointer;
-    }
-
-    #rewardModal .close:hover {
-        color: #ef5350;
-        transform: scale(1.3);
-        -moz-transform:scale(1.3);
-        -webkit-transform:scale(1.3);
-        -o-transform:scale(1.3);
-    }
-
-    #rewardModal .reward-tabs {
-        margin: 0 auto;
-        width: 210px;
-    }
-
-    .reward-tabs .tabs {
-        height: 38px;
-        margin: 10px auto;
-        padding-left: 0;
-    }
-
-    .reward-content ul {
-        padding-left: 0 !important;
-    }
-
-    .reward-tabs .tabs .tab {
-        height: 38px;
-        line-height: 38px;
-    }
-
-    .reward-tabs .tab a {
-        color: #fff;
-        background-color: #ccc;
-    }
-
-    .reward-tabs .tab a:hover {
-        background-color: #ccc;
-        color: #fff;
-    }
-
-    .reward-tabs .wechat-tab .active {
-        color: #fff !important;
-        background-color: #22AB38 !important;
-    }
-
-    .reward-tabs .alipay-tab .active {
-        color: #fff !important;
-        background-color: #019FE8 !important;
-    }
-
-    .reward-tabs .reward-img {
-        width: 210px;
-        height: 210px;
-    }
-</style>
-
-<div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
-
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs row">
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
-                    </ul>
-                    <div id="alipay">
-                        <img src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
-                    </div>
-                    <div id="wechat">
-                        <img src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(function () {
-        $('.tabs').tabs();
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
     });
+  }
 </script>
 
-            
         </div>
-    </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
 
-    
+  <aside class="sidebar">
+    <div class="sidebar-inner">
 
-    
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-    
-        <div class="disqus-card card" data-aos="fade-up">
-    <div id="disqus_thread" class="card-content">
-        <noscript>Please enable JavaScript to view the
-            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-    </div>
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8"><span class="nav-number">1.</span> <span class="nav-text">程序员面试宝典</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#const-%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.0.1.</span> <span class="nav-text">const 位置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mutable"><span class="nav-number">1.0.2.</span> <span class="nav-text">mutable</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#sizeof"><span class="nav-number">1.0.3.</span> <span class="nav-text">sizeof</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#const%E4%B8%8E-define%E5%8C%BA%E5%88%AB"><span class="nav-number">1.0.4.</span> <span class="nav-text">const与#define区别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E5%AF%B9%E9%BD%90"><span class="nav-number">1.0.5.</span> <span class="nav-text">内存中的数据对齐</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#sizeof%E5%92%8Cstrlen%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.0.6.</span> <span class="nav-text">sizeof和strlen的区别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%B1%BB%E7%A9%BA%E9%97%B4"><span class="nav-number">1.0.7.</span> <span class="nav-text">类空间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0%E5%92%8C%E5%AE%8F%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.0.8.</span> <span class="nav-text">内联函数和宏的区别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8C%87%E9%92%88"><span class="nav-number">1.0.9.</span> <span class="nav-text">指针</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#malloc-x2F-free-new-x2F-delete"><span class="nav-number">1.0.10.</span> <span class="nav-text">malloc&#x2F;free new&#x2F;delete</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Struct%E5%92%8Cclass"><span class="nav-number">1.0.11.</span> <span class="nav-text">Struct和class</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E6%88%90%E5%91%98%E6%9D%83%E9%99%90%E5%8C%BA%E5%88%AB"><span class="nav-number">1.0.12.</span> <span class="nav-text">默认成员权限区别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F"><span class="nav-number">1.0.13.</span> <span class="nav-text">默认继承方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%A8%E4%BA%8E%E5%AE%9A%E4%B9%89%E6%A8%A1%E6%9D%BF%E5%8F%82%E6%95%B0"><span class="nav-number">1.0.14.</span> <span class="nav-text">用于定义模板参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#STL"><span class="nav-number">1.0.15.</span> <span class="nav-text">STL</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%B1%BB"><span class="nav-number">1.0.16.</span> <span class="nav-text">类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%9A%E6%80%81"><span class="nav-number">1.0.17.</span> <span class="nav-text">多态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%99%9A%E5%87%BD%E6%95%B0"><span class="nav-number">1.0.18.</span> <span class="nav-text">虚函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#assert"><span class="nav-number">1.0.19.</span> <span class="nav-text">assert</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.0.20.</span> <span class="nav-text">进程线程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#strcpy"><span class="nav-number">1.0.21.</span> <span class="nav-text">strcpy</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#static"><span class="nav-number">1.0.22.</span> <span class="nav-text">static</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#const"><span class="nav-number">1.0.23.</span> <span class="nav-text">const</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%8D%E5%8F%AF%E4%BB%A5%E5%90%8C%E6%97%B6%E7%94%A8const%E5%92%8Cstatic%E4%BF%AE%E9%A5%B0%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E3%80%82"><span class="nav-number">1.0.24.</span> <span class="nav-text">不可以同时用const和static修饰成员函数。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#explicit"><span class="nav-number">1.0.25.</span> <span class="nav-text">explicit</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="nav-number">1.0.26.</span> <span class="nav-text">线性表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86"><span class="nav-number">1.0.27.</span> <span class="nav-text">二叉树遍历</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95"><span class="nav-number">1.0.28.</span> <span class="nav-text">排序算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%BE%E9%81%8D%E5%8E%86"><span class="nav-number">1.0.29.</span> <span class="nav-text">图遍历</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C"><span class="nav-number">1.0.30.</span> <span class="nav-text">计算机网络</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.0.31.</span> <span class="nav-text">操作系统</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%B7%E9%87%8F%E4%B8%8D%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9F%A5%E6%89%BE%E5%92%8C%E6%8E%92%E5%BA%8F"><span class="nav-number">1.0.32.</span> <span class="nav-text">海量不重复数据的查找和排序</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="卓木"
+      src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/avatar.jpg">
+  <p class="site-author-name" itemprop="name">卓木</p>
+  <div class="site-description" itemprop="description">学习 分享 开源</div>
 </div>
-
-<script type="text/javascript">
-    disqus_config = function () {
-        this.page.url = 'https://blog.zhuomu.xyz/2020/02/12/offer/';
-        this.page.identifier = '/2020/02/12/offer/';
-        this.page.title = '程序员面试宝典-基础知识总结';
-    };
-    let disqus_shortname = 'blog-zhuomu';
-
-    (function () { // DON'T EDIT BELOW THIS LINE
-        let d = document, s = d.createElement('script');
-        // 如：s.src = 'https://blinkfox.disqus.com/embed.js';
-        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/2020/02/15/Sublime-Text-3-ClangFormat/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/featureimages/20.jpg" class="responsive-img" alt="Sublime Text 3 ClangFormat格式化">
-                        
-                        <span class="card-title">Sublime Text 3 ClangFormat格式化</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-15
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/" class="post-category">
-                                    技术博文
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/c/">
-                        <span class="chip bg-color">c++</span>
-                    </a>
-                    
-                    <a href="/tags/sublime-text-3/">
-                        <span class="chip bg-color">Sublime Text 3</span>
-                    </a>
-                    
-                    <a href="/tags/clangformat/">
-                        <span class="chip bg-color">ClangFormat</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96/">
-                        <span class="chip bg-color">格式化</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/02/08/v2ray-WS-TLS-Cloudflare/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/featureimages/15.jpg" class="responsive-img" alt="v2ray WS TLS Cloudflare节点“加”速">
-                        
-                        <span class="card-title">v2ray WS TLS Cloudflare节点“加”速</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-09
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/" class="post-category">
-                                    技术博文
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/cdn/">
-                        <span class="chip bg-color">CDN</span>
-                    </a>
-                    
-                    <a href="/tags/cloudflare/">
-                        <span class="chip bg-color">CloudFlare</span>
-                    </a>
-                    
-                    <a href="/tags/ws/">
-                        <span class="chip bg-color">ws</span>
-                    </a>
-                    
-                    <a href="/tags/tls/">
-                        <span class="chip bg-color">tls</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-    </div>
-</article>
-
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">94</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Fantasia1999" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Fantasia1999" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:i@zhuomu.xyz" title="E-Mail → mailto:i@zhuomu.xyz" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/booklist.html" title="Kindle → &#x2F;booklist.html"><i class="fa fa-fw fa-book"></i>Kindle</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
 
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">卓木</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
 
 <script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://blog-zhuomu.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://blog.zhuomu.xyz/2020/02/12/offer/",
+            identifier: "2020/02/12/offer/",
+            title: "程序员面试宝典-基础知识总结"
+          }
         }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: 卓木&#39;s Blog<br />'
-            + '文章作者: 卓木<br />'
-            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://blog-zhuomu.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
-
-
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/codeBlock/codeBlockFuction.js"></script>
-
-<!-- 代码语言 -->
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/codeBlock/codeShrink.js"></script>
-
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
-        });
-
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
-
-    
-
-</main>
-
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
-
-
-
-    <footer class="page-footer bg-color">
-    
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
-        <div class="col s12 m8 l8 copy-right">
-            Copyright&nbsp;&copy;
-            
-                <span id="year">2019-2022</span>
-            
-            <span id="year">2019</span>
-            <a href="/about" target="_blank">卓木</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
-            <br>
-            
-            
-            
-            
-            
-            
-            <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
-                    class="white-color"></span>&nbsp;次
-            </span>
-            
-            
-            <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
-                    class="white-color"></span>&nbsp;人
-            </span>
-            
-            <br>
-            
-            <br>
-            
-        </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/Fantisia1999" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:i@zhuomu.xyz" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
-
-</div>
-    </div>
-</footer>
-
-<div class="progress-bar"></div>
-
-
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-
-<script type="text/javascript">
-$(function () {
-    var searchFunc = function (path, search_id, content_id) {
-        'use strict';
-        $.ajax({
-            url: path,
-            dataType: "xml",
-            success: function (xmlResponse) {
-                // get the contents from search data
-                var datas = $("entry", xmlResponse).map(function () {
-                    return {
-                        title: $("title", this).text(),
-                        content: $("content", this).text(),
-                        url: $("url", this).text()
-                    };
-                }).get();
-                var $input = document.getElementById(search_id);
-                var $resultContent = document.getElementById(content_id);
-                $input.addEventListener('input', function () {
-                    var str = '<ul class=\"search-result-list\">';
-                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                    $resultContent.innerHTML = "";
-                    if (this.value.trim().length <= 0) {
-                        return;
-                    }
-                    // perform local searching
-                    datas.forEach(function (data) {
-                        var isMatch = true;
-                        var data_title = data.title.trim().toLowerCase();
-                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                        var data_url = data.url;
-                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
-                        var index_title = -1;
-                        var index_content = -1;
-                        var first_occur = -1;
-                        // only match artiles with not empty titles and contents
-                        if (data_title !== '' && data_content !== '') {
-                            keywords.forEach(function (keyword, i) {
-                                index_title = data_title.indexOf(keyword);
-                                index_content = data_content.indexOf(keyword);
-                                if (index_title < 0 && index_content < 0) {
-                                    isMatch = false;
-                                } else {
-                                    if (index_content < 0) {
-                                        index_content = 0;
-                                    }
-                                    if (i === 0) {
-                                        first_occur = index_content;
-                                    }
-                                }
-                            });
-                        }
-                        // show search results
-                        if (isMatch) {
-                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                            var content = data.content.trim().replace(/<[^>]+>/g, "");
-                            if (first_occur >= 0) {
-                                // cut out 100 characters
-                                var start = first_occur - 20;
-                                var end = first_occur + 80;
-                                if (start < 0) {
-                                    start = 0;
-                                }
-                                if (start === 0) {
-                                    end = 100;
-                                }
-                                if (end > content.length) {
-                                    end = content.length;
-                                }
-                                var match_content = content.substr(start, end);
-                                // highlight all keywords
-                                keywords.forEach(function (keyword) {
-                                    var regS = new RegExp(keyword, "gi");
-                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
-                                });
-
-                                str += "<p class=\"search-result\">" + match_content + "...</p>"
-                            }
-                            str += "</li>";
-                        }
-                    });
-                    str += "</ul>";
-                    $resultContent.innerHTML = str;
-                });
-            }
-        });
-    };
-
-    searchFunc('/search.xml', 'searchInput', 'searchResult');
-});
-</script>
-
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
-
-
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/materialize/materialize.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/aos/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/js/matery.js"></script>
-
-    <!-- Baidu Analytics -->
-
-<script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?df5a74022c3722248f076afbf55286b0";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
-    <!-- Baidu Push -->
-
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
-
-    
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/others/busuanzi.pure.mini.js"></script>
-    
-
-    
-
-    
-
-    <!--腾讯兔小巢-->
-    
-    
-
-    
-
-    
-
-    
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/instantpage/instantpage.js" type="module"></script>
-    
 
 </body>
-
 </html>

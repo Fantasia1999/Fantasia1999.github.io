@@ -1,551 +1,254 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="zh-CN">
-
-
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="Sublime Text 3 ClangFormat格式化, 卓木&#39;s Blog">
-    <meta name="description" content="学习 分享 开源">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico">
+  <link rel="mask-icon" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico" color="#222">
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158292871-1"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-        dataLayer.push(arguments);
-    }
+<link rel="stylesheet" href="/css/main.css">
 
-    gtag('js', new Date());
-    gtag('config', 'UA-158292871-1');
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=LatoEB Garamond:300,300italic,400,400italic,700,700italic|JetBrains Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://blog.zhuomu.xyz').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"flat"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"buttons","active":null,"storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}}},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
 </script>
 
+  <meta name="description" content="Sublime Text 3 ClangFormat格式化插件安装ctrl+shift+p找到Package Control: Install Package搜索ClangFormat，等待安装即可 编译配置Tool -&gt; Build System -&gt; New Build System保存文件名：myc++.build &amp;#123;	&quot;path&quot;: &quot;C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sublime Text 3 ClangFormat格式化">
+<meta property="og:url" content="https://blog.zhuomu.xyz/2020/02/15/Sublime-Text-3-ClangFormat/index.html">
+<meta property="og:site_name" content="卓木&#39;s Blog">
+<meta property="og:description" content="Sublime Text 3 ClangFormat格式化插件安装ctrl+shift+p找到Package Control: Install Package搜索ClangFormat，等待安装即可 编译配置Tool -&gt; Build System -&gt; New Build System保存文件名：myc++.build &amp;#123;	&quot;path&quot;: &quot;C">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-15T08:06:00.000Z">
+<meta property="article:modified_time" content="2020-02-23T07:33:48.000Z">
+<meta property="article:author" content="卓木">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="Sublime Text 3">
+<meta property="article:tag" content="ClangFormat">
+<meta property="article:tag" content="格式化">
+<meta name="twitter:card" content="summary">
 
-    <title>Sublime Text 3 ClangFormat格式化 | 卓木&#39;s Blog</title>
-    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico">
+<link rel="canonical" href="https://blog.zhuomu.xyz/2020/02/15/Sublime-Text-3-ClangFormat/">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/css/my.css">
 
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/jquery/jquery.min.js"></script>
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>Sublime Text 3 ClangFormat格式化 | 卓木's Blog</title>
+  
 
-<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="卓木's Blog" type="application/atom+xml">
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="卓木's Blog" type="application/rss+xml">
 </head>
 
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
 
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
 
-   <style>
-    body{
-       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
-       background-repeat:no-repeat;
-       background-size:cover;
-       background-attachment:fixed;
-    }
-</style>
-
-
-
-<body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/avatar.jpg" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">卓木&#39;s Blog</span>
-                </a>
-            </div>
-            
-
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>友情链接</span>
-    </a>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-</ul>
-
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
-        
-        <img src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/avatar.jpg" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">卓木&#39;s Blog</div>
-        <div class="logo-desc">
-            
-            学习 分享 开源
-            
-        </div>
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">卓木's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
+  </div>
 
-    
-
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			友情链接
-		</a>
-          
-        </li>
-        
-        
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://github.com/Fantasia1999" class="waves-effect waves-light" target="_blank">
-                <i class="fab fa-github-square fa-fw"></i>Follow Me
-            </a>
-        </li>
-        
-    </ul>
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
 </div>
 
 
-        </div>
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
 
-        
-            <style>
-    .nav-transparent .github-corner {
-        display: none !important;
-    }
+    <a href="/" rel="section"><i class="fa fa-fw fa-desktop"></i>Home</a>
 
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
+  </li>
+        <li class="menu-item menu-item-kindle">
 
-    .github-corner svg {
-        color: #0f9d58;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
+    <a href="/blog.zhuomu.xyz/Kindle" rel="section"><i class="fa fa-fw fa-book"></i>Kindle</a>
 
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
+  </li>
+        <li class="menu-item menu-item-about">
 
-    .github-corner .octo-arm {
-        animation: none;
-    }
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user-circle-o"></i>About</a>
 
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
-        }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
-    }
-</style>
+  </li>
+  </ul>
 
-<a href="https://github.com/Fantasia1999" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
-   data-tooltip="Follow Me" data-position="left" data-delay="50">
-    <svg viewBox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
-        
-    </nav>
-
-</header>
-
-    
-
-
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/featureimages/20.jpg')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">Sublime Text 3 ClangFormat格式化</h1>
-                </div>
-            </div>
-        </div>
-    </div>
+</nav>
 </div>
-
-
-
-
-<main class="post-container content">
+    </header>
 
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/tocbot/tocbot.css">
-<style>
-    #articleContent h1::before,
-    #articleContent h2::before,
-    #articleContent h3::before,
-    #articleContent h4::before,
-    #articleContent h5::before,
-    #articleContent h6::before {
-        display: block;
-        content: " ";
-        height: 100px;
-        margin-top: -100px;
-        visibility: hidden;
-    }
 
-    #articleContent :focus {
-        outline: none;
-    }
 
-    .toc-fixed {
-        position: fixed;
-        top: 64px;
-    }
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
 
-    .toc-widget {
-        width: 345px;
-        padding-left: 20px;
-    }
+          <div class="content">
+            
 
-    .toc-widget .toc-title {
-        padding: 35px 0 15px 17px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.zhuomu.xyz/2020/02/15/Sublime-Text-3-ClangFormat/">
 
-    .toc-widget ol {
-        padding: 0;
-        list-style: none;
-    }
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/avatar.jpg">
+      <meta itemprop="name" content="卓木">
+      <meta itemprop="description" content="学习 分享 开源">
+    </span>
 
-    #toc-content {
-        padding-bottom: 30px;
-        overflow: auto;
-    }
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="卓木's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Sublime Text 3 ClangFormat格式化
+        </h1>
 
-    #toc-content ol {
-        padding-left: 10px;
-    }
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-    #toc-content ol li {
-        padding-left: 10px;
-    }
+              <time title="创建时间：2020-02-15 16:06:00" itemprop="dateCreated datePublished" datetime="2020-02-15T16:06:00+08:00">2020-02-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-23 15:33:48" itemprop="dateModified" datetime="2020-02-23T15:33:48+08:00">2020-02-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博文</span>
+                  </a>
+                </span>
+            </span>
 
-    #toc-content .toc-link:hover {
-        color: #42b983;
-        font-weight: 700;
-        text-decoration: underline;
-    }
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/02/15/Sublime-Text-3-ClangFormat/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/02/15/Sublime-Text-3-ClangFormat/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
-    #toc-content .toc-link::before {
-        background-color: transparent;
-        max-height: 25px;
-
-        position: absolute;
-        right: 23.5vw;
-        display: block;
-    }
-
-    #toc-content .is-active-link {
-        color: #42b983;
-    }
-
-    #floating-toc-btn {
-        position: fixed;
-        right: 15px;
-        bottom: 76px;
-        padding-top: 15px;
-        margin-bottom: 0;
-        z-index: 998;
-    }
-
-    #floating-toc-btn .btn-floating {
-        width: 48px;
-        height: 48px;
-    }
-
-    #floating-toc-btn .btn-floating i {
-        line-height: 48px;
-        font-size: 1.4rem;
-    }
-</style>
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                    <div class="article-tag">
-                        
-                            <a href="/tags/c/">
-                                <span class="chip bg-color">c++</span>
-                            </a>
-                        
-                            <a href="/tags/sublime-text-3/">
-                                <span class="chip bg-color">Sublime Text 3</span>
-                            </a>
-                        
-                            <a href="/tags/clangformat/">
-                                <span class="chip bg-color">ClangFormat</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96/">
-                                <span class="chip bg-color">格式化</span>
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/" class="post-category">
-                                技术博文
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-15
-                </div>
-                
-
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-23
-                </div>
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.2k
-                </div>
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
-                </div>
-                
-
-                
-            </div>
         </div>
-        <hr class="clearfix">
+      </header>
 
-        
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/prism/prism.css">
-        
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-        
-
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <h1 id="Sublime-Text-3-ClangFormat格式化"><a href="#Sublime-Text-3-ClangFormat格式化" class="headerlink" title="Sublime Text 3 ClangFormat格式化"></a>Sublime Text 3 ClangFormat格式化</h1><h3 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h3><p><code>ctrl+shift+p</code>找到<code>Package Control: Install Package</code><br>搜索<code>ClangFormat</code>，等待安装即可</p>
+      
+        <h1 id="Sublime-Text-3-ClangFormat格式化"><a href="#Sublime-Text-3-ClangFormat格式化" class="headerlink" title="Sublime Text 3 ClangFormat格式化"></a>Sublime Text 3 ClangFormat格式化</h1><h3 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h3><p><code>ctrl+shift+p</code>找到<code>Package Control: Install Package</code><br>搜索<code>ClangFormat</code>，等待安装即可</p>
 <h3 id="编译配置"><a href="#编译配置" class="headerlink" title="编译配置"></a>编译配置</h3><p><code>Tool</code> -&gt; <code>Build System</code> -&gt; <code>New Build System</code><br>保存文件名：myc++.build</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
-	<span class="token property">"path"</span><span class="token operator">:</span> <span class="token string">"C:/MinGW/bin"</span><span class="token punctuation">,</span>
-	<span class="token property">"shell_cmd"</span><span class="token operator">:</span> <span class="token string">"g++ \"$&#123;file&#125;\" -o \"$&#123;file_path&#125;/$&#123;file_base_name&#125;\""</span><span class="token punctuation">,</span>
-	<span class="token property">"file_regex"</span><span class="token operator">:</span> <span class="token string">"^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"</span><span class="token punctuation">,</span>
-	<span class="token property">"working_dir"</span><span class="token operator">:</span> <span class="token string">"$&#123;file_path&#125;"</span><span class="token punctuation">,</span>
-	<span class="token property">"selector"</span><span class="token operator">:</span> <span class="token string">"source.c, source.c++"</span><span class="token punctuation">,</span>
-
-	<span class="token property">"variants"</span><span class="token operator">:</span>
-	<span class="token punctuation">[</span>
-		<span class="token punctuation">&#123;</span>
-			<span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Run"</span><span class="token punctuation">,</span>
-			<span class="token property">"shell_cmd"</span><span class="token operator">:</span> <span class="token string">"g++ \"$&#123;file&#125;\" -o \"$&#123;file_path&#125;/$&#123;file_base_name&#125;\" &amp;&amp; \"$&#123;file_path&#125;/$&#123;file_base_name&#125;\" &lt; in.txt > out.txt"</span>
-		<span class="token punctuation">&#125;</span>
-	<span class="token punctuation">]</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:/MinGW/bin&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;shell_cmd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;g++ \&quot;$&#123;file&#125;\&quot; -o \&quot;$&#123;file_path&#125;/$&#123;file_base_name&#125;\&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;file_regex&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;working_dir&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;file_path&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;selector&quot;</span><span class="punctuation">:</span> <span class="string">&quot;source.c, source.c++&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">	<span class="attr">&quot;variants&quot;</span><span class="punctuation">:</span></span><br><span class="line">	<span class="punctuation">[</span></span><br><span class="line">		<span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Run&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;shell_cmd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;g++ \&quot;$&#123;file&#125;\&quot; -o \&quot;$&#123;file_path&#125;/$&#123;file_base_name&#125;\&quot; &amp;&amp; \&quot;$&#123;file_path&#125;/$&#123;file_base_name&#125;\&quot; &lt; in.txt &gt; out.txt&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span></span><br><span class="line">	<span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 <p>编译选项配置好后</p>
 <p>按<code>F7</code>，然后选择第二个<code>xxx Run</code>，以后直接按<code>F7</code>即可编译运行</p>
 <p>关于编译选项的一些解释：</p>
@@ -556,255 +259,11 @@
 <h3 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h3><p>安装<code>llvm</code>，一般装过vs后都会有的，直接Everything搜一波，我找到我的路径在<code>C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\Llvm\\bin\\clang-format.exe</code></p>
 <p>或者</p>
 <p>下载地址为<a target="_blank" rel="noopener" href="http://releases.llvm.org/">http://releases.llvm.org/</a> 。在Windows系统下，直接下载<code>binary</code>版本并安装即可。</p>
-<h4 id="Settings-User"><a href="#Settings-User" class="headerlink" title="Settings-User"></a>Settings-User</h4><pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
-    <span class="token comment">// This is the path to the binary for clang-format. If it is in your path,</span>
-    <span class="token comment">// it should just work out-of-the-box. Otherwise, you can set the full path,</span>
-    <span class="token comment">// which will look like this: </span>
-    <span class="token comment">//    "binary": "/path/to/clang/bin/clang-format"</span>
-    <span class="token comment">// Note that you can set this from within ST directly through the Command</span>
-    <span class="token comment">// Palette. </span>
-
-    <span class="token property">"binary"</span><span class="token operator">:</span> <span class="token string">"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\Llvm\\bin\\clang-format.exe"</span><span class="token punctuation">,</span>
-
-    <span class="token comment">// We use the Google style by default. This can be selected from ST using</span>
-    <span class="token comment">// the Command Palette. Choosing 'Custom' means that the settings will</span>
-    <span class="token comment">// be loaded from the Sublime Text settings file (which is accessed</span>
-    <span class="token comment">// from within ST through preferences. Choosing 'File' will look in the </span>
-    <span class="token comment">// local directories from a clang-format settings file. See the clang-format</span>
-    <span class="token comment">// documentation to see how this works. </span>
-
-    <span class="token property">"style"</span><span class="token operator">:</span> <span class="token string">"Custom"</span><span class="token punctuation">,</span>
-
-    <span class="token comment">// Setting this to true will run the formatter on every save. If you want to</span>
-    <span class="token comment">// only enable this for a given project, try checking out the package</span>
-    <span class="token comment">// "Project-Specific".</span>
-    
-    <span class="token property">"format_on_save"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-
-    <span class="token comment">// If format_on_save is set to true, ClangFormat checks if the current file</span>
-    <span class="token comment">// has its syntax set to a language in the list below. If it is in the list,</span>
-    <span class="token comment">// then the file will be formatted by ClangFormat.</span>
-
-    <span class="token property">"languages"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"C"</span><span class="token punctuation">,</span> <span class="token string">"C++"</span><span class="token punctuation">,</span> <span class="token string">"C++11"</span><span class="token punctuation">,</span> <span class="token string">"JavaScript"</span><span class="token punctuation">,</span> <span class="token string">"Objective-C"</span><span class="token punctuation">,</span> <span class="token string">"Objective-C++"</span><span class="token punctuation">]</span>
-<span class="token punctuation">&#125;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="Settings-User"><a href="#Settings-User" class="headerlink" title="Settings-User"></a>Settings-User</h4><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="comment">// This is the path to the binary for clang-format. If it is in your path,</span></span><br><span class="line">    <span class="comment">// it should just work out-of-the-box. Otherwise, you can set the full path,</span></span><br><span class="line">    <span class="comment">// which will look like this: </span></span><br><span class="line">    <span class="comment">//    &quot;binary&quot;: &quot;/path/to/clang/bin/clang-format&quot;</span></span><br><span class="line">    <span class="comment">// Note that you can set this from within ST directly through the Command</span></span><br><span class="line">    <span class="comment">// Palette. </span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;binary&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\Llvm\\bin\\clang-format.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// We use the Google style by default. This can be selected from ST using</span></span><br><span class="line">    <span class="comment">// the Command Palette. Choosing &#x27;Custom&#x27; means that the settings will</span></span><br><span class="line">    <span class="comment">// be loaded from the Sublime Text settings file (which is accessed</span></span><br><span class="line">    <span class="comment">// from within ST through preferences. Choosing &#x27;File&#x27; will look in the </span></span><br><span class="line">    <span class="comment">// local directories from a clang-format settings file. See the clang-format</span></span><br><span class="line">    <span class="comment">// documentation to see how this works. </span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;style&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Custom&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Setting this to true will run the formatter on every save. If you want to</span></span><br><span class="line">    <span class="comment">// only enable this for a given project, try checking out the package</span></span><br><span class="line">    <span class="comment">// &quot;Project-Specific&quot;.</span></span><br><span class="line">    </span><br><span class="line">    <span class="attr">&quot;format_on_save&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// If format_on_save is set to true, ClangFormat checks if the current file</span></span><br><span class="line">    <span class="comment">// has its syntax set to a language in the list below. If it is in the list,</span></span><br><span class="line">    <span class="comment">// then the file will be formatted by ClangFormat.</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;languages&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;C&quot;</span><span class="punctuation">,</span> <span class="string">&quot;C++&quot;</span><span class="punctuation">,</span> <span class="string">&quot;C++11&quot;</span><span class="punctuation">,</span> <span class="string">&quot;JavaScript&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Objective-C&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Objective-C++&quot;</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h4 id="Custom-Style-User"><a href="#Custom-Style-User" class="headerlink" title="Custom Style-User"></a>Custom Style-User</h4><p>具体样式，可以参考<a target="_blank" rel="noopener" href="http://clang.llvm.org/docs/ClangFormatStyleOptions.html">官方</a>给出的说明。</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
-    <span class="token property">"BasedOnStyle"</span><span class="token operator">:</span> <span class="token string">"Google"</span><span class="token punctuation">,</span>
-    <span class="token property">"IndentWidth"</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
-    <span class="token property">"AlignAfterOpenBracket"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"AlignConsecutiveAssignments"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token comment">//# 连续声明时，对齐所有声明的变量名</span>
-    <span class="token property">"AlignConsecutiveDeclarations"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-    <span class="token property">"MaxEmptyLinesToKeep"</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
-    <span class="token property">"BreakBeforeBraces"</span><span class="token operator">:</span> <span class="token string">"Attach"</span><span class="token punctuation">,</span>
-    <span class="token property">"AllowShortIfStatementsOnASingleLine"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"IndentCaseLabels"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"ObjCBlockIndentWidth"</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
-    <span class="token property">"ObjCSpaceAfterProperty"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"ColumnLimit"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
-    <span class="token property">"AlignTrailingComments"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"SpaceAfterCStyleCast"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"SpacesInParentheses"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-    <span class="token property">"SpacesInSquareBrackets"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-    <span class="token property">"TabWidth"</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
-    <span class="token property">"UseTab"</span><span class="token operator">:</span> <span class="token string">"Never"</span><span class="token punctuation">,</span>
-    <span class="token property">"AllowShortBlocksOnASingleLine"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"AllowShortIfStatementsOnASingleLine"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"AllowShortLoopsOnASingleLine"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"BraceWrapping"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
-        <span class="token property">"AfterClass"</span><span class="token operator">:</span>             <span class="token boolean">false</span><span class="token punctuation">,</span>
-        <span class="token property">"AfterControlStatement"</span><span class="token operator">:</span>  <span class="token boolean">false</span><span class="token punctuation">,</span>
-        <span class="token property">"AfterEnum"</span><span class="token operator">:</span>              <span class="token boolean">false</span><span class="token punctuation">,</span>
-        <span class="token property">"AfterFunction"</span><span class="token operator">:</span>          <span class="token boolean">false</span><span class="token punctuation">,</span>
-        <span class="token property">"AfterNamespace"</span><span class="token operator">:</span>         <span class="token boolean">false</span><span class="token punctuation">,</span>
-        <span class="token property">"AfterObjCDeclaration"</span><span class="token operator">:</span>   <span class="token boolean">false</span><span class="token punctuation">,</span>
-        <span class="token property">"AfterStruct"</span><span class="token operator">:</span>            <span class="token boolean">false</span><span class="token punctuation">,</span>
-        <span class="token property">"AfterUnion"</span><span class="token operator">:</span>             <span class="token boolean">false</span><span class="token punctuation">,</span>
-        <span class="token property">"BeforeCatch"</span><span class="token operator">:</span>            <span class="token boolean">false</span><span class="token punctuation">,</span>
-        <span class="token property">"BeforeElse"</span><span class="token operator">:</span>             <span class="token boolean">false</span><span class="token punctuation">,</span>
-        <span class="token property">"IndentBraces"</span><span class="token operator">:</span>           <span class="token boolean">false</span><span class="token punctuation">,</span>
-        <span class="token property">"SplitEmptyFunction"</span><span class="token operator">:</span>     <span class="token boolean">true</span><span class="token punctuation">,</span>
-        <span class="token property">"SplitEmptyRecord"</span><span class="token operator">:</span>       <span class="token boolean">true</span><span class="token punctuation">,</span>
-        <span class="token property">"SplitEmptyNamespace"</span><span class="token operator">:</span>    <span class="token boolean">true</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token property">"Cpp11BracedListStyle"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"ColumnLimit"</span><span class="token operator">:</span> <span class="token number">80</span><span class="token punctuation">,</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;BasedOnStyle&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Google&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;IndentWidth&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;AlignAfterOpenBracket&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;AlignConsecutiveAssignments&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">//# 连续声明时，对齐所有声明的变量名</span></span><br><span class="line">    <span class="attr">&quot;AlignConsecutiveDeclarations&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;MaxEmptyLinesToKeep&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;BreakBeforeBraces&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Attach&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;AllowShortIfStatementsOnASingleLine&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;IndentCaseLabels&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;ObjCBlockIndentWidth&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;ObjCSpaceAfterProperty&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;ColumnLimit&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;AlignTrailingComments&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;SpaceAfterCStyleCast&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;SpacesInParentheses&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;SpacesInSquareBrackets&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;TabWidth&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;UseTab&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Never&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;AllowShortBlocksOnASingleLine&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;AllowShortIfStatementsOnASingleLine&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;AllowShortLoopsOnASingleLine&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;BraceWrapping&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;AfterClass&quot;</span><span class="punctuation">:</span>             <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;AfterControlStatement&quot;</span><span class="punctuation">:</span>  <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;AfterEnum&quot;</span><span class="punctuation">:</span>              <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;AfterFunction&quot;</span><span class="punctuation">:</span>          <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;AfterNamespace&quot;</span><span class="punctuation">:</span>         <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;AfterObjCDeclaration&quot;</span><span class="punctuation">:</span>   <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;AfterStruct&quot;</span><span class="punctuation">:</span>            <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;AfterUnion&quot;</span><span class="punctuation">:</span>             <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;BeforeCatch&quot;</span><span class="punctuation">:</span>            <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;BeforeElse&quot;</span><span class="punctuation">:</span>             <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;IndentBraces&quot;</span><span class="punctuation">:</span>           <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;SplitEmptyFunction&quot;</span><span class="punctuation">:</span>     <span class="keyword">true</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;SplitEmptyRecord&quot;</span><span class="punctuation">:</span>       <span class="keyword">true</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;SplitEmptyNamespace&quot;</span><span class="punctuation">:</span>    <span class="keyword">true</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Cpp11BracedListStyle&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;ColumnLimit&quot;</span><span class="punctuation">:</span> <span class="number">80</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 <p><strong>当然也可以看这里对每个选项的中文解释</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">---
-# 语言: None, Cpp, Java, JavaScript, ObjC, Proto, TableGen, TextProto
-Language:	Cpp
-# BasedOnStyle:	LLVM
-# 访问说明符(public、private等)的偏移
-AccessModifierOffset:	-4
-# 开括号(开圆括号、开尖括号、开方括号)后的对齐: Align, DontAlign, AlwaysBreak(总是在开括号后换行)
-AlignAfterOpenBracket:	Align
-# 连续赋值时，对齐所有等号
-AlignConsecutiveAssignments:	true
-# 连续声明时，对齐所有声明的变量名
-AlignConsecutiveDeclarations:	true
-# 左对齐逃脱换行(使用反斜杠换行)的反斜杠
-AlignEscapedNewlinesLeft:	true
-# 水平对齐二元和三元表达式的操作数
-AlignOperands:	true
-# 对齐连续的尾随的注释
-AlignTrailingComments:	true
-# 允许函数声明的所有参数在放在下一行
-AllowAllParametersOfDeclarationOnNextLine:	true
-# 允许短的块放在同一行
-AllowShortBlocksOnASingleLine:	false
-# 允许短的case标签放在同一行
-AllowShortCaseLabelsOnASingleLine:	false
-# 允许短的函数放在同一行: None, InlineOnly(定义在类中), Empty(空函数), Inline(定义在类中，空函数), All
-AllowShortFunctionsOnASingleLine:	Empty
-# 允许短的if语句保持在同一行
-AllowShortIfStatementsOnASingleLine:	false
-# 允许短的循环保持在同一行
-AllowShortLoopsOnASingleLine:	false
-# 总是在定义返回类型后换行(deprecated)
-AlwaysBreakAfterDefinitionReturnType:	None
-# 总是在返回类型后换行: None, All, TopLevel(顶级函数，不包括在类中的函数), 
-#   AllDefinitions(所有的定义，不包括声明), TopLevelDefinitions(所有的顶级函数的定义)
-AlwaysBreakAfterReturnType:	None
-# 总是在多行string字面量前换行
-AlwaysBreakBeforeMultilineStrings:	false
-# 总是在template声明后换行
-AlwaysBreakTemplateDeclarations:	false
-# false表示函数实参要么都在同一行，要么都各自一行
-BinPackArguments:	true
-# false表示所有形参要么都在同一行，要么都各自一行
-BinPackParameters:	true
-# 大括号换行，只有当BreakBeforeBraces设置为Custom时才有效
-BraceWrapping:   
-  # class定义后面
-  AfterClass:	false
-  # 控制语句后面
-  AfterControlStatement:	false
-  # enum定义后面
-  AfterEnum:	false
-  # 函数定义后面
-  AfterFunction:	false
-  # 命名空间定义后面
-  AfterNamespace:	false
-  # ObjC定义后面
-  AfterObjCDeclaration:	false
-  # struct定义后面
-  AfterStruct:	false
-  # union定义后面
-  AfterUnion:	false
-  # catch之前
-  BeforeCatch:	true
-  # else之前
-  BeforeElse:	true
-  # 缩进大括号
-  IndentBraces:	false
-# 在二元运算符前换行: None(在操作符后换行), NonAssignment(在非赋值的操作符前换行), All(在操作符前换行)
-BreakBeforeBinaryOperators:	NonAssignment
-# 在大括号前换行: Attach(始终将大括号附加到周围的上下文), Linux(除函数、命名空间和类定义，与Attach类似), 
-#   Mozilla(除枚举、函数、记录定义，与Attach类似), Stroustrup(除函数定义、catch、else，与Attach类似), 
-#   Allman(总是在大括号前换行), GNU(总是在大括号前换行，并对于控制语句的大括号增加额外的缩进), WebKit(在函数前换行), Custom
-#   注：这里认为语句块也属于函数
-BreakBeforeBraces:	Custom
-# 在三元运算符前换行
-BreakBeforeTernaryOperators:	true
-# 在构造函数的初始化列表的逗号前换行
-BreakConstructorInitializersBeforeComma:	false
-# 每行字符的限制，0表示没有限制
-ColumnLimit:	200
-# 描述具有特殊意义的注释的正则表达式，它不应该被分割为多行或以其它方式改变
-CommentPragmas:	&#39;^ IWYU pragma:&#39;
-# 构造函数的初始化列表要么都在同一行，要么都各自一行
-ConstructorInitializerAllOnOneLineOrOnePerLine:	false
-# 构造函数的初始化列表的缩进宽度
-ConstructorInitializerIndentWidth:	4
-# 延续的行的缩进宽度
-ContinuationIndentWidth:	4
-# 去除C++11的列表初始化的大括号&#123;后和&#125;前的空格
-Cpp11BracedListStyle:	false
-# 继承最常用的指针和引用的对齐方式
-DerivePointerAlignment:	false
-# 关闭格式化
-DisableFormat:	false
-# 自动检测函数的调用和定义是否被格式为每行一个参数(Experimental)
-ExperimentalAutoDetectBinPacking:	false
-# 需要被解读为foreach循环而不是函数调用的宏
-ForEachMacros:	[ foreach, Q_FOREACH, BOOST_FOREACH ]
-# 对#include进行排序，匹配了某正则表达式的#include拥有对应的优先级，匹配不到的则默认优先级为INT_MAX(优先级越小排序越靠前)，
-#   可以定义负数优先级从而保证某些#include永远在最前面
-IncludeCategories: 
-  - Regex:	&#39;^&quot;(llvm|llvm-c|clang|clang-c)&#x2F;&#39;
-    Priority:	2
-  - Regex:	&#39;^(&lt;|&quot;(gtest|isl|json)&#x2F;)&#39;
-    Priority:	3
-  - Regex:	&#39;.*&#39;
-    Priority:	1
-# 缩进case标签
-IndentCaseLabels:	false
-# 缩进宽度
-IndentWidth:	4
-# 函数返回类型换行时，缩进函数声明或函数定义的函数名
-IndentWrappedFunctionNames:	false
-# 保留在块开始处的空行
-KeepEmptyLinesAtTheStartOfBlocks:	true
-# 开始一个块的宏的正则表达式
-MacroBlockBegin:	&#39;&#39;
-# 结束一个块的宏的正则表达式
-MacroBlockEnd:	&#39;&#39;
-# 连续空行的最大数量
-MaxEmptyLinesToKeep:	1
-# 命名空间的缩进: None, Inner(缩进嵌套的命名空间中的内容), All
-NamespaceIndentation:	Inner
-# 使用ObjC块时缩进宽度
-ObjCBlockIndentWidth:	4
-# 在ObjC的@property后添加一个空格
-ObjCSpaceAfterProperty:	false
-# 在ObjC的protocol列表前添加一个空格
-ObjCSpaceBeforeProtocolList:	true
-# 在call(后对函数调用换行的penalty
-PenaltyBreakBeforeFirstCallParameter:	19
-# 在一个注释中引入换行的penalty
-PenaltyBreakComment:	300
-# 第一次在&lt;&lt;前换行的penalty
-PenaltyBreakFirstLessLess:	120
-# 在一个字符串字面量中引入换行的penalty
-PenaltyBreakString:	1000
-# 对于每个在行字符数限制之外的字符的penalty
-PenaltyExcessCharacter:	1000000
-# 将函数的返回类型放到它自己的行的penalty
-PenaltyReturnTypeOnItsOwnLine:	60
-# 指针和引用的对齐: Left, Right, Middle
-PointerAlignment:	Left
-# 允许重新排版注释
-ReflowComments:	true
-# 允许排序#include
-SortIncludes:	true
-# 在C风格类型转换后添加空格
-SpaceAfterCStyleCast:	false
-# 在赋值运算符之前添加空格
-SpaceBeforeAssignmentOperators:	true
-# 开圆括号之前添加一个空格: Never, ControlStatements, Always
-SpaceBeforeParens:	ControlStatements
-# 在空的圆括号中添加空格
-SpaceInEmptyParentheses:	false
-# 在尾随的评论前添加的空格数(只适用于&#x2F;&#x2F;)
-SpacesBeforeTrailingComments:	2
-# 在尖括号的&lt;后和&gt;前添加空格
-SpacesInAngles:	true
-# 在容器(ObjC和JavaScript的数组和字典等)字面量中添加空格
-SpacesInContainerLiterals:	true
-# 在C风格类型转换的括号中添加空格
-SpacesInCStyleCastParentheses:	true
-# 在圆括号的(后和)前添加空格
-SpacesInParentheses:	true
-# 在方括号的[后和]前添加空格，lamda表达式和未指明大小的数组的声明不受影响
-SpacesInSquareBrackets:	true
-# 标准: Cpp03, Cpp11, Auto
-Standard:	Cpp11
-# tab宽度
-TabWidth:	4
-# 使用tab字符: Never, ForIndentation, ForContinuationAndIndentation, Always
-UseTab:	Never<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line"># 语言: None, Cpp, Java, JavaScript, ObjC, Proto, TableGen, TextProto</span><br><span class="line">Language:	Cpp</span><br><span class="line"># BasedOnStyle:	LLVM</span><br><span class="line"># 访问说明符(public、private等)的偏移</span><br><span class="line">AccessModifierOffset:	-4</span><br><span class="line"># 开括号(开圆括号、开尖括号、开方括号)后的对齐: Align, DontAlign, AlwaysBreak(总是在开括号后换行)</span><br><span class="line">AlignAfterOpenBracket:	Align</span><br><span class="line"># 连续赋值时，对齐所有等号</span><br><span class="line">AlignConsecutiveAssignments:	true</span><br><span class="line"># 连续声明时，对齐所有声明的变量名</span><br><span class="line">AlignConsecutiveDeclarations:	true</span><br><span class="line"># 左对齐逃脱换行(使用反斜杠换行)的反斜杠</span><br><span class="line">AlignEscapedNewlinesLeft:	true</span><br><span class="line"># 水平对齐二元和三元表达式的操作数</span><br><span class="line">AlignOperands:	true</span><br><span class="line"># 对齐连续的尾随的注释</span><br><span class="line">AlignTrailingComments:	true</span><br><span class="line"># 允许函数声明的所有参数在放在下一行</span><br><span class="line">AllowAllParametersOfDeclarationOnNextLine:	true</span><br><span class="line"># 允许短的块放在同一行</span><br><span class="line">AllowShortBlocksOnASingleLine:	false</span><br><span class="line"># 允许短的case标签放在同一行</span><br><span class="line">AllowShortCaseLabelsOnASingleLine:	false</span><br><span class="line"># 允许短的函数放在同一行: None, InlineOnly(定义在类中), Empty(空函数), Inline(定义在类中，空函数), All</span><br><span class="line">AllowShortFunctionsOnASingleLine:	Empty</span><br><span class="line"># 允许短的if语句保持在同一行</span><br><span class="line">AllowShortIfStatementsOnASingleLine:	false</span><br><span class="line"># 允许短的循环保持在同一行</span><br><span class="line">AllowShortLoopsOnASingleLine:	false</span><br><span class="line"># 总是在定义返回类型后换行(deprecated)</span><br><span class="line">AlwaysBreakAfterDefinitionReturnType:	None</span><br><span class="line"># 总是在返回类型后换行: None, All, TopLevel(顶级函数，不包括在类中的函数), </span><br><span class="line">#   AllDefinitions(所有的定义，不包括声明), TopLevelDefinitions(所有的顶级函数的定义)</span><br><span class="line">AlwaysBreakAfterReturnType:	None</span><br><span class="line"># 总是在多行string字面量前换行</span><br><span class="line">AlwaysBreakBeforeMultilineStrings:	false</span><br><span class="line"># 总是在template声明后换行</span><br><span class="line">AlwaysBreakTemplateDeclarations:	false</span><br><span class="line"># false表示函数实参要么都在同一行，要么都各自一行</span><br><span class="line">BinPackArguments:	true</span><br><span class="line"># false表示所有形参要么都在同一行，要么都各自一行</span><br><span class="line">BinPackParameters:	true</span><br><span class="line"># 大括号换行，只有当BreakBeforeBraces设置为Custom时才有效</span><br><span class="line">BraceWrapping:   </span><br><span class="line">  # class定义后面</span><br><span class="line">  AfterClass:	false</span><br><span class="line">  # 控制语句后面</span><br><span class="line">  AfterControlStatement:	false</span><br><span class="line">  # enum定义后面</span><br><span class="line">  AfterEnum:	false</span><br><span class="line">  # 函数定义后面</span><br><span class="line">  AfterFunction:	false</span><br><span class="line">  # 命名空间定义后面</span><br><span class="line">  AfterNamespace:	false</span><br><span class="line">  # ObjC定义后面</span><br><span class="line">  AfterObjCDeclaration:	false</span><br><span class="line">  # struct定义后面</span><br><span class="line">  AfterStruct:	false</span><br><span class="line">  # union定义后面</span><br><span class="line">  AfterUnion:	false</span><br><span class="line">  # catch之前</span><br><span class="line">  BeforeCatch:	true</span><br><span class="line">  # else之前</span><br><span class="line">  BeforeElse:	true</span><br><span class="line">  # 缩进大括号</span><br><span class="line">  IndentBraces:	false</span><br><span class="line"># 在二元运算符前换行: None(在操作符后换行), NonAssignment(在非赋值的操作符前换行), All(在操作符前换行)</span><br><span class="line">BreakBeforeBinaryOperators:	NonAssignment</span><br><span class="line"># 在大括号前换行: Attach(始终将大括号附加到周围的上下文), Linux(除函数、命名空间和类定义，与Attach类似), </span><br><span class="line">#   Mozilla(除枚举、函数、记录定义，与Attach类似), Stroustrup(除函数定义、catch、else，与Attach类似), </span><br><span class="line">#   Allman(总是在大括号前换行), GNU(总是在大括号前换行，并对于控制语句的大括号增加额外的缩进), WebKit(在函数前换行), Custom</span><br><span class="line">#   注：这里认为语句块也属于函数</span><br><span class="line">BreakBeforeBraces:	Custom</span><br><span class="line"># 在三元运算符前换行</span><br><span class="line">BreakBeforeTernaryOperators:	true</span><br><span class="line"># 在构造函数的初始化列表的逗号前换行</span><br><span class="line">BreakConstructorInitializersBeforeComma:	false</span><br><span class="line"># 每行字符的限制，0表示没有限制</span><br><span class="line">ColumnLimit:	200</span><br><span class="line"># 描述具有特殊意义的注释的正则表达式，它不应该被分割为多行或以其它方式改变</span><br><span class="line">CommentPragmas:	&#x27;^ IWYU pragma:&#x27;</span><br><span class="line"># 构造函数的初始化列表要么都在同一行，要么都各自一行</span><br><span class="line">ConstructorInitializerAllOnOneLineOrOnePerLine:	false</span><br><span class="line"># 构造函数的初始化列表的缩进宽度</span><br><span class="line">ConstructorInitializerIndentWidth:	4</span><br><span class="line"># 延续的行的缩进宽度</span><br><span class="line">ContinuationIndentWidth:	4</span><br><span class="line"># 去除C++11的列表初始化的大括号&#123;后和&#125;前的空格</span><br><span class="line">Cpp11BracedListStyle:	false</span><br><span class="line"># 继承最常用的指针和引用的对齐方式</span><br><span class="line">DerivePointerAlignment:	false</span><br><span class="line"># 关闭格式化</span><br><span class="line">DisableFormat:	false</span><br><span class="line"># 自动检测函数的调用和定义是否被格式为每行一个参数(Experimental)</span><br><span class="line">ExperimentalAutoDetectBinPacking:	false</span><br><span class="line"># 需要被解读为foreach循环而不是函数调用的宏</span><br><span class="line">ForEachMacros:	[ foreach, Q_FOREACH, BOOST_FOREACH ]</span><br><span class="line"># 对#include进行排序，匹配了某正则表达式的#include拥有对应的优先级，匹配不到的则默认优先级为INT_MAX(优先级越小排序越靠前)，</span><br><span class="line">#   可以定义负数优先级从而保证某些#include永远在最前面</span><br><span class="line">IncludeCategories: </span><br><span class="line">  - Regex:	&#x27;^&quot;(llvm|llvm-c|clang|clang-c)/&#x27;</span><br><span class="line">    Priority:	2</span><br><span class="line">  - Regex:	&#x27;^(&lt;|&quot;(gtest|isl|json)/)&#x27;</span><br><span class="line">    Priority:	3</span><br><span class="line">  - Regex:	&#x27;.*&#x27;</span><br><span class="line">    Priority:	1</span><br><span class="line"># 缩进case标签</span><br><span class="line">IndentCaseLabels:	false</span><br><span class="line"># 缩进宽度</span><br><span class="line">IndentWidth:	4</span><br><span class="line"># 函数返回类型换行时，缩进函数声明或函数定义的函数名</span><br><span class="line">IndentWrappedFunctionNames:	false</span><br><span class="line"># 保留在块开始处的空行</span><br><span class="line">KeepEmptyLinesAtTheStartOfBlocks:	true</span><br><span class="line"># 开始一个块的宏的正则表达式</span><br><span class="line">MacroBlockBegin:	&#x27;&#x27;</span><br><span class="line"># 结束一个块的宏的正则表达式</span><br><span class="line">MacroBlockEnd:	&#x27;&#x27;</span><br><span class="line"># 连续空行的最大数量</span><br><span class="line">MaxEmptyLinesToKeep:	1</span><br><span class="line"># 命名空间的缩进: None, Inner(缩进嵌套的命名空间中的内容), All</span><br><span class="line">NamespaceIndentation:	Inner</span><br><span class="line"># 使用ObjC块时缩进宽度</span><br><span class="line">ObjCBlockIndentWidth:	4</span><br><span class="line"># 在ObjC的@property后添加一个空格</span><br><span class="line">ObjCSpaceAfterProperty:	false</span><br><span class="line"># 在ObjC的protocol列表前添加一个空格</span><br><span class="line">ObjCSpaceBeforeProtocolList:	true</span><br><span class="line"># 在call(后对函数调用换行的penalty</span><br><span class="line">PenaltyBreakBeforeFirstCallParameter:	19</span><br><span class="line"># 在一个注释中引入换行的penalty</span><br><span class="line">PenaltyBreakComment:	300</span><br><span class="line"># 第一次在&lt;&lt;前换行的penalty</span><br><span class="line">PenaltyBreakFirstLessLess:	120</span><br><span class="line"># 在一个字符串字面量中引入换行的penalty</span><br><span class="line">PenaltyBreakString:	1000</span><br><span class="line"># 对于每个在行字符数限制之外的字符的penalty</span><br><span class="line">PenaltyExcessCharacter:	1000000</span><br><span class="line"># 将函数的返回类型放到它自己的行的penalty</span><br><span class="line">PenaltyReturnTypeOnItsOwnLine:	60</span><br><span class="line"># 指针和引用的对齐: Left, Right, Middle</span><br><span class="line">PointerAlignment:	Left</span><br><span class="line"># 允许重新排版注释</span><br><span class="line">ReflowComments:	true</span><br><span class="line"># 允许排序#include</span><br><span class="line">SortIncludes:	true</span><br><span class="line"># 在C风格类型转换后添加空格</span><br><span class="line">SpaceAfterCStyleCast:	false</span><br><span class="line"># 在赋值运算符之前添加空格</span><br><span class="line">SpaceBeforeAssignmentOperators:	true</span><br><span class="line"># 开圆括号之前添加一个空格: Never, ControlStatements, Always</span><br><span class="line">SpaceBeforeParens:	ControlStatements</span><br><span class="line"># 在空的圆括号中添加空格</span><br><span class="line">SpaceInEmptyParentheses:	false</span><br><span class="line"># 在尾随的评论前添加的空格数(只适用于//)</span><br><span class="line">SpacesBeforeTrailingComments:	2</span><br><span class="line"># 在尖括号的&lt;后和&gt;前添加空格</span><br><span class="line">SpacesInAngles:	true</span><br><span class="line"># 在容器(ObjC和JavaScript的数组和字典等)字面量中添加空格</span><br><span class="line">SpacesInContainerLiterals:	true</span><br><span class="line"># 在C风格类型转换的括号中添加空格</span><br><span class="line">SpacesInCStyleCastParentheses:	true</span><br><span class="line"># 在圆括号的(后和)前添加空格</span><br><span class="line">SpacesInParentheses:	true</span><br><span class="line"># 在方括号的[后和]前添加空格，lamda表达式和未指明大小的数组的声明不受影响</span><br><span class="line">SpacesInSquareBrackets:	true</span><br><span class="line"># 标准: Cpp03, Cpp11, Auto</span><br><span class="line">Standard:	Cpp11</span><br><span class="line"># tab宽度</span><br><span class="line">TabWidth:	4</span><br><span class="line"># 使用tab字符: Never, ForIndentation, ForContinuationAndIndentation, Always</span><br><span class="line">UseTab:	Never</span><br></pre></td></tr></table></figure>
 
 
 
@@ -819,781 +278,257 @@ UseTab:	Never<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
 </ul>
 </blockquote>
 
-                
-            </div>
-            <hr/>
-
-            
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://blog.zhuomu.xyz" rel="external nofollow noreferrer">卓木</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://blog.zhuomu.xyz/2020/02/15/Sublime-Text-3-ClangFormat/">https://blog.zhuomu.xyz/2020/02/15/Sublime-Text-3-ClangFormat/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY-NC 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="https://blog.zhuomu.xyz" target="_blank">卓木</a>
-                    !
-                </span>
-            </div>
-        
     </div>
 
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
+    
+    
+    
 
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/c/" rel="tag"># c++</a>
+              <a href="/tags/sublime-text-3/" rel="tag"># Sublime Text 3</a>
+              <a href="/tags/clangformat/" rel="tag"># ClangFormat</a>
+              <a href="/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96/" rel="tag"># 格式化</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/12/offer/" rel="prev" title="程序员面试宝典-基础知识总结">
+      <i class="fa fa-chevron-left"></i> 程序员面试宝典-基础知识总结
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/16/Typecho-handsome-theme-Google-Analytics/" rel="next" title="给Typecho的handsome主题添加Google Analytics统计">
+      给Typecho的handsome主题添加Google Analytics统计 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
       }
-    </script>
-
-
-
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
-                    
-                        <div class="article-tag">
-                            
-                                <a href="/tags/c/">
-                                    <span class="chip bg-color">c++</span>
-                                </a>
-                            
-                                <a href="/tags/sublime-text-3/">
-                                    <span class="chip bg-color">Sublime Text 3</span>
-                                </a>
-                            
-                                <a href="/tags/clangformat/">
-                                    <span class="chip bg-color">ClangFormat</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96/">
-                                    <span class="chip bg-color">格式化</span>
-                                </a>
-                            
-                        </div>
-                    
-                </div>
-                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/share/css/share.min.css">
-<div id="article-share">
-
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/share/js/social-share.min.js"></script>
-    
-
-    
-
-</div>
-
-                </div>
-            </div>
-            
-                <style>
-    #reward {
-        margin: 40px 0;
-        text-align: center;
     }
-
-    #reward .reward-link {
-        font-size: 1.4rem;
-        line-height: 38px;
-    }
-
-    #reward .btn-floating:hover {
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    #rewardModal {
-        width: 320px;
-        height: 350px;
-    }
-
-    #rewardModal .reward-title {
-        margin: 15px auto;
-        padding-bottom: 5px;
-    }
-
-    #rewardModal .modal-content {
-        padding: 10px;
-    }
-
-    #rewardModal .close {
-        position: absolute;
-        right: 15px;
-        top: 15px;
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 1.3rem;
-        line-height: 20px;
-        cursor: pointer;
-    }
-
-    #rewardModal .close:hover {
-        color: #ef5350;
-        transform: scale(1.3);
-        -moz-transform:scale(1.3);
-        -webkit-transform:scale(1.3);
-        -o-transform:scale(1.3);
-    }
-
-    #rewardModal .reward-tabs {
-        margin: 0 auto;
-        width: 210px;
-    }
-
-    .reward-tabs .tabs {
-        height: 38px;
-        margin: 10px auto;
-        padding-left: 0;
-    }
-
-    .reward-content ul {
-        padding-left: 0 !important;
-    }
-
-    .reward-tabs .tabs .tab {
-        height: 38px;
-        line-height: 38px;
-    }
-
-    .reward-tabs .tab a {
-        color: #fff;
-        background-color: #ccc;
-    }
-
-    .reward-tabs .tab a:hover {
-        background-color: #ccc;
-        color: #fff;
-    }
-
-    .reward-tabs .wechat-tab .active {
-        color: #fff !important;
-        background-color: #22AB38 !important;
-    }
-
-    .reward-tabs .alipay-tab .active {
-        color: #fff !important;
-        background-color: #019FE8 !important;
-    }
-
-    .reward-tabs .reward-img {
-        width: 210px;
-        height: 210px;
-    }
-</style>
-
-<div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
-
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs row">
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
-                    </ul>
-                    <div id="alipay">
-                        <img src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
-                    </div>
-                    <div id="wechat">
-                        <img src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(function () {
-        $('.tabs').tabs();
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
     });
+  }
 </script>
 
-            
         </div>
-    </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
 
-    
+  <aside class="sidebar">
+    <div class="sidebar-inner">
 
-    
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-    
-        <div class="disqus-card card" data-aos="fade-up">
-    <div id="disqus_thread" class="card-content">
-        <noscript>Please enable JavaScript to view the
-            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-    </div>
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Sublime-Text-3-ClangFormat%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">Sublime Text 3 ClangFormat格式化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="nav-number">1.0.1.</span> <span class="nav-text">插件安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE"><span class="nav-number">1.0.2.</span> <span class="nav-text">编译配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">1.0.3.</span> <span class="nav-text">插件配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Settings-User"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">Settings-User</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Custom-Style-User"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">Custom Style-User</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="卓木"
+      src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/avatar.jpg">
+  <p class="site-author-name" itemprop="name">卓木</p>
+  <div class="site-description" itemprop="description">学习 分享 开源</div>
 </div>
-
-<script type="text/javascript">
-    disqus_config = function () {
-        this.page.url = 'https://blog.zhuomu.xyz/2020/02/15/Sublime-Text-3-ClangFormat/';
-        this.page.identifier = '/2020/02/15/Sublime-Text-3-ClangFormat/';
-        this.page.title = 'Sublime Text 3 ClangFormat格式化';
-    };
-    let disqus_shortname = 'blog-zhuomu';
-
-    (function () { // DON'T EDIT BELOW THIS LINE
-        let d = document, s = d.createElement('script');
-        // 如：s.src = 'https://blinkfox.disqus.com/embed.js';
-        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/2020/02/16/Typecho-handsome-theme-Google-Analytics/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/featureimages/23.jpg" class="responsive-img" alt="给Typecho的handsome主题添加Google Analytics统计">
-                        
-                        <span class="card-title">给Typecho的handsome主题添加Google Analytics统计</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            给网站添加Google Analytics分析主题：handsomeGoogle Analytics wikiGoogle分析（Google Analytics）是一个由Google所提供的网站流量统计服务。Google 分析（Analyt
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-16
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/" class="post-category">
-                                    技术博文
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/02/12/offer/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/featureimages/4.jpg" class="responsive-img" alt="程序员面试宝典-基础知识总结">
-                        
-                        <span class="card-title">程序员面试宝典-基础知识总结</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-12
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    笔记
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/c/">
-                        <span class="chip bg-color">c++</span>
-                    </a>
-                    
-                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
-                        <span class="chip bg-color">面试</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-    </div>
-</article>
-
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">94</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Fantasia1999" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Fantasia1999" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:i@zhuomu.xyz" title="E-Mail → mailto:i@zhuomu.xyz" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/booklist.html" title="Kindle → &#x2F;booklist.html"><i class="fa fa-fw fa-book"></i>Kindle</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
 
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">卓木</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
 
 <script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://blog-zhuomu.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://blog.zhuomu.xyz/2020/02/15/Sublime-Text-3-ClangFormat/",
+            identifier: "2020/02/15/Sublime-Text-3-ClangFormat/",
+            title: "Sublime Text 3 ClangFormat格式化"
+          }
         }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: 卓木&#39;s Blog<br />'
-            + '文章作者: 卓木<br />'
-            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://blog-zhuomu.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
-
-
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/codeBlock/codeBlockFuction.js"></script>
-
-<!-- 代码语言 -->
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/codeBlock/codeShrink.js"></script>
-
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
-        });
-
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
-
-    
-
-</main>
-
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
-
-
-
-    <footer class="page-footer bg-color">
-    
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
-        <div class="col s12 m8 l8 copy-right">
-            Copyright&nbsp;&copy;
-            
-                <span id="year">2019-2022</span>
-            
-            <span id="year">2019</span>
-            <a href="/about" target="_blank">卓木</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
-            <br>
-            
-            
-            
-            
-            
-            
-            <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
-                    class="white-color"></span>&nbsp;次
-            </span>
-            
-            
-            <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
-                    class="white-color"></span>&nbsp;人
-            </span>
-            
-            <br>
-            
-            <br>
-            
-        </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/Fantisia1999" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:i@zhuomu.xyz" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
-
-</div>
-    </div>
-</footer>
-
-<div class="progress-bar"></div>
-
-
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-
-<script type="text/javascript">
-$(function () {
-    var searchFunc = function (path, search_id, content_id) {
-        'use strict';
-        $.ajax({
-            url: path,
-            dataType: "xml",
-            success: function (xmlResponse) {
-                // get the contents from search data
-                var datas = $("entry", xmlResponse).map(function () {
-                    return {
-                        title: $("title", this).text(),
-                        content: $("content", this).text(),
-                        url: $("url", this).text()
-                    };
-                }).get();
-                var $input = document.getElementById(search_id);
-                var $resultContent = document.getElementById(content_id);
-                $input.addEventListener('input', function () {
-                    var str = '<ul class=\"search-result-list\">';
-                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                    $resultContent.innerHTML = "";
-                    if (this.value.trim().length <= 0) {
-                        return;
-                    }
-                    // perform local searching
-                    datas.forEach(function (data) {
-                        var isMatch = true;
-                        var data_title = data.title.trim().toLowerCase();
-                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                        var data_url = data.url;
-                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
-                        var index_title = -1;
-                        var index_content = -1;
-                        var first_occur = -1;
-                        // only match artiles with not empty titles and contents
-                        if (data_title !== '' && data_content !== '') {
-                            keywords.forEach(function (keyword, i) {
-                                index_title = data_title.indexOf(keyword);
-                                index_content = data_content.indexOf(keyword);
-                                if (index_title < 0 && index_content < 0) {
-                                    isMatch = false;
-                                } else {
-                                    if (index_content < 0) {
-                                        index_content = 0;
-                                    }
-                                    if (i === 0) {
-                                        first_occur = index_content;
-                                    }
-                                }
-                            });
-                        }
-                        // show search results
-                        if (isMatch) {
-                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                            var content = data.content.trim().replace(/<[^>]+>/g, "");
-                            if (first_occur >= 0) {
-                                // cut out 100 characters
-                                var start = first_occur - 20;
-                                var end = first_occur + 80;
-                                if (start < 0) {
-                                    start = 0;
-                                }
-                                if (start === 0) {
-                                    end = 100;
-                                }
-                                if (end > content.length) {
-                                    end = content.length;
-                                }
-                                var match_content = content.substr(start, end);
-                                // highlight all keywords
-                                keywords.forEach(function (keyword) {
-                                    var regS = new RegExp(keyword, "gi");
-                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
-                                });
-
-                                str += "<p class=\"search-result\">" + match_content + "...</p>"
-                            }
-                            str += "</li>";
-                        }
-                    });
-                    str += "</ul>";
-                    $resultContent.innerHTML = str;
-                });
-            }
-        });
-    };
-
-    searchFunc('/search.xml', 'searchInput', 'searchResult');
-});
-</script>
-
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
-
-
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/materialize/materialize.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/aos/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/js/matery.js"></script>
-
-    <!-- Baidu Analytics -->
-
-<script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?df5a74022c3722248f076afbf55286b0";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
-    <!-- Baidu Push -->
-
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
-
-    
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/others/busuanzi.pure.mini.js"></script>
-    
-
-    
-
-    
-
-    <!--腾讯兔小巢-->
-    
-    
-
-    
-
-    
-
-    
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/instantpage/instantpage.js" type="module"></script>
-    
 
 </body>
-
 </html>

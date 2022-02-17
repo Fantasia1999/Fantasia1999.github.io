@@ -1,564 +1,292 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="zh-CN">
-
-
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="基于 MFC 计算机图形学 实验1（Visual C++图形程序设计 ）, 卓木&#39;s Blog">
-    <meta name="description" content="学习 分享 开源">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico">
+  <link rel="mask-icon" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico" color="#222">
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158292871-1"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-        dataLayer.push(arguments);
-    }
+<link rel="stylesheet" href="/css/main.css">
 
-    gtag('js', new Date());
-    gtag('config', 'UA-158292871-1');
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=LatoEB Garamond:300,300italic,400,400italic,700,700italic|JetBrains Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://blog.zhuomu.xyz').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"flat"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"buttons","active":null,"storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}}},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
 </script>
 
+  <meta name="description" content="1 MFC应用程序开发方法1.1 创建MFC工程文件  挖坑，待填  2 图形设备接口和图形程序设计2.2 绘制基本图形（1）画点textout和textoutwTextOutW()用于Unicode的宽字符 TextOut()用于窄字符 在MFC里头，你只要看见带w的函数都是针对宽字符的，譬如w_char什么的 char * 转为 CStringCString.format(“%s”,char*">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于 MFC 计算机图形学 实验1（Visual C++图形程序设计 ）">
+<meta property="og:url" content="https://blog.zhuomu.xyz/2020/06/13/MFC-GC-lab1-Visual-C++/index.html">
+<meta property="og:site_name" content="卓木&#39;s Blog">
+<meta property="og:description" content="1 MFC应用程序开发方法1.1 创建MFC工程文件  挖坑，待填  2 图形设备接口和图形程序设计2.2 绘制基本图形（1）画点textout和textoutwTextOutW()用于Unicode的宽字符 TextOut()用于窄字符 在MFC里头，你只要看见带w的函数都是针对宽字符的，譬如w_char什么的 char * 转为 CStringCString.format(“%s”,char*">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611211440337.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611213307435.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611213338992.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611213408334.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611213452725.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611213511522.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611215528536.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611215545470.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611215236326.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611220248895.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611220302256.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611220317646.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611220332750.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611220344557.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611220428854.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611225122037.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611225131395.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611225150484.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611233826243.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611233914968.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611233927333.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611234841134.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612002351456.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612002437929.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612003238848.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612003309024.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612003327762.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612003355900.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612003644992.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612004734339.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612004757702.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612004837928.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612004937810.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612011347778.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612011409803.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612011650321.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612012003462.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612013746019.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612111102290.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200613180956682.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200613181416101.png">
+<meta property="article:published_time" content="2020-06-13T02:28:00.000Z">
+<meta property="article:modified_time" content="2020-06-13T02:28:20.000Z">
+<meta property="article:author" content="卓木">
+<meta property="article:tag" content="计算机图形学">
+<meta property="article:tag" content="CG">
+<meta property="article:tag" content="MFC">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611211440337.png">
 
-    <title>基于 MFC 计算机图形学 实验1（Visual C++图形程序设计 ） | 卓木&#39;s Blog</title>
-    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico">
+<link rel="canonical" href="https://blog.zhuomu.xyz/2020/06/13/MFC-GC-lab1-Visual-C++/">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/css/my.css">
 
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/jquery/jquery.min.js"></script>
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>基于 MFC 计算机图形学 实验1（Visual C++图形程序设计 ） | 卓木's Blog</title>
+  
 
-<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="卓木's Blog" type="application/atom+xml">
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="卓木's Blog" type="application/rss+xml">
 </head>
 
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
 
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
 
-   <style>
-    body{
-       background-image: url(https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/background.jpg);
-       background-repeat:no-repeat;
-       background-size:cover;
-       background-attachment:fixed;
-    }
-</style>
-
-
-
-<body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/avatar.jpg" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">卓木&#39;s Blog</span>
-                </a>
-            </div>
-            
-
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>友情链接</span>
-    </a>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-</ul>
-
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
-        
-        <img src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/avatar.jpg" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">卓木&#39;s Blog</div>
-        <div class="logo-desc">
-            
-            学习 分享 开源
-            
-        </div>
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">卓木's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
+  </div>
 
-    
-
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			友情链接
-		</a>
-          
-        </li>
-        
-        
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://github.com/Fantasia1999" class="waves-effect waves-light" target="_blank">
-                <i class="fab fa-github-square fa-fw"></i>Follow Me
-            </a>
-        </li>
-        
-    </ul>
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
 </div>
 
 
-        </div>
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
 
-        
-            <style>
-    .nav-transparent .github-corner {
-        display: none !important;
-    }
+    <a href="/" rel="section"><i class="fa fa-fw fa-desktop"></i>Home</a>
 
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
+  </li>
+        <li class="menu-item menu-item-kindle">
 
-    .github-corner svg {
-        color: #0f9d58;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
+    <a href="/blog.zhuomu.xyz/Kindle" rel="section"><i class="fa fa-fw fa-book"></i>Kindle</a>
 
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
+  </li>
+        <li class="menu-item menu-item-about">
 
-    .github-corner .octo-arm {
-        animation: none;
-    }
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user-circle-o"></i>About</a>
 
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
-        }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
-    }
-</style>
+  </li>
+  </ul>
 
-<a href="https://github.com/Fantasia1999" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
-   data-tooltip="Follow Me" data-position="left" data-delay="50">
-    <svg viewBox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
-        
-    </nav>
-
-</header>
-
-    
-
-
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/featureimages/18.jpg')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">基于 MFC 计算机图形学 实验1（Visual C++图形程序设计 ）</h1>
-                </div>
-            </div>
-        </div>
-    </div>
+</nav>
 </div>
-
-
-
-
-<main class="post-container content">
+    </header>
 
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/tocbot/tocbot.css">
-<style>
-    #articleContent h1::before,
-    #articleContent h2::before,
-    #articleContent h3::before,
-    #articleContent h4::before,
-    #articleContent h5::before,
-    #articleContent h6::before {
-        display: block;
-        content: " ";
-        height: 100px;
-        margin-top: -100px;
-        visibility: hidden;
-    }
 
-    #articleContent :focus {
-        outline: none;
-    }
 
-    .toc-fixed {
-        position: fixed;
-        top: 64px;
-    }
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
 
-    .toc-widget {
-        width: 345px;
-        padding-left: 20px;
-    }
+          <div class="content">
+            
 
-    .toc-widget .toc-title {
-        padding: 35px 0 15px 17px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.zhuomu.xyz/2020/06/13/MFC-GC-lab1-Visual-C++/">
 
-    .toc-widget ol {
-        padding: 0;
-        list-style: none;
-    }
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/avatar.jpg">
+      <meta itemprop="name" content="卓木">
+      <meta itemprop="description" content="学习 分享 开源">
+    </span>
 
-    #toc-content {
-        padding-bottom: 30px;
-        overflow: auto;
-    }
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="卓木's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基于 MFC 计算机图形学 实验1（Visual C++图形程序设计 ）
+        </h1>
 
-    #toc-content ol {
-        padding-left: 10px;
-    }
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
 
-    #toc-content ol li {
-        padding-left: 10px;
-    }
+              <time title="创建时间：2020-06-13 10:28:00 / 修改时间：10:28:20" itemprop="dateCreated datePublished" datetime="2020-06-13T10:28:00+08:00">2020-06-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+            </span>
 
-    #toc-content .toc-link:hover {
-        color: #42b983;
-        font-weight: 700;
-        text-decoration: underline;
-    }
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/06/13/MFC-GC-lab1-Visual-C++/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/06/13/MFC-GC-lab1-Visual-C++/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
-    #toc-content .toc-link::before {
-        background-color: transparent;
-        max-height: 25px;
-
-        position: absolute;
-        right: 23.5vw;
-        display: block;
-    }
-
-    #toc-content .is-active-link {
-        color: #42b983;
-    }
-
-    #floating-toc-btn {
-        position: fixed;
-        right: 15px;
-        bottom: 76px;
-        padding-top: 15px;
-        margin-bottom: 0;
-        z-index: 998;
-    }
-
-    #floating-toc-btn .btn-floating {
-        width: 48px;
-        height: 48px;
-    }
-
-    #floating-toc-btn .btn-floating i {
-        line-height: 48px;
-        font-size: 1.4rem;
-    }
-</style>
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
-                                <span class="chip bg-color">计算机图形学</span>
-                            </a>
-                        
-                            <a href="/tags/cg/">
-                                <span class="chip bg-color">CG</span>
-                            </a>
-                        
-                            <a href="/tags/mfc/">
-                                <span class="chip bg-color">MFC</span>
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
-                                笔记
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-06-13
-                </div>
-                
-
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-06-13
-                </div>
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3k
-                </div>
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    14 分
-                </div>
-                
-
-                
-            </div>
         </div>
-        <hr class="clearfix">
+      </header>
 
-        
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/prism/prism.css">
-        
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-        
-
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <h2 id="1-MFC应用程序开发方法"><a href="#1-MFC应用程序开发方法" class="headerlink" title="1 MFC应用程序开发方法"></a>1 MFC应用程序开发方法</h2><h3 id="1-1-创建MFC工程文件"><a href="#1-1-创建MFC工程文件" class="headerlink" title="1.1 创建MFC工程文件"></a>1.1 创建MFC工程文件</h3><blockquote>
+      
+        <h2 id="1-MFC应用程序开发方法"><a href="#1-MFC应用程序开发方法" class="headerlink" title="1 MFC应用程序开发方法"></a>1 MFC应用程序开发方法</h2><h3 id="1-1-创建MFC工程文件"><a href="#1-1-创建MFC工程文件" class="headerlink" title="1.1 创建MFC工程文件"></a>1.1 创建MFC工程文件</h3><blockquote>
 <p> 挖坑，待填</p>
 </blockquote>
 <h2 id="2-图形设备接口和图形程序设计"><a href="#2-图形设备接口和图形程序设计" class="headerlink" title="2 图形设备接口和图形程序设计"></a>2 图形设备接口和图形程序设计</h2><h3 id="2-2-绘制基本图形"><a href="#2-2-绘制基本图形" class="headerlink" title="2.2 绘制基本图形"></a>2.2 绘制基本图形</h3><h4 id="（1）画点"><a href="#（1）画点" class="headerlink" title="（1）画点"></a>（1）画点</h4><h5 id="textout和textoutw"><a href="#textout和textoutw" class="headerlink" title="textout和textoutw"></a>textout和textoutw</h5><p>TextOutW()用于Unicode的宽字符 TextOut()用于窄字符 在<a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=MFC&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao">MFC</a>里头，你只要看见带w的函数都是针对宽字符的，譬如w_char什么的</p>
 <h5 id="char-转为-CString"><a href="#char-转为-CString" class="headerlink" title="char * 转为 CString"></a>char * 转为 CString</h5><p>CString.format(“%s”,char*); <a target="_blank" rel="noopener" href="https://blog.csdn.net/lidandan2016/article/details/90260172">help here</a></p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// Ccglab1View 绘图</span>
-
-<span class="token keyword">void</span> <span class="token class-name">Ccglab1View</span><span class="token double-colon punctuation">::</span><span class="token function">OnDraw</span><span class="token punctuation">(</span>CDC<span class="token operator">*</span> pDC<span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-	<span class="token comment">/*Ccglab1Doc* pDoc = GetDocument();
-	ASSERT_VALID(pDoc);
-	CString x("zsz憨批！");
-	pDC->TextOut(30, 30, x);
-	if (!pDoc)
-		return;*/</span>
-	
-	<span class="token comment">//绘制一组彩色点</span>
-	
-	<span class="token comment">//Ccglab1Doc* pDC = GetDocument();</span>
-	CString <span class="token function">x</span><span class="token punctuation">(</span><span class="token string">"point:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	pDC<span class="token operator">-></span><span class="token function">TextOut</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-	pDC<span class="token operator">-></span><span class="token function">SetPixel</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token function">RGB</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/*红*/</span>
-	pDC<span class="token operator">-></span><span class="token function">SetPixel</span><span class="token punctuation">(</span><span class="token number">110</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token function">RGB</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/*绿*/</span>
-	pDC<span class="token operator">-></span><span class="token function">SetPixel</span><span class="token punctuation">(</span><span class="token number">120</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token function">RGB</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/*蓝*/</span>
-	<span class="token comment">/*pDC->SetPixel(100, 20, RGB(255, 255, 0));
-	pDC->SetPixel(100, 20, RGB(255, 0, 255));
-	pDC->SetPixel(100, 20, RGB(0, 255, 255));
-	pDC->SetPixel(100, 20, RGB(0, 0, 0));
-	pDC->SetPixel(100, 20, RGB(255, 255, 255));*/</span>
-
-
-	<span class="token comment">// TODO: 在此处为本机数据添加绘制代码</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Ccglab1View 绘图</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Ccglab1View::OnDraw</span><span class="params">(CDC* pDC)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">/*Ccglab1Doc* pDoc = GetDocument();</span></span><br><span class="line"><span class="comment">	ASSERT_VALID(pDoc);</span></span><br><span class="line"><span class="comment">	CString x(&quot;zsz憨批！&quot;);</span></span><br><span class="line"><span class="comment">	pDC-&gt;TextOut(30, 30, x);</span></span><br><span class="line"><span class="comment">	if (!pDoc)</span></span><br><span class="line"><span class="comment">		return;*/</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//绘制一组彩色点</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//Ccglab1Doc* pDC = GetDocument();</span></span><br><span class="line">	<span class="function">CString <span class="title">x</span><span class="params">(<span class="string">&quot;point:&quot;</span>)</span></span>;</span><br><span class="line">	pDC-&gt;<span class="built_in">TextOut</span>(<span class="number">20</span>, <span class="number">20</span>, x);</span><br><span class="line"></span><br><span class="line">	pDC-&gt;<span class="built_in">SetPixel</span>(<span class="number">100</span>, <span class="number">20</span>, <span class="built_in">RGB</span>(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>));<span class="comment">/*红*/</span></span><br><span class="line">	pDC-&gt;<span class="built_in">SetPixel</span>(<span class="number">110</span>, <span class="number">20</span>, <span class="built_in">RGB</span>(<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>));<span class="comment">/*绿*/</span></span><br><span class="line">	pDC-&gt;<span class="built_in">SetPixel</span>(<span class="number">120</span>, <span class="number">20</span>, <span class="built_in">RGB</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>));<span class="comment">/*蓝*/</span></span><br><span class="line">	<span class="comment">/*pDC-&gt;SetPixel(100, 20, RGB(255, 255, 0));</span></span><br><span class="line"><span class="comment">	pDC-&gt;SetPixel(100, 20, RGB(255, 0, 255));</span></span><br><span class="line"><span class="comment">	pDC-&gt;SetPixel(100, 20, RGB(0, 255, 255));</span></span><br><span class="line"><span class="comment">	pDC-&gt;SetPixel(100, 20, RGB(0, 0, 0));</span></span><br><span class="line"><span class="comment">	pDC-&gt;SetPixel(100, 20, RGB(255, 255, 255));*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此处为本机数据添加绘制代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>效果</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611211440337.png" alt="image-20200611211440337"></p>
@@ -566,28 +294,7 @@
 <p>折线</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611213338992.png" alt="image-20200611213338992"></p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611213408334.png" alt="image-20200611213408334"></p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// Ccglab1View 绘图</span>
-
-<span class="token keyword">void</span> <span class="token class-name">Ccglab1View</span><span class="token double-colon punctuation">::</span><span class="token function">OnDraw</span><span class="token punctuation">(</span>CDC<span class="token operator">*</span> pDC<span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-	<span class="token comment">// 绘制直线</span>
-	CString <span class="token function">x</span><span class="token punctuation">(</span><span class="token string">"Line:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	pDC<span class="token operator">-></span><span class="token function">TextOutW</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">60</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-	pDC<span class="token operator">-></span><span class="token function">MoveTo</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">90</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	pDC<span class="token operator">-></span><span class="token function">LineTo</span><span class="token punctuation">(</span><span class="token number">160</span><span class="token punctuation">,</span> <span class="token number">90</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-	<span class="token comment">// 绘制折线1</span>
-	POINT polylinepoint<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">&#123;</span><span class="token number">70</span><span class="token punctuation">,</span> <span class="token number">240</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">190</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">70</span><span class="token punctuation">,</span> <span class="token number">190</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">240</span><span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span class="token comment">/*定义四个点*/</span>
-	pDC<span class="token operator">-></span><span class="token function">Polyline</span><span class="token punctuation">(</span>polylinepoint<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/*根据四个点，画出折线*/</span>
-
-	<span class="token comment">// 绘制折线2</span>
-	POINT polypolulinePt<span class="token punctuation">[</span><span class="token number">9</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">&#123;</span><span class="token number">95</span><span class="token punctuation">,</span> <span class="token number">160</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">120</span><span class="token punctuation">,</span> <span class="token number">185</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">120</span><span class="token punctuation">,</span> <span class="token number">250</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">145</span><span class="token punctuation">,</span> <span class="token number">160</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">120</span><span class="token punctuation">,</span> <span class="token number">185</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">90</span><span class="token punctuation">,</span> <span class="token number">185</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">150</span><span class="token punctuation">,</span> <span class="token number">185</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">80</span><span class="token punctuation">,</span> <span class="token number">210</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">160</span><span class="token punctuation">,</span> <span class="token number">210</span><span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span class="token comment">/*定义9个点*/</span>
-	DWORD dwPolyPoints<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span class="token comment">/*分四段折线，分别占用3,2,2,2个顶点*/</span>
-	pDC<span class="token operator">-></span><span class="token function">PolyPolyline</span><span class="token punctuation">(</span>polypolulinePt<span class="token punctuation">,</span> dwPolyPoints<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/*四段折线的顶点，以及每条折线的顶点数，折线数量*/</span>
-
-
-	<span class="token comment">// TODO: 在此处为本机数据添加绘制代码</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Ccglab1View 绘图</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Ccglab1View::OnDraw</span><span class="params">(CDC* pDC)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// 绘制直线</span></span><br><span class="line">	<span class="function">CString <span class="title">x</span><span class="params">(<span class="string">&quot;Line:&quot;</span>)</span></span>;</span><br><span class="line">	pDC-&gt;<span class="built_in">TextOutW</span>(<span class="number">20</span>, <span class="number">60</span>, x);</span><br><span class="line">	pDC-&gt;<span class="built_in">MoveTo</span>(<span class="number">20</span>, <span class="number">90</span>);</span><br><span class="line">	pDC-&gt;<span class="built_in">LineTo</span>(<span class="number">160</span>, <span class="number">90</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 绘制折线1</span></span><br><span class="line">	POINT polylinepoint[<span class="number">4</span>] = &#123; &#123;<span class="number">70</span>, <span class="number">240</span>&#125;, &#123;<span class="number">20</span>, <span class="number">190</span>&#125;, &#123;<span class="number">70</span>, <span class="number">190</span>&#125;, &#123;<span class="number">20</span>, <span class="number">240</span>&#125; &#125;;<span class="comment">/*定义四个点*/</span></span><br><span class="line">	pDC-&gt;<span class="built_in">Polyline</span>(polylinepoint, <span class="number">4</span>);<span class="comment">/*根据四个点，画出折线*/</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 绘制折线2</span></span><br><span class="line">	POINT polypolulinePt[<span class="number">9</span>] = &#123; &#123;<span class="number">95</span>, <span class="number">160</span>&#125;, &#123;<span class="number">120</span>, <span class="number">185</span>&#125;, &#123;<span class="number">120</span>, <span class="number">250</span>&#125;, &#123;<span class="number">145</span>, <span class="number">160</span>&#125;, &#123;<span class="number">120</span>, <span class="number">185</span>&#125;, &#123;<span class="number">90</span>, <span class="number">185</span>&#125;, &#123;<span class="number">150</span>, <span class="number">185</span>&#125;, &#123;<span class="number">80</span>, <span class="number">210</span>&#125;, &#123;<span class="number">160</span>, <span class="number">210</span>&#125; &#125;;<span class="comment">/*定义9个点*/</span></span><br><span class="line">	DWORD dwPolyPoints[<span class="number">4</span>] = &#123; <span class="number">3</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span> &#125;;<span class="comment">/*分四段折线，分别占用3,2,2,2个顶点*/</span></span><br><span class="line">	pDC-&gt;<span class="built_in">PolyPolyline</span>(polypolulinePt, dwPolyPoints, <span class="number">4</span>);<span class="comment">/*四段折线的顶点，以及每条折线的顶点数，折线数量*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此处为本机数据添加绘制代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>由于一条折线至少需要 2 个顶点，因此 dwPolyPoints 数组中的数不应该小于 2。 </p>
@@ -596,43 +303,7 @@
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611213511522.png" alt="image-20200611213511522"></p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611215528536.png" alt="image-20200611215528536"></p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611215545470.png" alt="image-20200611215545470"></p>
-<pre class="line-numbers language-CPP" data-language="CPP"><code class="language-CPP">&#x2F;&#x2F; Ccglab1View 绘图
-
-void Ccglab1View::OnDraw(CDC* pDC)
-&#123;
-	&#x2F;&#x2F; 用Arc() 绘制圆、圆弧和椭圆
-
-	&#x2F;&#x2F; 同心圆
-	for (int i &#x3D; 0; i &lt; 6; i++) &#123;
-		pDC-&gt;Arc(260 - 5 * i, 70 - 5 * i, 260 + 5 * i, 70 + 5 * i, 260 + 5 * i, 70, 260 + 5 * i, 70);
-	&#125;
-	const double pi &#x3D; 3.1415926;
-	double angel &#x3D; 60 * pi &#x2F; 180;
-	for (int i &#x3D; 3; i &lt; 6; i++) &#123;
-		&#x2F;&#x2F; 右半圆弧
-		pDC-&gt;Arc(260 - 10 * i, 70 - 10 * i, 260 + 10 * i, 70 + 10 * i,
-			(int)260 + 10 * i * cos(angel),
-			(int)70 + 10 * i * sin(angel),
-			(int)260 + 10 * i * cos(angel),
-			(int)70 - 10 * i * sin(angel));
-		
-		&#x2F;&#x2F; 左半圆弧
-		pDC-&gt;Arc(260 - 10 * i, 70 - 10 * i, 260 + 10 * i, 70 + 10 * i,
-			(int)260 - 10 * i * cos(angel),
-			(int)70 - 10 * i * sin(angel),
-			(int)260 - 10 * i * cos(angel),
-			(int)70 + 10 * i * sin(angel));
-	&#125;
-    
-    &#x2F;&#x2F; 绘制Bezier曲线
-
-	&#x2F;&#x2F; 画出一条Bezier曲线和特征多边形
-	POINT polyBezier[4] &#x3D; &#123; &#123;20, 310&#125;, &#123;60, 240&#125;, &#123;120, 300&#125;, &#123;160, 330&#125; &#125;;
-	pDC-&gt;Polyline(polyBezier, 4);
-	pDC-&gt;PolyBezier(polyBezier, 4);
-
-	&#x2F;&#x2F; TODO: 在此处为本机数据添加绘制代码
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Ccglab1View 绘图</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Ccglab1View::OnDraw</span><span class="params">(CDC* pDC)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// 用Arc() 绘制圆、圆弧和椭圆</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 同心圆</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++) &#123;</span><br><span class="line">		pDC-&gt;<span class="built_in">Arc</span>(<span class="number">260</span> - <span class="number">5</span> * i, <span class="number">70</span> - <span class="number">5</span> * i, <span class="number">260</span> + <span class="number">5</span> * i, <span class="number">70</span> + <span class="number">5</span> * i, <span class="number">260</span> + <span class="number">5</span> * i, <span class="number">70</span>, <span class="number">260</span> + <span class="number">5</span> * i, <span class="number">70</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">const</span> <span class="type">double</span> pi = <span class="number">3.1415926</span>;</span><br><span class="line">	<span class="type">double</span> angel = <span class="number">60</span> * pi / <span class="number">180</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">3</span>; i &lt; <span class="number">6</span>; i++) &#123;</span><br><span class="line">		<span class="comment">// 右半圆弧</span></span><br><span class="line">		pDC-&gt;<span class="built_in">Arc</span>(<span class="number">260</span> - <span class="number">10</span> * i, <span class="number">70</span> - <span class="number">10</span> * i, <span class="number">260</span> + <span class="number">10</span> * i, <span class="number">70</span> + <span class="number">10</span> * i,</span><br><span class="line">			(<span class="type">int</span>)<span class="number">260</span> + <span class="number">10</span> * i * <span class="built_in">cos</span>(angel),</span><br><span class="line">			(<span class="type">int</span>)<span class="number">70</span> + <span class="number">10</span> * i * <span class="built_in">sin</span>(angel),</span><br><span class="line">			(<span class="type">int</span>)<span class="number">260</span> + <span class="number">10</span> * i * <span class="built_in">cos</span>(angel),</span><br><span class="line">			(<span class="type">int</span>)<span class="number">70</span> - <span class="number">10</span> * i * <span class="built_in">sin</span>(angel));</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 左半圆弧</span></span><br><span class="line">		pDC-&gt;<span class="built_in">Arc</span>(<span class="number">260</span> - <span class="number">10</span> * i, <span class="number">70</span> - <span class="number">10</span> * i, <span class="number">260</span> + <span class="number">10</span> * i, <span class="number">70</span> + <span class="number">10</span> * i,</span><br><span class="line">			(<span class="type">int</span>)<span class="number">260</span> - <span class="number">10</span> * i * <span class="built_in">cos</span>(angel),</span><br><span class="line">			(<span class="type">int</span>)<span class="number">70</span> - <span class="number">10</span> * i * <span class="built_in">sin</span>(angel),</span><br><span class="line">			(<span class="type">int</span>)<span class="number">260</span> - <span class="number">10</span> * i * <span class="built_in">cos</span>(angel),</span><br><span class="line">			(<span class="type">int</span>)<span class="number">70</span> + <span class="number">10</span> * i * <span class="built_in">sin</span>(angel));</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 绘制Bezier曲线</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 画出一条Bezier曲线和特征多边形</span></span><br><span class="line">	POINT polyBezier[<span class="number">4</span>] = &#123; &#123;<span class="number">20</span>, <span class="number">310</span>&#125;, &#123;<span class="number">60</span>, <span class="number">240</span>&#125;, &#123;<span class="number">120</span>, <span class="number">300</span>&#125;, &#123;<span class="number">160</span>, <span class="number">330</span>&#125; &#125;;</span><br><span class="line">	pDC-&gt;<span class="built_in">Polyline</span>(polyBezier, <span class="number">4</span>);</span><br><span class="line">	pDC-&gt;<span class="built_in">PolyBezier</span>(polyBezier, <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此处为本机数据添加绘制代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>示例</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611215236326.png" alt="image-20200611215236326"></p>
@@ -641,22 +312,7 @@ void Ccglab1View::OnDraw(CDC* pDC)
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611220317646.png" alt="image-20200611220317646"></p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611220332750.png" alt="image-20200611220332750"></p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611220344557.png" alt="image-20200611220344557"></p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// Ccglab1View 绘图</span>
-
-<span class="token keyword">void</span> <span class="token class-name">Ccglab1View</span><span class="token double-colon punctuation">::</span><span class="token function">OnDraw</span><span class="token punctuation">(</span>CDC<span class="token operator">*</span> pDC<span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-	<span class="token comment">// 画封闭曲线</span>
-
-	<span class="token comment">// 绘制矩形、圆角矩形、椭圆和多边形</span>
-
-	pDC<span class="token operator">-></span><span class="token function">Rectangle</span><span class="token punctuation">(</span><span class="token number">190</span><span class="token punctuation">,</span> <span class="token number">270</span><span class="token punctuation">,</span> <span class="token number">250</span><span class="token punctuation">,</span> <span class="token number">310</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	pDC<span class="token operator">-></span><span class="token function">RoundRect</span><span class="token punctuation">(</span><span class="token number">265</span><span class="token punctuation">,</span> <span class="token number">270</span><span class="token punctuation">,</span> <span class="token number">330</span><span class="token punctuation">,</span> <span class="token number">310</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	pDC<span class="token operator">-></span><span class="token function">Ellipse</span><span class="token punctuation">(</span><span class="token number">260</span> <span class="token operator">-</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">200</span> <span class="token operator">-</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">260</span> <span class="token operator">+</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">200</span> <span class="token operator">+</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	POINT polygonPts<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">&#123;</span><span class="token number">390</span><span class="token punctuation">,</span> <span class="token number">160</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">430</span><span class="token punctuation">,</span> <span class="token number">220</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token number">350</span><span class="token punctuation">,</span> <span class="token number">210</span><span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-	pDC<span class="token operator">-></span><span class="token function">Polygon</span><span class="token punctuation">(</span>polygonPts<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-	<span class="token comment">// TODO: 在此处为本机数据添加绘制代码</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Ccglab1View 绘图</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Ccglab1View::OnDraw</span><span class="params">(CDC* pDC)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// 画封闭曲线</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 绘制矩形、圆角矩形、椭圆和多边形</span></span><br><span class="line"></span><br><span class="line">	pDC-&gt;<span class="built_in">Rectangle</span>(<span class="number">190</span>, <span class="number">270</span>, <span class="number">250</span>, <span class="number">310</span>);</span><br><span class="line">	pDC-&gt;<span class="built_in">RoundRect</span>(<span class="number">265</span>, <span class="number">270</span>, <span class="number">330</span>, <span class="number">310</span>, <span class="number">30</span>, <span class="number">20</span>);</span><br><span class="line">	pDC-&gt;<span class="built_in">Ellipse</span>(<span class="number">260</span> - <span class="number">50</span>, <span class="number">200</span> - <span class="number">30</span>, <span class="number">260</span> + <span class="number">50</span>, <span class="number">200</span> + <span class="number">30</span>);</span><br><span class="line">	POINT polygonPts[<span class="number">3</span>] = &#123; &#123;<span class="number">390</span>, <span class="number">160</span>&#125;, &#123;<span class="number">430</span>, <span class="number">220</span>&#125;, &#123;<span class="number">350</span>, <span class="number">210</span>&#125; &#125;;</span><br><span class="line">	pDC-&gt;<span class="built_in">Polygon</span>(polygonPts, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此处为本机数据添加绘制代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>效果</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611220428854.png" alt="image-20200611220428854"></p>
@@ -667,171 +323,23 @@ void Ccglab1View::OnDraw(CDC* pDC)
 <h4 id="（1）画笔"><a href="#（1）画笔" class="headerlink" title="（1）画笔"></a>（1）画笔</h4><p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611225122037.png" alt="image-20200611225122037"></p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611225131395.png" alt="image-20200611225131395"></p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611225150484.png" alt="image-20200611225150484"></p>
-<pre class="line-numbers language-CPP" data-language="CPP"><code class="language-CPP">&#x2F;&#x2F; Ccglab1View 绘图
-
-void Ccglab1View::OnDraw(CDC* pDC)
-&#123;
-	&#x2F;&#x2F; 创建画笔
-	&#x2F;&#x2F; 方法1
-	CPen pen1(PS_SOLID, 1, RGB(255, 0, 0));
-
-	&#x2F;&#x2F; 方法2
-	CPen Pen2;
-	Pen2.CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
-
-	&#x2F;&#x2F; 方法3
-	CPen Pen3;
-	LOGPEN LogPen;
-	LogPen.lopnStyle &#x3D; PS_SOLID;
-	LogPen.lopnWidth &#x3D; POINT&#123;1, 0&#125;;&#x2F;*X field contains the width of the pen in logical units. The Y field is not used.*&#x2F;
-	LogPen.lopnColor &#x3D; RGB(255, 0, 0);
-	Pen3.CreatePenIndirect(&amp;LogPen);
-
-	&#x2F;&#x2F; TODO: 在此处为本机数据添加绘制代码
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Ccglab1View 绘图</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Ccglab1View::OnDraw</span><span class="params">(CDC* pDC)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// 创建画笔</span></span><br><span class="line">	<span class="comment">// 方法1</span></span><br><span class="line">	<span class="function">CPen <span class="title">pen1</span><span class="params">(PS_SOLID, <span class="number">1</span>, RGB(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>))</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 方法2</span></span><br><span class="line">	CPen Pen2;</span><br><span class="line">	Pen2.<span class="built_in">CreatePen</span>(PS_SOLID, <span class="number">1</span>, <span class="built_in">RGB</span>(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 方法3</span></span><br><span class="line">	CPen Pen3;</span><br><span class="line">	LOGPEN LogPen;</span><br><span class="line">	LogPen.lopnStyle = PS_SOLID;</span><br><span class="line">	LogPen.lopnWidth = POINT&#123;<span class="number">1</span>, <span class="number">0</span>&#125;;<span class="comment">/*X field contains the width of the pen in logical units. The Y field is not used.*/</span></span><br><span class="line">	LogPen.lopnColor = <span class="built_in">RGB</span>(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">	Pen3.<span class="built_in">CreatePenIndirect</span>(&amp;LogPen);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此处为本机数据添加绘制代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>不同笔的测试</p>
-<pre class="line-numbers language-CPP" data-language="CPP"><code class="language-CPP">&#x2F;&#x2F; Ccglab1View 绘图
-
-void Ccglab1View::OnDraw(CDC* pDC)
-&#123;
-	&#x2F;&#x2F; 创建画笔
-
-	&#x2F;&#x2F; 画笔的样式、宽度和颜色
-
-	int nPenStyle[] &#x3D; &#123; PS_SOLID, PS_DASH, PS_DASHDOT, PS_DASHDOTDOT, PS_NULL, PS_INSIDEFRAME &#125;;
-	CPen* pNewPen;
-	CPen* pOldPen;
-	&#x2F;&#x2F; 用不同样式的画笔
-	for (int i &#x3D; 0; i &lt; 7; i++) &#123;
-		&#x2F;&#x2F; 构造新笔
-		pNewPen &#x3D; new CPen;
-		if (pNewPen-&gt;CreatePen(nPenStyle[i], 1, RGB(0, 0, 0))) &#123;
-			pOldPen &#x3D; pDC-&gt;SelectObject(pNewPen);&#x2F;*选择新笔，并保存旧笔*&#x2F;
-			&#x2F;&#x2F; 画直线
-			pDC-&gt;MoveTo(20, 60 + i * 20);
-			pDC-&gt;LineTo(160, 60 + i * 20);
-			&#x2F;&#x2F; 恢复原有的笔
-			pDC-&gt;SelectObject(pOldPen);
-		&#125;
-		else &#123;
-			&#x2F;&#x2F; 出错提示
-			CString error(&quot;CreatePen Error!&quot;);
-			AfxMessageBox(error);
-		&#125;
-		&#x2F;&#x2F; 删除新笔
-		delete pNewPen;
-	&#125;
-
-	&#x2F;&#x2F; 用不同的宽度的笔绘图
-	for (int i &#x3D; 0; i &lt; 7; i++) &#123;
-		&#x2F;&#x2F; 构造新笔
-		pNewPen &#x3D; new CPen;
-		if (pNewPen-&gt;CreatePen(PS_SOLID, i + 1, RGB(0, 0, 0))) &#123;
-			pOldPen &#x3D; pDC-&gt;SelectObject(pNewPen);
-			&#x2F;&#x2F; 画直线
-			pDC-&gt;MoveTo(200, 60 + i * 20);
-			pDC-&gt;LineTo(340, 60 + i * 20);
-
-			&#x2F;&#x2F; 恢复原有的笔
-			pDC-&gt;SelectObject(pOldPen);
-		&#125;
-		else &#123;
-			&#x2F;&#x2F; 出错提示
-			CString error(&quot;CreatePen error!!&quot;);
-			AfxMessageBox(error);
-		&#125;
-		&#x2F;&#x2F; 删除新笔
-		delete pNewPen;
-	&#125;
-
-	&#x2F;&#x2F; 设置颜色表
-	struct tagColor &#123;
-		int r, g, b;
-	&#125;color[7] &#x3D; &#123; &#123;255, 0, 0&#125;, &#123;0, 255, 0&#125;, &#123;0, 0, 255&#125;, 
-		&#123;255, 255, 0&#125;, &#123;255, 0, 255&#125;, &#123;0, 255, 255&#125;, 
-		&#123;0, 0, 0&#125; &#125;;
-	
-	&#x2F;&#x2F; 用不同颜色绘图
-	for (int i &#x3D; 0; i &lt; 7; i++) &#123;
-		&#x2F;&#x2F; 构造新笔
-		pNewPen &#x3D; new CPen;
-		if (pNewPen-&gt;CreatePen(PS_SOLID, 2, RGB(color[i].r, color[i].g, color[i].b))) &#123;
-			pOldPen &#x3D; pDC-&gt;SelectObject(pNewPen);
-			&#x2F;&#x2F; 画直线
-			pDC-&gt;MoveTo(380, 60 + i * 20);
-			pDC-&gt;LineTo(520, 60 + i * 20);
-			&#x2F;&#x2F;恢复原有的笔
-			pDC-&gt;SelectObject(pOldPen);
-		&#125;
-		else &#123;
-			&#x2F;&#x2F; 出错提示
-			CString error(&quot;CreatePen error!!&quot;);
-			AfxMessageBox(error);
-		&#125;
-		&#x2F;&#x2F; 删除新笔
-		delete pNewPen;
-	&#125;
-	&#x2F;&#x2F; 画笔程序结束
-
-	&#x2F;&#x2F; TODO: 在此处为本机数据添加绘制代码
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Ccglab1View 绘图</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Ccglab1View::OnDraw</span><span class="params">(CDC* pDC)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// 创建画笔</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 画笔的样式、宽度和颜色</span></span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> nPenStyle[] = &#123; PS_SOLID, PS_DASH, PS_DASHDOT, PS_DASHDOTDOT, PS_NULL, PS_INSIDEFRAME &#125;;</span><br><span class="line">	CPen* pNewPen;</span><br><span class="line">	CPen* pOldPen;</span><br><span class="line">	<span class="comment">// 用不同样式的画笔</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">7</span>; i++) &#123;</span><br><span class="line">		<span class="comment">// 构造新笔</span></span><br><span class="line">		pNewPen = <span class="keyword">new</span> CPen;</span><br><span class="line">		<span class="keyword">if</span> (pNewPen-&gt;<span class="built_in">CreatePen</span>(nPenStyle[i], <span class="number">1</span>, <span class="built_in">RGB</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>))) &#123;</span><br><span class="line">			pOldPen = pDC-&gt;<span class="built_in">SelectObject</span>(pNewPen);<span class="comment">/*选择新笔，并保存旧笔*/</span></span><br><span class="line">			<span class="comment">// 画直线</span></span><br><span class="line">			pDC-&gt;<span class="built_in">MoveTo</span>(<span class="number">20</span>, <span class="number">60</span> + i * <span class="number">20</span>);</span><br><span class="line">			pDC-&gt;<span class="built_in">LineTo</span>(<span class="number">160</span>, <span class="number">60</span> + i * <span class="number">20</span>);</span><br><span class="line">			<span class="comment">// 恢复原有的笔</span></span><br><span class="line">			pDC-&gt;<span class="built_in">SelectObject</span>(pOldPen);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// 出错提示</span></span><br><span class="line">			CString <span class="built_in">error</span>(<span class="string">&quot;CreatePen Error!&quot;</span>);</span><br><span class="line">			<span class="built_in">AfxMessageBox</span>(error);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 删除新笔</span></span><br><span class="line">		<span class="keyword">delete</span> pNewPen;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 用不同的宽度的笔绘图</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">7</span>; i++) &#123;</span><br><span class="line">		<span class="comment">// 构造新笔</span></span><br><span class="line">		pNewPen = <span class="keyword">new</span> CPen;</span><br><span class="line">		<span class="keyword">if</span> (pNewPen-&gt;<span class="built_in">CreatePen</span>(PS_SOLID, i + <span class="number">1</span>, <span class="built_in">RGB</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>))) &#123;</span><br><span class="line">			pOldPen = pDC-&gt;<span class="built_in">SelectObject</span>(pNewPen);</span><br><span class="line">			<span class="comment">// 画直线</span></span><br><span class="line">			pDC-&gt;<span class="built_in">MoveTo</span>(<span class="number">200</span>, <span class="number">60</span> + i * <span class="number">20</span>);</span><br><span class="line">			pDC-&gt;<span class="built_in">LineTo</span>(<span class="number">340</span>, <span class="number">60</span> + i * <span class="number">20</span>);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 恢复原有的笔</span></span><br><span class="line">			pDC-&gt;<span class="built_in">SelectObject</span>(pOldPen);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// 出错提示</span></span><br><span class="line">			CString <span class="built_in">error</span>(<span class="string">&quot;CreatePen error!!&quot;</span>);</span><br><span class="line">			<span class="built_in">AfxMessageBox</span>(error);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 删除新笔</span></span><br><span class="line">		<span class="keyword">delete</span> pNewPen;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 设置颜色表</span></span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">tagColor</span> &#123;</span><br><span class="line">		<span class="type">int</span> r, g, b;</span><br><span class="line">	&#125;color[<span class="number">7</span>] = &#123; &#123;<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>&#125;, </span><br><span class="line">		&#123;<span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>&#125;, &#123;<span class="number">255</span>, <span class="number">0</span>, <span class="number">255</span>&#125;, &#123;<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>&#125;, </span><br><span class="line">		&#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>&#125; &#125;;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 用不同颜色绘图</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">7</span>; i++) &#123;</span><br><span class="line">		<span class="comment">// 构造新笔</span></span><br><span class="line">		pNewPen = <span class="keyword">new</span> CPen;</span><br><span class="line">		<span class="keyword">if</span> (pNewPen-&gt;<span class="built_in">CreatePen</span>(PS_SOLID, <span class="number">2</span>, <span class="built_in">RGB</span>(color[i].r, color[i].g, color[i].b))) &#123;</span><br><span class="line">			pOldPen = pDC-&gt;<span class="built_in">SelectObject</span>(pNewPen);</span><br><span class="line">			<span class="comment">// 画直线</span></span><br><span class="line">			pDC-&gt;<span class="built_in">MoveTo</span>(<span class="number">380</span>, <span class="number">60</span> + i * <span class="number">20</span>);</span><br><span class="line">			pDC-&gt;<span class="built_in">LineTo</span>(<span class="number">520</span>, <span class="number">60</span> + i * <span class="number">20</span>);</span><br><span class="line">			<span class="comment">//恢复原有的笔</span></span><br><span class="line">			pDC-&gt;<span class="built_in">SelectObject</span>(pOldPen);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// 出错提示</span></span><br><span class="line">			CString <span class="built_in">error</span>(<span class="string">&quot;CreatePen error!!&quot;</span>);</span><br><span class="line">			<span class="built_in">AfxMessageBox</span>(error);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 删除新笔</span></span><br><span class="line">		<span class="keyword">delete</span> pNewPen;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 画笔程序结束</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此处为本机数据添加绘制代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>效果</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611233826243.png" alt="image-20200611233826243"></p>
 <h4 id="（2）画刷"><a href="#（2）画刷" class="headerlink" title="（2）画刷"></a>（2）画刷</h4><p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611233914968.png" alt="image-20200611233914968"></p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611233927333.png" alt="image-20200611233927333"></p>
-<pre class="line-numbers language-CPP" data-language="CPP"><code class="language-CPP">&#x2F;&#x2F; Ccglab1View 绘图
-
-void Ccglab1View::OnDraw(CDC* pDC)
-&#123;
-	&#x2F;&#x2F; 画刷程序
-	pDC-&gt;Rectangle(300, 300, 400, 400);&#x2F;*缺省的画刷，白色*&#x2F;
-
-	&#x2F;&#x2F; 纯色画刷
-	CBrush* pNewBrush1;
-	CBrush* pOldBrush1;
-	pNewBrush1 &#x3D; new CBrush;
-	if (pNewBrush1-&gt;CreateSolidBrush(RGB(255, 0, 0))); &#123;
-		&#x2F;&#x2F; 选择新画刷
-		pOldBrush1 &#x3D; pDC-&gt;SelectObject(pNewBrush1);
-		pDC-&gt;Rectangle(200, 200, 300, 400);
-		&#x2F;&#x2F; 恢复原有画刷
-		pDC-&gt;SelectObject(pOldBrush1);
-	&#125;
-	delete pNewBrush1;
-	
-	&#x2F;&#x2F; 阴影画刷
-	CBrush Brush(HS_DIAGCROSS, RGB(255, 255, 255));
-	CBrush* pOldBrush;
-	pOldBrush &#x3D; pDC-&gt;SelectObject(&amp;Brush);
-	pDC-&gt;SetBkColor(RGB(192, 192, 192));
-	pDC-&gt;Rectangle(0, 0, 100, 100);
-	pDC-&gt;SelectObject(pOldBrush);
-
-
-	&#x2F;&#x2F; TODO: 在此处为本机数据添加绘制代码
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Ccglab1View 绘图</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Ccglab1View::OnDraw</span><span class="params">(CDC* pDC)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// 画刷程序</span></span><br><span class="line">	pDC-&gt;<span class="built_in">Rectangle</span>(<span class="number">300</span>, <span class="number">300</span>, <span class="number">400</span>, <span class="number">400</span>);<span class="comment">/*缺省的画刷，白色*/</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 纯色画刷</span></span><br><span class="line">	CBrush* pNewBrush1;</span><br><span class="line">	CBrush* pOldBrush1;</span><br><span class="line">	pNewBrush1 = <span class="keyword">new</span> CBrush;</span><br><span class="line">	<span class="keyword">if</span> (pNewBrush1-&gt;<span class="built_in">CreateSolidBrush</span>(<span class="built_in">RGB</span>(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>))); &#123;</span><br><span class="line">		<span class="comment">// 选择新画刷</span></span><br><span class="line">		pOldBrush1 = pDC-&gt;<span class="built_in">SelectObject</span>(pNewBrush1);</span><br><span class="line">		pDC-&gt;<span class="built_in">Rectangle</span>(<span class="number">200</span>, <span class="number">200</span>, <span class="number">300</span>, <span class="number">400</span>);</span><br><span class="line">		<span class="comment">// 恢复原有画刷</span></span><br><span class="line">		pDC-&gt;<span class="built_in">SelectObject</span>(pOldBrush1);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">delete</span> pNewBrush1;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 阴影画刷</span></span><br><span class="line">	<span class="function">CBrush <span class="title">Brush</span><span class="params">(HS_DIAGCROSS, RGB(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>))</span></span>;</span><br><span class="line">	CBrush* pOldBrush;</span><br><span class="line">	pOldBrush = pDC-&gt;<span class="built_in">SelectObject</span>(&amp;Brush);</span><br><span class="line">	pDC-&gt;<span class="built_in">SetBkColor</span>(<span class="built_in">RGB</span>(<span class="number">192</span>, <span class="number">192</span>, <span class="number">192</span>));</span><br><span class="line">	pDC-&gt;<span class="built_in">Rectangle</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>);</span><br><span class="line">	pDC-&gt;<span class="built_in">SelectObject</span>(pOldBrush);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此处为本机数据添加绘制代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>效果</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200611234841134.png" alt="image-20200611234841134"></p>
 <h3 id="2-4-文本显示"><a href="#2-4-文本显示" class="headerlink" title="2.4 文本显示"></a>2.4 文本显示</h3><p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612002351456.png" alt="image-20200612002351456"></p>
 <h4 id="（1）文本显示"><a href="#（1）文本显示" class="headerlink" title="（1）文本显示"></a>（1）文本显示</h4><p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612002437929.png" alt="image-20200612002437929"></p>
 <h4 id="（2）设置文本颜色"><a href="#（2）设置文本颜色" class="headerlink" title="（2）设置文本颜色"></a>（2）设置文本颜色</h4><p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612003238848.png" alt="image-20200612003238848"></p>
-<pre class="line-numbers language-CPP" data-language="CPP"><code class="language-CPP">&#x2F;&#x2F; Ccglab1View 绘图
-
-void Ccglab1View::OnDraw(CDC* pDC)
-&#123;
-	&#x2F;&#x2F; 设置文本颜色
-
-	CDC* pDC1 &#x3D; GetDC();&#x2F;*声明一个设备描述表pDC1*&#x2F;
-	pDC1-&gt;SetTextColor(RGB(255, 0, 0));&#x2F;*设置文本颜色为红色*&#x2F;
-
-	&#x2F;&#x2F; 可以通过GetBkColor()函数检索到当前文本的颜色
-	COLORREF color &#x3D; pDC-&gt;GetTextColor();
-
-	&#x2F;&#x2F; TODO: 在此处为本机数据添加绘制代码
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Ccglab1View 绘图</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Ccglab1View::OnDraw</span><span class="params">(CDC* pDC)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// 设置文本颜色</span></span><br><span class="line"></span><br><span class="line">	CDC* pDC1 = <span class="built_in">GetDC</span>();<span class="comment">/*声明一个设备描述表pDC1*/</span></span><br><span class="line">	pDC1-&gt;<span class="built_in">SetTextColor</span>(<span class="built_in">RGB</span>(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>));<span class="comment">/*设置文本颜色为红色*/</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 可以通过GetBkColor()函数检索到当前文本的颜色</span></span><br><span class="line">	COLORREF color = pDC-&gt;<span class="built_in">GetTextColor</span>();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此处为本机数据添加绘制代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="（3）设置字符间距"><a href="#（3）设置字符间距" class="headerlink" title="（3）设置字符间距"></a>（3）设置字符间距</h4><p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612003309024.png" alt="image-20200612003309024"></p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612003327762.png" alt="image-20200612003327762"></p>
@@ -855,83 +363,8 @@ void Ccglab1View::OnDraw(CDC* pDC)
 </li>
 <li><p>重复第二步，第三步</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200612012003462.png" alt="image-20200612012003462"></p>
-<pre class="line-numbers language-CPP" data-language="CPP"><code class="language-CPP">&#x2F;&#x2F; CmyMouseView 消息处理程序
-
-
-void CmyMouseView::OnLButtonDown(UINT nFlags, CPoint point)
-&#123;
-	&#x2F;&#x2F; TODO: 在此添加消息处理程序代码和&#x2F;或调用默认值
-	&#x2F;&#x2F; 获得pDC
-	CDC* pDC &#x3D; GetDC();
-	CString LButtionDown(&quot;LBUTTIONDOWN!&quot;);
-	pDC-&gt;TextOutW(20, 40, LButtionDown);&#x2F;*输出显示信息*&#x2F;
-	CView::OnLButtonDown(nFlags, point);
-&#125;
-
-
-void CmyMouseView::OnLButtonUp(UINT nFlags, CPoint point)
-&#123;
-	&#x2F;&#x2F; TODO: 在此添加消息处理程序代码和&#x2F;或调用默认值
-	CDC* pDC &#x3D; GetDC();
-	CString LButtonUp(&quot;LButton Up!&quot;);
-	pDC-&gt;TextOutW(20, 40, LButtonUp);
-	CView::OnLButtonUp(nFlags, point);
-&#125;
-
-
-void CmyMouseView::OnMouseMove(UINT nFlags, CPoint point)
-&#123;
-	&#x2F;&#x2F; TODO: 在此添加消息处理程序代码和&#x2F;或调用默认值
-	CDC* pDC &#x3D; GetDC();
-	char tbuf[80];
-	sprintf_s(tbuf, &quot;Position:(%3d, %3d)&quot;, point.x, point.y);
-	&#x2F;&#x2F; 输出鼠标当前位置
-	CString ttbuf(tbuf);
-	pDC-&gt;TextOutW(20, 20, ttbuf);
-	CView::OnMouseMove(nFlags, point);
-&#125;
-
-
-void CmyMouseView::OnRButtonDown(UINT nFlags, CPoint point)
-&#123;
-	&#x2F;&#x2F; TODO: 在此添加消息处理程序代码和&#x2F;或调用默认值
-	CDC* pDC &#x3D; GetDC();
-	CString RButtonDown(&quot;RButton Down!&quot;);
-	pDC-&gt;TextOutW(20, 60, RButtonDown);
-	CView::OnRButtonDown(nFlags, point);
-&#125;
-
-
-void CmyMouseView::OnLButtonDblClk(UINT nFlags, CPoint point)
-&#123;
-	&#x2F;&#x2F; TODO: 在此添加消息处理程序代码和&#x2F;或调用默认值
-	CDC* pDC &#x3D; GetDC();
-	CString LDbl(&quot;LButton is double clicked!&quot;);
-	pDC-&gt;TextOutW(20, 80, LDbl);
-	CView::OnLButtonDblClk(nFlags, point);
-&#125;
-
-
-void CmyMouseView::OnRButtonDblClk(UINT nFlags, CPoint point)
-&#123;
-	&#x2F;&#x2F; TODO: 在此添加消息处理程序代码和&#x2F;或调用默认值
-	CDC* pDC &#x3D; GetDC();
-	CString RDbl(&quot;RButton is double clicked!&quot;);
-	pDC-&gt;TextOutW(20, 80, RDbl);
-	CView::OnRButtonDblClk(nFlags, point);
-&#125;
-
-&#x2F;&#x2F; 这个比较特殊，在上边找到
-void CmyMouseView::OnRButtonUp(UINT &#x2F;* nFlags *&#x2F;, CPoint point)
-&#123;
-	ClientToScreen(&amp;point);
-
-	CDC* pDC &#x3D; GetDC();
-	CString RButtonUp(&quot;RButton Up!&quot;);
-	pDC-&gt;TextOutW(20, 40, RButtonUp);
-
-	OnContextMenu(this, point);
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// CmyMouseView 消息处理程序</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">CmyMouseView::OnLButtonDown</span><span class="params">(UINT nFlags, CPoint point)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加消息处理程序代码和/或调用默认值</span></span><br><span class="line">	<span class="comment">// 获得pDC</span></span><br><span class="line">	CDC* pDC = <span class="built_in">GetDC</span>();</span><br><span class="line">	<span class="function">CString <span class="title">LButtionDown</span><span class="params">(<span class="string">&quot;LBUTTIONDOWN!&quot;</span>)</span></span>;</span><br><span class="line">	pDC-&gt;<span class="built_in">TextOutW</span>(<span class="number">20</span>, <span class="number">40</span>, LButtionDown);<span class="comment">/*输出显示信息*/</span></span><br><span class="line">	CView::<span class="built_in">OnLButtonDown</span>(nFlags, point);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">CmyMouseView::OnLButtonUp</span><span class="params">(UINT nFlags, CPoint point)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加消息处理程序代码和/或调用默认值</span></span><br><span class="line">	CDC* pDC = <span class="built_in">GetDC</span>();</span><br><span class="line">	<span class="function">CString <span class="title">LButtonUp</span><span class="params">(<span class="string">&quot;LButton Up!&quot;</span>)</span></span>;</span><br><span class="line">	pDC-&gt;<span class="built_in">TextOutW</span>(<span class="number">20</span>, <span class="number">40</span>, LButtonUp);</span><br><span class="line">	CView::<span class="built_in">OnLButtonUp</span>(nFlags, point);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">CmyMouseView::OnMouseMove</span><span class="params">(UINT nFlags, CPoint point)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加消息处理程序代码和/或调用默认值</span></span><br><span class="line">	CDC* pDC = <span class="built_in">GetDC</span>();</span><br><span class="line">	<span class="type">char</span> tbuf[<span class="number">80</span>];</span><br><span class="line">	<span class="built_in">sprintf_s</span>(tbuf, <span class="string">&quot;Position:(%3d, %3d)&quot;</span>, point.x, point.y);</span><br><span class="line">	<span class="comment">// 输出鼠标当前位置</span></span><br><span class="line">	<span class="function">CString <span class="title">ttbuf</span><span class="params">(tbuf)</span></span>;</span><br><span class="line">	pDC-&gt;<span class="built_in">TextOutW</span>(<span class="number">20</span>, <span class="number">20</span>, ttbuf);</span><br><span class="line">	CView::<span class="built_in">OnMouseMove</span>(nFlags, point);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">CmyMouseView::OnRButtonDown</span><span class="params">(UINT nFlags, CPoint point)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加消息处理程序代码和/或调用默认值</span></span><br><span class="line">	CDC* pDC = <span class="built_in">GetDC</span>();</span><br><span class="line">	<span class="function">CString <span class="title">RButtonDown</span><span class="params">(<span class="string">&quot;RButton Down!&quot;</span>)</span></span>;</span><br><span class="line">	pDC-&gt;<span class="built_in">TextOutW</span>(<span class="number">20</span>, <span class="number">60</span>, RButtonDown);</span><br><span class="line">	CView::<span class="built_in">OnRButtonDown</span>(nFlags, point);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">CmyMouseView::OnLButtonDblClk</span><span class="params">(UINT nFlags, CPoint point)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加消息处理程序代码和/或调用默认值</span></span><br><span class="line">	CDC* pDC = <span class="built_in">GetDC</span>();</span><br><span class="line">	<span class="function">CString <span class="title">LDbl</span><span class="params">(<span class="string">&quot;LButton is double clicked!&quot;</span>)</span></span>;</span><br><span class="line">	pDC-&gt;<span class="built_in">TextOutW</span>(<span class="number">20</span>, <span class="number">80</span>, LDbl);</span><br><span class="line">	CView::<span class="built_in">OnLButtonDblClk</span>(nFlags, point);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">CmyMouseView::OnRButtonDblClk</span><span class="params">(UINT nFlags, CPoint point)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加消息处理程序代码和/或调用默认值</span></span><br><span class="line">	CDC* pDC = <span class="built_in">GetDC</span>();</span><br><span class="line">	<span class="function">CString <span class="title">RDbl</span><span class="params">(<span class="string">&quot;RButton is double clicked!&quot;</span>)</span></span>;</span><br><span class="line">	pDC-&gt;<span class="built_in">TextOutW</span>(<span class="number">20</span>, <span class="number">80</span>, RDbl);</span><br><span class="line">	CView::<span class="built_in">OnRButtonDblClk</span>(nFlags, point);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这个比较特殊，在上边找到</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">CmyMouseView::OnRButtonUp</span><span class="params">(UINT <span class="comment">/* nFlags */</span>, CPoint point)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">ClientToScreen</span>(&amp;point);</span><br><span class="line"></span><br><span class="line">	CDC* pDC = <span class="built_in">GetDC</span>();</span><br><span class="line">	<span class="function">CString <span class="title">RButtonUp</span><span class="params">(<span class="string">&quot;RButton Up!&quot;</span>)</span></span>;</span><br><span class="line">	pDC-&gt;<span class="built_in">TextOutW</span>(<span class="number">20</span>, <span class="number">40</span>, RButtonUp);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">OnContextMenu</span>(<span class="keyword">this</span>, point);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>编译程序，并验证执行结果。</p>
 </li>
 </ol>
@@ -944,8 +377,7 @@ void CmyMouseView::OnRButtonUp(UINT &#x2F;* nFlags *&#x2F;, CPoint point)
 <li><p>新建项目，项目名：MouseSpring</p>
 </li>
 <li><p>在<code>类向导</code>中添加<code>成员变量</code>。</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">CPoint m_bO<span class="token punctuation">;</span> <span class="token comment">// 圆心</span>
-<span class="token comment">/*比较懒，省略了*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">CPoint m_bO; <span class="comment">// 圆心</span></span><br><span class="line"><span class="comment">/*比较懒，省略了*/</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -955,97 +387,14 @@ void CmyMouseView::OnRButtonUp(UINT &#x2F;* nFlags *&#x2F;, CPoint point)
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200613180956682.png" alt="image-20200613180956682"></p>
 </li>
 <li><p>在构造函数中初始化成员变量</p>
-<pre class="line-numbers language-CPP" data-language="CPP"><code class="language-CPP">&#x2F;&#x2F; CMouseSpringView 构造&#x2F;析构
-
-CMouseSpringView::CMouseSpringView() noexcept
-&#123;
-	&#x2F;&#x2F; TODO: 在此处添加构造代码
-	m_bO.x &#x3D; 0;&#x2F;*圆心*&#x2F;
-	m_bO.y &#x3D; 0;&#x2F;*圆心*&#x2F;
-	m_bR.x &#x3D; 0;&#x2F;*圆上的点*&#x2F;
-	m_bR.y &#x3D; 0;&#x2F;*圆上的点*&#x2F;
-	m_ist &#x3D; 0;&#x2F;*圆心与圆上的点的区别*&#x2F;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// CMouseSpringView 构造/析构</span></span><br><span class="line"></span><br><span class="line">CMouseSpringView::<span class="built_in">CMouseSpringView</span>() <span class="keyword">noexcept</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此处添加构造代码</span></span><br><span class="line">	m_bO.x = <span class="number">0</span>;<span class="comment">/*圆心*/</span></span><br><span class="line">	m_bO.y = <span class="number">0</span>;<span class="comment">/*圆心*/</span></span><br><span class="line">	m_bR.x = <span class="number">0</span>;<span class="comment">/*圆上的点*/</span></span><br><span class="line">	m_bR.y = <span class="number">0</span>;<span class="comment">/*圆上的点*/</span></span><br><span class="line">	m_ist = <span class="number">0</span>;<span class="comment">/*圆心与圆上的点的区别*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>在OnDraw()中添加代码</p>
-<pre class="line-numbers language-CPP" data-language="CPP"><code class="language-CPP">&#x2F;&#x2F; CMouseSpringView 绘图
-
-void CMouseSpringView::OnDraw(CDC* pDC)
-&#123;
-	CMouseSpringDoc* pDoc &#x3D; GetDocument();
-	ASSERT_VALID(pDoc);
-	if (!pDoc)
-		return;
-
-	&#x2F;&#x2F; TODO: 在此处为本机数据添加绘制代码
-
-	pDC-&gt;SelectStockObject(NULL_BRUSH);
-	DrawCircle(pDC, m_bO, m_bR);&#x2F;*调用自定义的成员函数画圆*&#x2F;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// CMouseSpringView 绘图</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">CMouseSpringView::OnDraw</span><span class="params">(CDC* pDC)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	CMouseSpringDoc* pDoc = <span class="built_in">GetDocument</span>();</span><br><span class="line">	<span class="built_in">ASSERT_VALID</span>(pDoc);</span><br><span class="line">	<span class="keyword">if</span> (!pDoc)</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此处为本机数据添加绘制代码</span></span><br><span class="line"></span><br><span class="line">	pDC-&gt;<span class="built_in">SelectStockObject</span>(NULL_BRUSH);</span><br><span class="line">	<span class="built_in">DrawCircle</span>(pDC, m_bO, m_bR);<span class="comment">/*调用自定义的成员函数画圆*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>添加消息响应函数LButtonDown()，MouseMove()，并补充其余部分代码。</p>
-<pre class="line-numbers language-CPP" data-language="CPP"><code class="language-CPP">&#x2F;&#x2F; CMouseSpringView 消息处理程序
-
-
-void CMouseSpringView::DrawCircle(CDC* pDC, CPoint cenp, CPoint ardp)
-&#123;
-	&#x2F;&#x2F; TODO: 在此处添加实现代码.
-	int radius &#x3D; ComputeRadius(cenp, ardp);
-	&#x2F;&#x2F; 由圆心确定所画圆的外切区域
-	CRect rc(cenp.x - radius, cenp.y - radius, cenp.x + radius, cenp.y + radius);
-	pDC-&gt;Ellipse(rc);&#x2F;*画出一个整圆*&#x2F;
-&#125;
-
-
-int CMouseSpringView::ComputeRadius(CPoint cenp, CPoint ardp)
-&#123;
-	&#x2F;&#x2F; TODO: 在此处添加实现代码.
-	int dx &#x3D; cenp.x - ardp.x;
-	int dy &#x3D; cenp.y - ardp.x;
-	&#x2F;&#x2F; sqrt()函数的调用，在头文件中加入#include&lt;math.h&gt;
-	return (int)sqrt(dx * dx + dy * dy);
-&#125;
-
-
-void CMouseSpringView::OnLButtonDown(UINT nFlags, CPoint point)
-&#123;
-	&#x2F;&#x2F; TODO: 在此添加消息处理程序代码和&#x2F;或调用默认值
-	CDC* pDC &#x3D; GetDC();
-	pDC-&gt;SelectStockObject(NULL_BRUSH);
-	if (!m_ist) &#123;
-		m_bO &#x3D; m_bR &#x3D; point;&#x2F;*记录第一次点击鼠标位置，定圆心*&#x2F;
-		m_ist++;
-	&#125;
-	else &#123;
-		m_bR &#x3D; point;&#x2F;*记录第二次单击鼠标的位置，定圆周上的点*&#x2F;
-		m_ist--;&#x2F;*为新绘图做准备*&#x2F;
-		DrawCircle(pDC, m_bO, m_bR);&#x2F;*绘制新圆*&#x2F;
-	&#125;
-	
-	ReleaseDC(pDC);&#x2F;*释放设备环境*&#x2F;
-	CView::OnLButtonDown(nFlags, point);
-&#125;
-
-
-void CMouseSpringView::OnMouseMove(UINT nFlags, CPoint point)
-&#123;
-	&#x2F;&#x2F; TODO: 在此添加消息处理程序代码和&#x2F;或调用默认值
-	CDC* pDC &#x3D; GetDC();
-	int nDrawmode &#x3D; pDC-&gt;SetROP2(R2_NOT);&#x2F;*设置异或绘图模式，并保存原来绘图模式*&#x2F;
-	pDC-&gt;SelectStockObject(NULL_BRUSH);
-	if (m_ist &#x3D;&#x3D; 1) &#123;
-		CPoint prePnt, curPnt;
-		prePnt &#x3D; m_bR;&#x2F;*获得鼠标所在的前一个位置*&#x2F;
-		curPnt &#x3D; point;
-		&#x2F;&#x2F; 绘制橡皮筋线
-		DrawCircle(pDC, m_bO, prePnt);&#x2F;*用异或模式重复画圆，擦出所画的圆*&#x2F;
-		DrawCircle(pDC, m_bO, curPnt);&#x2F;*用当前位置作为圆周上的点画圆*&#x2F;
-		m_bR &#x3D; point;
-	&#125;
-	pDC-&gt;SetROP2(nDrawmode);&#x2F;*恢复原绘图模式*&#x2F;
-	ReleaseDC(pDC);&#x2F;*释放设备环境*&#x2F;
-
-	CView::OnMouseMove(nFlags, point);
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// CMouseSpringView 消息处理程序</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">CMouseSpringView::DrawCircle</span><span class="params">(CDC* pDC, CPoint cenp, CPoint ardp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此处添加实现代码.</span></span><br><span class="line">	<span class="type">int</span> radius = <span class="built_in">ComputeRadius</span>(cenp, ardp);</span><br><span class="line">	<span class="comment">// 由圆心确定所画圆的外切区域</span></span><br><span class="line">	<span class="function">CRect <span class="title">rc</span><span class="params">(cenp.x - radius, cenp.y - radius, cenp.x + radius, cenp.y + radius)</span></span>;</span><br><span class="line">	pDC-&gt;<span class="built_in">Ellipse</span>(rc);<span class="comment">/*画出一个整圆*/</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">CMouseSpringView::ComputeRadius</span><span class="params">(CPoint cenp, CPoint ardp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此处添加实现代码.</span></span><br><span class="line">	<span class="type">int</span> dx = cenp.x - ardp.x;</span><br><span class="line">	<span class="type">int</span> dy = cenp.y - ardp.x;</span><br><span class="line">	<span class="comment">// sqrt()函数的调用，在头文件中加入#include&lt;math.h&gt;</span></span><br><span class="line">	<span class="keyword">return</span> (<span class="type">int</span>)<span class="built_in">sqrt</span>(dx * dx + dy * dy);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">CMouseSpringView::OnLButtonDown</span><span class="params">(UINT nFlags, CPoint point)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加消息处理程序代码和/或调用默认值</span></span><br><span class="line">	CDC* pDC = <span class="built_in">GetDC</span>();</span><br><span class="line">	pDC-&gt;<span class="built_in">SelectStockObject</span>(NULL_BRUSH);</span><br><span class="line">	<span class="keyword">if</span> (!m_ist) &#123;</span><br><span class="line">		m_bO = m_bR = point;<span class="comment">/*记录第一次点击鼠标位置，定圆心*/</span></span><br><span class="line">		m_ist++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		m_bR = point;<span class="comment">/*记录第二次单击鼠标的位置，定圆周上的点*/</span></span><br><span class="line">		m_ist--;<span class="comment">/*为新绘图做准备*/</span></span><br><span class="line">		<span class="built_in">DrawCircle</span>(pDC, m_bO, m_bR);<span class="comment">/*绘制新圆*/</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">ReleaseDC</span>(pDC);<span class="comment">/*释放设备环境*/</span></span><br><span class="line">	CView::<span class="built_in">OnLButtonDown</span>(nFlags, point);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">CMouseSpringView::OnMouseMove</span><span class="params">(UINT nFlags, CPoint point)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加消息处理程序代码和/或调用默认值</span></span><br><span class="line">	CDC* pDC = <span class="built_in">GetDC</span>();</span><br><span class="line">	<span class="type">int</span> nDrawmode = pDC-&gt;<span class="built_in">SetROP2</span>(R2_NOT);<span class="comment">/*设置异或绘图模式，并保存原来绘图模式*/</span></span><br><span class="line">	pDC-&gt;<span class="built_in">SelectStockObject</span>(NULL_BRUSH);</span><br><span class="line">	<span class="keyword">if</span> (m_ist == <span class="number">1</span>) &#123;</span><br><span class="line">		CPoint prePnt, curPnt;</span><br><span class="line">		prePnt = m_bR;<span class="comment">/*获得鼠标所在的前一个位置*/</span></span><br><span class="line">		curPnt = point;</span><br><span class="line">		<span class="comment">// 绘制橡皮筋线</span></span><br><span class="line">		<span class="built_in">DrawCircle</span>(pDC, m_bO, prePnt);<span class="comment">/*用异或模式重复画圆，擦出所画的圆*/</span></span><br><span class="line">		<span class="built_in">DrawCircle</span>(pDC, m_bO, curPnt);<span class="comment">/*用当前位置作为圆周上的点画圆*/</span></span><br><span class="line">		m_bR = point;</span><br><span class="line">	&#125;</span><br><span class="line">	pDC-&gt;<span class="built_in">SetROP2</span>(nDrawmode);<span class="comment">/*恢复原绘图模式*/</span></span><br><span class="line">	<span class="built_in">ReleaseDC</span>(pDC);<span class="comment">/*释放设备环境*/</span></span><br><span class="line"></span><br><span class="line">	CView::<span class="built_in">OnMouseMove</span>(nFlags, point);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>运行。</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/06/13/I7BGIev6/image-20200613181416101.png" alt="image-20200613181416101"></p>
 <p>目测是有bug 的，只能画一次图，第二次就gg了。</p>
@@ -1053,813 +402,256 @@ void CMouseSpringView::OnMouseMove(UINT nFlags, CPoint point)
 </ol>
 <h2 id="4-菜单编辑器"><a href="#4-菜单编辑器" class="headerlink" title="4 菜单编辑器"></a>4 菜单编辑器</h2><p>挖坑…</p>
 
-                
-            </div>
-            <hr/>
-
-            
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://blog.zhuomu.xyz" rel="external nofollow noreferrer">卓木</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://blog.zhuomu.xyz/2020/06/13/MFC-GC-lab1-Visual-C++/">https://blog.zhuomu.xyz/2020/06/13/MFC-GC-lab1-Visual-C++/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY-NC 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="https://blog.zhuomu.xyz" target="_blank">卓木</a>
-                    !
-                </span>
-            </div>
-        
     </div>
 
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
+    
+    
+    
 
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/" rel="tag"># 计算机图形学</a>
+              <a href="/tags/cg/" rel="tag"># CG</a>
+              <a href="/tags/mfc/" rel="tag"># MFC</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/09/aliyun-CES-WordPress/" rel="prev" title="阿里云CES WordPress测试">
+      <i class="fa fa-chevron-left"></i> 阿里云CES WordPress测试
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/07/22/RSSHub-with-university/" rel="next" title="自定义RSSHub订阅学校官网，一劳永逸">
+      自定义RSSHub订阅学校官网，一劳永逸 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
       }
-    </script>
-
-
-
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
-                    
-                        <div class="article-tag">
-                            
-                                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
-                                    <span class="chip bg-color">计算机图形学</span>
-                                </a>
-                            
-                                <a href="/tags/cg/">
-                                    <span class="chip bg-color">CG</span>
-                                </a>
-                            
-                                <a href="/tags/mfc/">
-                                    <span class="chip bg-color">MFC</span>
-                                </a>
-                            
-                        </div>
-                    
-                </div>
-                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/share/css/share.min.css">
-<div id="article-share">
-
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/share/js/social-share.min.js"></script>
-    
-
-    
-
-</div>
-
-                </div>
-            </div>
-            
-                <style>
-    #reward {
-        margin: 40px 0;
-        text-align: center;
     }
-
-    #reward .reward-link {
-        font-size: 1.4rem;
-        line-height: 38px;
-    }
-
-    #reward .btn-floating:hover {
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    #rewardModal {
-        width: 320px;
-        height: 350px;
-    }
-
-    #rewardModal .reward-title {
-        margin: 15px auto;
-        padding-bottom: 5px;
-    }
-
-    #rewardModal .modal-content {
-        padding: 10px;
-    }
-
-    #rewardModal .close {
-        position: absolute;
-        right: 15px;
-        top: 15px;
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 1.3rem;
-        line-height: 20px;
-        cursor: pointer;
-    }
-
-    #rewardModal .close:hover {
-        color: #ef5350;
-        transform: scale(1.3);
-        -moz-transform:scale(1.3);
-        -webkit-transform:scale(1.3);
-        -o-transform:scale(1.3);
-    }
-
-    #rewardModal .reward-tabs {
-        margin: 0 auto;
-        width: 210px;
-    }
-
-    .reward-tabs .tabs {
-        height: 38px;
-        margin: 10px auto;
-        padding-left: 0;
-    }
-
-    .reward-content ul {
-        padding-left: 0 !important;
-    }
-
-    .reward-tabs .tabs .tab {
-        height: 38px;
-        line-height: 38px;
-    }
-
-    .reward-tabs .tab a {
-        color: #fff;
-        background-color: #ccc;
-    }
-
-    .reward-tabs .tab a:hover {
-        background-color: #ccc;
-        color: #fff;
-    }
-
-    .reward-tabs .wechat-tab .active {
-        color: #fff !important;
-        background-color: #22AB38 !important;
-    }
-
-    .reward-tabs .alipay-tab .active {
-        color: #fff !important;
-        background-color: #019FE8 !important;
-    }
-
-    .reward-tabs .reward-img {
-        width: 210px;
-        height: 210px;
-    }
-</style>
-
-<div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
-
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs row">
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
-                    </ul>
-                    <div id="alipay">
-                        <img src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
-                    </div>
-                    <div id="wechat">
-                        <img src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(function () {
-        $('.tabs').tabs();
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
     });
+  }
 </script>
 
-            
         </div>
-    </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
 
-    
+  <aside class="sidebar">
+    <div class="sidebar-inner">
 
-    
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-    
-        <div class="disqus-card card" data-aos="fade-up">
-    <div id="disqus_thread" class="card-content">
-        <noscript>Please enable JavaScript to view the
-            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-    </div>
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-MFC%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">1 MFC应用程序开发方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%88%9B%E5%BB%BAMFC%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 创建MFC工程文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%9B%BE%E5%BD%A2%E8%AE%BE%E5%A4%87%E6%8E%A5%E5%8F%A3%E5%92%8C%E5%9B%BE%E5%BD%A2%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.</span> <span class="nav-text">2 图形设备接口和图形程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E7%BB%98%E5%88%B6%E5%9F%BA%E6%9C%AC%E5%9B%BE%E5%BD%A2"><span class="nav-number">2.1.</span> <span class="nav-text">2.2 绘制基本图形</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E7%94%BB%E7%82%B9"><span class="nav-number">2.1.1.</span> <span class="nav-text">（1）画点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#textout%E5%92%8Ctextoutw"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">textout和textoutw</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#char-%E8%BD%AC%E4%B8%BA-CString"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">char * 转为 CString</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E7%94%BB%E7%9B%B4%E7%BA%BF%E5%92%8C%E6%8A%98%E7%BA%BF"><span class="nav-number">2.1.2.</span> <span class="nav-text">（2）画直线和折线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E7%94%BB%E5%BC%A7%E7%BA%BF%E5%92%8C%E6%9B%B2%E7%BA%BF"><span class="nav-number">2.1.3.</span> <span class="nav-text">（3）画弧线和曲线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%884%EF%BC%89%E7%94%BB%E5%B0%81%E9%97%AD%E6%9B%B2%E7%BA%BF"><span class="nav-number">2.1.4.</span> <span class="nav-text">（4）画封闭曲线</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E7%94%BB%E7%AC%94%E4%B8%8E%E7%94%BB%E5%88%B7"><span class="nav-number">2.2.</span> <span class="nav-text">2.3 画笔与画刷</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B3%E4%BA%8ElopnWidth%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.2.0.1.</span> <span class="nav-text">关于lopnWidth的数据类型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E7%94%BB%E7%AC%94"><span class="nav-number">2.2.1.</span> <span class="nav-text">（1）画笔</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E7%94%BB%E5%88%B7"><span class="nav-number">2.2.2.</span> <span class="nav-text">（2）画刷</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E6%96%87%E6%9C%AC%E6%98%BE%E7%A4%BA"><span class="nav-number">2.3.</span> <span class="nav-text">2.4 文本显示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E6%96%87%E6%9C%AC%E6%98%BE%E7%A4%BA"><span class="nav-number">2.3.1.</span> <span class="nav-text">（1）文本显示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E8%AE%BE%E7%BD%AE%E6%96%87%E6%9C%AC%E9%A2%9C%E8%89%B2"><span class="nav-number">2.3.2.</span> <span class="nav-text">（2）设置文本颜色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E8%AE%BE%E7%BD%AE%E5%AD%97%E7%AC%A6%E9%97%B4%E8%B7%9D"><span class="nav-number">2.3.3.</span> <span class="nav-text">（3）设置字符间距</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%884%EF%BC%89%E8%AE%BE%E7%BD%AE%E6%96%87%E6%9C%AC%E7%9A%84%E5%AF%B9%E9%BD%90%E6%96%B9%E5%BC%8F"><span class="nav-number">2.3.4.</span> <span class="nav-text">（4）设置文本的对齐方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E9%BC%A0%E6%A0%87%E7%BC%96%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">3 鼠标编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E9%BC%A0%E6%A0%87%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 鼠标消息处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%8D%95%E6%8D%89%E9%BC%A0%E6%A0%87"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 捕捉鼠标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E9%BC%A0%E6%A0%87%E7%BC%96%E7%A8%8B%E7%BB%BC%E5%90%88%E7%A4%BA%E4%BE%8B"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 鼠标编程综合示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B1-%E6%98%BE%E7%A4%BA%E9%BC%A0%E6%A0%87%E5%9D%90%E6%A0%87%E5%8F%8A%E7%8A%B6%E6%80%81"><span class="nav-number">3.3.1.</span> <span class="nav-text">示例1 显示鼠标坐标及状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B2-%E9%87%87%E7%94%A8%E9%BC%A0%E6%A0%87%E6%A9%A1%E7%9A%AE%E7%AD%8B%E6%8A%80%E6%9C%AF%E7%94%BB%E5%9C%86"><span class="nav-number">3.3.2.</span> <span class="nav-text">示例2 采用鼠标橡皮筋技术画圆</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E8%8F%9C%E5%8D%95%E7%BC%96%E8%BE%91%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">4 菜单编辑器</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="卓木"
+      src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/avatar.jpg">
+  <p class="site-author-name" itemprop="name">卓木</p>
+  <div class="site-description" itemprop="description">学习 分享 开源</div>
 </div>
-
-<script type="text/javascript">
-    disqus_config = function () {
-        this.page.url = 'https://blog.zhuomu.xyz/2020/06/13/MFC-GC-lab1-Visual-C++/';
-        this.page.identifier = '/2020/06/13/MFC-GC-lab1-Visual-C++/';
-        this.page.title = '基于 MFC 计算机图形学 实验1（Visual C++图形程序设计 ）';
-    };
-    let disqus_shortname = 'blog-zhuomu';
-
-    (function () { // DON'T EDIT BELOW THIS LINE
-        let d = document, s = d.createElement('script');
-        // 如：s.src = 'https://blinkfox.disqus.com/embed.js';
-        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/2020/07/22/RSSHub-with-university/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/featureimages/18.jpg" class="responsive-img" alt="自定义RSSHub订阅学校官网，一劳永逸">
-                        
-                        <span class="card-title">自定义RSSHub订阅学校官网，一劳永逸</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-22
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/" class="post-category">
-                                    技术博文
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/git/">
-                        <span class="chip bg-color">Git</span>
-                    </a>
-                    
-                    <a href="/tags/rss/">
-                        <span class="chip bg-color">rss</span>
-                    </a>
-                    
-                    <a href="/tags/rsshub/">
-                        <span class="chip bg-color">RSSHub</span>
-                    </a>
-                    
-                    <a href="/tags/js/">
-                        <span class="chip bg-color">js</span>
-                    </a>
-                    
-                    <a href="/tags/github/">
-                        <span class="chip bg-color">Github</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/06/09/aliyun-CES-WordPress/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/featureimages/24.jpg" class="responsive-img" alt="阿里云CES WordPress测试">
-                        
-                        <span class="card-title">阿里云CES WordPress测试</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-10
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/" class="post-category">
-                                    技术博文
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/blog/">
-                        <span class="chip bg-color">blog</span>
-                    </a>
-                    
-                    <a href="/tags/wordpress/">
-                        <span class="chip bg-color">WordPress</span>
-                    </a>
-                    
-                    <a href="/tags/ces/">
-                        <span class="chip bg-color">CES</span>
-                    </a>
-                    
-                    <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/">
-                        <span class="chip bg-color">阿里云</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                        <span class="chip bg-color">博客</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-    </div>
-</article>
-
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">94</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Fantasia1999" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Fantasia1999" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:i@zhuomu.xyz" title="E-Mail → mailto:i@zhuomu.xyz" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/booklist.html" title="Kindle → &#x2F;booklist.html"><i class="fa fa-fw fa-book"></i>Kindle</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
 
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">卓木</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
 
 <script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://blog-zhuomu.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://blog.zhuomu.xyz/2020/06/13/MFC-GC-lab1-Visual-C++/",
+            identifier: "2020/06/13/MFC-GC-lab1-Visual-C++/",
+            title: "基于 MFC 计算机图形学 实验1（Visual C++图形程序设计 ）"
+          }
         }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: 卓木&#39;s Blog<br />'
-            + '文章作者: 卓木<br />'
-            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://blog-zhuomu.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
-
-
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/codeBlock/codeBlockFuction.js"></script>
-
-<!-- 代码语言 -->
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/codeBlock/codeShrink.js"></script>
-
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
-        });
-
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
-
-    
-
-</main>
-
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
-
-
-
-    <footer class="page-footer bg-color">
-    
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
-        <div class="col s12 m8 l8 copy-right">
-            Copyright&nbsp;&copy;
-            
-                <span id="year">2019-2022</span>
-            
-            <span id="year">2019</span>
-            <a href="/about" target="_blank">卓木</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
-            <br>
-            
-            
-            
-            
-            
-            
-            <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
-                    class="white-color"></span>&nbsp;次
-            </span>
-            
-            
-            <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
-                    class="white-color"></span>&nbsp;人
-            </span>
-            
-            <br>
-            
-            <br>
-            
-        </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/Fantisia1999" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:i@zhuomu.xyz" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
-
-</div>
-    </div>
-</footer>
-
-<div class="progress-bar"></div>
-
-
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-
-<script type="text/javascript">
-$(function () {
-    var searchFunc = function (path, search_id, content_id) {
-        'use strict';
-        $.ajax({
-            url: path,
-            dataType: "xml",
-            success: function (xmlResponse) {
-                // get the contents from search data
-                var datas = $("entry", xmlResponse).map(function () {
-                    return {
-                        title: $("title", this).text(),
-                        content: $("content", this).text(),
-                        url: $("url", this).text()
-                    };
-                }).get();
-                var $input = document.getElementById(search_id);
-                var $resultContent = document.getElementById(content_id);
-                $input.addEventListener('input', function () {
-                    var str = '<ul class=\"search-result-list\">';
-                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                    $resultContent.innerHTML = "";
-                    if (this.value.trim().length <= 0) {
-                        return;
-                    }
-                    // perform local searching
-                    datas.forEach(function (data) {
-                        var isMatch = true;
-                        var data_title = data.title.trim().toLowerCase();
-                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                        var data_url = data.url;
-                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
-                        var index_title = -1;
-                        var index_content = -1;
-                        var first_occur = -1;
-                        // only match artiles with not empty titles and contents
-                        if (data_title !== '' && data_content !== '') {
-                            keywords.forEach(function (keyword, i) {
-                                index_title = data_title.indexOf(keyword);
-                                index_content = data_content.indexOf(keyword);
-                                if (index_title < 0 && index_content < 0) {
-                                    isMatch = false;
-                                } else {
-                                    if (index_content < 0) {
-                                        index_content = 0;
-                                    }
-                                    if (i === 0) {
-                                        first_occur = index_content;
-                                    }
-                                }
-                            });
-                        }
-                        // show search results
-                        if (isMatch) {
-                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                            var content = data.content.trim().replace(/<[^>]+>/g, "");
-                            if (first_occur >= 0) {
-                                // cut out 100 characters
-                                var start = first_occur - 20;
-                                var end = first_occur + 80;
-                                if (start < 0) {
-                                    start = 0;
-                                }
-                                if (start === 0) {
-                                    end = 100;
-                                }
-                                if (end > content.length) {
-                                    end = content.length;
-                                }
-                                var match_content = content.substr(start, end);
-                                // highlight all keywords
-                                keywords.forEach(function (keyword) {
-                                    var regS = new RegExp(keyword, "gi");
-                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
-                                });
-
-                                str += "<p class=\"search-result\">" + match_content + "...</p>"
-                            }
-                            str += "</li>";
-                        }
-                    });
-                    str += "</ul>";
-                    $resultContent.innerHTML = str;
-                });
-            }
-        });
-    };
-
-    searchFunc('/search.xml', 'searchInput', 'searchResult');
-});
-</script>
-
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
-
-
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/materialize/materialize.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/aos/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/js/matery.js"></script>
-
-    <!-- Baidu Analytics -->
-
-<script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?df5a74022c3722248f076afbf55286b0";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
-    <!-- Baidu Push -->
-
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
-
-    
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/others/busuanzi.pure.mini.js"></script>
-    
-
-    
-
-    
-
-    <!--腾讯兔小巢-->
-    
-    
-
-    
-
-    
-
-    
-    <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/instantpage/instantpage.js" type="module"></script>
-    
 
 </body>
-
 </html>
