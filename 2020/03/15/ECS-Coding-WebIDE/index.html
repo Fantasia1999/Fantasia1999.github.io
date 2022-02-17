@@ -40,7 +40,7 @@
 
     <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="卓木's Blog" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="卓木's Blog" type="application/atom+xml">
 </head>
 
 
@@ -536,9 +536,9 @@
 <h2 id="安装docker管理器"><a href="#安装docker管理器" class="headerlink" title="安装docker管理器"></a>安装docker管理器</h2><p>在宝塔软件商店中安装<code>docker管理器</code></p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/03/15/zFHpLxZX/Snipaste_20200315190144.png" alt="QQ截图20200315190144"></p>
 <h2 id="开启端口"><a href="#开启端口" class="headerlink" title="开启端口"></a>开启端口</h2><p>在安全里边，开启8080端口，服务器安全组中也要把8080端口打开。</p>
-<h2 id="Docker-server"><a href="#Docker-server" class="headerlink" title="Docker server"></a>Docker server</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker run -p <span class="token number">8080</span>:8080 -v coding-ide-home:/root/.coding-ide webide/webide<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="Docker-server"><a href="#Docker-server" class="headerlink" title="Docker server"></a>Docker server</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">docker</span> run -p <span class="token number">8080</span>:8080 -v coding-ide-home:/root/.coding-ide webide/webide<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>后台运行用这个</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker run -dit -p <span class="token number">8080</span>:8080 -v coding-ide-home:/root/.coding-ide webide/webide<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">docker</span> run -dit -p <span class="token number">8080</span>:8080 -v coding-ide-home:/root/.coding-ide webide/webide<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <!--https://yarn.bootcss.com/docs/install/#centos-stable-->
 
 <h2 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h2><p>打开<code>http://yourip:8080</code></p>
@@ -1116,7 +1116,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2021</span>
+                <span id="year">2019-2022</span>
             
             <span id="year">2019</span>
             <a href="/about" target="_blank">卓木</a>

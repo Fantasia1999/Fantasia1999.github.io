@@ -40,7 +40,7 @@
 
     <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="卓木's Blog" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="卓木's Blog" type="application/atom+xml">
 </head>
 
 
@@ -488,7 +488,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    710
+                    708
                 </div>
                 
 
@@ -516,7 +516,9 @@
                 <p>最初接触到这个东西是在写XCPC板子时遇到的，从Github上clone了人家的$\LaTeX$源码，然后在编译的时候发现需要安装<code>Pygments</code>，所以又查了些资料，发现这个项目润色后的代码确实美观。之前用的是<a target="_blank" rel="noopener" href="http://www.planetb.ca/syntax-highlight-word">planetB</a>来写实验报告，很不错，但是和<code>Pygments</code>比起来，少了几分色彩缤纷，于是一直用着<code>Pygments</code>的网页版的<a target="_blank" rel="noopener" href="https://pygments.org/demo/">demo</a>，但是由于是国外的网站，加上 ISP 质量较差，总有那么几次急用的时候打不开，比较难顶！于是就在本地部署，使用了几次，效果还不错。</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2020/05/18/YQLR0301/image-20200518011443522.png" alt="无法加载"></p>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>原理很简单，大多数<code>Syntax Highlight Code</code>采用的策略大致相同，就是通过<code>css</code>渲染出特定的<code>HTML</code>网页，然后通过剪切板，将格式复制走，粘贴到对应支持富文本的其他文档中，比如<code>Word</code>就支持这种格式。由于Word默认的粘贴是保留源格式，所以，相应的彩色部分也就被保留了下来。</p>
-<h2 id="具体方法"><a href="#具体方法" class="headerlink" title="具体方法"></a>具体方法</h2><p>!&gt; 由于Pygments是由Python写的，请确保本地环境已安装Python3.x。</p>
+<h2 id="具体方法"><a href="#具体方法" class="headerlink" title="具体方法"></a>具体方法</h2><blockquote>
+<p>由于Pygments是由Python写的，请确保本地环境已安装Python3.x。</p>
+</blockquote>
 <ol>
 <li><p>通过<code>pip</code>命令安装<code>Pygments</code>的<code>Packaged versions</code></p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">pip <span class="token function">install</span> Pygments<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
@@ -536,7 +538,9 @@
 <li><p>由于字体较大，建议设置为 <code>Consolas</code> 字体，大小 <code>10</code> 号，当然，可以根据自己喜好调整。</p>
 </li>
 </ol>
-<h2 id="部分其他参数以及输出效果"><a href="#部分其他参数以及输出效果" class="headerlink" title="部分其他参数以及输出效果"></a>部分其他参数以及输出效果</h2><p>!&gt; 以下部分test.html文件的预览是在原Microsoft Edge中截图，chrome截图效果可能会差些，但是不影响。</p>
+<h2 id="部分其他参数以及输出效果"><a href="#部分其他参数以及输出效果" class="headerlink" title="部分其他参数以及输出效果"></a>部分其他参数以及输出效果</h2><blockquote>
+<p>以下部分test.html文件的预览是在原Microsoft Edge中截图，chrome截图效果可能会差些，但是不影响。</p>
+</blockquote>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ pygmentize -O full,style<span class="token operator">=</span>emacs -o test.html test.cpp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://img.zhuomu.xyz/view/img/2020/05/18/YQLR0301/image-20200518015322785.png" alt="image-20200518015322785"></p>
@@ -813,7 +817,7 @@ pygmentize -f html -O full -o test.html test.cpp
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/06/10/Linux-command-introduction/">
+                <a href="/2020/06/09/Linux-command-introduction/">
                     <div class="card-image">
                         
                         
@@ -1089,7 +1093,7 @@ pygmentize -f html -O full -o test.html test.cpp
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2021</span>
+                <span id="year">2019-2022</span>
             
             <span id="year">2019</span>
             <a href="/about" target="_blank">卓木</a>

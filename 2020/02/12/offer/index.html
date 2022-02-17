@@ -40,7 +40,7 @@
 
     <script src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="卓木's Blog" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="卓木's Blog" type="application/atom+xml">
 </head>
 
 
@@ -538,9 +538,11 @@
 </li>
 <li><p>sizeof可以用类型做参数，strlen只能用char*做参数，且必须以”\0”结尾</p>
 </li>
+<li><p>sizeof在编译的时候就已经计算了，strlen在运行的时候才计算</p>
+</li>
+<li><p>返回结果不一样</p>
+</li>
 </ul>
-<p>    * sizeof在编译的时候就已经计算了，strlen在运行的时候才计算</p>
-<p>    * 返回结果不一样</p>
 <h5 id="类空间"><a href="#类空间" class="headerlink" title="类空间"></a>类空间</h5><p>  空类所占空间为1，单一和多重继承还是1，虚继承和只含有虚函数的类为4</p>
 <h5 id="内联函数和宏的区别"><a href="#内联函数和宏的区别" class="headerlink" title="内联函数和宏的区别"></a>内联函数和宏的区别</h5><ul>
 <li><p>内联函数要做参数类型检查</p>
@@ -555,21 +557,32 @@
 </li>
 </ul>
 <h5 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h5><ul>
-<li>指针与引用</li>
-</ul>
-<p>  * 非空区别：引用必须指向某些对象</p>
-<p>  * 合法性区别：在使用引用之前不需要测试其合法性，相反，指针则应该总是被测试</p>
-<p>  * 可修改性区：指针可以重新赋值以指向另一个不同的对象，但是引用则总是指向在初始化时被指定的对象，以后不能改变</p>
+<li><p>指针与引用</p>
 <ul>
-<li>指针的声明</li>
+<li><p>非空区别：引用必须指向某些对象</p>
+</li>
+<li><p>合法性区别：在使用引用之前不需要测试其合法性，相反，指针则应该总是被测试</p>
+</li>
+<li><p>可修改性区：指针可以重新赋值以指向另一个不同的对象，但是引用则总是指向在初始化时被指定的对象，以后不能改变</p>
+</li>
 </ul>
-<p>  * float(**def)[10]  def是一个二级指针，它指向的是一个一维数组的指针，数组元素是float</p>
-<p>  * double* (* gh)[10]  gh是一个指针，它指向一个一维数组，数组元素都是double*</p>
-<p>  * double(* f[10])()  f是一个数组，f有10个元素，元素都是函数指针，指向的函数都是没有参数且返回double</p>
-<p>  * int* ((* b)[10])  与（2）相同</p>
-<p>  * Int (*( *F)(int ,int))(int)  F是一个函数的指针，指向的类型是一个有两个int参数，并且返回一个函数指针的函数，返回的函数指针指向一个有一个int参数且返回int的函数</p>
+</li>
+<li><p>指针的声明</p>
 <ul>
-<li>指针和句柄</li>
+<li><p>float(**def)[10]  def是一个二级指针，它指向的是一个一维数组的指针，数组元素是float</p>
+</li>
+<li><p>double* (* gh)[10]  gh是一个指针，它指向一个一维数组，数组元素都是double*</p>
+</li>
+<li><p>double(* f[10])()  f是一个数组，f有10个元素，元素都是函数指针，指向的函数都是没有参数且返回double</p>
+</li>
+<li><p>int* ((* b)[10])  与（2）相同</p>
+</li>
+<li><p>Int (*( *F)(int ,int))(int)  F是一个函数的指针，指向的类型是一个有两个int参数，并且返回一个函数指针的函数，返回的函数指针指向一个有一个int参数且返回int的函数</p>
+</li>
+</ul>
+</li>
+<li><p>指针和句柄</p>
+</li>
 </ul>
 <p>  句柄和指针其实是两个截然不同的概念，Windows系统用句柄标记系统资源，隐藏系统的信息，你只要知道有这个东西，然后去调用就行，指针则是标记某个物理内存地址。</p>
 <ul>
@@ -582,17 +595,13 @@
 </li>
 </ul>
 <h5 id="Struct和class"><a href="#Struct和class" class="headerlink" title="Struct和class"></a>Struct和class</h5><ul>
-<li><h5 id="默认成员权限区别"><a href="#默认成员权限区别" class="headerlink" title="默认成员权限区别"></a>默认成员权限区别</h5></li>
+<li><h5 id="默认成员权限区别"><a href="#默认成员权限区别" class="headerlink" title="默认成员权限区别"></a>默认成员权限区别</h5><p>  struct的成员默认权限是public，而class的成员默认权限是private。</p>
+</li>
+<li><h5 id="默认继承方式"><a href="#默认继承方式" class="headerlink" title="默认继承方式"></a>默认继承方式</h5><p>  struct的默认继承方式为public，而class的默认继承为private</p>
+</li>
+<li><h5 id="用于定义模板参数"><a href="#用于定义模板参数" class="headerlink" title="用于定义模板参数"></a>用于定义模板参数</h5><p>  模板为C++语言新增特性，C语言没有，只有class可用于定义参数，而struct不可以</p>
+</li>
 </ul>
-<p>  struct的成员默认权限是public，而class的成员默认权限是private。</p>
-<ul>
-<li><h5 id="默认继承方式"><a href="#默认继承方式" class="headerlink" title="默认继承方式"></a>默认继承方式</h5></li>
-</ul>
-<p>  ， struct的默认继承方式为public，而class的默认继承为private</p>
-<ul>
-<li><h5 id="用于定义模板参数"><a href="#用于定义模板参数" class="headerlink" title="用于定义模板参数"></a>用于定义模板参数</h5></li>
-</ul>
-<p>  模板为C++语言新增特性，C语言没有，只有class可用于定义参数，而struct不可以</p>
 <h5 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h5><ul>
 <li><p>容器（Container），是一种数据结构，如list，vector，和deques ，以模板类的方法提供。为了访问容器中的数据，可以使用由容器类输出的迭代器；</p>
 </li>
@@ -650,7 +659,7 @@
 
  <span class="token keyword">char</span> <span class="token operator">*</span>address <span class="token operator">=</span> strDest<span class="token punctuation">;</span> 
 
- <span class="token keyword">while</span><span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token operator">*</span>strDest<span class="token operator">++</span> <span class="token operator">=</span> <span class="token operator">*</span> strSrc<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token string">'\0'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> 
+ <span class="token keyword">while</span><span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token operator">*</span>strDest<span class="token operator">++</span> <span class="token operator">=</span> <span class="token operator">*</span> strSrc<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token char">'\0'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> 
 
  <span class="token keyword">return</span> address<span class="token punctuation">;</span>
 
@@ -1197,7 +1206,7 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/09/v2ray-WS-TLS-Cloudflare/">
+                <a href="/2020/02/08/v2ray-WS-TLS-Cloudflare/">
                     <div class="card-image">
                         
                         
@@ -1428,7 +1437,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2021</span>
+                <span id="year">2019-2022</span>
             
             <span id="year">2019</span>
             <a href="/about" target="_blank">卓木</a>

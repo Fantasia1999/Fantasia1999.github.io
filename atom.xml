@@ -137,8 +137,8 @@
   
   <entry>
     <title>数据结构代码题汇总</title>
-    <link href="https://blog.zhuomu.xyz/2020/11/14/DS-code/"/>
-    <id>https://blog.zhuomu.xyz/2020/11/14/DS-code/</id>
+    <link href="https://blog.zhuomu.xyz/2020/11/13/DS-code/"/>
+    <id>https://blog.zhuomu.xyz/2020/11/13/DS-code/</id>
     <published>2020-11-13T20:21:00.000Z</published>
     <updated>2020-11-13T20:22:15.000Z</updated>
     
@@ -170,8 +170,12 @@
       
         
         
-    <summary type="html">&lt;p&gt;V2ray下命令行使用代理&lt;/p&gt;
-&lt;h2 id=&quot;验证方式&quot;&gt;&lt;a href=&quot;#验证方式&quot; class=&quot;headerlink&quot; title=&quot;验证方式&quot;&gt;&lt;/a&gt;验证方式&lt;/h2&gt;&lt;h3 id=&quot;ping可以验证吗&quot;&gt;&lt;a href=&quot;#ping可以验证吗&quot;</summary>
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;更推荐使用Clash for Windows，然后使用TUN模式接管所有流量。&lt;/p&gt;
+&lt;p&gt;update: &lt;em&gt;2022-02-17&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;V2ray下命令行使用代理&lt;/p&gt;
+&lt;h2</summary>
         
       
     
@@ -248,6 +252,8 @@
     <category term="随笔" scheme="https://blog.zhuomu.xyz/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
+    <category term="Typecho" scheme="https://blog.zhuomu.xyz/tags/typecho/"/>
+    
   </entry>
   
   <entry>
@@ -314,8 +320,8 @@
   
   <entry>
     <title>阿里云CES WordPress测试</title>
-    <link href="https://blog.zhuomu.xyz/2020/06/10/aliyun-CES-WordPress/"/>
-    <id>https://blog.zhuomu.xyz/2020/06/10/aliyun-CES-WordPress/</id>
+    <link href="https://blog.zhuomu.xyz/2020/06/09/aliyun-CES-WordPress/"/>
+    <id>https://blog.zhuomu.xyz/2020/06/09/aliyun-CES-WordPress/</id>
     <published>2020-06-09T21:26:00.000Z</published>
     <updated>2020-06-09T21:26:59.000Z</updated>
     
@@ -333,6 +339,8 @@
     <category term="技术博文" scheme="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/"/>
     
     
+    <category term="blog" scheme="https://blog.zhuomu.xyz/tags/blog/"/>
+    
     <category term="WordPress" scheme="https://blog.zhuomu.xyz/tags/wordpress/"/>
     
     <category term="CES" scheme="https://blog.zhuomu.xyz/tags/ces/"/>
@@ -341,14 +349,12 @@
     
     <category term="博客" scheme="https://blog.zhuomu.xyz/tags/%E5%8D%9A%E5%AE%A2/"/>
     
-    <category term="blog" scheme="https://blog.zhuomu.xyz/tags/blog/"/>
-    
   </entry>
   
   <entry>
     <title>Linux命令入门</title>
-    <link href="https://blog.zhuomu.xyz/2020/06/10/Linux-command-introduction/"/>
-    <id>https://blog.zhuomu.xyz/2020/06/10/Linux-command-introduction/</id>
+    <link href="https://blog.zhuomu.xyz/2020/06/09/Linux-command-introduction/"/>
+    <id>https://blog.zhuomu.xyz/2020/06/09/Linux-command-introduction/</id>
     <published>2020-06-09T21:18:00.000Z</published>
     <updated>2020-06-09T21:20:21.000Z</updated>
     
@@ -550,9 +556,9 @@
   </entry>
   
   <entry>
-    <title>提问的智慧——一生中必看的文章，不看后悔一辈子(#滑稽</title>
-    <link href="https://blog.zhuomu.xyz/2020/04/01/How-To-Ask-Questions-The-Smart-Way/"/>
-    <id>https://blog.zhuomu.xyz/2020/04/01/How-To-Ask-Questions-The-Smart-Way/</id>
+    <title>提问的智慧——一生中必看的文章，不看后悔一辈子(#doge</title>
+    <link href="https://blog.zhuomu.xyz/2020/03/31/How-To-Ask-Questions-The-Smart-Way/"/>
+    <id>https://blog.zhuomu.xyz/2020/03/31/How-To-Ask-Questions-The-Smart-Way/</id>
     <published>2020-03-31T23:17:00.000Z</published>
     <updated>2020-03-31T23:17:58.000Z</updated>
     
