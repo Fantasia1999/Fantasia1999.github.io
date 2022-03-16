@@ -9,8 +9,35 @@
     <atom:link href="https://blog.zhuomu.xyz/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>学习 分享 开源</description>
-    <pubDate>Thu, 17 Feb 2022 08:43:00 GMT</pubDate>
+    <pubDate>Wed, 16 Mar 2022 16:09:52 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Docker备忘录</title>
+      <link>https://blog.zhuomu.xyz/2022/03/13/docker-memo/</link>
+      <guid>https://blog.zhuomu.xyz/2022/03/13/docker-memo/</guid>
+      <pubDate>Sun, 13 Mar 2022 10:57:10 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;Docker备忘录&quot;&gt;&lt;a href=&quot;#Docker备忘录&quot; class=&quot;headerlink&quot; title=&quot;Docker备忘录&quot;&gt;&lt;/a&gt;Docker备忘录&lt;/h1&gt;&lt;p&gt;du -hs</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</category>
+      
+      
+      <category domain="https://blog.zhuomu.xyz/tags/docker/">Docker</category>
+      
+      
+      <comments>https://blog.zhuomu.xyz/2022/03/13/docker-memo/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>重装系统后配置Git和Terminal环境</title>
@@ -592,35 +619,6 @@
       
       
       <comments>https://blog.zhuomu.xyz/2020/05/10/Github-img-error/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>用人体工学调整你的桌面[by:Microsoft]</title>
-      <link>https://blog.zhuomu.xyz/2020/05/07/comfortable-desk-Microsoft/</link>
-      <guid>https://blog.zhuomu.xyz/2020/05/07/comfortable-desk-Microsoft/</guid>
-      <pubDate>Thu, 07 May 2020 09:46:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h1 id=&quot;设置你的桌面&quot;&gt;&lt;a href=&quot;#设置你的桌面&quot; class=&quot;headerlink&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://blog.zhuomu.xyz/categories/%E9%9A%8F%E7%AC%94/">随笔</category>
-      
-      
-      <category domain="https://blog.zhuomu.xyz/tags/%E4%BA%BA%E4%BD%93%E5%B7%A5%E5%AD%A6/">人体工学</category>
-      
-      <category domain="https://blog.zhuomu.xyz/tags/microsoft/">Microsoft</category>
-      
-      
-      <comments>https://blog.zhuomu.xyz/2020/05/07/comfortable-desk-Microsoft/#disqus_thread</comments>
       
     </item>
     

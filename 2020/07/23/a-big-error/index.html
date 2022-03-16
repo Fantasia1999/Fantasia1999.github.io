@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.0.0">
+<meta name="generator" content="Hexo 6.1.0">
   <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico">
@@ -265,25 +265,25 @@
 <p>接下来使用mysqlbinlog</p>
 <p>如果可以正常使用mysqlbinlog命令请忽略这部分。</p>
 <p>需要确定mysqlbinlog的位置，使用find命令查找</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$ </span><span class="language-bash">find / -name mysqlbinlog -<span class="built_in">print</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">find / -name mysqlbinlog -<span class="built_in">print</span></span></span><br></pre></td></tr></table></figure>
 
 <p>找到如下路径</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/usr/bin/mysqlbinlog</span><br><span class="line">/yoursql/mysql/bin/mysqlbinlog</span><br></pre></td></tr></table></figure>
 
 <p>根据自己的情况确定你的位置。然后软链接</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$ </span><span class="language-bash"><span class="built_in">ln</span> -fs /www/server/mysql/bin/mysqlbinlog /usr/bin</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ln</span> -fs /www/server/mysql/bin/mysqlbinlog /usr/bin</span></span><br></pre></td></tr></table></figure>
 
 <p>接下来就可以使用mysqlbinlog命令了。</p>
 <p>由于我们并不清楚出错的时间范围，只能输入一个大致的起始时间，如果确定的话，可以在<code>start-datetime</code>后边跟上相同参数的<code>stop-datetime</code>。跟上<code>result-file</code>导出文件便于我们分析错误位置。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$ </span><span class="language-bash">mysqlbinlog --start-datetime=<span class="string">&#x27;2020-07-09 19:00:00&#x27;</span> /www/server/data/mysql-bin.000008 --result-file=extra.sql</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">mysqlbinlog --start-datetime=<span class="string">&#x27;2020-07-09 19:00:00&#x27;</span> /www/server/data/mysql-bin.000008 --result-file=extra.sql</span></span><br></pre></td></tr></table></figure>
 
 <p>在一波分析后，发现最后一次（这个根据自身情况，不一定是最后一次）配置正确的position 39876作为stop，然后再向前找比较早的的一个position 2000作为start。</p>
 <p>比如我找到我的position分别是start 2000 stop39876</p>
 <p>执行下列命令，重新执行这部分sql操作，使数据库恢复。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$ </span><span class="language-bash">mysqlbinlog --start-position=<span class="string">&quot;2000&quot;</span> --stop-position=<span class="string">&quot;39876&quot;</span> mysql-bin.000008 &gt; /yourpath/backup.sql</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">mysqlbinlog --start-position=<span class="string">&quot;2000&quot;</span> --stop-position=<span class="string">&quot;39876&quot;</span> mysql-bin.000008 &gt; /yourpath/backup.sql</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="开始恢复"><a href="#开始恢复" class="headerlink" title="开始恢复"></a>开始恢复</h2><p>进入数据库databaseA，将这部分sql导入进去</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$ </span><span class="language-bash">mysql -u root -p databaseA</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">mysql -u root -p databaseA</span></span><br></pre></td></tr></table></figure>
 
 <p>使用source命令（也有其他命令，可以自行搜索）</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql &gt; source /yourpath/backup.sql;</span><br></pre></td></tr></table></figure>
@@ -399,7 +399,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-count">58</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
