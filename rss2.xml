@@ -9,8 +9,32 @@
     <atom:link href="https://blog.zhuomu.xyz/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>学习 分享 开源</description>
-    <pubDate>Wed, 16 Mar 2022 16:09:52 GMT</pubDate>
+    <pubDate>Wed, 30 Mar 2022 13:48:42 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Marginnote学习脑图转markdown</title>
+      <link>https://blog.zhuomu.xyz/2022/03/30/marginnote-docx-convert-to-markdown/</link>
+      <guid>https://blog.zhuomu.xyz/2022/03/30/marginnote-docx-convert-to-markdown/</guid>
+      <pubDate>Wed, 30 Mar 2022 13:48:42 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;最近一直在使用Marginnote看书，记录了大量的脑图笔记，但是桌面操作系统是Windows，无法直接对笔记编辑整理，因此通过曲线救国，采取下列方法使脑图笔记markdown化。&lt;/p&gt;
+&lt;h2 id=&quot;工具&quot;&gt;&lt;a href=&quot;#工具&quot;</description>
+          
+        
+      
+      
+      
+      
+      
+      
+      <comments>https://blog.zhuomu.xyz/2022/03/30/marginnote-docx-convert-to-markdown/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>Docker备忘录</title>
@@ -594,31 +618,6 @@
       
       
       <comments>https://blog.zhuomu.xyz/2020/05/11/change-Win10-DNS/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>解决 Github 图片资源无法显示问题</title>
-      <link>https://blog.zhuomu.xyz/2020/05/10/Github-img-error/</link>
-      <guid>https://blog.zhuomu.xyz/2020/05/10/Github-img-error/</guid>
-      <pubDate>Sun, 10 May 2020 01:34:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h1 id=&quot;解决-Github-图片资源无法显示问题&quot;&gt;&lt;a href=&quot;#解决-Github-图片资源无法显示问题&quot; class=&quot;headerlink&quot; title=&quot;解决 Github 图片资源无法显示问题&quot;&gt;&lt;/a&gt;解决 Github</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/">技术博文</category>
-      
-      
-      
-      <comments>https://blog.zhuomu.xyz/2020/05/10/Github-img-error/#disqus_thread</comments>
       
     </item>
     
