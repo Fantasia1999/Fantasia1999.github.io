@@ -30,6 +30,20 @@
       
       
       
+      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/">笔记本</category>
+      
+      
+      <category domain="https://blog.zhuomu.xyz/tags/pandoc/">Pandoc</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/marginnote/">Marginnote</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/word/">Word</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/docx/">docx</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/md/">md</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/markdown/">markdown</category>
       
       
       <comments>https://blog.zhuomu.xyz/2022/03/30/marginnote-docx-convert-to-markdown/#disqus_thread</comments>
@@ -53,7 +67,7 @@
       
       
       
-      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</category>
+      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/">笔记本</category>
       
       
       <category domain="https://blog.zhuomu.xyz/tags/docker/">Docker</category>
@@ -86,7 +100,7 @@
       
       
       
-      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</category>
+      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/">笔记本</category>
       
       
       <category domain="https://blog.zhuomu.xyz/tags/git/">Git</category>
@@ -115,7 +129,7 @@
       
       
       
-      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</category>
+      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/">笔记本</category>
       
       
       <category domain="https://blog.zhuomu.xyz/tags/docker/">Docker</category>
@@ -144,7 +158,7 @@
       
       
       
-      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E9%9A%8F%E7%AC%94/">技术随笔</category>
+      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/">笔记本</category>
       
       
       <category domain="https://blog.zhuomu.xyz/tags/jbl/">JBL</category>
@@ -171,7 +185,7 @@
       
       
       
-      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/">技术博文</category>
+      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%90%91/">技术向</category>
       
       
       <category domain="https://blog.zhuomu.xyz/tags/centos/">centos</category>
@@ -198,7 +212,7 @@
       
       
       
-      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/">技术博文</category>
+      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%90%91/">技术向</category>
       
       
       <category domain="https://blog.zhuomu.xyz/tags/github/">Github</category>
@@ -229,7 +243,7 @@
       
       
       
-      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
+      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%90%91/">技术向</category>
       
       
       <category domain="https://blog.zhuomu.xyz/tags/jsdelivr/">jsDelivr</category>
@@ -264,7 +278,7 @@
       
       
       
-      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
+      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/">笔记本</category>
       
       
       <category domain="https://blog.zhuomu.xyz/tags/mysql/">MySQL</category>
@@ -293,6 +307,8 @@
       
       
       
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/">笔记本</category>
       
       
       <category domain="https://blog.zhuomu.xyz/tags/ubuntu/">ubuntu</category>
@@ -325,7 +341,7 @@
       
       
       
-      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
+      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/">笔记本</category>
       
       
       
@@ -355,7 +371,7 @@
       
       
       
-      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
+      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/">笔记本</category>
       
       
       <category domain="https://blog.zhuomu.xyz/tags/linux/">Linux</category>
@@ -392,7 +408,7 @@
       
       
       
-      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
+      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/">笔记本</category>
       
       
       <category domain="https://blog.zhuomu.xyz/tags/windows/">Windows</category>
@@ -427,7 +443,7 @@
       
       
       
-      <category domain="https://blog.zhuomu.xyz/categories/%E9%9A%8F%E7%AC%94/">随笔</category>
+      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%90%91/">技术向</category>
       
       
       <category domain="https://blog.zhuomu.xyz/tags/typecho/">Typecho</category>
@@ -454,7 +470,7 @@
       
       
       
-      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/">技术博文</category>
+      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%90%91/">技术向</category>
       
       
       <category domain="https://blog.zhuomu.xyz/tags/git/">Git</category>
@@ -489,7 +505,7 @@
       
       
       
-      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
+      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/">笔记本</category>
       
       
       <category domain="https://blog.zhuomu.xyz/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</category>
@@ -520,7 +536,7 @@
       
       
       
-      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/">技术博文</category>
+      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%90%91/">技术向</category>
       
       
       <category domain="https://blog.zhuomu.xyz/tags/blog/">blog</category>
@@ -555,7 +571,7 @@
       
       
       
-      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
+      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/">笔记本</category>
       
       
       <category domain="https://blog.zhuomu.xyz/tags/linux/">Linux</category>
@@ -586,7 +602,7 @@
       
       
       
-      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
+      <category domain="https://blog.zhuomu.xyz/categories/%E5%88%86%E4%BA%AB/">分享</category>
       
       
       
@@ -611,7 +627,7 @@
       
       
       
-      <category domain="https://blog.zhuomu.xyz/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
+      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%90%91/">技术向</category>
       
       
       <category domain="https://blog.zhuomu.xyz/tags/dns/">DNS</category>
