@@ -370,10 +370,10 @@
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 进入/usr/share/wordpress目录。</span><br><span class="line">cd /usr/share/wordpress</span><br><span class="line"># 修改路径。</span><br><span class="line">ln -snf /etc/wordpress/wp-config.php wp-config.php</span><br><span class="line"># 查看修改后的目录结构。</span><br><span class="line">ll</span><br></pre></td></tr></table></figure>
 
-<p>​        2）执行如下命令，移动wordpress到Apache根目录。</p>
+<p>​		2）执行如下命令，移动wordpress到Apache根目录。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 在Apache的根目录/var/www/html下，创建一个wp-blog文件夹。</span><br><span class="line">mkdir /var/www/html/wp-blog</span><br><span class="line">mv * /var/www/html/wp-blog/</span><br></pre></td></tr></table></figure>
 
-<p>​        3）执行以下命令修改wp-config.php配置文件。</p>
+<p>​		3）执行以下命令修改wp-config.php配置文件。</p>
 <p>在执行命令前，请先替换以下三个参数值。</p>
 <ul>
 <li>database_name_here为之前步骤中创建的数据库名称，本示例为wordpress。</li>
@@ -382,7 +382,7 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sed -i &#x27;s/database_name_here/wordpress/&#x27; /var/www/html/wp-blog/wp-config.php</span><br><span class="line">sed -i &#x27;s/username_here/root/&#x27; /var/www/html/wp-blog/wp-config.php</span><br><span class="line">sed -i &#x27;s/password_here/NewPassWord1./&#x27; /var/www/html/wp-blog/wp-config.php</span><br></pre></td></tr></table></figure>
 
-<p>​        4）执行以下命令，查看配置文件信息是否修改成功。</p>
+<p>​		4）执行以下命令，查看配置文件信息是否修改成功。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat -n /var/www/html/wp-blog/wp-config.php</span><br></pre></td></tr></table></figure>
 
 
@@ -403,7 +403,7 @@
 <li>Site Title：站点名称，例如：阿里云CES WordPress测试。</li>
 <li>Username：管理员用户名，例如：admin。</li>
 <li>Password：访问密码，例如：HzEcgtOB)ZmiqkYaVT。</li>
-<li>Your Email：email地址，建议为真实有效的地址。若没有，可以填写虚拟email地址，但将无法接收信息，例如：<a href="mailto:&#97;&#x64;&#x6d;&#x69;&#110;&#64;&#97;&#x64;&#109;&#x69;&#x6e;&#x2e;&#99;&#111;&#109;">&#97;&#x64;&#x6d;&#x69;&#110;&#64;&#97;&#x64;&#109;&#x69;&#x6e;&#x2e;&#99;&#111;&#109;</a>。</li>
+<li>Your Email：email地址，建议为真实有效的地址。若没有，可以填写虚拟email地址，但将无法接收信息，例如：<a href="mailto:&#x61;&#100;&#x6d;&#105;&#x6e;&#64;&#97;&#100;&#109;&#x69;&#x6e;&#x2e;&#99;&#x6f;&#x6d;">&#x61;&#100;&#x6d;&#105;&#x6e;&#64;&#97;&#100;&#109;&#x69;&#x6e;&#x2e;&#99;&#x6f;&#x6d;</a>。</li>
 </ul>
 </li>
 </ol>
@@ -534,18 +534,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">52</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">94</span>
+        <span class="site-state-item-count">93</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
