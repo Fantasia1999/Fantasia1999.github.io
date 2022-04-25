@@ -46,12 +46,12 @@
   };
 </script>
 
-  <meta name="description" content="Docker备忘录du -hs 目录名  查看目录所占容量大小  docker ps  查看所有容器进程  docker stats  查看所有运行着的容器占用资源情况  docker volume inspect redis-data  查看redis-data这个volume  docker volume ls  查看volume列表  docker system df  查看docker占用">
+  <meta name="description" content="Docker备忘录docker images  查看所有的镜像  docker rm 容器名  删除容器，多见于容器名重复时使用  docker rmi 镜像名  用于删除镜像  du -hs 目录名  查看目录所占容量大小  docker ps  查看所有容器进程  docker stats  查看所有运行着的容器占用资源情况  docker volume inspect redis-data">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker备忘录">
 <meta property="og:url" content="https://blog.zhuomu.xyz/2022/03/13/docker-memo/index.html">
 <meta property="og:site_name" content="卓木&#39;s Blog">
-<meta property="og:description" content="Docker备忘录du -hs 目录名  查看目录所占容量大小  docker ps  查看所有容器进程  docker stats  查看所有运行着的容器占用资源情况  docker volume inspect redis-data  查看redis-data这个volume  docker volume ls  查看volume列表  docker system df  查看docker占用">
+<meta property="og:description" content="Docker备忘录docker images  查看所有的镜像  docker rm 容器名  删除容器，多见于容器名重复时使用  docker rmi 镜像名  用于删除镜像  du -hs 目录名  查看目录所占容量大小  docker ps  查看所有容器进程  docker stats  查看所有运行着的容器占用资源情况  docker volume inspect redis-data">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-13T10:57:10.000Z">
 <meta property="article:modified_time" content="2022-03-16T16:09:52.000Z">
@@ -243,7 +243,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Docker备忘录"><a href="#Docker备忘录" class="headerlink" title="Docker备忘录"></a>Docker备忘录</h1><p>du -hs 目录名</p>
+        <h1 id="Docker备忘录"><a href="#Docker备忘录" class="headerlink" title="Docker备忘录"></a>Docker备忘录</h1><p>docker images</p>
+<blockquote>
+<p>查看所有的镜像</p>
+</blockquote>
+<p>docker rm 容器名</p>
+<blockquote>
+<p>删除容器，多见于容器名重复时使用</p>
+</blockquote>
+<p>docker rmi 镜像名</p>
+<blockquote>
+<p>用于删除镜像</p>
+</blockquote>
+<p>du -hs 目录名</p>
 <blockquote>
 <p>查看目录所占容量大小</p>
 </blockquote>
@@ -290,12 +302,33 @@
 <blockquote>
 <p>只需要写好docker-compose.yml，就可以了。通过compose运行容器（我一般拿来更新容器）</p>
 </blockquote>
+<p>如果要正常退出不关闭容器，请按Ctrl+P+Q进行退出容器</p>
 <p>其他命令：</p>
 <p>lrzsz</p>
 <ul>
 <li>rz 收文件，也就是从win向linux上传</li>
 <li>sz 发文件，从linux向win下载</li>
 </ul>
+<h2 id="报错及解决方法"><a href="#报错及解决方法" class="headerlink" title="报错及解决方法"></a>报错及解决方法</h2><ol>
+<li><p>启动或重启容器时报错 Error response from daemon: driver failed programming external connectivity on endpoint</p>
+<p>原因：启动docker后，开启了ufw防火墙，或者是启动docker后，安装了防火墙。</p>
+<p>解决办法：重启docker，<code>systemctl restart docker</code>。<a target="_blank" rel="noopener" href="https://blog.csdn.net/whatday/article/details/86762264">参考</a></p>
+</li>
+<li><p>防火墙问题，多出现于容器内无法解析域名 <a target="_blank" rel="noopener" href="https://blog.csdn.net/fgx_123456/article/details/87857723">参考</a></p>
+<ul>
+<li><p>安装ufw<code>sudo apt-get install ufw</code></p>
+</li>
+<li><p>启用ufw<code>ufw enable</code></p>
+</li>
+<li><p>更改ufw配置。</p>
+<p>在Ubuntu中，如果使用UFW，即 Uncomplicated Firewall，那么还需对其做一点儿改动才能让Docker 工作。Docker使用一个网桥来管理容器中的网络。默认情况下，UFW会丢弃所有转发的数据包（也称分组)。因此，需要在 UFW中启用数据包的转发，这样才能让Docker 正常运行。我们只需要对&#x2F;etc&#x2F;default&#x2F;ufw文件做一些改动即可。</p>
+<p>更改<code>DEFAULT_FORWARD_POLICY=&quot;DROP&quot;，为</code>ACCEPT&#96;</p>
+</li>
+<li><p>重新加载ufw，<code>sudo ufw reload</code></p>
+</li>
+</ul>
+</li>
+</ol>
 
     </div>
 
@@ -387,7 +420,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker%E5%A4%87%E5%BF%98%E5%BD%95"><span class="nav-number">1.</span> <span class="nav-text">Docker备忘录</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker%E5%A4%87%E5%BF%98%E5%BD%95"><span class="nav-number">1.</span> <span class="nav-text">Docker备忘录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">报错及解决方法</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
