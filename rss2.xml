@@ -9,8 +9,44 @@
     <atom:link href="https://blog.zhuomu.xyz/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>学习 分享 开源</description>
-    <pubDate>Wed, 30 Mar 2022 13:48:42 GMT</pubDate>
+    <pubDate>Fri, 01 Jul 2022 16:00:00 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>关于MOBA类游戏设置MTU=1480会更流畅的分析</title>
+      <link>https://blog.zhuomu.xyz/2022/07/01/about-mtu-is-1480/</link>
+      <guid>https://blog.zhuomu.xyz/2022/07/01/about-mtu-is-1480/</guid>
+      <pubDate>Fri, 01 Jul 2022 16:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;先来两张Windows ping命令的测试图&lt;/p&gt;
+&lt;img src=&quot;https://img.zhuomu.xyz/view/img/2022/07/02/image-20220702-6bfa0cf.png&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%90%91/">技术向</category>
+      
+      
+      <category domain="https://blog.zhuomu.xyz/tags/tcp/">TCP</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/udp/">UDP</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/mtu/">MTU</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/pppoe/">PPPoE</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/mss/">MSS</category>
+      
+      
+      <comments>https://blog.zhuomu.xyz/2022/07/01/about-mtu-is-1480/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>Marginnote学习脑图转markdown</title>
@@ -607,33 +643,6 @@
       
       
       <comments>https://blog.zhuomu.xyz/2020/05/17/Pygments-highlight-code/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>更改Win10 DNS</title>
-      <link>https://blog.zhuomu.xyz/2020/05/11/change-Win10-DNS/</link>
-      <guid>https://blog.zhuomu.xyz/2020/05/11/change-Win10-DNS/</guid>
-      <pubDate>Mon, 11 May 2020 02:34:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;更改Win10-DNS&quot;&gt;&lt;a href=&quot;#更改Win10-DNS&quot; class=&quot;headerlink&quot; title=&quot;更改Win10 DNS&quot;&gt;&lt;/a&gt;更改Win10 DNS&lt;/h2&gt;&lt;h3 id=&quot;0x00-预备知识&quot;&gt;&lt;a</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://blog.zhuomu.xyz/categories/%E6%8A%80%E6%9C%AF%E5%90%91/">技术向</category>
-      
-      
-      <category domain="https://blog.zhuomu.xyz/tags/dns/">DNS</category>
-      
-      
-      <comments>https://blog.zhuomu.xyz/2020/05/11/change-Win10-DNS/#disqus_thread</comments>
       
     </item>
     

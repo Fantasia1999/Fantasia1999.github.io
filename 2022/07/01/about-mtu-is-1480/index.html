@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico">
+  <link rel="mask-icon" href="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/favicon.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=LatoEB Garamond:300,300italic,400,400italic,700,700italic|JetBrains Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://blog.zhuomu.xyz').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"flat"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"buttons","active":null,"storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}}},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="先来两张Windows ping命令的测试图    MTU是1500，然后电脑一般是1492就可以了，那么为什么这里1464才可以发？为什么要设置成1492？先说1464的来源  1464（数据） + 8Byte（ICMP首部长度）+20Byte（IP数据报长度） &#x3D; 1492 ICMP是在网络层，但是ICMP协议不能单独工作，所以，想要传输ICMP数据，需要经过IP协议进行包装才可以。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于MOBA类游戏设置MTU&#x3D;1480会更流畅的分析">
+<meta property="og:url" content="https://blog.zhuomu.xyz/2022/07/01/about-mtu-is-1480/index.html">
+<meta property="og:site_name" content="卓木&#39;s Blog">
+<meta property="og:description" content="先来两张Windows ping命令的测试图    MTU是1500，然后电脑一般是1492就可以了，那么为什么这里1464才可以发？为什么要设置成1492？先说1464的来源  1464（数据） + 8Byte（ICMP首部长度）+20Byte（IP数据报长度） &#x3D; 1492 ICMP是在网络层，但是ICMP协议不能单独工作，所以，想要传输ICMP数据，需要经过IP协议进行包装才可以。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2022/07/02/image-20220702-6bfa0cf.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2022/07/02/image-20220702-213582d.png">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2022/07/02/image-20220702-da83224.jpg">
+<meta property="og:image" content="https://img.zhuomu.xyz/view/img/2022/07/02/image-20220702-d26f1cf.jpg">
+<meta property="article:published_time" content="2022-07-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-01T16:00:00.000Z">
+<meta property="article:author" content="卓木">
+<meta property="article:tag" content="TCP">
+<meta property="article:tag" content="UDP">
+<meta property="article:tag" content="MTU">
+<meta property="article:tag" content="PPPoE">
+<meta property="article:tag" content="MSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.zhuomu.xyz/view/img/2022/07/02/image-20220702-6bfa0cf.png">
+
+<link rel="canonical" href="https://blog.zhuomu.xyz/2022/07/01/about-mtu-is-1480/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>关于MOBA类游戏设置MTU=1480会更流畅的分析 | 卓木's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="卓木's Blog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">卓木's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-desktop"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-kindle">
+
+    <a href="/Kindle" rel="section"><i class="fa fa-fw fa-book"></i>Kindle</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user-circle-o"></i>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.zhuomu.xyz/2022/07/01/about-mtu-is-1480/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/avatar.jpg">
+      <meta itemprop="name" content="卓木">
+      <meta itemprop="description" content="学习 分享 开源">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="卓木's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          关于MOBA类游戏设置MTU=1480会更流畅的分析
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-07-02 00:00:00" itemprop="dateCreated datePublished" datetime="2022-07-02T00:00:00+08:00">2022-07-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%90%91/" itemprop="url" rel="index">
+                    <span itemprop="name">技术向</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/07/01/about-mtu-is-1480/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/07/01/about-mtu-is-1480/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>先来两张Windows ping命令的测试图</p>
+<img src="https://img.zhuomu.xyz/view/img/2022/07/02/image-20220702-6bfa0cf.png" alt="image-20220701190414785"/>
+
+<p><img src="https://img.zhuomu.xyz/view/img/2022/07/02/image-20220702-213582d.png" alt="image-20220701192005839"></p>
+<h3 id="MTU是1500，然后电脑一般是1492就可以了，那么为什么这里1464才可以发？为什么要设置成1492？"><a href="#MTU是1500，然后电脑一般是1492就可以了，那么为什么这里1464才可以发？为什么要设置成1492？" class="headerlink" title="MTU是1500，然后电脑一般是1492就可以了，那么为什么这里1464才可以发？为什么要设置成1492？"></a>MTU是1500，然后电脑一般是1492就可以了，那么为什么这里1464才可以发？为什么要设置成1492？</h3><p><strong>先说1464的来源</strong></p>
+<ul>
+<li>1464（数据） + 8Byte（ICMP首部长度）+20Byte（IP数据报长度） &#x3D; 1492</li>
+<li>ICMP是在网络层，但是ICMP协议不能单独工作，所以，想要传输ICMP数据，需要经过IP协议进行包装才可以。那么就需要在IP数据报的数据部分放上完整的ICMP协议数据报（ICMP首部8Byte+要传送的数据n个Byte），这样就是1492的由来，因此，1492是足够的。</li>
+</ul>
+<p>1492就够了，那为什么游戏会给我设置成1480？这个稍后说。</p>
+<h3 id="MTU是1500，为什么我电脑是1492？"><a href="#MTU是1500，为什么我电脑是1492？" class="headerlink" title="MTU是1500，为什么我电脑是1492？"></a>MTU是1500，为什么我电脑是1492？</h3><p>这就要说到我们现在的上网方式了，目前国内的家庭宽带上网方式都是PPPoE拨号上网。</p>
+<p>电脑-&gt;路由器-&gt;光猫-&gt;互联网</p>
+<blockquote>
+<p>PPPoE协议介于以太网和IP之间，协议分为两部分，PPP( Point to Point Protocol )和oE( over Ethernet )，也就是以太网上的PPP协议，而PPPoE协议头信息为:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">| VER(4bit) | TYPE(4bit) | CODE(8bit) | SESSION-ID(16bit) | LENGTH(16bit) |</span><br></pre></td></tr></table></figure>
+
+<p>这里总共是48bit，也就是6Byte，那么另外2Byte是什么呢？答案是PPP协议的ID号，占用2Byte，所以在PPPoE环境下，最佳MTU值应该是：1500 - 4 - 2 &#x3D; 1492。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/35749997/answer/83459499"><img src="https://img.zhuomu.xyz/view/img/2022/07/02/image-20220702-da83224.jpg" alt="IPOE到底是什么？ - celeron533的回答 - 知乎"></a></p>
+<p>前几天在v站正好看到了关于PPPoE的<a target="_blank" rel="noopener" href="https://www.v2ex.com/t/859349">讨论</a>，当时看不懂大家在讲什么，现在再读相关的讨论，已经能够明白一些了。</p>
+<p>总之，1492少的8个字节消耗来源于我们PPPoE拨号上网方式。当然，也有使用IPoE的，我们的IPTV机顶盒就是以这样的方式做认证。关于详细的IPoE认证方式，可以参考[这里个回答](IPOE到底是什么？ - 阿布的回答 - 知乎 <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/35749997/answer/113810442)%E3%80%82">https://www.zhihu.com/question/35749997/answer/113810442)。</a></p>
+<p>回到前边的问题，1492都已经够了，为什么要用1480，就像参考链接1里面说的那样，<strong>避免二次拨号带来的又一次PPPoE的封装</strong>，第一眼我是认可这个说法的，但是当我写这篇博客的时候，思考了一下，二次拨号的是在另一个设备上进行的，这两边的设备在网络层都是对等的，并不会互相影响。后来看到了另一个<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/61111362/answer/585491629">回答</a>，了解到原因。</p>
+<p><img src="https://img.zhuomu.xyz/view/img/2022/07/02/image-20220702-d26f1cf.jpg" alt="preview"></p>
+<p>这里按照最坏情况，也就是DATA最小情况下，传输802.3 SNAP帧需要8个字节，如果再使用VLAN技术，需要传输802.1Q (VLAN)帧占用4个字节。</p>
+<p>1500&#x3D; 802.3 SNAP + 802.1Q + PPPoE + PPP +IP</p>
+<p>这种情况下可以得到IP的最大长度为：</p>
+<p>1500-8-4-5-3 &#x3D; 1480</p>
+<p><strong>当客户端把MTU设置成1480时，它发出去的IP报就是1480，留给IP报的DATA区域只有1480-20（首部）&#x3D;1460字节。如果传输层使用的协议是TCP，那么MSS只有1460-20&#x3D;1440字节。</strong>当然这是在使用802.3 SNAP和802.1Q情况下的最大MSS。</p>
+<blockquote>
+<p>MSS（Maxium Segment Size）：MSS 是 TCP 数据段每次能够传输的最大数据分段的长度。</p>
+</blockquote>
+<p>如果只使用PPPoE话，MSS应为：</p>
+<p>1500 - 5(PPPoE) - 3(PPP) - 20(IP首部) - 20(TCP首部) &#x3D; 1452字节</p>
+<p>如果去掉PPPoE，MSS应为：</p>
+<p>1500 - 20(IP首部) - 20(TCP首部) &#x3D; 1460字节。</p>
+<h3 id="如果我默认的MTU大了怎么办？"><a href="#如果我默认的MTU大了怎么办？" class="headerlink" title="如果我默认的MTU大了怎么办？"></a>如果我默认的MTU大了怎么办？</h3><ul>
+<li>如果传输层使用的是TCP协议，MTU大一点其实无所谓，为了达到最佳的传输效能，TCP 协议在建立连接的时候通常要协商双方的 MSS 值，MTU其他内容占据容量，双方协商把MSS调小点，这样就不需要拆包，用户是无感知的。</li>
+<li>如果传输层使用的是UDP协议，是面向无连接的，MTU过大，只能进行拆包才能传输。但一些游戏对实时性要求较高，拆包会带来额外的性能消耗，如果路由器性能较差，用户感知会较为明显，那么游戏自己调整MTU为1480就显得合理了些。</li>
+</ul>
+<h3 id="上图中DATA区域前边的14字节是什么？"><a href="#上图中DATA区域前边的14字节是什么？" class="headerlink" title="上图中DATA区域前边的14字节是什么？"></a>上图中DATA区域前边的14字节是什么？</h3><p>是以太网MAC帧头，对应的还有帧尾的4字节。</p>
+<h3 id="如何查看Windows本机MTU："><a href="#如何查看Windows本机MTU：" class="headerlink" title="如何查看Windows本机MTU："></a>如何查看Windows本机MTU：</h3><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">netsh interface ipv4 show subinterfaces</span><br><span class="line"></span><br><span class="line">       MTU  MediaSenseState      输入字节     输出字节  接口</span><br><span class="line">----------  ---------------  ------------  ------------  -------------</span><br><span class="line"><span class="number">4294967295</span>                <span class="number">1</span>             <span class="number">0</span>         <span class="number">70828</span>  Loopback Pseudo-Interface <span class="number">1</span></span><br><span class="line">      <span class="number">1500</span>                <span class="number">1</span>  <span class="number">100944164906</span>   <span class="number">10651419008</span>  WLAN</span><br><span class="line">      <span class="number">1500</span>                <span class="number">5</span>             <span class="number">0</span>             <span class="number">0</span>  以太网</span><br><span class="line">      <span class="number">1500</span>                <span class="number">5</span>             <span class="number">0</span>             <span class="number">0</span>  本地连接* <span class="number">1</span></span><br><span class="line">      <span class="number">1500</span>                <span class="number">5</span>             <span class="number">0</span>             <span class="number">0</span>  本地连接* <span class="number">10</span></span><br><span class="line">      <span class="number">1500</span>                <span class="number">5</span>             <span class="number">0</span>             <span class="number">0</span>  蓝牙网络连接</span><br><span class="line">      <span class="number">1500</span>                <span class="number">1</span>         <span class="number">14432</span>        <span class="number">495454</span>  VMware Network Adapter VMnet1</span><br><span class="line">      <span class="number">1500</span>                <span class="number">1</span>         <span class="number">14432</span>        <span class="number">495510</span>  VMware Network Adapter VMnet8</span><br><span class="line">      <span class="number">1500</span>                <span class="number">1</span>             <span class="number">0</span>       <span class="number">1253550</span>  vEthernet (Default Switch)</span><br><span class="line">      <span class="number">2800</span>                <span class="number">1</span>             <span class="number">0</span>        <span class="number">831391</span>  ZeroTier One [xxxxxxxxxxxxxxxx]</span><br><span class="line">      <span class="number">2800</span>                <span class="number">1</span>        <span class="number">878741</span>      <span class="number">61770711</span>  ZeroTier One [xxxxxxxxxxxxxxxx]</span><br></pre></td></tr></table></figure>
+
+<p>参考链接：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/222535">什么是MTU？为什么MTU值普遍都是1500？</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1006730">为什么MOBA、“吃鸡”游戏不推荐用tcp协议——实测数据</a></p>
+<p><a target="_blank" rel="noopener" href="https://ld246.com/article/1505059632792">Windows 上最大传输单元 MTU 值的查看和设置</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.xitongcheng.com/jiaocheng/win10_article_34701.html">windows10系统下设置mtu值的方法</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/qhf_s_i_YpI05cUNOgGHIQ">家用路由器，默认MTU为什么是1480？</a>（胖哥yyds</p>
+<p><a target="_blank" rel="noopener" href="https://www.sonicwall.com/support/knowledge-base/how-can-i-determine-the-mtu-size-of-wan-interfaces-to-optimize-throughput/170504812146650/">How can I determine the MTU size of WAN interfaces to optimize throughput?</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.right.com.cn/forum/thread-7447426-1-1.html">我想问下win11调mtu为啥不能调到1500以上？nas万兆</a></p>
+<p><a target="_blank" rel="noopener" href="https://zh.m.wikipedia.org/zh-hans/%E6%9C%80%E5%A4%A7%E4%BC%A0%E8%BE%93%E5%8D%95%E5%85%83">最大传输单元 - 维基百科</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wanpengcoder/p/11750591.html">TCP最大报文段长度MSS</a></p>
+</blockquote>
+<p>免责声明</p>
+<blockquote>
+<p>漏洞百出，欢迎指正。</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/tcp/" rel="tag"># TCP</a>
+              <a href="/tags/udp/" rel="tag"># UDP</a>
+              <a href="/tags/mtu/" rel="tag"># MTU</a>
+              <a href="/tags/pppoe/" rel="tag"># PPPoE</a>
+              <a href="/tags/mss/" rel="tag"># MSS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/30/marginnote-docx-convert-to-markdown/" rel="prev" title="Marginnote学习脑图转markdown">
+      <i class="fa fa-chevron-left"></i> Marginnote学习脑图转markdown
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MTU%E6%98%AF1500%EF%BC%8C%E7%84%B6%E5%90%8E%E7%94%B5%E8%84%91%E4%B8%80%E8%88%AC%E6%98%AF1492%E5%B0%B1%E5%8F%AF%E4%BB%A5%E4%BA%86%EF%BC%8C%E9%82%A3%E4%B9%88%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E9%87%8C1464%E6%89%8D%E5%8F%AF%E4%BB%A5%E5%8F%91%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%AE%BE%E7%BD%AE%E6%88%901492%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">MTU是1500，然后电脑一般是1492就可以了，那么为什么这里1464才可以发？为什么要设置成1492？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MTU%E6%98%AF1500%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E7%94%B5%E8%84%91%E6%98%AF1492%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">MTU是1500，为什么我电脑是1492？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E6%88%91%E9%BB%98%E8%AE%A4%E7%9A%84MTU%E5%A4%A7%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">如果我默认的MTU大了怎么办？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E5%9B%BE%E4%B8%ADDATA%E5%8C%BA%E5%9F%9F%E5%89%8D%E8%BE%B9%E7%9A%8414%E5%AD%97%E8%8A%82%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">上图中DATA区域前边的14字节是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8BWindows%E6%9C%AC%E6%9C%BAMTU%EF%BC%9A"><span class="nav-number">5.</span> <span class="nav-text">如何查看Windows本机MTU：</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="卓木"
+      src="https://cdn.jsdelivr.net/gh/Fantasia1999/Fantasia1999.github.io/medias/avatar.jpg">
+  <p class="site-author-name" itemprop="name">卓木</p>
+  <div class="site-description" itemprop="description">学习 分享 开源</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">98</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Fantasia1999" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Fantasia1999" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:i@zhuomu.xyz" title="E-Mail → mailto:i@zhuomu.xyz" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/Kindle" title="Kindle → &#x2F;Kindle"><i class="fa fa-fw fa-book"></i>Kindle</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/rss2.xml" title="RSS → &#x2F;rss2.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">卓木</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://blog-zhuomu.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://blog.zhuomu.xyz/2022/07/01/about-mtu-is-1480/",
+            identifier: "2022/07/01/about-mtu-is-1480/",
+            title: "关于MOBA类游戏设置MTU=1480会更流畅的分析"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://blog-zhuomu.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
