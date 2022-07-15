@@ -9,8 +9,38 @@
     <atom:link href="https://blog.zhuomu.xyz/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>学习 分享 开源</description>
-    <pubDate>Fri, 01 Jul 2022 16:00:00 GMT</pubDate>
+    <pubDate>Fri, 15 Jul 2022 00:00:00 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>C/C++ Search Extension 修改默认中文</title>
+      <link>https://blog.zhuomu.xyz/2022/07/15/cc-search-extension/</link>
+      <guid>https://blog.zhuomu.xyz/2022/07/15/cc-search-extension/</guid>
+      <pubDate>Fri, 15 Jul 2022 00:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;blockquote&gt;
+&lt;p&gt;版本 2022年6月2日 &lt;code&gt;0.3.0&lt;/code&gt;，&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.zhuomu.xyz/categories/%E5%88%86%E4%BA%AB/">分享</category>
+      
+      
+      <category domain="https://blog.zhuomu.xyz/tags/edge/">edge</category>
+      
+      <category domain="https://blog.zhuomu.xyz/tags/cpp/">cpp</category>
+      
+      
+      <comments>https://blog.zhuomu.xyz/2022/07/15/cc-search-extension/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>关于MOBA类游戏设置MTU=1480会更流畅的分析</title>
@@ -618,31 +648,6 @@
       
       
       <comments>https://blog.zhuomu.xyz/2020/06/09/Linux-command-introduction/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>用 Pygments 给实验报告的代码润润色</title>
-      <link>https://blog.zhuomu.xyz/2020/05/17/Pygments-highlight-code/</link>
-      <guid>https://blog.zhuomu.xyz/2020/05/17/Pygments-highlight-code/</guid>
-      <pubDate>Sun, 17 May 2020 10:01:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;p&gt;最初接触到这个东西是在写XCPC板子时遇到的，从Github上clone了人家的$\LaTeX$源码，然后在编译的时候发现需要安装&lt;code&gt;Pygments&lt;/code&gt;，所以又查了些资料，发现这个项目润色后的代码确实美观。之前用的是&lt;a</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://blog.zhuomu.xyz/categories/%E5%88%86%E4%BA%AB/">分享</category>
-      
-      
-      
-      <comments>https://blog.zhuomu.xyz/2020/05/17/Pygments-highlight-code/#disqus_thread</comments>
       
     </item>
     
