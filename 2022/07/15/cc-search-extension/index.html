@@ -251,13 +251,13 @@
 </blockquote>
 <p>最近从Chrome迁移到了Edge，在配置插件的时候遇到了点问题，之前在Chrome安装的一个<code> C/C++ Search Extension</code> 版本，有在popup中设置语言的feature，但是现在商店发布的最新版本0.3.0，并不能打开popup来设置，那么搜索出来的文档默认语言是en，不便于快速阅读内容。</p>
 <blockquote>
-<p>[<a target="_blank" rel="noopener" href="https://github.com/huhu/cpp-search-extension/issues/2">Feature request] Option to config cppreference language · Issue #2 · huhu&#x2F;cpp-search-extension (github.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/huhu/cpp-search-extension/issues/2">[Feature request] Option to config cppreference language · Issue #2 · huhu&#x2F;cpp-search-extension </a></p>
 </blockquote>
 <p>我对插件的开发并不了解，因此前期走了些弯路，在扩展（Edge里的翻译是扩展，Chrome里是插件）页面(<code>edge://extensions/</code>)，找到了<code>开发人员模式</code>，没找到其他设置的线索，但是看到了一个<code>背景页</code>选项，就点进去看了看是什么。</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2022/07/15/image-20220715-a7ae0cd.png"></p>
 <p>打开后，进入了<code>审查元素</code>（也叫<code>检查</code>）页面，在<code>源代码</code>处，看到了插件所用的静态资源文件，找到<code>setting.js</code>这个文件，发现它是通过<code>storage.setItem</code>来设置默认语言的。</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2022/07/15/image-20220715-03d3337.png"></p>
-<p>但是这个参数怎么使用呢？我找到了<code>main.js</code>，里边有这样一句<code>https://$&#123;language&#125;.cppreference.com/w/$&#123;doc.path&#125;</code>，很显然，是通过字符串拼接来设置对应的url前缀，也正好是依据cppreference中的url，Engilsh用<code>en</code>前缀（<a target="_blank" rel="noopener" href="https://en.cppreference.com/w/%EF%BC%89%EF%BC%8C%E4%B8%AD%E6%96%87%E7%94%A8%60zh%60%EF%BC%88https://zh.cppreference.com/w/%EF%BC%89%E3%80%82">https://en.cppreference.com/w/），中文用`zh`（https://zh.cppreference.com/w/）。</a></p>
+<p>但是这个参数怎么使用呢？我找到了<code>main.js</code>，里边有这样一句<code>https://$&#123;language&#125;.cppreference.com/w/$&#123;doc.path&#125;</code>，很显然，是通过字符串拼接来设置对应的url前缀，也正好是依据cppreference中的url，Engilsh用<code>en</code>前缀 <code>https://en.cppreference.com/w/</code> ，中文用<code>zh</code>前缀 <code>https://zh.cppreference.com/w/</code> 。</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2022/07/15/image-20220715-03d3337.png"></p>
 <p>在仓库中搜索<code>zh</code>这个词也印证了这一点，在 popup 中也是这么设置的。不过我也不太清楚为什么这个版本中没有看到 popup 的相关 js 文件。</p>
 <p><img src="https://img.zhuomu.xyz/view/img/2022/07/15/image-20220715-2d7f78b.png"></p>
